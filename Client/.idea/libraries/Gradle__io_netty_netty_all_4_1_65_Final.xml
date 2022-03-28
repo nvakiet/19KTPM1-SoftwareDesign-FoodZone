@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: io.netty:netty-all:4.1.65.Final">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../../../../2020-2021_HK3/IntroductionToSoftwareEngineering/Project/TinderClone-master/TinderClone-master/gradle/wrapper/caches/modules-2/files-2.1/io.netty/netty-all/4.1.65.Final/d9b060190c20772eb05f6f98d30f5fdb7077f317/netty-all-4.1.65.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../../../../../2020-2021_HK3/IntroductionToSoftwareEngineering/Project/TinderClone-master/TinderClone-master/gradle/wrapper/caches/modules-2/files-2.1/io.netty/netty-all/4.1.65.Final/76313ada09bed90640bd1c2466d424c203000d38/netty-all-4.1.65.Final-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../../../../../2020-2021_HK3/IntroductionToSoftwareEngineering/Project/TinderClone-master/TinderClone-master/gradle/wrapper/caches/modules-2/files-2.1/io.netty/netty-all/4.1.65.Final/9a3799e317d34e03839e26884ca928a6d9c0837/netty-all-4.1.65.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

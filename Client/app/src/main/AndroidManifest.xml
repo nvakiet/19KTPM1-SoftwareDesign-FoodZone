@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.foodzoneclient">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+
+    <application
+        android:name=".FoodZone"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FoodZoneClient">
+        <activity
+            android:name="com.example.foodzoneclient.ui.HistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.foodzoneclient.ui.FoodMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.foodzoneclient.ui.OrderActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.foodzoneclient.ui.SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.foodzoneclient.ui.SuccessScreenActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.foodzoneclient.ui.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.foodzoneclient.ui.MainScreenActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.foodzoneclient.ui.ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.foodzoneclient.ui.CartActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.foodzoneclient.ui.LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts"/>
+    </application>
+
+</manifest>
