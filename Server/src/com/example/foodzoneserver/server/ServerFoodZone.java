@@ -56,15 +56,15 @@ public class ServerFoodZone {
 						.childOption(ChannelOption.SO_SNDBUF, 8 * 1024);
 				//Bind the server to an address + port
 				ChannelFuture chFuture = serverBs.bind(ipAddr, port).sync();
-				//logger.info("P4F Server starts successfully on port " + port + (ipAddr == "" ? " of all network interfaces" : " of address " + ipAddr));
-				System.out.println("P4F Server starts successfully on port " + port + (ipAddr == "" ? " of all network interfaces" : " of address " + ipAddr));
+				logger.info("P4F Server starts successfully on port " + port + (ipAddr == "" ? " of all network interfaces" : " of address " + ipAddr));
+				//System.out.println("P4F Server starts successfully on port " + port + (ipAddr == "" ? " of all network interfaces" : " of address " + ipAddr));
 				//Keep the server channel for manual closing
 				serverChannel = chFuture.channel();
 				//Block this thread until all groups finish
 				serverChannel.closeFuture().sync();
 			} catch (Exception e) {
-				//logger.error("P4F Server - Netty error", e);
-				System.out.println("P4F Server - Netty error");
+				logger.error("P4F Server - Netty error", e);
+				//System.out.println("P4F Server - Netty error");
 			} finally {
 				//Close the event loop groups and remove the current server channel
 				workerGroup.shutdownGracefully();
