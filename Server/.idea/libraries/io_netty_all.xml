@@ -1,8 +1,40 @@
 <component name="libraryTable">
   <library name="io.netty.all" type="repository">
-    <properties include-transitive-deps="false" maven-id="io.netty:netty-all:4.1.75.Final" />
+    <properties maven-id="io.netty:netty-all:4.1.75.Final">
+      <exclude>
+        <dependency maven-id="io.netty:netty-codec-dns" />
+        <dependency maven-id="io.netty:netty-codec-haproxy" />
+        <dependency maven-id="io.netty:netty-codec-http" />
+        <dependency maven-id="io.netty:netty-codec-http2" />
+        <dependency maven-id="io.netty:netty-codec-memcache" />
+        <dependency maven-id="io.netty:netty-codec-mqtt" />
+        <dependency maven-id="io.netty:netty-codec-redis" />
+        <dependency maven-id="io.netty:netty-codec-smtp" />
+        <dependency maven-id="io.netty:netty-codec-socks" />
+        <dependency maven-id="io.netty:netty-codec-stomp" />
+        <dependency maven-id="io.netty:netty-codec-xml" />
+        <dependency maven-id="io.netty:netty-handler-proxy" />
+        <dependency maven-id="io.netty:netty-resolver" />
+        <dependency maven-id="io.netty:netty-resolver-dns" />
+        <dependency maven-id="io.netty:netty-transport-rxtx" />
+        <dependency maven-id="io.netty:netty-transport-sctp" />
+        <dependency maven-id="io.netty:netty-transport-udt" />
+        <dependency maven-id="io.netty:netty-transport-classes-epoll" />
+        <dependency maven-id="io.netty:netty-transport-native-unix-common" />
+        <dependency maven-id="io.netty:netty-transport-classes-kqueue" />
+        <dependency maven-id="io.netty:netty-resolver-dns-classes-macos" />
+        <dependency maven-id="io.netty:netty-transport-native-epoll" />
+        <dependency maven-id="io.netty:netty-transport-native-kqueue" />
+        <dependency maven-id="io.netty:netty-resolver-dns-native-macos" />
+      </exclude>
+    </properties>
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/netty-all-4.1.75.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-buffer-4.1.75.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-codec-4.1.75.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-common-4.1.75.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-handler-4.1.75.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-transport-4.1.75.Final.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

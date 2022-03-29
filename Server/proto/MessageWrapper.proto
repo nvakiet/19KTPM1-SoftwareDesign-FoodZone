@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package p4f_protocols;
+package foodzone_protocols;
 
 option java_multiple_files = true;
-option java_package = "com.p2p.p4f.protocols";
+option java_package = "com.fz.foodzoneserver.protocols";
 
 message LoginInfo {
   string username = 1;
