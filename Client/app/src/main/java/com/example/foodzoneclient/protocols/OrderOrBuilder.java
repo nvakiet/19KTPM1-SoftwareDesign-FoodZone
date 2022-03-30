@@ -4,8 +4,8 @@
 package com.example.foodzoneclient.protocols;
 
 public interface OrderOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:p4f_protocols.Order)
-    com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(interface_extends:foodzone_protocols.Order)
+    com.google.protobuf.MessageLiteOrBuilder {
 
   /**
    * <code>string username = 1;</code>
@@ -44,26 +44,16 @@ public interface OrderOrBuilder extends
       getResIDBytes();
 
   /**
-   * <code>repeated .p4f_protocols.Food foodList = 4;</code>
+   * <code>repeated .foodzone_protocols.Food foodList = 4;</code>
    */
   java.util.List<com.example.foodzoneclient.protocols.Food> 
       getFoodListList();
   /**
-   * <code>repeated .p4f_protocols.Food foodList = 4;</code>
+   * <code>repeated .foodzone_protocols.Food foodList = 4;</code>
    */
   com.example.foodzoneclient.protocols.Food getFoodList(int index);
   /**
-   * <code>repeated .p4f_protocols.Food foodList = 4;</code>
+   * <code>repeated .foodzone_protocols.Food foodList = 4;</code>
    */
   int getFoodListCount();
-  /**
-   * <code>repeated .p4f_protocols.Food foodList = 4;</code>
-   */
-  java.util.List<? extends com.example.foodzoneclient.protocols.FoodOrBuilder> 
-      getFoodListOrBuilderList();
-  /**
-   * <code>repeated .p4f_protocols.Food foodList = 4;</code>
-   */
-  com.example.foodzoneclient.protocols.FoodOrBuilder getFoodListOrBuilder(
-      int index);
 }

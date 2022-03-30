@@ -4,8 +4,8 @@
 package com.example.foodzoneclient.protocols;
 
 public interface FoodOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:p4f_protocols.Food)
-    com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(interface_extends:foodzone_protocols.Food)
+    com.google.protobuf.MessageLiteOrBuilder {
 
   /**
    * <code>string foodID = 1;</code>

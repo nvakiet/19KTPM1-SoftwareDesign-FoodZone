@@ -4,8 +4,8 @@
 package com.example.foodzoneclient.protocols;
 
 public interface ServerMessageOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:p4f_protocols.ServerMessage)
-    com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(interface_extends:foodzone_protocols.ServerMessage)
+    com.google.protobuf.MessageLiteOrBuilder {
 
   /**
    * <code>int32 opcode = 1;</code>
@@ -14,19 +14,15 @@ public interface ServerMessageOrBuilder extends
   int getOpcode();
 
   /**
-   * <code>.p4f_protocols.InfoResponse infoResponse = 2;</code>
+   * <code>.foodzone_protocols.InfoResponse infoResponse = 2;</code>
    * @return Whether the infoResponse field is set.
    */
   boolean hasInfoResponse();
   /**
-   * <code>.p4f_protocols.InfoResponse infoResponse = 2;</code>
+   * <code>.foodzone_protocols.InfoResponse infoResponse = 2;</code>
    * @return The infoResponse.
    */
   com.example.foodzoneclient.protocols.InfoResponse getInfoResponse();
-  /**
-   * <code>.p4f_protocols.InfoResponse infoResponse = 2;</code>
-   */
-  com.example.foodzoneclient.protocols.InfoResponseOrBuilder getInfoResponseOrBuilder();
 
   /**
    * <pre>
@@ -48,34 +44,26 @@ public interface ServerMessageOrBuilder extends
   int getResponseCode();
 
   /**
-   * <code>.p4f_protocols.orderResponse orderRes = 4;</code>
+   * <code>.foodzone_protocols.orderResponse orderRes = 4;</code>
    * @return Whether the orderRes field is set.
    */
   boolean hasOrderRes();
   /**
-   * <code>.p4f_protocols.orderResponse orderRes = 4;</code>
+   * <code>.foodzone_protocols.orderResponse orderRes = 4;</code>
    * @return The orderRes.
    */
   com.example.foodzoneclient.protocols.orderResponse getOrderRes();
-  /**
-   * <code>.p4f_protocols.orderResponse orderRes = 4;</code>
-   */
-  com.example.foodzoneclient.protocols.orderResponseOrBuilder getOrderResOrBuilder();
 
   /**
-   * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
+   * <code>.foodzone_protocols.changePassInfo changeRes = 5;</code>
    * @return Whether the changeRes field is set.
    */
   boolean hasChangeRes();
   /**
-   * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
+   * <code>.foodzone_protocols.changePassInfo changeRes = 5;</code>
    * @return The changeRes.
    */
   com.example.foodzoneclient.protocols.changePassInfo getChangeRes();
-  /**
-   * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-   */
-  com.example.foodzoneclient.protocols.changePassInfoOrBuilder getChangeResOrBuilder();
 
   public com.example.foodzoneclient.protocols.ServerMessage.ServerResponsesCase getServerResponsesCase();
 }

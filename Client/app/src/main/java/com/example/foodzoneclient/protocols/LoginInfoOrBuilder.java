@@ -4,8 +4,8 @@
 package com.example.foodzoneclient.protocols;
 
 public interface LoginInfoOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:p4f_protocols.LoginInfo)
-    com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(interface_extends:foodzone_protocols.LoginInfo)
+    com.google.protobuf.MessageLiteOrBuilder {
 
   /**
    * <code>string username = 1;</code>

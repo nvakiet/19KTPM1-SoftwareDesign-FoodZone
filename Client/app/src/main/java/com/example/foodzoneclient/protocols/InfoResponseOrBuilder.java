@@ -4,8 +4,8 @@
 package com.example.foodzoneclient.protocols;
 
 public interface InfoResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:p4f_protocols.InfoResponse)
-    com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(interface_extends:foodzone_protocols.InfoResponse)
+    com.google.protobuf.MessageLiteOrBuilder {
 
   /**
    * <pre>
@@ -19,17 +19,13 @@ public interface InfoResponseOrBuilder extends
   int getReCode();
 
   /**
-   * <code>.p4f_protocols.UserAccount userInfo = 2;</code>
+   * <code>.foodzone_protocols.UserAccount userInfo = 2;</code>
    * @return Whether the userInfo field is set.
    */
   boolean hasUserInfo();
   /**
-   * <code>.p4f_protocols.UserAccount userInfo = 2;</code>
+   * <code>.foodzone_protocols.UserAccount userInfo = 2;</code>
    * @return The userInfo.
    */
   com.example.foodzoneclient.protocols.UserAccount getUserInfo();
-  /**
-   * <code>.p4f_protocols.UserAccount userInfo = 2;</code>
-   */
-  com.example.foodzoneclient.protocols.UserAccountOrBuilder getUserInfoOrBuilder();
 }

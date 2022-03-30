@@ -4,8 +4,8 @@
 package com.example.foodzoneclient.protocols;
 
 public interface ClientMessageOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:p4f_protocols.ClientMessage)
-    com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(interface_extends:foodzone_protocols.ClientMessage)
+    com.google.protobuf.MessageLiteOrBuilder {
 
   /**
    * <code>int32 opcode = 1;</code>
@@ -18,7 +18,7 @@ public interface ClientMessageOrBuilder extends
    *Use for login and change password
    * </pre>
    *
-   * <code>.p4f_protocols.LoginInfo account = 2;</code>
+   * <code>.foodzone_protocols.LoginInfo account = 2;</code>
    * @return Whether the account field is set.
    */
   boolean hasAccount();
@@ -27,63 +27,43 @@ public interface ClientMessageOrBuilder extends
    *Use for login and change password
    * </pre>
    *
-   * <code>.p4f_protocols.LoginInfo account = 2;</code>
+   * <code>.foodzone_protocols.LoginInfo account = 2;</code>
    * @return The account.
    */
   com.example.foodzoneclient.protocols.LoginInfo getAccount();
-  /**
-   * <pre>
-   *Use for login and change password
-   * </pre>
-   *
-   * <code>.p4f_protocols.LoginInfo account = 2;</code>
-   */
-  com.example.foodzoneclient.protocols.LoginInfoOrBuilder getAccountOrBuilder();
 
   /**
-   * <code>.p4f_protocols.RegisterInfo regAcc = 3;</code>
+   * <code>.foodzone_protocols.RegisterInfo regAcc = 3;</code>
    * @return Whether the regAcc field is set.
    */
   boolean hasRegAcc();
   /**
-   * <code>.p4f_protocols.RegisterInfo regAcc = 3;</code>
+   * <code>.foodzone_protocols.RegisterInfo regAcc = 3;</code>
    * @return The regAcc.
    */
   com.example.foodzoneclient.protocols.RegisterInfo getRegAcc();
-  /**
-   * <code>.p4f_protocols.RegisterInfo regAcc = 3;</code>
-   */
-  com.example.foodzoneclient.protocols.RegisterInfoOrBuilder getRegAccOrBuilder();
 
   /**
-   * <code>.p4f_protocols.Order order = 4;</code>
+   * <code>.foodzone_protocols.Order order = 4;</code>
    * @return Whether the order field is set.
    */
   boolean hasOrder();
   /**
-   * <code>.p4f_protocols.Order order = 4;</code>
+   * <code>.foodzone_protocols.Order order = 4;</code>
    * @return The order.
    */
   com.example.foodzoneclient.protocols.Order getOrder();
-  /**
-   * <code>.p4f_protocols.Order order = 4;</code>
-   */
-  com.example.foodzoneclient.protocols.OrderOrBuilder getOrderOrBuilder();
 
   /**
-   * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
+   * <code>.foodzone_protocols.changePassInfo changeRes = 5;</code>
    * @return Whether the changeRes field is set.
    */
   boolean hasChangeRes();
   /**
-   * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
+   * <code>.foodzone_protocols.changePassInfo changeRes = 5;</code>
    * @return The changeRes.
    */
   com.example.foodzoneclient.protocols.changePassInfo getChangeRes();
-  /**
-   * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-   */
-  com.example.foodzoneclient.protocols.changePassInfoOrBuilder getChangeResOrBuilder();
 
   public com.example.foodzoneclient.protocols.ClientMessage.ClientRequestsCase getClientRequestsCase();
 }

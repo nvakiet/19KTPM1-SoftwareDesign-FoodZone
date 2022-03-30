@@ -4,8 +4,8 @@
 package com.example.foodzoneclient.protocols;
 
 public interface orderResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:p4f_protocols.orderResponse)
-    com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(interface_extends:foodzone_protocols.orderResponse)
+    com.google.protobuf.MessageLiteOrBuilder {
 
   /**
    * <pre>

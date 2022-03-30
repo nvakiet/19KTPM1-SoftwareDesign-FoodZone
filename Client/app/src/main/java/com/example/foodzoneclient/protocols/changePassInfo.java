@@ -4,128 +4,28 @@
 package com.example.foodzoneclient.protocols;
 
 /**
- * Protobuf type {@code p4f_protocols.changePassInfo}
+ * Protobuf type {@code foodzone_protocols.changePassInfo}
  */
-public final class changePassInfo extends
-    com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:p4f_protocols.changePassInfo)
+public  final class changePassInfo extends
+    com.google.protobuf.GeneratedMessageLite<
+        changePassInfo, changePassInfo.Builder> implements
+    // @@protoc_insertion_point(message_implements:foodzone_protocols.changePassInfo)
     changePassInfoOrBuilder {
-private static final long serialVersionUID = 0L;
-  // Use changePassInfo.newBuilder() to construct.
-  private changePassInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-    super(builder);
-  }
   private changePassInfo() {
     username_ = "";
     oldPass_ = "";
     newPass_ = "";
     newPassConfirm_ = "";
   }
-
-  @java.lang.Override
-  @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
-    return new changePassInfo();
-  }
-
-  @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet
-  getUnknownFields() {
-    return this.unknownFields;
-  }
-  private changePassInfo(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            username_ = s;
-            break;
-          }
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            oldPass_ = s;
-            break;
-          }
-          case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            newPass_ = s;
-            break;
-          }
-          case 34: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            newPassConfirm_ = s;
-            break;
-          }
-          default: {
-            if (!parseUnknownField(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
-            break;
-          }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
-    } finally {
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return com.example.foodzoneclient.protocols.MessageWrapper.internal_static_p4f_protocols_changePassInfo_descriptor;
-  }
-
-  @java.lang.Override
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internalGetFieldAccessorTable() {
-    return com.example.foodzoneclient.protocols.MessageWrapper.internal_static_p4f_protocols_changePassInfo_fieldAccessorTable
-        .ensureFieldAccessorsInitialized(
-            com.example.foodzoneclient.protocols.changePassInfo.class, com.example.foodzoneclient.protocols.changePassInfo.Builder.class);
-  }
-
   public static final int USERNAME_FIELD_NUMBER = 1;
-  private volatile java.lang.Object username_;
+  private java.lang.String username_;
   /**
    * <code>string username = 1;</code>
    * @return The username.
    */
   @java.lang.Override
   public java.lang.String getUsername() {
-    java.lang.Object ref = username_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      username_ = s;
-      return s;
-    }
+    return username_;
   }
   /**
    * <code>string username = 1;</code>
@@ -134,36 +34,45 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public com.google.protobuf.ByteString
       getUsernameBytes() {
-    java.lang.Object ref = username_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      username_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+    return com.google.protobuf.ByteString.copyFromUtf8(username_);
+  }
+  /**
+   * <code>string username = 1;</code>
+   * @param value The username to set.
+   */
+  private void setUsername(
+      java.lang.String value) {
+    java.lang.Class<?> valueClass = value.getClass();
+  
+    username_ = value;
+  }
+  /**
+   * <code>string username = 1;</code>
+   */
+  private void clearUsername() {
+    
+    username_ = getDefaultInstance().getUsername();
+  }
+  /**
+   * <code>string username = 1;</code>
+   * @param value The bytes for username to set.
+   */
+  private void setUsernameBytes(
+      com.google.protobuf.ByteString value) {
+    checkByteStringIsUtf8(value);
+    username_ = value.toStringUtf8();
+    
   }
 
   public static final int OLDPASS_FIELD_NUMBER = 2;
-  private volatile java.lang.Object oldPass_;
+  private java.lang.String oldPass_;
   /**
    * <code>string oldPass = 2;</code>
    * @return The oldPass.
    */
   @java.lang.Override
   public java.lang.String getOldPass() {
-    java.lang.Object ref = oldPass_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      oldPass_ = s;
-      return s;
-    }
+    return oldPass_;
   }
   /**
    * <code>string oldPass = 2;</code>
@@ -172,36 +81,45 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public com.google.protobuf.ByteString
       getOldPassBytes() {
-    java.lang.Object ref = oldPass_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      oldPass_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+    return com.google.protobuf.ByteString.copyFromUtf8(oldPass_);
+  }
+  /**
+   * <code>string oldPass = 2;</code>
+   * @param value The oldPass to set.
+   */
+  private void setOldPass(
+      java.lang.String value) {
+    java.lang.Class<?> valueClass = value.getClass();
+  
+    oldPass_ = value;
+  }
+  /**
+   * <code>string oldPass = 2;</code>
+   */
+  private void clearOldPass() {
+    
+    oldPass_ = getDefaultInstance().getOldPass();
+  }
+  /**
+   * <code>string oldPass = 2;</code>
+   * @param value The bytes for oldPass to set.
+   */
+  private void setOldPassBytes(
+      com.google.protobuf.ByteString value) {
+    checkByteStringIsUtf8(value);
+    oldPass_ = value.toStringUtf8();
+    
   }
 
   public static final int NEWPASS_FIELD_NUMBER = 3;
-  private volatile java.lang.Object newPass_;
+  private java.lang.String newPass_;
   /**
    * <code>string newPass = 3;</code>
    * @return The newPass.
    */
   @java.lang.Override
   public java.lang.String getNewPass() {
-    java.lang.Object ref = newPass_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      newPass_ = s;
-      return s;
-    }
+    return newPass_;
   }
   /**
    * <code>string newPass = 3;</code>
@@ -210,36 +128,45 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public com.google.protobuf.ByteString
       getNewPassBytes() {
-    java.lang.Object ref = newPass_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      newPass_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+    return com.google.protobuf.ByteString.copyFromUtf8(newPass_);
+  }
+  /**
+   * <code>string newPass = 3;</code>
+   * @param value The newPass to set.
+   */
+  private void setNewPass(
+      java.lang.String value) {
+    java.lang.Class<?> valueClass = value.getClass();
+  
+    newPass_ = value;
+  }
+  /**
+   * <code>string newPass = 3;</code>
+   */
+  private void clearNewPass() {
+    
+    newPass_ = getDefaultInstance().getNewPass();
+  }
+  /**
+   * <code>string newPass = 3;</code>
+   * @param value The bytes for newPass to set.
+   */
+  private void setNewPassBytes(
+      com.google.protobuf.ByteString value) {
+    checkByteStringIsUtf8(value);
+    newPass_ = value.toStringUtf8();
+    
   }
 
   public static final int NEWPASSCONFIRM_FIELD_NUMBER = 4;
-  private volatile java.lang.Object newPassConfirm_;
+  private java.lang.String newPassConfirm_;
   /**
    * <code>string newPassConfirm = 4;</code>
    * @return The newPassConfirm.
    */
   @java.lang.Override
   public java.lang.String getNewPassConfirm() {
-    java.lang.Object ref = newPassConfirm_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      newPassConfirm_ = s;
-      return s;
-    }
+    return newPassConfirm_;
   }
   /**
    * <code>string newPassConfirm = 4;</code>
@@ -248,404 +175,147 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public com.google.protobuf.ByteString
       getNewPassConfirmBytes() {
-    java.lang.Object ref = newPassConfirm_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      newPassConfirm_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+    return com.google.protobuf.ByteString.copyFromUtf8(newPassConfirm_);
   }
-
-  private byte memoizedIsInitialized = -1;
-  @java.lang.Override
-  public final boolean isInitialized() {
-    byte isInitialized = memoizedIsInitialized;
-    if (isInitialized == 1) return true;
-    if (isInitialized == 0) return false;
-
-    memoizedIsInitialized = 1;
-    return true;
+  /**
+   * <code>string newPassConfirm = 4;</code>
+   * @param value The newPassConfirm to set.
+   */
+  private void setNewPassConfirm(
+      java.lang.String value) {
+    java.lang.Class<?> valueClass = value.getClass();
+  
+    newPassConfirm_ = value;
   }
-
-  @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
-    if (!getUsernameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, username_);
-    }
-    if (!getOldPassBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, oldPass_);
-    }
-    if (!getNewPassBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, newPass_);
-    }
-    if (!getNewPassConfirmBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, newPassConfirm_);
-    }
-    unknownFields.writeTo(output);
+  /**
+   * <code>string newPassConfirm = 4;</code>
+   */
+  private void clearNewPassConfirm() {
+    
+    newPassConfirm_ = getDefaultInstance().getNewPassConfirm();
   }
-
-  @java.lang.Override
-  public int getSerializedSize() {
-    int size = memoizedSize;
-    if (size != -1) return size;
-
-    size = 0;
-    if (!getUsernameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, username_);
-    }
-    if (!getOldPassBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, oldPass_);
-    }
-    if (!getNewPassBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, newPass_);
-    }
-    if (!getNewPassConfirmBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, newPassConfirm_);
-    }
-    size += unknownFields.getSerializedSize();
-    memoizedSize = size;
-    return size;
-  }
-
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof com.example.foodzoneclient.protocols.changePassInfo)) {
-      return super.equals(obj);
-    }
-    com.example.foodzoneclient.protocols.changePassInfo other = (com.example.foodzoneclient.protocols.changePassInfo) obj;
-
-    if (!getUsername()
-        .equals(other.getUsername())) return false;
-    if (!getOldPass()
-        .equals(other.getOldPass())) return false;
-    if (!getNewPass()
-        .equals(other.getNewPass())) return false;
-    if (!getNewPassConfirm()
-        .equals(other.getNewPassConfirm())) return false;
-    if (!unknownFields.equals(other.unknownFields)) return false;
-    return true;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + USERNAME_FIELD_NUMBER;
-    hash = (53 * hash) + getUsername().hashCode();
-    hash = (37 * hash) + OLDPASS_FIELD_NUMBER;
-    hash = (53 * hash) + getOldPass().hashCode();
-    hash = (37 * hash) + NEWPASS_FIELD_NUMBER;
-    hash = (53 * hash) + getNewPass().hashCode();
-    hash = (37 * hash) + NEWPASSCONFIRM_FIELD_NUMBER;
-    hash = (53 * hash) + getNewPassConfirm().hashCode();
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
+  /**
+   * <code>string newPassConfirm = 4;</code>
+   * @param value The bytes for newPassConfirm to set.
+   */
+  private void setNewPassConfirmBytes(
+      com.google.protobuf.ByteString value) {
+    checkByteStringIsUtf8(value);
+    newPassConfirm_ = value.toStringUtf8();
+    
   }
 
   public static com.example.foodzoneclient.protocols.changePassInfo parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
+    return com.google.protobuf.GeneratedMessageLite.parseFrom(
+        DEFAULT_INSTANCE, data);
   }
   public static com.example.foodzoneclient.protocols.changePassInfo parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageLite.parseFrom(
+        DEFAULT_INSTANCE, data, extensionRegistry);
   }
   public static com.example.foodzoneclient.protocols.changePassInfo parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
+    return com.google.protobuf.GeneratedMessageLite.parseFrom(
+        DEFAULT_INSTANCE, data);
   }
   public static com.example.foodzoneclient.protocols.changePassInfo parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageLite.parseFrom(
+        DEFAULT_INSTANCE, data, extensionRegistry);
   }
   public static com.example.foodzoneclient.protocols.changePassInfo parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
+    return com.google.protobuf.GeneratedMessageLite.parseFrom(
+        DEFAULT_INSTANCE, data);
   }
   public static com.example.foodzoneclient.protocols.changePassInfo parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageLite.parseFrom(
+        DEFAULT_INSTANCE, data, extensionRegistry);
   }
   public static com.example.foodzoneclient.protocols.changePassInfo parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageLite.parseFrom(
+        DEFAULT_INSTANCE, input);
   }
   public static com.example.foodzoneclient.protocols.changePassInfo parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageLite.parseFrom(
+        DEFAULT_INSTANCE, input, extensionRegistry);
   }
   public static com.example.foodzoneclient.protocols.changePassInfo parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return parseDelimitedFrom(DEFAULT_INSTANCE, input);
   }
   public static com.example.foodzoneclient.protocols.changePassInfo parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
   }
   public static com.example.foodzoneclient.protocols.changePassInfo parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageLite.parseFrom(
+        DEFAULT_INSTANCE, input);
   }
   public static com.example.foodzoneclient.protocols.changePassInfo parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageLite.parseFrom(
+        DEFAULT_INSTANCE, input, extensionRegistry);
   }
 
-  @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
-    return DEFAULT_INSTANCE.toBuilder();
+    return (Builder) DEFAULT_INSTANCE.createBuilder();
   }
   public static Builder newBuilder(com.example.foodzoneclient.protocols.changePassInfo prototype) {
-    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-  @java.lang.Override
-  public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
+    return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
   }
 
-  @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-    Builder builder = new Builder(parent);
-    return builder;
-  }
   /**
-   * Protobuf type {@code p4f_protocols.changePassInfo}
+   * Protobuf type {@code foodzone_protocols.changePassInfo}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:p4f_protocols.changePassInfo)
+      com.google.protobuf.GeneratedMessageLite.Builder<
+        com.example.foodzoneclient.protocols.changePassInfo, Builder> implements
+      // @@protoc_insertion_point(builder_implements:foodzone_protocols.changePassInfo)
       com.example.foodzoneclient.protocols.changePassInfoOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.example.foodzoneclient.protocols.MessageWrapper.internal_static_p4f_protocols_changePassInfo_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.example.foodzoneclient.protocols.MessageWrapper.internal_static_p4f_protocols_changePassInfo_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.example.foodzoneclient.protocols.changePassInfo.class, com.example.foodzoneclient.protocols.changePassInfo.Builder.class);
-    }
-
     // Construct using com.example.foodzoneclient.protocols.changePassInfo.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+      super(DEFAULT_INSTANCE);
     }
 
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-      }
-    }
-    @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      username_ = "";
 
-      oldPass_ = "";
-
-      newPass_ = "";
-
-      newPassConfirm_ = "";
-
-      return this;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return com.example.foodzoneclient.protocols.MessageWrapper.internal_static_p4f_protocols_changePassInfo_descriptor;
-    }
-
-    @java.lang.Override
-    public com.example.foodzoneclient.protocols.changePassInfo getDefaultInstanceForType() {
-      return com.example.foodzoneclient.protocols.changePassInfo.getDefaultInstance();
-    }
-
-    @java.lang.Override
-    public com.example.foodzoneclient.protocols.changePassInfo build() {
-      com.example.foodzoneclient.protocols.changePassInfo result = buildPartial();
-      if (!result.isInitialized()) {
-        throw newUninitializedMessageException(result);
-      }
-      return result;
-    }
-
-    @java.lang.Override
-    public com.example.foodzoneclient.protocols.changePassInfo buildPartial() {
-      com.example.foodzoneclient.protocols.changePassInfo result = new com.example.foodzoneclient.protocols.changePassInfo(this);
-      result.username_ = username_;
-      result.oldPass_ = oldPass_;
-      result.newPass_ = newPass_;
-      result.newPassConfirm_ = newPassConfirm_;
-      onBuilt();
-      return result;
-    }
-
-    @java.lang.Override
-    public Builder clone() {
-      return super.clone();
-    }
-    @java.lang.Override
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return super.setField(field, value);
-    }
-    @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return super.clearField(field);
-    }
-    @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return super.clearOneof(oneof);
-    }
-    @java.lang.Override
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return super.setRepeatedField(field, index, value);
-    }
-    @java.lang.Override
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return super.addRepeatedField(field, value);
-    }
-    @java.lang.Override
-    public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.example.foodzoneclient.protocols.changePassInfo) {
-        return mergeFrom((com.example.foodzoneclient.protocols.changePassInfo)other);
-      } else {
-        super.mergeFrom(other);
-        return this;
-      }
-    }
-
-    public Builder mergeFrom(com.example.foodzoneclient.protocols.changePassInfo other) {
-      if (other == com.example.foodzoneclient.protocols.changePassInfo.getDefaultInstance()) return this;
-      if (!other.getUsername().isEmpty()) {
-        username_ = other.username_;
-        onChanged();
-      }
-      if (!other.getOldPass().isEmpty()) {
-        oldPass_ = other.oldPass_;
-        onChanged();
-      }
-      if (!other.getNewPass().isEmpty()) {
-        newPass_ = other.newPass_;
-        onChanged();
-      }
-      if (!other.getNewPassConfirm().isEmpty()) {
-        newPassConfirm_ = other.newPassConfirm_;
-        onChanged();
-      }
-      this.mergeUnknownFields(other.unknownFields);
-      onChanged();
-      return this;
-    }
-
-    @java.lang.Override
-    public final boolean isInitialized() {
-      return true;
-    }
-
-    @java.lang.Override
-    public Builder mergeFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      com.example.foodzoneclient.protocols.changePassInfo parsedMessage = null;
-      try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.example.foodzoneclient.protocols.changePassInfo) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
-      } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
-      return this;
-    }
-
-    private java.lang.Object username_ = "";
     /**
      * <code>string username = 1;</code>
      * @return The username.
      */
+    @java.lang.Override
     public java.lang.String getUsername() {
-      java.lang.Object ref = username_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        username_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+      return instance.getUsername();
     }
     /**
      * <code>string username = 1;</code>
      * @return The bytes for username.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getUsernameBytes() {
-      java.lang.Object ref = username_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        username_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+      return instance.getUsernameBytes();
     }
     /**
      * <code>string username = 1;</code>
@@ -654,12 +324,8 @@ private static final long serialVersionUID = 0L;
      */
     public Builder setUsername(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      username_ = value;
-      onChanged();
+      copyOnWrite();
+      instance.setUsername(value);
       return this;
     }
     /**
@@ -667,9 +333,8 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearUsername() {
-      
-      username_ = getDefaultInstance().getUsername();
-      onChanged();
+      copyOnWrite();
+      instance.clearUsername();
       return this;
     }
     /**
@@ -679,49 +344,27 @@ private static final long serialVersionUID = 0L;
      */
     public Builder setUsernameBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      username_ = value;
-      onChanged();
+      copyOnWrite();
+      instance.setUsernameBytes(value);
       return this;
     }
 
-    private java.lang.Object oldPass_ = "";
     /**
      * <code>string oldPass = 2;</code>
      * @return The oldPass.
      */
+    @java.lang.Override
     public java.lang.String getOldPass() {
-      java.lang.Object ref = oldPass_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        oldPass_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+      return instance.getOldPass();
     }
     /**
      * <code>string oldPass = 2;</code>
      * @return The bytes for oldPass.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getOldPassBytes() {
-      java.lang.Object ref = oldPass_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        oldPass_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+      return instance.getOldPassBytes();
     }
     /**
      * <code>string oldPass = 2;</code>
@@ -730,12 +373,8 @@ private static final long serialVersionUID = 0L;
      */
     public Builder setOldPass(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      oldPass_ = value;
-      onChanged();
+      copyOnWrite();
+      instance.setOldPass(value);
       return this;
     }
     /**
@@ -743,9 +382,8 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearOldPass() {
-      
-      oldPass_ = getDefaultInstance().getOldPass();
-      onChanged();
+      copyOnWrite();
+      instance.clearOldPass();
       return this;
     }
     /**
@@ -755,49 +393,27 @@ private static final long serialVersionUID = 0L;
      */
     public Builder setOldPassBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      oldPass_ = value;
-      onChanged();
+      copyOnWrite();
+      instance.setOldPassBytes(value);
       return this;
     }
 
-    private java.lang.Object newPass_ = "";
     /**
      * <code>string newPass = 3;</code>
      * @return The newPass.
      */
+    @java.lang.Override
     public java.lang.String getNewPass() {
-      java.lang.Object ref = newPass_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        newPass_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+      return instance.getNewPass();
     }
     /**
      * <code>string newPass = 3;</code>
      * @return The bytes for newPass.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getNewPassBytes() {
-      java.lang.Object ref = newPass_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        newPass_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+      return instance.getNewPassBytes();
     }
     /**
      * <code>string newPass = 3;</code>
@@ -806,12 +422,8 @@ private static final long serialVersionUID = 0L;
      */
     public Builder setNewPass(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      newPass_ = value;
-      onChanged();
+      copyOnWrite();
+      instance.setNewPass(value);
       return this;
     }
     /**
@@ -819,9 +431,8 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearNewPass() {
-      
-      newPass_ = getDefaultInstance().getNewPass();
-      onChanged();
+      copyOnWrite();
+      instance.clearNewPass();
       return this;
     }
     /**
@@ -831,49 +442,27 @@ private static final long serialVersionUID = 0L;
      */
     public Builder setNewPassBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      newPass_ = value;
-      onChanged();
+      copyOnWrite();
+      instance.setNewPassBytes(value);
       return this;
     }
 
-    private java.lang.Object newPassConfirm_ = "";
     /**
      * <code>string newPassConfirm = 4;</code>
      * @return The newPassConfirm.
      */
+    @java.lang.Override
     public java.lang.String getNewPassConfirm() {
-      java.lang.Object ref = newPassConfirm_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        newPassConfirm_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+      return instance.getNewPassConfirm();
     }
     /**
      * <code>string newPassConfirm = 4;</code>
      * @return The bytes for newPassConfirm.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getNewPassConfirmBytes() {
-      java.lang.Object ref = newPassConfirm_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        newPassConfirm_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+      return instance.getNewPassConfirmBytes();
     }
     /**
      * <code>string newPassConfirm = 4;</code>
@@ -882,12 +471,8 @@ private static final long serialVersionUID = 0L;
      */
     public Builder setNewPassConfirm(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      newPassConfirm_ = value;
-      onChanged();
+      copyOnWrite();
+      instance.setNewPassConfirm(value);
       return this;
     }
     /**
@@ -895,9 +480,8 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearNewPassConfirm() {
-      
-      newPassConfirm_ = getDefaultInstance().getNewPassConfirm();
-      onChanged();
+      copyOnWrite();
+      instance.clearNewPassConfirm();
       return this;
     }
     /**
@@ -907,65 +491,86 @@ private static final long serialVersionUID = 0L;
      */
     public Builder setNewPassConfirmBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      newPassConfirm_ = value;
-      onChanged();
+      copyOnWrite();
+      instance.setNewPassConfirmBytes(value);
       return this;
     }
-    @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFields(unknownFields);
+
+    // @@protoc_insertion_point(builder_scope:foodzone_protocols.changePassInfo)
+  }
+  @java.lang.Override
+  @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+  protected final java.lang.Object dynamicMethod(
+      com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+      java.lang.Object arg0, java.lang.Object arg1) {
+    switch (method) {
+      case NEW_MUTABLE_INSTANCE: {
+        return new com.example.foodzoneclient.protocols.changePassInfo();
+      }
+      case NEW_BUILDER: {
+        return new Builder();
+      }
+      case BUILD_MESSAGE_INFO: {
+          java.lang.Object[] objects = new java.lang.Object[] {
+            "username_",
+            "oldPass_",
+            "newPass_",
+            "newPassConfirm_",
+          };
+          java.lang.String info =
+              "\u0000\u0004\u0000\u0000\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
+              "\u0003\u0208\u0004\u0208";
+          return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+      }
+      // fall through
+      case GET_DEFAULT_INSTANCE: {
+        return DEFAULT_INSTANCE;
+      }
+      case GET_PARSER: {
+        com.google.protobuf.Parser<com.example.foodzoneclient.protocols.changePassInfo> parser = PARSER;
+        if (parser == null) {
+          synchronized (com.example.foodzoneclient.protocols.changePassInfo.class) {
+            parser = PARSER;
+            if (parser == null) {
+              parser =
+                  new DefaultInstanceBasedParser<com.example.foodzoneclient.protocols.changePassInfo>(
+                      DEFAULT_INSTANCE);
+              PARSER = parser;
+            }
+          }
+        }
+        return parser;
     }
-
-    @java.lang.Override
-    public final Builder mergeUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+    case GET_MEMOIZED_IS_INITIALIZED: {
+      return (byte) 1;
     }
-
-
-    // @@protoc_insertion_point(builder_scope:p4f_protocols.changePassInfo)
+    case SET_MEMOIZED_IS_INITIALIZED: {
+      return null;
+    }
+    }
+    throw new UnsupportedOperationException();
   }
 
-  // @@protoc_insertion_point(class_scope:p4f_protocols.changePassInfo)
+
+  // @@protoc_insertion_point(class_scope:foodzone_protocols.changePassInfo)
   private static final com.example.foodzoneclient.protocols.changePassInfo DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.example.foodzoneclient.protocols.changePassInfo();
+    changePassInfo defaultInstance = new changePassInfo();
+    // New instances are implicitly immutable so no need to make
+    // immutable.
+    DEFAULT_INSTANCE = defaultInstance;
+    com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+      changePassInfo.class, defaultInstance);
   }
 
   public static com.example.foodzoneclient.protocols.changePassInfo getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<changePassInfo>
-      PARSER = new com.google.protobuf.AbstractParser<changePassInfo>() {
-    @java.lang.Override
-    public changePassInfo parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return new changePassInfo(input, extensionRegistry);
-    }
-  };
+  private static volatile com.google.protobuf.Parser<changePassInfo> PARSER;
 
   public static com.google.protobuf.Parser<changePassInfo> parser() {
-    return PARSER;
+    return DEFAULT_INSTANCE.getParserForType();
   }
-
-  @java.lang.Override
-  public com.google.protobuf.Parser<changePassInfo> getParserForType() {
-    return PARSER;
-  }
-
-  @java.lang.Override
-  public com.example.foodzoneclient.protocols.changePassInfo getDefaultInstanceForType() {
-    return DEFAULT_INSTANCE;
-  }
-
 }
 
