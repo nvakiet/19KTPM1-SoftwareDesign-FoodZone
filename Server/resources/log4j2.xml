@@ -5,10 +5,10 @@
         <Property name="filename">serverLog</Property>
     </Properties>
     <Appenders>
-        <RollingFile name="file" fileName="${log-path}${filename}_${date:yyyy-MM-dd_HH-mm-ss}.log"
-                     filePattern="${log-path}${filename}_${date:yyyy-MM-dd_HH-mm-ss}.log">
+        <RollingFile name="file"
+                     filePattern="${log-path}${filename}_${date:yyyy-MM-dd_HH-mm-ss}_%i.log">
             <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"/>
-            <SizeBasedTriggeringPolicy size="1 KB"/>
+            <SizeBasedTriggeringPolicy size="1 MB"/>
         </RollingFile>
         <Console name="console" target="SYSTEM_OUT">
             <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"/>

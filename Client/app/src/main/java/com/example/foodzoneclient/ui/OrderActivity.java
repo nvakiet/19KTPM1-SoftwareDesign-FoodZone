@@ -30,6 +30,7 @@ import com.example.foodzoneclient.model.Product;
 import com.example.foodzoneclient.protocols.Food;
 import com.example.foodzoneclient.protocols.Order;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +64,7 @@ public class OrderActivity extends AppCompatActivity {
                 prefGet = getApplicationContext().getSharedPreferences("user_info", MODE_PRIVATE);
                 Order.Builder order = Order.newBuilder();
                 order.setUsername(prefGet.getString("Username", null))
-                        .setBuyDate((java.time.LocalDateTime.now().toString()))
+                        .setBuyDate((LocalDateTime.now().toString()))
                         .setResID(rID);
                 for (Product item : foodList) {
                     Food foodItem = Food.newBuilder().setFoodID(item.getID())
