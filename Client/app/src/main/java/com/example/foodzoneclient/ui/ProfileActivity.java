@@ -1,6 +1,5 @@
 package com.example.foodzoneclient.ui;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -8,8 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 //import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.foodzoneclient.R;
-import com.example.foodzoneclient.backend.ContainerClient;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
     ImageView profile_backtomain;
@@ -40,14 +36,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         profile_address.setText(prefGet.getString("UserAddress", null));
         profile_phone.setText(prefGet.getString("UserPhone", null));
         profile_email.setText(prefGet.getString("UserEmail", null));
-        //use Handler to receive Message
-        ProfileActivity.profileHandler = new Handler(Looper.getMainLooper()){
-            @Override
-            public void handleMessage(@NonNull Message msg) {
-                super.handleMessage(msg);
-                profile_name.setText((String) msg.obj);
-            }
-        };
         logout.setOnClickListener(this);
         changePass.setOnClickListener(this);
     }

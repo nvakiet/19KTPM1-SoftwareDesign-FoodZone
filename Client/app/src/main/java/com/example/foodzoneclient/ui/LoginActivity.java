@@ -7,13 +7,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
-import android.content.res.AssetManager;
 import android.os.Bundle;
-
 import com.example.foodzoneclient.R;
-import com.example.foodzoneclient.backend.ContainerClient;
-import com.example.foodzoneclient.FoodZone;
 import com.google.android.material.tabs.TabLayout;
 
 import java.io.IOException;
@@ -30,18 +25,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        AssetManager assetManager = FoodZone.getContext().getResources().getAssets();
-        InputStream is = null;
-        try {
-            is = assetManager.open("server.txt");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (is != null) {
-            worker = new Thread(new ContainerClient(is, 9999));
-            worker.setDaemon(true);
-            worker.start();
-        }
         // find id of these things
         tabLayout=findViewById(R.id.tab_layout);
         viewPager=findViewById(R.id.view_pager);

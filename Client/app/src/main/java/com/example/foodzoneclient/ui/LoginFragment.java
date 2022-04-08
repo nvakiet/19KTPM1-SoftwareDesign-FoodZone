@@ -7,22 +7,16 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.foodzoneclient.R;
-import com.example.foodzoneclient.backend.ContainerClient;
-import com.example.foodzoneclient.protocols.LoginInfo;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class LoginFragment extends Fragment {
