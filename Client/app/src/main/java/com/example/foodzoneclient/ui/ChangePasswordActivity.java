@@ -42,26 +42,6 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
         String name = prefs.getString("Username", null);
         profile_name.setText(name);
         confirmChangePass.setOnClickListener(this);
-        changePasswordhandler = new Handler(Looper.myLooper()) {
-            @Override
-            public void handleMessage(@NonNull Message msg) {
-                super.handleMessage(msg);
-                if (msg.what == 3 ) {
-                    if (msg.arg1 == 1) {
-                        Toast announce = Toast.makeText(getContext(), (String) msg.obj, Toast.LENGTH_SHORT);
-                        announce.show();
-                        Intent confirmIntent=new Intent(ChangePasswordActivity.this, ProfileActivity.class);
-                        startActivity(confirmIntent);
-                        finish();
-                    }
-                    else if (msg.arg1 == -1 ) {
-                        Toast announce1 = Toast.makeText(getContext(), (String) msg.obj, Toast.LENGTH_SHORT);
-                        announce1.show();
-                    }
-                }
-            }
-        };
-
     }
     public void findID(){
         profile_name=(TextView) findViewById(R.id.profile_name);
@@ -74,23 +54,7 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()){
-            case R.id.btn_confirmChangePass:
-                changePassInfo changeInfo = changePassInfo.newBuilder()
-                        .setUsername(profile_name.getText().toString())
-                        .setOldPass(oldPass.getText().toString())
-                        .setNewPass(newPass.getText().toString())
-                        .setNewPassConfirm(newPassConfirm.getText().toString()).build();
-                Message msg = Message.obtain(ContainerClient.handler);
-                msg.what = 3;
-                msg.obj = changeInfo;
-                msg.sendToTarget();
-
-            case R.id.backtoprofile:
-                Intent confirmIntent=new Intent(ChangePasswordActivity.this, ProfileActivity.class);
-                startActivity(confirmIntent);
-                finish();
-                break;
-        }
+        Intent confirmIntent=new Intent(ChangePasswordActivity.this, ProfileActivity.class);
+        startActivity(confirmIntent);
     }
 }

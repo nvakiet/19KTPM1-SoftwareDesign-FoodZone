@@ -71,9 +71,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 Intent outIntent=new Intent(ProfileActivity.this, LoginActivity.class);
                 startActivity(outIntent);
                 prefGetEdit.clear().apply();
-                Message msg = Message.obtain(ContainerClient.handler);
-                msg.what = 0; // Opcode for logout
-                msg.sendToTarget();
+                Intent myIntent = new Intent(ProfileActivity.this, LoginActivity.class);
+                startActivity(myIntent);
                 finish();
                 break;
             case R.id.btn_changePass:

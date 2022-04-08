@@ -71,36 +71,10 @@ public class LoginFragment extends Fragment {
         password.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(500).start();
         Login.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(700).start();
 
-        loginFragmentHandler = new Handler(Looper.myLooper()) {
-            @Override
-            public void handleMessage(@NonNull Message msg) {
-                super.handleMessage(msg);
-                if (msg.what == 1) {
-                    Toast announce = Toast.makeText(getContext(), (String) msg.obj, Toast.LENGTH_SHORT);
-                    announce.show();
-                    if (msg.arg1 == 0) {
-                        toMainPageActivity();
-                    }
-                }
-                else if (msg.what == -1) {
-                    Toast announce = Toast.makeText(getContext(), (String) msg.obj, Toast.LENGTH_SHORT);
-                    announce.show();
-                }
-            }
-        };
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //get username + password
-                LoginInfo loginInfo = LoginInfo.newBuilder()
-                        .setUsername(username.getText().toString())
-                        .setPassword(password.getText().toString()).build();
-                //Create Message to send to Client
-                Message msg = Message.obtain(ContainerClient.handler);
-                msg.what = 1;
-                msg.obj = loginInfo;
-                //send to client
-                msg.sendToTarget();
+                toMainPageActivity();
             }
         });
         return root;

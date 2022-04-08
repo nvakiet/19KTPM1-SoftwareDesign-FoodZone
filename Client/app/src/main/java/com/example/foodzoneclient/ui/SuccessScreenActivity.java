@@ -18,9 +18,6 @@ public class SuccessScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_success_screen);
         returnMain=(Button) findViewById(R.id.returnMain);
         textDescription=(TextView) findViewById(R.id.textDes);
-        Intent thisIntent= this.getIntent();
-        String temp=thisIntent.getStringExtra("successString");
-        textDescription.setText(temp);
 
         returnMain.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -61,43 +61,11 @@ public class OrderActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                prefGet = getApplicationContext().getSharedPreferences("user_info", MODE_PRIVATE);
-                Order.Builder order = Order.newBuilder();
-                order.setUsername(prefGet.getString("Username", null))
-                        .setBuyDate((LocalDateTime.now().toString()))
-                        .setResID(rID);
-                for (Product item : foodList) {
-                    Food foodItem = Food.newBuilder().setFoodID(item.getID())
-                            .setAmount(item.getAmount())
-                            .setPrice(item.getPrice()).build();
-                    order.addFoodList(foodItem);
-                }
-                Message msg = Message.obtain(ContainerClient.handler);
-                msg.what = 4;
-                msg.obj = order.build();
-                msg.sendToTarget();
+                Intent confirmIntent = new Intent(OrderActivity.this, SuccessScreenActivity.class);
+                startActivity(confirmIntent);
             }
         });
 
-
-        // Setup the handler for receiving order result
-        orderActivityHandler = new Handler(Looper.myLooper()) {
-            @Override
-            public void handleMessage(@NonNull Message msg) {
-                super.handleMessage(msg);
-                if (msg.what == 4) {
-                    if (msg.arg1 == 1) {
-                        Intent confirmIntent = new Intent(OrderActivity.this, SuccessScreenActivity.class);
-                        confirmIntent.putExtra("successString",(String) msg.obj);
-                        startActivity(confirmIntent);
-                        finish();
-                    } else {
-                        Toast toast = Toast.makeText(FoodZone.getContext(), (String) msg.obj, Toast.LENGTH_SHORT);
-                        toast.show();
-                    }
-                }
-            }
-        };
         // Get SharedPrereferences
         prefGet = getApplicationContext().getSharedPreferences("user_info", MODE_PRIVATE);
         prefGetEdit = prefGet.edit();

@@ -69,39 +69,10 @@ public class RegisterFragment extends Fragment {
         address.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(1100).start();
         regButton.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(1200).start();
 
-        registerFragmentHandler = new Handler(Looper.myLooper()) {
-            @Override
-            public void handleMessage(@NonNull Message msg) {
-                super.handleMessage(msg);
-                if (msg.what == 2 ) {
-                    Toast announce = Toast.makeText(getContext(), (String) msg.obj, Toast.LENGTH_SHORT);
-                    announce.show();
-                    if (msg.arg1 == 0) {
-                        clearData();
-                        toLoginActivity();
-                    }
-                }
-                else if (msg.what == -1) {
-                    Toast announce = Toast.makeText(getContext(), (String) msg.obj, Toast.LENGTH_SHORT);
-                    announce.show();
-                }
-            }
-        };
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RegisterInfo registerInfo = RegisterInfo.newBuilder()
-                        .setUsername(reg_username.getText().toString())
-                        .setPassword(reg_password.getText().toString())
-                        .setEmail(email.getText().toString())
-                        .setPhone(phone.getText().toString())
-                        .setAddress(address.getText().toString()).build();
-                //Create Message to send to Client
-                Message msg = Message.obtain(ContainerClient.handler);
-                msg.what = 2;
-                msg.obj = registerInfo;
-                //send to client
-                msg.sendToTarget();
+                toLoginActivity();
             }
         });
         return root;
