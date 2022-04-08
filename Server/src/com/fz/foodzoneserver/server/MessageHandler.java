@@ -31,74 +31,11 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
 		super.channelRead(ctx, msg);
 		ClientMessage clientMsg = (ClientMessage) msg;
 		int op = clientMsg.getOpcode();
-		DBHandler dbHandler = new DBHandler();
 		ServerMessage.Builder response = ServerMessage.newBuilder();
+		// TODO: Make a class to retrieve database connection from ConnectionPool and handle database queries
 		if (op == 1) {
-			InfoResponse info = dbHandler.Login(clientMsg.getAccount());
-			username = ((ClientMessage) msg).getAccount().getUsername();
-			type = (info.getReCode() == 0)? 1 : 0;
-			logger.info(username + " has logged in system.");
-			if (info.getReCode() == 0 || info.getReCode() == 3) {
-				logger.info(username + " logged in ok");
-			}
-			else if (info.getReCode() == 1) {
-				logger.info(username + " logged in failed. Error: username fault");
-				username = "";
-			}
-			else if (info.getReCode() == 2) {
-				logger.info(username + " logged in failed. Error: pass fault");
-				username = "";
-			}
-			response.setOpcode(op);
-			response.setInfoResponse(info);
+			// TODO: Handle client messages here
 		}
-		else if (op == 2) {
-			// 0 = no fault, 1 = user fault, 2 = email fault, 3 = phone fault
-			int result = dbHandler.Register(clientMsg.getRegAcc());
-			switch (result) {
-				case 0:
-					logger.info(username + " register ok");
-					break;
-				case 1:
-					logger.info(username + " user fault");
-					break;
-				case 2:
-					logger.info(username + " email ok");
-					break;
-				case 3:
-					logger.info(username + " phone fault");
-					break;
-			}
-			response.setOpcode(op);
-			response.setResponseCode(result);
-		}
-		else if (op == 3) {
-			int result = dbHandler.ChangePassword(clientMsg.getChangeRes());
-			switch (result) {
-				case 1:
-					logger.info(username + " changed password ok");
-					break;
-				case -1:
-					logger.info(username + " changed password failed");
-					break;
-			}
-			response.setOpcode(op);
-			response.setResponseCode(result);
-		}
-		else if (op == 4) {
-			orderResponse orderRes = dbHandler.insertOrder(clientMsg.getOrder());
-			switch (orderRes.getOrderResult()) {
-				case 0:
-					logger.info(username + " made an order.");
-					break;
-				case 1:
-					logger.info(username + " made an order but failed.");
-					break;
-			}
-			response.setOpcode(op);
-			response.setOrderRes(orderRes);
-		}
-		dbHandler.releaseConn();
 		ctx.writeAndFlush(response.build());
 	}
 	

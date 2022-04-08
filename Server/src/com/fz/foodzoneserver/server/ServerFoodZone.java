@@ -21,7 +21,7 @@ public class ServerFoodZone {
 	private Thread serverThread = null;
 	
 	public ServerFoodZone(String dbConnString, String ip, int port) {
-		ConnectionPool.setFirstUrl(dbConnString);
+		// Connect connection pool with database connection string here
 		if (!ip.isEmpty())
 			ipAddr = ip;
 		this.port = port;
@@ -58,6 +58,7 @@ public class ServerFoodZone {
 				//Bind the server to an address + port
 				ChannelFuture chFuture = serverBs.bind(ipAddr, port).sync();
 				logger.info("Server starts successfully on port " + port + (ipAddr == "" ? " of all network interfaces" : " of address " + ipAddr));
+				logger.info("Enter 0 to stop the server.");
 				//System.out.println("Server starts successfully on port " + port + (ipAddr == "" ? " of all network interfaces" : " of address " + ipAddr));
 
 				//Keep the server channel for manual closing
