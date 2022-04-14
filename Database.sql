@@ -1,4 +1,6 @@
-﻿CREATE DATABASE FoodZone
+﻿USE master
+GO
+CREATE DATABASE FoodZone
 GO
 USE FoodZone
 GO

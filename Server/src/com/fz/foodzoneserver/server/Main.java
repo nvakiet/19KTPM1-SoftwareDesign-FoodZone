@@ -1,5 +1,7 @@
 package com.fz.foodzoneserver.server;
 
+import org.apache.logging.log4j.LogManager;
+
 import java.util.Scanner;
 
 public class Main {
@@ -13,14 +15,14 @@ public class Main {
             //String dbConnString = "jdbc:sqlserver://DESKTOP-18BTLCH\\SQLEXPRESS;databaseName=PrayForFood;integratedSecurity=true;";
             String dbConnString = "jdbc:sqlserver://localhost\\SQLSERVER;databaseName=PrayForFood;integratedSecurity=true;encrypt=true;trustServerCertificate=true;";
 
-            ServerFoodZone server = new ServerFoodZone(dbConnString, ip, 9999);
+            ServerFoodZone server = new ServerFoodZone(dbConnString, ip, 8899);
             server.start();
             int code = sc.nextInt();
             if (code == 0)
                 server.closeServer();
         }
         catch (Exception e) {
-            e.printStackTrace();
+            LogManager.getRootLogger().error(e);
         }
     }
 }

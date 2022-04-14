@@ -38,7 +38,7 @@ public class DBHandler {
     }
     // Constructor to get conn from pool if there is a idle connection in pool, if not, we have to wait
     public DBHandler() throws SQLException {
-        this.conn = ConnectionPool.getConnection();
+        this.conn = ConnectionPool.getInstance().getConnection();
     }
 
     // Int_User: int to get the result of query, 0(no fault) 1(username fault) 2(pass fault) 3(staff login)
