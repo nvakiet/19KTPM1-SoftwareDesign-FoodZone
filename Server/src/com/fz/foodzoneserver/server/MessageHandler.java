@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 public class MessageHandler extends ChannelInboundHandlerAdapter {
 	private String username = null;
 	private int type = 0;
-	private Logger logger = LogManager.getLogger(ServerFoodZone.class.getName());
+	private Logger logger = LogManager.getLogger(MessageHandler.class.getName());
 	
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -106,5 +106,6 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
 		super.exceptionCaught(ctx, cause);
 		logger.error("An exception occured at client " + ctx.channel().remoteAddress().toString(), cause);
+		ctx.close();
 	}
 }
