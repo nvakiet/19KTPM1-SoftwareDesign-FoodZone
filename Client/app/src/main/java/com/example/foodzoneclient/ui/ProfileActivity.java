@@ -52,7 +52,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.profile_backtomain:
-                Intent newIntent= new Intent(ProfileActivity.this, MainScreenActivity.class);
+                //Intent newIntent= new Intent(ProfileActivity.this, MainScreenActivity.class);
                 finish();
                 break;
             case R.id.logout_button:
@@ -66,7 +66,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.btn_changePass:
                 Intent changePassIntent=new Intent(ProfileActivity.this, ChangePasswordActivity.class);
                 startActivity(changePassIntent);
-                finish();
         }
     }
 

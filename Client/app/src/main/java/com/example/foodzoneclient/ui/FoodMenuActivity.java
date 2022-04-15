@@ -149,9 +149,6 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
                 }
                 break;
             case R.id.back2main:
-                Intent backI=new Intent(FoodMenuActivity.this, MainScreenActivity.class);
-                startActivity(backI);
-
                 finish();
                 break;
             case R.id.CartButton:

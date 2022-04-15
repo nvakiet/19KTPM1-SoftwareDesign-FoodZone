@@ -42,10 +42,15 @@ public class CartActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent=new Intent(CartActivity.this, FoodMenuActivity.class);
-                myIntent.putExtra("resID",rID);
-                myIntent.putParcelableArrayListExtra("cart_list", foodList);
-                startActivity(myIntent);
+//                Intent myIntent=new Intent(CartActivity.this, FoodMenuActivity.class);
+//                myIntent.putExtra("resID",rID);
+//                myIntent.putParcelableArrayListExtra("cart_list", foodList);
+//                startActivity(myIntent);
+
+                Intent backIntent = getIntent();
+                backIntent.putExtra("resID", rID);
+                backIntent.putParcelableArrayListExtra("cart_list", foodList);
+                finish();
             }
         });
         // foward to Order screen
@@ -83,12 +88,6 @@ public class CartActivity extends AppCompatActivity {
             totalpriceBox.setText("Total: "+String.valueOf(total)+" VND");
         }
     }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        finish();
-//        return true;
-//    }
 
     private void findID(){
         back=(ImageView) findViewById(R.id.back2main);

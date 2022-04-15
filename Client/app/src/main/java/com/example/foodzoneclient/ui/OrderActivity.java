@@ -42,10 +42,14 @@ public class OrderActivity extends AppCompatActivity {
         backbtt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent backIntent= new Intent(OrderActivity.this, CartActivity.class);
-                backIntent.putExtra("resID",rID);
+//                Intent backIntent= new Intent(OrderActivity.this, CartActivity.class);
+//                backIntent.putExtra("resID",rID);
+//                backIntent.putParcelableArrayListExtra("food_list", foodList);
+//                startActivity(backIntent);
+                Intent backIntent = getIntent();
+                backIntent.putExtra("resID", rID);
                 backIntent.putParcelableArrayListExtra("food_list", foodList);
-                startActivity(backIntent);
+                finish();
             }
         });
         confirmPurchase.setOnClickListener(new View.OnClickListener() {
