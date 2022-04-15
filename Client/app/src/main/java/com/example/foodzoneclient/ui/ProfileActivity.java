@@ -82,6 +82,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 finish();
 
                 break;
+                
             case R.id.btn_changePass:
                 Intent changePassIntent=new Intent(ProfileActivity.this, ChangePasswordActivity.class);
                 startActivity(changePassIntent);
