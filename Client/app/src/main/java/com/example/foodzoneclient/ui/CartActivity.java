@@ -8,6 +8,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -34,6 +35,8 @@ public class CartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
         findID();
+
+//        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // back to food menu click
         back.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +83,12 @@ public class CartActivity extends AppCompatActivity {
             totalpriceBox.setText("Total: "+String.valueOf(total)+" VND");
         }
     }
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        finish();
+//        return true;
+//    }
 
     private void findID(){
         back=(ImageView) findViewById(R.id.back2main);
