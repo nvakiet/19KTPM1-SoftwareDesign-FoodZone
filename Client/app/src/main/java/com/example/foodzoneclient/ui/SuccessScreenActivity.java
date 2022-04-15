@@ -27,7 +27,7 @@ public class SuccessScreenActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent returnIntent = new Intent(SuccessScreenActivity.this, MainScreenActivity.class);
                 startActivity(returnIntent);
-                finish();
+                //finish();
             }
         });
     }

@@ -65,21 +65,26 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         switch(v.getId()){
             case R.id.profile_backtomain:
                 Intent newIntent= new Intent(ProfileActivity.this, MainScreenActivity.class);
-                finish();
+                //finish();
                 break;
             case R.id.logout_button:
                 Intent outIntent=new Intent(ProfileActivity.this, LoginActivity.class);
                 startActivity(outIntent);
                 prefGetEdit.clear().apply();
+
                 Message msg = Message.obtain(ContainerClient.handler);
                 msg.what = 0; // Opcode for logout
                 msg.sendToTarget();
                 finish();
+
+                Intent myIntent = new Intent(ProfileActivity.this, LoginActivity.class);
+                startActivity(myIntent);
+                finish();
+
                 break;
             case R.id.btn_changePass:
                 Intent changePassIntent=new Intent(ProfileActivity.this, ChangePasswordActivity.class);
                 startActivity(changePassIntent);
-                finish();
         }
     }
 
