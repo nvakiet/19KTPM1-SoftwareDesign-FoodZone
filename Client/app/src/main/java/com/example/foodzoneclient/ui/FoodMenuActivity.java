@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -74,8 +75,8 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
                 e.printStackTrace();
             }
         }
-
     }
+
     public void findID(){
         add1=(ImageView) findViewById(R.id.addToCart1);
         add2=(ImageView) findViewById(R.id.addToCart2);
@@ -149,9 +150,6 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
                 }
                 break;
             case R.id.back2main:
-                Intent backI=new Intent(FoodMenuActivity.this, MainScreenActivity.class);
-                startActivity(backI);
-
                 finish();
                 break;
             case R.id.CartButton:

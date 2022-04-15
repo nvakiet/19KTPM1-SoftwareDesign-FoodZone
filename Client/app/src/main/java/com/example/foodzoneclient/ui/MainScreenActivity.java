@@ -54,12 +54,10 @@ public class MainScreenActivity extends AppCompatActivity implements View.OnClic
                 if(id==R.id.n_home){
                     Intent homeIntent= new Intent(MainScreenActivity.this, MainScreenActivity.class);
                     startActivity(homeIntent);
-                    finish();
                 }
                 if(id==R.id.n_search){
                     Intent searchIntent= new Intent(MainScreenActivity.this, SearchActivity.class);
                     startActivity(searchIntent);
-                    finish();
                 }
                 return true;
             }
@@ -105,25 +103,21 @@ public class MainScreenActivity extends AppCompatActivity implements View.OnClic
                 Intent res1Intent= new Intent(MainScreenActivity.this,FoodMenuActivity.class);
                 res1Intent.putExtra("resID", "0001");
                 startActivity(res1Intent);
-                finish();
                 break;
             case R.id.res2:
                 Intent res2Intent= new Intent(MainScreenActivity.this,FoodMenuActivity.class);
                 res2Intent.putExtra("resID","0002");
                 startActivity(res2Intent);
-                finish();
                 break;
             case R.id.res3:
                 Intent res3Intent= new Intent(MainScreenActivity.this,FoodMenuActivity.class);
                 res3Intent.putExtra("resID","0003");
                 startActivity(res3Intent);
-                finish();
                 break;
             case R.id.res4:
                 Intent res4Intent= new Intent(MainScreenActivity.this,FoodMenuActivity.class);
                 res4Intent.putExtra("resID","0004");
                 startActivity(res4Intent);
-                finish();
                 break;
         }
     }
@@ -153,7 +147,6 @@ public class MainScreenActivity extends AppCompatActivity implements View.OnClic
             case R.id.nav_search:
                 Intent searchIntent=new Intent(MainScreenActivity.this,SearchActivity.class);
                 startActivity(searchIntent);
-                finish();
         }
         return super.onOptionsItemSelected(item);
     }

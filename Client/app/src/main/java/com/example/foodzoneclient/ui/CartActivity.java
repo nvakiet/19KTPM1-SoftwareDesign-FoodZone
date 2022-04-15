@@ -39,10 +39,14 @@ public class CartActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent=new Intent(CartActivity.this, FoodMenuActivity.class);
-                myIntent.putExtra("resID",rID);
-                myIntent.putParcelableArrayListExtra("cart_list", foodList);
-                startActivity(myIntent);
+//                Intent myIntent=new Intent(CartActivity.this, FoodMenuActivity.class);
+//                myIntent.putExtra("resID",rID);
+//                myIntent.putParcelableArrayListExtra("cart_list", foodList);
+//                startActivity(myIntent);
+                Intent backIntent = getIntent();
+                backIntent.putExtra("resID",rID);
+                backIntent.putParcelableArrayListExtra("cart_list", foodList);
+                finish();
             }
         });
         // foward to Order screen
