@@ -4,10 +4,6 @@
 package com.example.foodzoneclient.protocols;
 
 /**
- * <pre>
- *op: 0 = Logout, 1 = Login, 2 = register, 3 = change password;
- * </pre>
- *
  * Protobuf type {@code foodzone_protocols.ClientMessage}
  */
 public  final class ClientMessage extends
@@ -16,34 +12,29 @@ public  final class ClientMessage extends
     // @@protoc_insertion_point(message_implements:foodzone_protocols.ClientMessage)
     ClientMessageOrBuilder {
   private ClientMessage() {
+    msg_ = "";
   }
-  private int clientRequestsCase_ = 0;
-  private java.lang.Object clientRequests_;
-  public enum ClientRequestsCase {
-    ACCOUNT(2),
-    REGACC(3),
-    ORDER(4),
-    CHANGERES(5),
-    CLIENTREQUESTS_NOT_SET(0);
+  private int requestsCase_ = 0;
+  private java.lang.Object requests_;
+  public enum RequestsCase {
+    LOGINREQUEST(2),
+    REQUESTS_NOT_SET(0);
     private final int value;
-    private ClientRequestsCase(int value) {
+    private RequestsCase(int value) {
       this.value = value;
     }
     /**
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
-    public static ClientRequestsCase valueOf(int value) {
+    public static RequestsCase valueOf(int value) {
       return forNumber(value);
     }
 
-    public static ClientRequestsCase forNumber(int value) {
+    public static RequestsCase forNumber(int value) {
       switch (value) {
-        case 2: return ACCOUNT;
-        case 3: return REGACC;
-        case 4: return ORDER;
-        case 5: return CHANGERES;
-        case 0: return CLIENTREQUESTS_NOT_SET;
+        case 2: return LOGINREQUEST;
+        case 0: return REQUESTS_NOT_SET;
         default: return null;
       }
     }
@@ -53,260 +44,111 @@ public  final class ClientMessage extends
   };
 
   @java.lang.Override
-  public ClientRequestsCase
-  getClientRequestsCase() {
-    return ClientRequestsCase.forNumber(
-        clientRequestsCase_);
+  public RequestsCase
+  getRequestsCase() {
+    return RequestsCase.forNumber(
+        requestsCase_);
   }
 
-  private void clearClientRequests() {
-    clientRequestsCase_ = 0;
-    clientRequests_ = null;
+  private void clearRequests() {
+    requestsCase_ = 0;
+    requests_ = null;
   }
 
-  public static final int OPCODE_FIELD_NUMBER = 1;
-  private int opcode_;
+  public static final int MSG_FIELD_NUMBER = 1;
+  private java.lang.String msg_;
   /**
-   * <code>int32 opcode = 1;</code>
-   * @return The opcode.
+   * <code>string msg = 1;</code>
+   * @return The msg.
    */
   @java.lang.Override
-  public int getOpcode() {
-    return opcode_;
+  public java.lang.String getMsg() {
+    return msg_;
   }
   /**
-   * <code>int32 opcode = 1;</code>
-   * @param value The opcode to set.
+   * <code>string msg = 1;</code>
+   * @return The bytes for msg.
    */
-  private void setOpcode(int value) {
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getMsgBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(msg_);
+  }
+  /**
+   * <code>string msg = 1;</code>
+   * @param value The msg to set.
+   */
+  private void setMsg(
+      java.lang.String value) {
+    java.lang.Class<?> valueClass = value.getClass();
+  
+    msg_ = value;
+  }
+  /**
+   * <code>string msg = 1;</code>
+   */
+  private void clearMsg() {
     
-    opcode_ = value;
+    msg_ = getDefaultInstance().getMsg();
   }
   /**
-   * <code>int32 opcode = 1;</code>
+   * <code>string msg = 1;</code>
+   * @param value The bytes for msg to set.
    */
-  private void clearOpcode() {
+  private void setMsgBytes(
+      com.google.protobuf.ByteString value) {
+    checkByteStringIsUtf8(value);
+    msg_ = value.toStringUtf8();
     
-    opcode_ = 0;
   }
 
-  public static final int ACCOUNT_FIELD_NUMBER = 2;
+  public static final int LOGINREQUEST_FIELD_NUMBER = 2;
   /**
-   * <pre>
-   *Use for login and change password
-   * </pre>
-   *
-   * <code>.foodzone_protocols.LoginInfo account = 2;</code>
+   * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
    */
   @java.lang.Override
-  public boolean hasAccount() {
-    return clientRequestsCase_ == 2;
+  public boolean hasLoginRequest() {
+    return requestsCase_ == 2;
   }
   /**
-   * <pre>
-   *Use for login and change password
-   * </pre>
-   *
-   * <code>.foodzone_protocols.LoginInfo account = 2;</code>
+   * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
    */
   @java.lang.Override
-  public com.example.foodzoneclient.protocols.LoginInfo getAccount() {
-    if (clientRequestsCase_ == 2) {
-       return (com.example.foodzoneclient.protocols.LoginInfo) clientRequests_;
+  public com.example.foodzoneclient.protocols.LoginRequest getLoginRequest() {
+    if (requestsCase_ == 2) {
+       return (com.example.foodzoneclient.protocols.LoginRequest) requests_;
     }
-    return com.example.foodzoneclient.protocols.LoginInfo.getDefaultInstance();
+    return com.example.foodzoneclient.protocols.LoginRequest.getDefaultInstance();
   }
   /**
-   * <pre>
-   *Use for login and change password
-   * </pre>
-   *
-   * <code>.foodzone_protocols.LoginInfo account = 2;</code>
+   * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
    */
-  private void setAccount(com.example.foodzoneclient.protocols.LoginInfo value) {
+  private void setLoginRequest(com.example.foodzoneclient.protocols.LoginRequest value) {
     value.getClass();
-  clientRequests_ = value;
-    clientRequestsCase_ = 2;
+  requests_ = value;
+    requestsCase_ = 2;
   }
   /**
-   * <pre>
-   *Use for login and change password
-   * </pre>
-   *
-   * <code>.foodzone_protocols.LoginInfo account = 2;</code>
+   * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
    */
-  private void mergeAccount(com.example.foodzoneclient.protocols.LoginInfo value) {
+  private void mergeLoginRequest(com.example.foodzoneclient.protocols.LoginRequest value) {
     value.getClass();
-  if (clientRequestsCase_ == 2 &&
-        clientRequests_ != com.example.foodzoneclient.protocols.LoginInfo.getDefaultInstance()) {
-      clientRequests_ = com.example.foodzoneclient.protocols.LoginInfo.newBuilder((com.example.foodzoneclient.protocols.LoginInfo) clientRequests_)
+  if (requestsCase_ == 2 &&
+        requests_ != com.example.foodzoneclient.protocols.LoginRequest.getDefaultInstance()) {
+      requests_ = com.example.foodzoneclient.protocols.LoginRequest.newBuilder((com.example.foodzoneclient.protocols.LoginRequest) requests_)
           .mergeFrom(value).buildPartial();
     } else {
-      clientRequests_ = value;
+      requests_ = value;
     }
-    clientRequestsCase_ = 2;
+    requestsCase_ = 2;
   }
   /**
-   * <pre>
-   *Use for login and change password
-   * </pre>
-   *
-   * <code>.foodzone_protocols.LoginInfo account = 2;</code>
+   * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
    */
-  private void clearAccount() {
-    if (clientRequestsCase_ == 2) {
-      clientRequestsCase_ = 0;
-      clientRequests_ = null;
-    }
-  }
-
-  public static final int REGACC_FIELD_NUMBER = 3;
-  /**
-   * <code>.foodzone_protocols.RegisterInfo regAcc = 3;</code>
-   */
-  @java.lang.Override
-  public boolean hasRegAcc() {
-    return clientRequestsCase_ == 3;
-  }
-  /**
-   * <code>.foodzone_protocols.RegisterInfo regAcc = 3;</code>
-   */
-  @java.lang.Override
-  public com.example.foodzoneclient.protocols.RegisterInfo getRegAcc() {
-    if (clientRequestsCase_ == 3) {
-       return (com.example.foodzoneclient.protocols.RegisterInfo) clientRequests_;
-    }
-    return com.example.foodzoneclient.protocols.RegisterInfo.getDefaultInstance();
-  }
-  /**
-   * <code>.foodzone_protocols.RegisterInfo regAcc = 3;</code>
-   */
-  private void setRegAcc(com.example.foodzoneclient.protocols.RegisterInfo value) {
-    value.getClass();
-  clientRequests_ = value;
-    clientRequestsCase_ = 3;
-  }
-  /**
-   * <code>.foodzone_protocols.RegisterInfo regAcc = 3;</code>
-   */
-  private void mergeRegAcc(com.example.foodzoneclient.protocols.RegisterInfo value) {
-    value.getClass();
-  if (clientRequestsCase_ == 3 &&
-        clientRequests_ != com.example.foodzoneclient.protocols.RegisterInfo.getDefaultInstance()) {
-      clientRequests_ = com.example.foodzoneclient.protocols.RegisterInfo.newBuilder((com.example.foodzoneclient.protocols.RegisterInfo) clientRequests_)
-          .mergeFrom(value).buildPartial();
-    } else {
-      clientRequests_ = value;
-    }
-    clientRequestsCase_ = 3;
-  }
-  /**
-   * <code>.foodzone_protocols.RegisterInfo regAcc = 3;</code>
-   */
-  private void clearRegAcc() {
-    if (clientRequestsCase_ == 3) {
-      clientRequestsCase_ = 0;
-      clientRequests_ = null;
-    }
-  }
-
-  public static final int ORDER_FIELD_NUMBER = 4;
-  /**
-   * <code>.foodzone_protocols.Order order = 4;</code>
-   */
-  @java.lang.Override
-  public boolean hasOrder() {
-    return clientRequestsCase_ == 4;
-  }
-  /**
-   * <code>.foodzone_protocols.Order order = 4;</code>
-   */
-  @java.lang.Override
-  public com.example.foodzoneclient.protocols.Order getOrder() {
-    if (clientRequestsCase_ == 4) {
-       return (com.example.foodzoneclient.protocols.Order) clientRequests_;
-    }
-    return com.example.foodzoneclient.protocols.Order.getDefaultInstance();
-  }
-  /**
-   * <code>.foodzone_protocols.Order order = 4;</code>
-   */
-  private void setOrder(com.example.foodzoneclient.protocols.Order value) {
-    value.getClass();
-  clientRequests_ = value;
-    clientRequestsCase_ = 4;
-  }
-  /**
-   * <code>.foodzone_protocols.Order order = 4;</code>
-   */
-  private void mergeOrder(com.example.foodzoneclient.protocols.Order value) {
-    value.getClass();
-  if (clientRequestsCase_ == 4 &&
-        clientRequests_ != com.example.foodzoneclient.protocols.Order.getDefaultInstance()) {
-      clientRequests_ = com.example.foodzoneclient.protocols.Order.newBuilder((com.example.foodzoneclient.protocols.Order) clientRequests_)
-          .mergeFrom(value).buildPartial();
-    } else {
-      clientRequests_ = value;
-    }
-    clientRequestsCase_ = 4;
-  }
-  /**
-   * <code>.foodzone_protocols.Order order = 4;</code>
-   */
-  private void clearOrder() {
-    if (clientRequestsCase_ == 4) {
-      clientRequestsCase_ = 0;
-      clientRequests_ = null;
-    }
-  }
-
-  public static final int CHANGERES_FIELD_NUMBER = 5;
-  /**
-   * <code>.foodzone_protocols.changePassInfo changeRes = 5;</code>
-   */
-  @java.lang.Override
-  public boolean hasChangeRes() {
-    return clientRequestsCase_ == 5;
-  }
-  /**
-   * <code>.foodzone_protocols.changePassInfo changeRes = 5;</code>
-   */
-  @java.lang.Override
-  public com.example.foodzoneclient.protocols.changePassInfo getChangeRes() {
-    if (clientRequestsCase_ == 5) {
-       return (com.example.foodzoneclient.protocols.changePassInfo) clientRequests_;
-    }
-    return com.example.foodzoneclient.protocols.changePassInfo.getDefaultInstance();
-  }
-  /**
-   * <code>.foodzone_protocols.changePassInfo changeRes = 5;</code>
-   */
-  private void setChangeRes(com.example.foodzoneclient.protocols.changePassInfo value) {
-    value.getClass();
-  clientRequests_ = value;
-    clientRequestsCase_ = 5;
-  }
-  /**
-   * <code>.foodzone_protocols.changePassInfo changeRes = 5;</code>
-   */
-  private void mergeChangeRes(com.example.foodzoneclient.protocols.changePassInfo value) {
-    value.getClass();
-  if (clientRequestsCase_ == 5 &&
-        clientRequests_ != com.example.foodzoneclient.protocols.changePassInfo.getDefaultInstance()) {
-      clientRequests_ = com.example.foodzoneclient.protocols.changePassInfo.newBuilder((com.example.foodzoneclient.protocols.changePassInfo) clientRequests_)
-          .mergeFrom(value).buildPartial();
-    } else {
-      clientRequests_ = value;
-    }
-    clientRequestsCase_ = 5;
-  }
-  /**
-   * <code>.foodzone_protocols.changePassInfo changeRes = 5;</code>
-   */
-  private void clearChangeRes() {
-    if (clientRequestsCase_ == 5) {
-      clientRequestsCase_ = 0;
-      clientRequests_ = null;
+  private void clearLoginRequest() {
+    if (requestsCase_ == 2) {
+      requestsCase_ = 0;
+      requests_ = null;
     }
   }
 
@@ -392,10 +234,6 @@ public  final class ClientMessage extends
   }
 
   /**
-   * <pre>
-   *op: 0 = Logout, 1 = Login, 2 = register, 3 = change password;
-   * </pre>
-   *
    * Protobuf type {@code foodzone_protocols.ClientMessage}
    */
   public static final class Builder extends
@@ -409,259 +247,112 @@ public  final class ClientMessage extends
     }
 
     @java.lang.Override
-    public ClientRequestsCase
-        getClientRequestsCase() {
-      return instance.getClientRequestsCase();
+    public RequestsCase
+        getRequestsCase() {
+      return instance.getRequestsCase();
     }
 
-    public Builder clearClientRequests() {
+    public Builder clearRequests() {
       copyOnWrite();
-      instance.clearClientRequests();
+      instance.clearRequests();
       return this;
     }
 
 
     /**
-     * <code>int32 opcode = 1;</code>
-     * @return The opcode.
+     * <code>string msg = 1;</code>
+     * @return The msg.
      */
     @java.lang.Override
-    public int getOpcode() {
-      return instance.getOpcode();
+    public java.lang.String getMsg() {
+      return instance.getMsg();
     }
     /**
-     * <code>int32 opcode = 1;</code>
-     * @param value The opcode to set.
+     * <code>string msg = 1;</code>
+     * @return The bytes for msg.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMsgBytes() {
+      return instance.getMsgBytes();
+    }
+    /**
+     * <code>string msg = 1;</code>
+     * @param value The msg to set.
      * @return This builder for chaining.
      */
-    public Builder setOpcode(int value) {
+    public Builder setMsg(
+        java.lang.String value) {
       copyOnWrite();
-      instance.setOpcode(value);
+      instance.setMsg(value);
       return this;
     }
     /**
-     * <code>int32 opcode = 1;</code>
+     * <code>string msg = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearOpcode() {
+    public Builder clearMsg() {
       copyOnWrite();
-      instance.clearOpcode();
+      instance.clearMsg();
+      return this;
+    }
+    /**
+     * <code>string msg = 1;</code>
+     * @param value The bytes for msg to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMsgBytes(
+        com.google.protobuf.ByteString value) {
+      copyOnWrite();
+      instance.setMsgBytes(value);
       return this;
     }
 
     /**
-     * <pre>
-     *Use for login and change password
-     * </pre>
-     *
-     * <code>.foodzone_protocols.LoginInfo account = 2;</code>
+     * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
      */
     @java.lang.Override
-    public boolean hasAccount() {
-      return instance.hasAccount();
+    public boolean hasLoginRequest() {
+      return instance.hasLoginRequest();
     }
     /**
-     * <pre>
-     *Use for login and change password
-     * </pre>
-     *
-     * <code>.foodzone_protocols.LoginInfo account = 2;</code>
+     * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
      */
     @java.lang.Override
-    public com.example.foodzoneclient.protocols.LoginInfo getAccount() {
-      return instance.getAccount();
+    public com.example.foodzoneclient.protocols.LoginRequest getLoginRequest() {
+      return instance.getLoginRequest();
     }
     /**
-     * <pre>
-     *Use for login and change password
-     * </pre>
-     *
-     * <code>.foodzone_protocols.LoginInfo account = 2;</code>
+     * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
      */
-    public Builder setAccount(com.example.foodzoneclient.protocols.LoginInfo value) {
+    public Builder setLoginRequest(com.example.foodzoneclient.protocols.LoginRequest value) {
       copyOnWrite();
-      instance.setAccount(value);
+      instance.setLoginRequest(value);
       return this;
     }
     /**
-     * <pre>
-     *Use for login and change password
-     * </pre>
-     *
-     * <code>.foodzone_protocols.LoginInfo account = 2;</code>
+     * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
      */
-    public Builder setAccount(
-        com.example.foodzoneclient.protocols.LoginInfo.Builder builderForValue) {
+    public Builder setLoginRequest(
+        com.example.foodzoneclient.protocols.LoginRequest.Builder builderForValue) {
       copyOnWrite();
-      instance.setAccount(builderForValue.build());
+      instance.setLoginRequest(builderForValue.build());
       return this;
     }
     /**
-     * <pre>
-     *Use for login and change password
-     * </pre>
-     *
-     * <code>.foodzone_protocols.LoginInfo account = 2;</code>
+     * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
      */
-    public Builder mergeAccount(com.example.foodzoneclient.protocols.LoginInfo value) {
+    public Builder mergeLoginRequest(com.example.foodzoneclient.protocols.LoginRequest value) {
       copyOnWrite();
-      instance.mergeAccount(value);
+      instance.mergeLoginRequest(value);
       return this;
     }
     /**
-     * <pre>
-     *Use for login and change password
-     * </pre>
-     *
-     * <code>.foodzone_protocols.LoginInfo account = 2;</code>
+     * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
      */
-    public Builder clearAccount() {
+    public Builder clearLoginRequest() {
       copyOnWrite();
-      instance.clearAccount();
-      return this;
-    }
-
-    /**
-     * <code>.foodzone_protocols.RegisterInfo regAcc = 3;</code>
-     */
-    @java.lang.Override
-    public boolean hasRegAcc() {
-      return instance.hasRegAcc();
-    }
-    /**
-     * <code>.foodzone_protocols.RegisterInfo regAcc = 3;</code>
-     */
-    @java.lang.Override
-    public com.example.foodzoneclient.protocols.RegisterInfo getRegAcc() {
-      return instance.getRegAcc();
-    }
-    /**
-     * <code>.foodzone_protocols.RegisterInfo regAcc = 3;</code>
-     */
-    public Builder setRegAcc(com.example.foodzoneclient.protocols.RegisterInfo value) {
-      copyOnWrite();
-      instance.setRegAcc(value);
-      return this;
-    }
-    /**
-     * <code>.foodzone_protocols.RegisterInfo regAcc = 3;</code>
-     */
-    public Builder setRegAcc(
-        com.example.foodzoneclient.protocols.RegisterInfo.Builder builderForValue) {
-      copyOnWrite();
-      instance.setRegAcc(builderForValue.build());
-      return this;
-    }
-    /**
-     * <code>.foodzone_protocols.RegisterInfo regAcc = 3;</code>
-     */
-    public Builder mergeRegAcc(com.example.foodzoneclient.protocols.RegisterInfo value) {
-      copyOnWrite();
-      instance.mergeRegAcc(value);
-      return this;
-    }
-    /**
-     * <code>.foodzone_protocols.RegisterInfo regAcc = 3;</code>
-     */
-    public Builder clearRegAcc() {
-      copyOnWrite();
-      instance.clearRegAcc();
-      return this;
-    }
-
-    /**
-     * <code>.foodzone_protocols.Order order = 4;</code>
-     */
-    @java.lang.Override
-    public boolean hasOrder() {
-      return instance.hasOrder();
-    }
-    /**
-     * <code>.foodzone_protocols.Order order = 4;</code>
-     */
-    @java.lang.Override
-    public com.example.foodzoneclient.protocols.Order getOrder() {
-      return instance.getOrder();
-    }
-    /**
-     * <code>.foodzone_protocols.Order order = 4;</code>
-     */
-    public Builder setOrder(com.example.foodzoneclient.protocols.Order value) {
-      copyOnWrite();
-      instance.setOrder(value);
-      return this;
-    }
-    /**
-     * <code>.foodzone_protocols.Order order = 4;</code>
-     */
-    public Builder setOrder(
-        com.example.foodzoneclient.protocols.Order.Builder builderForValue) {
-      copyOnWrite();
-      instance.setOrder(builderForValue.build());
-      return this;
-    }
-    /**
-     * <code>.foodzone_protocols.Order order = 4;</code>
-     */
-    public Builder mergeOrder(com.example.foodzoneclient.protocols.Order value) {
-      copyOnWrite();
-      instance.mergeOrder(value);
-      return this;
-    }
-    /**
-     * <code>.foodzone_protocols.Order order = 4;</code>
-     */
-    public Builder clearOrder() {
-      copyOnWrite();
-      instance.clearOrder();
-      return this;
-    }
-
-    /**
-     * <code>.foodzone_protocols.changePassInfo changeRes = 5;</code>
-     */
-    @java.lang.Override
-    public boolean hasChangeRes() {
-      return instance.hasChangeRes();
-    }
-    /**
-     * <code>.foodzone_protocols.changePassInfo changeRes = 5;</code>
-     */
-    @java.lang.Override
-    public com.example.foodzoneclient.protocols.changePassInfo getChangeRes() {
-      return instance.getChangeRes();
-    }
-    /**
-     * <code>.foodzone_protocols.changePassInfo changeRes = 5;</code>
-     */
-    public Builder setChangeRes(com.example.foodzoneclient.protocols.changePassInfo value) {
-      copyOnWrite();
-      instance.setChangeRes(value);
-      return this;
-    }
-    /**
-     * <code>.foodzone_protocols.changePassInfo changeRes = 5;</code>
-     */
-    public Builder setChangeRes(
-        com.example.foodzoneclient.protocols.changePassInfo.Builder builderForValue) {
-      copyOnWrite();
-      instance.setChangeRes(builderForValue.build());
-      return this;
-    }
-    /**
-     * <code>.foodzone_protocols.changePassInfo changeRes = 5;</code>
-     */
-    public Builder mergeChangeRes(com.example.foodzoneclient.protocols.changePassInfo value) {
-      copyOnWrite();
-      instance.mergeChangeRes(value);
-      return this;
-    }
-    /**
-     * <code>.foodzone_protocols.changePassInfo changeRes = 5;</code>
-     */
-    public Builder clearChangeRes() {
-      copyOnWrite();
-      instance.clearChangeRes();
+      instance.clearLoginRequest();
       return this;
     }
 
@@ -681,17 +372,14 @@ public  final class ClientMessage extends
       }
       case BUILD_MESSAGE_INFO: {
           java.lang.Object[] objects = new java.lang.Object[] {
-            "clientRequests_",
-            "clientRequestsCase_",
-            "opcode_",
-            com.example.foodzoneclient.protocols.LoginInfo.class,
-            com.example.foodzoneclient.protocols.RegisterInfo.class,
-            com.example.foodzoneclient.protocols.Order.class,
-            com.example.foodzoneclient.protocols.changePassInfo.class,
+            "requests_",
+            "requestsCase_",
+            "msg_",
+            com.example.foodzoneclient.protocols.LoginRequest.class,
           };
           java.lang.String info =
-              "\u0000\u0005\u0001\u0000\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u0004\u0002<\u0000" +
-              "\u0003<\u0000\u0004<\u0000\u0005<\u0000";
+              "\u0000\u0002\u0001\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u0208\u0002<\u0000" +
+              "";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

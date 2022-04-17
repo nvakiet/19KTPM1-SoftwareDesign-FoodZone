@@ -4,86 +4,35 @@
 package com.fz.foodzoneserver.protocols;
 
 public interface ClientMessageOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:p4f_protocols.ClientMessage)
+    // @@protoc_insertion_point(interface_extends:foodzone_protocols.ClientMessage)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 opcode = 1;</code>
-   * @return The opcode.
+   * <code>string msg = 1;</code>
+   * @return The msg.
    */
-  int getOpcode();
+  java.lang.String getMsg();
+  /**
+   * <code>string msg = 1;</code>
+   * @return The bytes for msg.
+   */
+  com.google.protobuf.ByteString
+      getMsgBytes();
 
   /**
-   * <pre>
-   *Use for login and change password
-   * </pre>
-   *
-   * <code>.p4f_protocols.LoginInfo account = 2;</code>
-   * @return Whether the account field is set.
+   * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
+   * @return Whether the loginRequest field is set.
    */
-  boolean hasAccount();
+  boolean hasLoginRequest();
   /**
-   * <pre>
-   *Use for login and change password
-   * </pre>
-   *
-   * <code>.p4f_protocols.LoginInfo account = 2;</code>
-   * @return The account.
+   * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
+   * @return The loginRequest.
    */
-  LoginInfo getAccount();
+  com.fz.foodzoneserver.protocols.LoginRequest getLoginRequest();
   /**
-   * <pre>
-   *Use for login and change password
-   * </pre>
-   *
-   * <code>.p4f_protocols.LoginInfo account = 2;</code>
+   * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
    */
-  LoginInfoOrBuilder getAccountOrBuilder();
+  com.fz.foodzoneserver.protocols.LoginRequestOrBuilder getLoginRequestOrBuilder();
 
-  /**
-   * <code>.p4f_protocols.RegisterInfo regAcc = 3;</code>
-   * @return Whether the regAcc field is set.
-   */
-  boolean hasRegAcc();
-  /**
-   * <code>.p4f_protocols.RegisterInfo regAcc = 3;</code>
-   * @return The regAcc.
-   */
-  RegisterInfo getRegAcc();
-  /**
-   * <code>.p4f_protocols.RegisterInfo regAcc = 3;</code>
-   */
-  RegisterInfoOrBuilder getRegAccOrBuilder();
-
-  /**
-   * <code>.p4f_protocols.Order order = 4;</code>
-   * @return Whether the order field is set.
-   */
-  boolean hasOrder();
-  /**
-   * <code>.p4f_protocols.Order order = 4;</code>
-   * @return The order.
-   */
-  Order getOrder();
-  /**
-   * <code>.p4f_protocols.Order order = 4;</code>
-   */
-  OrderOrBuilder getOrderOrBuilder();
-
-  /**
-   * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-   * @return Whether the changeRes field is set.
-   */
-  boolean hasChangeRes();
-  /**
-   * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-   * @return The changeRes.
-   */
-  changePassInfo getChangeRes();
-  /**
-   * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-   */
-  changePassInfoOrBuilder getChangeResOrBuilder();
-
-  public ClientMessage.ClientRequestsCase getClientRequestsCase();
+  public com.fz.foodzoneserver.protocols.ClientMessage.RequestsCase getRequestsCase();
 }

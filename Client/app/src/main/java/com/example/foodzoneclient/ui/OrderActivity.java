@@ -27,8 +27,6 @@ import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.backend.ContainerClient;
 import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.model.Product;
-import com.example.foodzoneclient.protocols.Food;
-import com.example.foodzoneclient.protocols.Order;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -66,20 +64,7 @@ public class OrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 prefGet = getApplicationContext().getSharedPreferences("user_info", MODE_PRIVATE);
-                Order.Builder order = Order.newBuilder();
-                order.setUsername(prefGet.getString("Username", null))
-                        .setBuyDate((LocalDateTime.now().toString()))
-                        .setResID(rID);
-                for (Product item : foodList) {
-                    Food foodItem = Food.newBuilder().setFoodID(item.getID())
-                            .setAmount(item.getAmount())
-                            .setPrice(item.getPrice()).build();
-                    order.addFoodList(foodItem);
-                }
-                Message msg = Message.obtain(ContainerClient.handler);
-                msg.what = 4;
-                msg.obj = order.build();
-                msg.sendToTarget();
+
             }
         });
 

@@ -4,15 +4,11 @@
 package com.fz.foodzoneserver.protocols;
 
 /**
- * <pre>
- *op: 0 = Logout, 1 = Login, 2 = register, 3 = change password;
- * </pre>
- *
- * Protobuf type {@code p4f_protocols.ClientMessage}
+ * Protobuf type {@code foodzone_protocols.ClientMessage}
  */
 public final class ClientMessage extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:p4f_protocols.ClientMessage)
+    // @@protoc_insertion_point(message_implements:foodzone_protocols.ClientMessage)
     ClientMessageOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use ClientMessage.newBuilder() to construct.
@@ -20,6 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private ClientMessage() {
+    msg_ = "";
   }
 
   @java.lang.Override
@@ -52,65 +49,24 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            opcode_ = input.readInt32();
+            msg_ = s;
             break;
           }
           case 18: {
-            LoginInfo.Builder subBuilder = null;
-            if (clientRequestsCase_ == 2) {
-              subBuilder = ((LoginInfo) clientRequests_).toBuilder();
+            com.fz.foodzoneserver.protocols.LoginRequest.Builder subBuilder = null;
+            if (requestsCase_ == 2) {
+              subBuilder = ((com.fz.foodzoneserver.protocols.LoginRequest) requests_).toBuilder();
             }
-            clientRequests_ =
-                input.readMessage(LoginInfo.parser(), extensionRegistry);
+            requests_ =
+                input.readMessage(com.fz.foodzoneserver.protocols.LoginRequest.parser(), extensionRegistry);
             if (subBuilder != null) {
-              subBuilder.mergeFrom((LoginInfo) clientRequests_);
-              clientRequests_ = subBuilder.buildPartial();
+              subBuilder.mergeFrom((com.fz.foodzoneserver.protocols.LoginRequest) requests_);
+              requests_ = subBuilder.buildPartial();
             }
-            clientRequestsCase_ = 2;
-            break;
-          }
-          case 26: {
-            RegisterInfo.Builder subBuilder = null;
-            if (clientRequestsCase_ == 3) {
-              subBuilder = ((RegisterInfo) clientRequests_).toBuilder();
-            }
-            clientRequests_ =
-                input.readMessage(RegisterInfo.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((RegisterInfo) clientRequests_);
-              clientRequests_ = subBuilder.buildPartial();
-            }
-            clientRequestsCase_ = 3;
-            break;
-          }
-          case 34: {
-            Order.Builder subBuilder = null;
-            if (clientRequestsCase_ == 4) {
-              subBuilder = ((Order) clientRequests_).toBuilder();
-            }
-            clientRequests_ =
-                input.readMessage(Order.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((Order) clientRequests_);
-              clientRequests_ = subBuilder.buildPartial();
-            }
-            clientRequestsCase_ = 4;
-            break;
-          }
-          case 42: {
-            changePassInfo.Builder subBuilder = null;
-            if (clientRequestsCase_ == 5) {
-              subBuilder = ((changePassInfo) clientRequests_).toBuilder();
-            }
-            clientRequests_ =
-                input.readMessage(changePassInfo.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((changePassInfo) clientRequests_);
-              clientRequests_ = subBuilder.buildPartial();
-            }
-            clientRequestsCase_ = 5;
+            requestsCase_ = 2;
             break;
           }
           default: {
@@ -134,29 +90,26 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return MessageWrapper.internal_static_p4f_protocols_ClientMessage_descriptor;
+    return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_ClientMessage_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return MessageWrapper.internal_static_p4f_protocols_ClientMessage_fieldAccessorTable
+    return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_ClientMessage_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            ClientMessage.class, ClientMessage.Builder.class);
+            com.fz.foodzoneserver.protocols.ClientMessage.class, com.fz.foodzoneserver.protocols.ClientMessage.Builder.class);
   }
 
-  private int clientRequestsCase_ = 0;
-  private java.lang.Object clientRequests_;
-  public enum ClientRequestsCase
+  private int requestsCase_ = 0;
+  private java.lang.Object requests_;
+  public enum RequestsCase
       implements com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-    ACCOUNT(2),
-    REGACC(3),
-    ORDER(4),
-    CHANGERES(5),
-    CLIENTREQUESTS_NOT_SET(0);
+    LOGINREQUEST(2),
+    REQUESTS_NOT_SET(0);
     private final int value;
-    private ClientRequestsCase(int value) {
+    private RequestsCase(int value) {
       this.value = value;
     }
     /**
@@ -165,17 +118,14 @@ private static final long serialVersionUID = 0L;
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
-    public static ClientRequestsCase valueOf(int value) {
+    public static RequestsCase valueOf(int value) {
       return forNumber(value);
     }
 
-    public static ClientRequestsCase forNumber(int value) {
+    public static RequestsCase forNumber(int value) {
       switch (value) {
-        case 2: return ACCOUNT;
-        case 3: return REGACC;
-        case 4: return ORDER;
-        case 5: return CHANGERES;
-        case 0: return CLIENTREQUESTS_NOT_SET;
+        case 2: return LOGINREQUEST;
+        case 0: return REQUESTS_NOT_SET;
         default: return null;
       }
     }
@@ -184,157 +134,79 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public ClientRequestsCase
-  getClientRequestsCase() {
-    return ClientRequestsCase.forNumber(
-        clientRequestsCase_);
+  public RequestsCase
+  getRequestsCase() {
+    return RequestsCase.forNumber(
+        requestsCase_);
   }
 
-  public static final int OPCODE_FIELD_NUMBER = 1;
-  private int opcode_;
+  public static final int MSG_FIELD_NUMBER = 1;
+  private volatile java.lang.Object msg_;
   /**
-   * <code>int32 opcode = 1;</code>
-   * @return The opcode.
+   * <code>string msg = 1;</code>
+   * @return The msg.
    */
   @java.lang.Override
-  public int getOpcode() {
-    return opcode_;
+  public java.lang.String getMsg() {
+    java.lang.Object ref = msg_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      msg_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string msg = 1;</code>
+   * @return The bytes for msg.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getMsgBytes() {
+    java.lang.Object ref = msg_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      msg_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
-  public static final int ACCOUNT_FIELD_NUMBER = 2;
+  public static final int LOGINREQUEST_FIELD_NUMBER = 2;
   /**
-   * <pre>
-   *Use for login and change password
-   * </pre>
-   *
-   * <code>.p4f_protocols.LoginInfo account = 2;</code>
-   * @return Whether the account field is set.
+   * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
+   * @return Whether the loginRequest field is set.
    */
   @java.lang.Override
-  public boolean hasAccount() {
-    return clientRequestsCase_ == 2;
+  public boolean hasLoginRequest() {
+    return requestsCase_ == 2;
   }
   /**
-   * <pre>
-   *Use for login and change password
-   * </pre>
-   *
-   * <code>.p4f_protocols.LoginInfo account = 2;</code>
-   * @return The account.
+   * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
+   * @return The loginRequest.
    */
   @java.lang.Override
-  public LoginInfo getAccount() {
-    if (clientRequestsCase_ == 2) {
-       return (LoginInfo) clientRequests_;
+  public com.fz.foodzoneserver.protocols.LoginRequest getLoginRequest() {
+    if (requestsCase_ == 2) {
+       return (com.fz.foodzoneserver.protocols.LoginRequest) requests_;
     }
-    return LoginInfo.getDefaultInstance();
+    return com.fz.foodzoneserver.protocols.LoginRequest.getDefaultInstance();
   }
   /**
-   * <pre>
-   *Use for login and change password
-   * </pre>
-   *
-   * <code>.p4f_protocols.LoginInfo account = 2;</code>
+   * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
    */
   @java.lang.Override
-  public LoginInfoOrBuilder getAccountOrBuilder() {
-    if (clientRequestsCase_ == 2) {
-       return (LoginInfo) clientRequests_;
+  public com.fz.foodzoneserver.protocols.LoginRequestOrBuilder getLoginRequestOrBuilder() {
+    if (requestsCase_ == 2) {
+       return (com.fz.foodzoneserver.protocols.LoginRequest) requests_;
     }
-    return LoginInfo.getDefaultInstance();
-  }
-
-  public static final int REGACC_FIELD_NUMBER = 3;
-  /**
-   * <code>.p4f_protocols.RegisterInfo regAcc = 3;</code>
-   * @return Whether the regAcc field is set.
-   */
-  @java.lang.Override
-  public boolean hasRegAcc() {
-    return clientRequestsCase_ == 3;
-  }
-  /**
-   * <code>.p4f_protocols.RegisterInfo regAcc = 3;</code>
-   * @return The regAcc.
-   */
-  @java.lang.Override
-  public RegisterInfo getRegAcc() {
-    if (clientRequestsCase_ == 3) {
-       return (RegisterInfo) clientRequests_;
-    }
-    return RegisterInfo.getDefaultInstance();
-  }
-  /**
-   * <code>.p4f_protocols.RegisterInfo regAcc = 3;</code>
-   */
-  @java.lang.Override
-  public RegisterInfoOrBuilder getRegAccOrBuilder() {
-    if (clientRequestsCase_ == 3) {
-       return (RegisterInfo) clientRequests_;
-    }
-    return RegisterInfo.getDefaultInstance();
-  }
-
-  public static final int ORDER_FIELD_NUMBER = 4;
-  /**
-   * <code>.p4f_protocols.Order order = 4;</code>
-   * @return Whether the order field is set.
-   */
-  @java.lang.Override
-  public boolean hasOrder() {
-    return clientRequestsCase_ == 4;
-  }
-  /**
-   * <code>.p4f_protocols.Order order = 4;</code>
-   * @return The order.
-   */
-  @java.lang.Override
-  public Order getOrder() {
-    if (clientRequestsCase_ == 4) {
-       return (Order) clientRequests_;
-    }
-    return Order.getDefaultInstance();
-  }
-  /**
-   * <code>.p4f_protocols.Order order = 4;</code>
-   */
-  @java.lang.Override
-  public OrderOrBuilder getOrderOrBuilder() {
-    if (clientRequestsCase_ == 4) {
-       return (Order) clientRequests_;
-    }
-    return Order.getDefaultInstance();
-  }
-
-  public static final int CHANGERES_FIELD_NUMBER = 5;
-  /**
-   * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-   * @return Whether the changeRes field is set.
-   */
-  @java.lang.Override
-  public boolean hasChangeRes() {
-    return clientRequestsCase_ == 5;
-  }
-  /**
-   * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-   * @return The changeRes.
-   */
-  @java.lang.Override
-  public changePassInfo getChangeRes() {
-    if (clientRequestsCase_ == 5) {
-       return (changePassInfo) clientRequests_;
-    }
-    return changePassInfo.getDefaultInstance();
-  }
-  /**
-   * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-   */
-  @java.lang.Override
-  public changePassInfoOrBuilder getChangeResOrBuilder() {
-    if (clientRequestsCase_ == 5) {
-       return (changePassInfo) clientRequests_;
-    }
-    return changePassInfo.getDefaultInstance();
+    return com.fz.foodzoneserver.protocols.LoginRequest.getDefaultInstance();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -351,20 +223,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (opcode_ != 0) {
-      output.writeInt32(1, opcode_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(msg_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, msg_);
     }
-    if (clientRequestsCase_ == 2) {
-      output.writeMessage(2, (LoginInfo) clientRequests_);
-    }
-    if (clientRequestsCase_ == 3) {
-      output.writeMessage(3, (RegisterInfo) clientRequests_);
-    }
-    if (clientRequestsCase_ == 4) {
-      output.writeMessage(4, (Order) clientRequests_);
-    }
-    if (clientRequestsCase_ == 5) {
-      output.writeMessage(5, (changePassInfo) clientRequests_);
+    if (requestsCase_ == 2) {
+      output.writeMessage(2, (com.fz.foodzoneserver.protocols.LoginRequest) requests_);
     }
     unknownFields.writeTo(output);
   }
@@ -375,25 +238,12 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (opcode_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, opcode_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(msg_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, msg_);
     }
-    if (clientRequestsCase_ == 2) {
+    if (requestsCase_ == 2) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, (LoginInfo) clientRequests_);
-    }
-    if (clientRequestsCase_ == 3) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(3, (RegisterInfo) clientRequests_);
-    }
-    if (clientRequestsCase_ == 4) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, (Order) clientRequests_);
-    }
-    if (clientRequestsCase_ == 5) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, (changePassInfo) clientRequests_);
+        .computeMessageSize(2, (com.fz.foodzoneserver.protocols.LoginRequest) requests_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -405,30 +255,18 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof ClientMessage)) {
+    if (!(obj instanceof com.fz.foodzoneserver.protocols.ClientMessage)) {
       return super.equals(obj);
     }
-    ClientMessage other = (ClientMessage) obj;
+    com.fz.foodzoneserver.protocols.ClientMessage other = (com.fz.foodzoneserver.protocols.ClientMessage) obj;
 
-    if (getOpcode()
-        != other.getOpcode()) return false;
-    if (!getClientRequestsCase().equals(other.getClientRequestsCase())) return false;
-    switch (clientRequestsCase_) {
+    if (!getMsg()
+        .equals(other.getMsg())) return false;
+    if (!getRequestsCase().equals(other.getRequestsCase())) return false;
+    switch (requestsCase_) {
       case 2:
-        if (!getAccount()
-            .equals(other.getAccount())) return false;
-        break;
-      case 3:
-        if (!getRegAcc()
-            .equals(other.getRegAcc())) return false;
-        break;
-      case 4:
-        if (!getOrder()
-            .equals(other.getOrder())) return false;
-        break;
-      case 5:
-        if (!getChangeRes()
-            .equals(other.getChangeRes())) return false;
+        if (!getLoginRequest()
+            .equals(other.getLoginRequest())) return false;
         break;
       case 0:
       default:
@@ -444,24 +282,12 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + OPCODE_FIELD_NUMBER;
-    hash = (53 * hash) + getOpcode();
-    switch (clientRequestsCase_) {
+    hash = (37 * hash) + MSG_FIELD_NUMBER;
+    hash = (53 * hash) + getMsg().hashCode();
+    switch (requestsCase_) {
       case 2:
-        hash = (37 * hash) + ACCOUNT_FIELD_NUMBER;
-        hash = (53 * hash) + getAccount().hashCode();
-        break;
-      case 3:
-        hash = (37 * hash) + REGACC_FIELD_NUMBER;
-        hash = (53 * hash) + getRegAcc().hashCode();
-        break;
-      case 4:
-        hash = (37 * hash) + ORDER_FIELD_NUMBER;
-        hash = (53 * hash) + getOrder().hashCode();
-        break;
-      case 5:
-        hash = (37 * hash) + CHANGERES_FIELD_NUMBER;
-        hash = (53 * hash) + getChangeRes().hashCode();
+        hash = (37 * hash) + LOGINREQUEST_FIELD_NUMBER;
+        hash = (53 * hash) + getLoginRequest().hashCode();
         break;
       case 0:
       default:
@@ -471,69 +297,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static ClientMessage parseFrom(
+  public static com.fz.foodzoneserver.protocols.ClientMessage parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ClientMessage parseFrom(
+  public static com.fz.foodzoneserver.protocols.ClientMessage parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ClientMessage parseFrom(
+  public static com.fz.foodzoneserver.protocols.ClientMessage parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ClientMessage parseFrom(
+  public static com.fz.foodzoneserver.protocols.ClientMessage parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ClientMessage parseFrom(byte[] data)
+  public static com.fz.foodzoneserver.protocols.ClientMessage parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ClientMessage parseFrom(
+  public static com.fz.foodzoneserver.protocols.ClientMessage parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ClientMessage parseFrom(java.io.InputStream input)
+  public static com.fz.foodzoneserver.protocols.ClientMessage parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ClientMessage parseFrom(
+  public static com.fz.foodzoneserver.protocols.ClientMessage parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ClientMessage parseDelimitedFrom(java.io.InputStream input)
+  public static com.fz.foodzoneserver.protocols.ClientMessage parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static ClientMessage parseDelimitedFrom(
+  public static com.fz.foodzoneserver.protocols.ClientMessage parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ClientMessage parseFrom(
+  public static com.fz.foodzoneserver.protocols.ClientMessage parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ClientMessage parseFrom(
+  public static com.fz.foodzoneserver.protocols.ClientMessage parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -546,7 +372,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(ClientMessage prototype) {
+  public static Builder newBuilder(com.fz.foodzoneserver.protocols.ClientMessage prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -562,30 +388,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   *op: 0 = Logout, 1 = Login, 2 = register, 3 = change password;
-   * </pre>
-   *
-   * Protobuf type {@code p4f_protocols.ClientMessage}
+   * Protobuf type {@code foodzone_protocols.ClientMessage}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:p4f_protocols.ClientMessage)
-          ClientMessageOrBuilder {
+      // @@protoc_insertion_point(builder_implements:foodzone_protocols.ClientMessage)
+      com.fz.foodzoneserver.protocols.ClientMessageOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return MessageWrapper.internal_static_p4f_protocols_ClientMessage_descriptor;
+      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_ClientMessage_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return MessageWrapper.internal_static_p4f_protocols_ClientMessage_fieldAccessorTable
+      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_ClientMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ClientMessage.class, ClientMessage.Builder.class);
+              com.fz.foodzoneserver.protocols.ClientMessage.class, com.fz.foodzoneserver.protocols.ClientMessage.Builder.class);
     }
 
-    // Construct using com.p2p.p4f.protocols.ClientMessage.newBuilder()
+    // Construct using com.fz.foodzoneserver.protocols.ClientMessage.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -603,27 +425,27 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      opcode_ = 0;
+      msg_ = "";
 
-      clientRequestsCase_ = 0;
-      clientRequests_ = null;
+      requestsCase_ = 0;
+      requests_ = null;
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return MessageWrapper.internal_static_p4f_protocols_ClientMessage_descriptor;
+      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_ClientMessage_descriptor;
     }
 
     @java.lang.Override
-    public ClientMessage getDefaultInstanceForType() {
-      return ClientMessage.getDefaultInstance();
+    public com.fz.foodzoneserver.protocols.ClientMessage getDefaultInstanceForType() {
+      return com.fz.foodzoneserver.protocols.ClientMessage.getDefaultInstance();
     }
 
     @java.lang.Override
-    public ClientMessage build() {
-      ClientMessage result = buildPartial();
+    public com.fz.foodzoneserver.protocols.ClientMessage build() {
+      com.fz.foodzoneserver.protocols.ClientMessage result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -631,38 +453,17 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public ClientMessage buildPartial() {
-      ClientMessage result = new ClientMessage(this);
-      result.opcode_ = opcode_;
-      if (clientRequestsCase_ == 2) {
-        if (accountBuilder_ == null) {
-          result.clientRequests_ = clientRequests_;
+    public com.fz.foodzoneserver.protocols.ClientMessage buildPartial() {
+      com.fz.foodzoneserver.protocols.ClientMessage result = new com.fz.foodzoneserver.protocols.ClientMessage(this);
+      result.msg_ = msg_;
+      if (requestsCase_ == 2) {
+        if (loginRequestBuilder_ == null) {
+          result.requests_ = requests_;
         } else {
-          result.clientRequests_ = accountBuilder_.build();
+          result.requests_ = loginRequestBuilder_.build();
         }
       }
-      if (clientRequestsCase_ == 3) {
-        if (regAccBuilder_ == null) {
-          result.clientRequests_ = clientRequests_;
-        } else {
-          result.clientRequests_ = regAccBuilder_.build();
-        }
-      }
-      if (clientRequestsCase_ == 4) {
-        if (orderBuilder_ == null) {
-          result.clientRequests_ = clientRequests_;
-        } else {
-          result.clientRequests_ = orderBuilder_.build();
-        }
-      }
-      if (clientRequestsCase_ == 5) {
-        if (changeResBuilder_ == null) {
-          result.clientRequests_ = clientRequests_;
-        } else {
-          result.clientRequests_ = changeResBuilder_.build();
-        }
-      }
-      result.clientRequestsCase_ = clientRequestsCase_;
+      result.requestsCase_ = requestsCase_;
       onBuilt();
       return result;
     }
@@ -701,37 +502,26 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof ClientMessage) {
-        return mergeFrom((ClientMessage)other);
+      if (other instanceof com.fz.foodzoneserver.protocols.ClientMessage) {
+        return mergeFrom((com.fz.foodzoneserver.protocols.ClientMessage)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(ClientMessage other) {
-      if (other == ClientMessage.getDefaultInstance()) return this;
-      if (other.getOpcode() != 0) {
-        setOpcode(other.getOpcode());
+    public Builder mergeFrom(com.fz.foodzoneserver.protocols.ClientMessage other) {
+      if (other == com.fz.foodzoneserver.protocols.ClientMessage.getDefaultInstance()) return this;
+      if (!other.getMsg().isEmpty()) {
+        msg_ = other.msg_;
+        onChanged();
       }
-      switch (other.getClientRequestsCase()) {
-        case ACCOUNT: {
-          mergeAccount(other.getAccount());
+      switch (other.getRequestsCase()) {
+        case LOGINREQUEST: {
+          mergeLoginRequest(other.getLoginRequest());
           break;
         }
-        case REGACC: {
-          mergeRegAcc(other.getRegAcc());
-          break;
-        }
-        case ORDER: {
-          mergeOrder(other.getOrder());
-          break;
-        }
-        case CHANGERES: {
-          mergeChangeRes(other.getChangeRes());
-          break;
-        }
-        case CLIENTREQUESTS_NOT_SET: {
+        case REQUESTS_NOT_SET: {
           break;
         }
       }
@@ -750,11 +540,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      ClientMessage parsedMessage = null;
+      com.fz.foodzoneserver.protocols.ClientMessage parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (ClientMessage) e.getUnfinishedMessage();
+        parsedMessage = (com.fz.foodzoneserver.protocols.ClientMessage) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -763,651 +553,237 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    private int clientRequestsCase_ = 0;
-    private java.lang.Object clientRequests_;
-    public ClientRequestsCase
-        getClientRequestsCase() {
-      return ClientRequestsCase.forNumber(
-          clientRequestsCase_);
+    private int requestsCase_ = 0;
+    private java.lang.Object requests_;
+    public RequestsCase
+        getRequestsCase() {
+      return RequestsCase.forNumber(
+          requestsCase_);
     }
 
-    public Builder clearClientRequests() {
-      clientRequestsCase_ = 0;
-      clientRequests_ = null;
+    public Builder clearRequests() {
+      requestsCase_ = 0;
+      requests_ = null;
       onChanged();
       return this;
     }
 
 
-    private int opcode_ ;
+    private java.lang.Object msg_ = "";
     /**
-     * <code>int32 opcode = 1;</code>
-     * @return The opcode.
+     * <code>string msg = 1;</code>
+     * @return The msg.
      */
-    @java.lang.Override
-    public int getOpcode() {
-      return opcode_;
+    public java.lang.String getMsg() {
+      java.lang.Object ref = msg_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        msg_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>int32 opcode = 1;</code>
-     * @param value The opcode to set.
+     * <code>string msg = 1;</code>
+     * @return The bytes for msg.
+     */
+    public com.google.protobuf.ByteString
+        getMsgBytes() {
+      java.lang.Object ref = msg_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        msg_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string msg = 1;</code>
+     * @param value The msg to set.
      * @return This builder for chaining.
      */
-    public Builder setOpcode(int value) {
-      
-      opcode_ = value;
+    public Builder setMsg(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      msg_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 opcode = 1;</code>
+     * <code>string msg = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearOpcode() {
+    public Builder clearMsg() {
       
-      opcode_ = 0;
+      msg_ = getDefaultInstance().getMsg();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string msg = 1;</code>
+     * @param value The bytes for msg to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMsgBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      msg_ = value;
       onChanged();
       return this;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-            LoginInfo, LoginInfo.Builder, LoginInfoOrBuilder> accountBuilder_;
+        com.fz.foodzoneserver.protocols.LoginRequest, com.fz.foodzoneserver.protocols.LoginRequest.Builder, com.fz.foodzoneserver.protocols.LoginRequestOrBuilder> loginRequestBuilder_;
     /**
-     * <pre>
-     *Use for login and change password
-     * </pre>
-     *
-     * <code>.p4f_protocols.LoginInfo account = 2;</code>
-     * @return Whether the account field is set.
+     * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
+     * @return Whether the loginRequest field is set.
      */
     @java.lang.Override
-    public boolean hasAccount() {
-      return clientRequestsCase_ == 2;
+    public boolean hasLoginRequest() {
+      return requestsCase_ == 2;
     }
     /**
-     * <pre>
-     *Use for login and change password
-     * </pre>
-     *
-     * <code>.p4f_protocols.LoginInfo account = 2;</code>
-     * @return The account.
+     * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
+     * @return The loginRequest.
      */
     @java.lang.Override
-    public LoginInfo getAccount() {
-      if (accountBuilder_ == null) {
-        if (clientRequestsCase_ == 2) {
-          return (LoginInfo) clientRequests_;
+    public com.fz.foodzoneserver.protocols.LoginRequest getLoginRequest() {
+      if (loginRequestBuilder_ == null) {
+        if (requestsCase_ == 2) {
+          return (com.fz.foodzoneserver.protocols.LoginRequest) requests_;
         }
-        return LoginInfo.getDefaultInstance();
+        return com.fz.foodzoneserver.protocols.LoginRequest.getDefaultInstance();
       } else {
-        if (clientRequestsCase_ == 2) {
-          return accountBuilder_.getMessage();
+        if (requestsCase_ == 2) {
+          return loginRequestBuilder_.getMessage();
         }
-        return LoginInfo.getDefaultInstance();
+        return com.fz.foodzoneserver.protocols.LoginRequest.getDefaultInstance();
       }
     }
     /**
-     * <pre>
-     *Use for login and change password
-     * </pre>
-     *
-     * <code>.p4f_protocols.LoginInfo account = 2;</code>
+     * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
      */
-    public Builder setAccount(LoginInfo value) {
-      if (accountBuilder_ == null) {
+    public Builder setLoginRequest(com.fz.foodzoneserver.protocols.LoginRequest value) {
+      if (loginRequestBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        clientRequests_ = value;
+        requests_ = value;
         onChanged();
       } else {
-        accountBuilder_.setMessage(value);
+        loginRequestBuilder_.setMessage(value);
       }
-      clientRequestsCase_ = 2;
+      requestsCase_ = 2;
       return this;
     }
     /**
-     * <pre>
-     *Use for login and change password
-     * </pre>
-     *
-     * <code>.p4f_protocols.LoginInfo account = 2;</code>
+     * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
      */
-    public Builder setAccount(
-        LoginInfo.Builder builderForValue) {
-      if (accountBuilder_ == null) {
-        clientRequests_ = builderForValue.build();
+    public Builder setLoginRequest(
+        com.fz.foodzoneserver.protocols.LoginRequest.Builder builderForValue) {
+      if (loginRequestBuilder_ == null) {
+        requests_ = builderForValue.build();
         onChanged();
       } else {
-        accountBuilder_.setMessage(builderForValue.build());
+        loginRequestBuilder_.setMessage(builderForValue.build());
       }
-      clientRequestsCase_ = 2;
+      requestsCase_ = 2;
       return this;
     }
     /**
-     * <pre>
-     *Use for login and change password
-     * </pre>
-     *
-     * <code>.p4f_protocols.LoginInfo account = 2;</code>
+     * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
      */
-    public Builder mergeAccount(LoginInfo value) {
-      if (accountBuilder_ == null) {
-        if (clientRequestsCase_ == 2 &&
-            clientRequests_ != LoginInfo.getDefaultInstance()) {
-          clientRequests_ = LoginInfo.newBuilder((LoginInfo) clientRequests_)
+    public Builder mergeLoginRequest(com.fz.foodzoneserver.protocols.LoginRequest value) {
+      if (loginRequestBuilder_ == null) {
+        if (requestsCase_ == 2 &&
+            requests_ != com.fz.foodzoneserver.protocols.LoginRequest.getDefaultInstance()) {
+          requests_ = com.fz.foodzoneserver.protocols.LoginRequest.newBuilder((com.fz.foodzoneserver.protocols.LoginRequest) requests_)
               .mergeFrom(value).buildPartial();
         } else {
-          clientRequests_ = value;
+          requests_ = value;
         }
         onChanged();
       } else {
-        if (clientRequestsCase_ == 2) {
-          accountBuilder_.mergeFrom(value);
+        if (requestsCase_ == 2) {
+          loginRequestBuilder_.mergeFrom(value);
         }
-        accountBuilder_.setMessage(value);
+        loginRequestBuilder_.setMessage(value);
       }
-      clientRequestsCase_ = 2;
+      requestsCase_ = 2;
       return this;
     }
     /**
-     * <pre>
-     *Use for login and change password
-     * </pre>
-     *
-     * <code>.p4f_protocols.LoginInfo account = 2;</code>
+     * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
      */
-    public Builder clearAccount() {
-      if (accountBuilder_ == null) {
-        if (clientRequestsCase_ == 2) {
-          clientRequestsCase_ = 0;
-          clientRequests_ = null;
+    public Builder clearLoginRequest() {
+      if (loginRequestBuilder_ == null) {
+        if (requestsCase_ == 2) {
+          requestsCase_ = 0;
+          requests_ = null;
           onChanged();
         }
       } else {
-        if (clientRequestsCase_ == 2) {
-          clientRequestsCase_ = 0;
-          clientRequests_ = null;
+        if (requestsCase_ == 2) {
+          requestsCase_ = 0;
+          requests_ = null;
         }
-        accountBuilder_.clear();
+        loginRequestBuilder_.clear();
       }
       return this;
     }
     /**
-     * <pre>
-     *Use for login and change password
-     * </pre>
-     *
-     * <code>.p4f_protocols.LoginInfo account = 2;</code>
+     * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
      */
-    public LoginInfo.Builder getAccountBuilder() {
-      return getAccountFieldBuilder().getBuilder();
+    public com.fz.foodzoneserver.protocols.LoginRequest.Builder getLoginRequestBuilder() {
+      return getLoginRequestFieldBuilder().getBuilder();
     }
     /**
-     * <pre>
-     *Use for login and change password
-     * </pre>
-     *
-     * <code>.p4f_protocols.LoginInfo account = 2;</code>
+     * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
      */
     @java.lang.Override
-    public LoginInfoOrBuilder getAccountOrBuilder() {
-      if ((clientRequestsCase_ == 2) && (accountBuilder_ != null)) {
-        return accountBuilder_.getMessageOrBuilder();
+    public com.fz.foodzoneserver.protocols.LoginRequestOrBuilder getLoginRequestOrBuilder() {
+      if ((requestsCase_ == 2) && (loginRequestBuilder_ != null)) {
+        return loginRequestBuilder_.getMessageOrBuilder();
       } else {
-        if (clientRequestsCase_ == 2) {
-          return (LoginInfo) clientRequests_;
+        if (requestsCase_ == 2) {
+          return (com.fz.foodzoneserver.protocols.LoginRequest) requests_;
         }
-        return LoginInfo.getDefaultInstance();
+        return com.fz.foodzoneserver.protocols.LoginRequest.getDefaultInstance();
       }
     }
     /**
-     * <pre>
-     *Use for login and change password
-     * </pre>
-     *
-     * <code>.p4f_protocols.LoginInfo account = 2;</code>
+     * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-            LoginInfo, LoginInfo.Builder, LoginInfoOrBuilder>
-        getAccountFieldBuilder() {
-      if (accountBuilder_ == null) {
-        if (!(clientRequestsCase_ == 2)) {
-          clientRequests_ = LoginInfo.getDefaultInstance();
+        com.fz.foodzoneserver.protocols.LoginRequest, com.fz.foodzoneserver.protocols.LoginRequest.Builder, com.fz.foodzoneserver.protocols.LoginRequestOrBuilder> 
+        getLoginRequestFieldBuilder() {
+      if (loginRequestBuilder_ == null) {
+        if (!(requestsCase_ == 2)) {
+          requests_ = com.fz.foodzoneserver.protocols.LoginRequest.getDefaultInstance();
         }
-        accountBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-                LoginInfo, LoginInfo.Builder, LoginInfoOrBuilder>(
-                (LoginInfo) clientRequests_,
+        loginRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.fz.foodzoneserver.protocols.LoginRequest, com.fz.foodzoneserver.protocols.LoginRequest.Builder, com.fz.foodzoneserver.protocols.LoginRequestOrBuilder>(
+                (com.fz.foodzoneserver.protocols.LoginRequest) requests_,
                 getParentForChildren(),
                 isClean());
-        clientRequests_ = null;
+        requests_ = null;
       }
-      clientRequestsCase_ = 2;
+      requestsCase_ = 2;
       onChanged();;
-      return accountBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-            RegisterInfo, RegisterInfo.Builder, RegisterInfoOrBuilder> regAccBuilder_;
-    /**
-     * <code>.p4f_protocols.RegisterInfo regAcc = 3;</code>
-     * @return Whether the regAcc field is set.
-     */
-    @java.lang.Override
-    public boolean hasRegAcc() {
-      return clientRequestsCase_ == 3;
-    }
-    /**
-     * <code>.p4f_protocols.RegisterInfo regAcc = 3;</code>
-     * @return The regAcc.
-     */
-    @java.lang.Override
-    public RegisterInfo getRegAcc() {
-      if (regAccBuilder_ == null) {
-        if (clientRequestsCase_ == 3) {
-          return (RegisterInfo) clientRequests_;
-        }
-        return RegisterInfo.getDefaultInstance();
-      } else {
-        if (clientRequestsCase_ == 3) {
-          return regAccBuilder_.getMessage();
-        }
-        return RegisterInfo.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.p4f_protocols.RegisterInfo regAcc = 3;</code>
-     */
-    public Builder setRegAcc(RegisterInfo value) {
-      if (regAccBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        clientRequests_ = value;
-        onChanged();
-      } else {
-        regAccBuilder_.setMessage(value);
-      }
-      clientRequestsCase_ = 3;
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.RegisterInfo regAcc = 3;</code>
-     */
-    public Builder setRegAcc(
-        RegisterInfo.Builder builderForValue) {
-      if (regAccBuilder_ == null) {
-        clientRequests_ = builderForValue.build();
-        onChanged();
-      } else {
-        regAccBuilder_.setMessage(builderForValue.build());
-      }
-      clientRequestsCase_ = 3;
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.RegisterInfo regAcc = 3;</code>
-     */
-    public Builder mergeRegAcc(RegisterInfo value) {
-      if (regAccBuilder_ == null) {
-        if (clientRequestsCase_ == 3 &&
-            clientRequests_ != RegisterInfo.getDefaultInstance()) {
-          clientRequests_ = RegisterInfo.newBuilder((RegisterInfo) clientRequests_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          clientRequests_ = value;
-        }
-        onChanged();
-      } else {
-        if (clientRequestsCase_ == 3) {
-          regAccBuilder_.mergeFrom(value);
-        }
-        regAccBuilder_.setMessage(value);
-      }
-      clientRequestsCase_ = 3;
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.RegisterInfo regAcc = 3;</code>
-     */
-    public Builder clearRegAcc() {
-      if (regAccBuilder_ == null) {
-        if (clientRequestsCase_ == 3) {
-          clientRequestsCase_ = 0;
-          clientRequests_ = null;
-          onChanged();
-        }
-      } else {
-        if (clientRequestsCase_ == 3) {
-          clientRequestsCase_ = 0;
-          clientRequests_ = null;
-        }
-        regAccBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.RegisterInfo regAcc = 3;</code>
-     */
-    public RegisterInfo.Builder getRegAccBuilder() {
-      return getRegAccFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.p4f_protocols.RegisterInfo regAcc = 3;</code>
-     */
-    @java.lang.Override
-    public RegisterInfoOrBuilder getRegAccOrBuilder() {
-      if ((clientRequestsCase_ == 3) && (regAccBuilder_ != null)) {
-        return regAccBuilder_.getMessageOrBuilder();
-      } else {
-        if (clientRequestsCase_ == 3) {
-          return (RegisterInfo) clientRequests_;
-        }
-        return RegisterInfo.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.p4f_protocols.RegisterInfo regAcc = 3;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-            RegisterInfo, RegisterInfo.Builder, RegisterInfoOrBuilder>
-        getRegAccFieldBuilder() {
-      if (regAccBuilder_ == null) {
-        if (!(clientRequestsCase_ == 3)) {
-          clientRequests_ = RegisterInfo.getDefaultInstance();
-        }
-        regAccBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-                RegisterInfo, RegisterInfo.Builder, RegisterInfoOrBuilder>(
-                (RegisterInfo) clientRequests_,
-                getParentForChildren(),
-                isClean());
-        clientRequests_ = null;
-      }
-      clientRequestsCase_ = 3;
-      onChanged();;
-      return regAccBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-            Order, Order.Builder, OrderOrBuilder> orderBuilder_;
-    /**
-     * <code>.p4f_protocols.Order order = 4;</code>
-     * @return Whether the order field is set.
-     */
-    @java.lang.Override
-    public boolean hasOrder() {
-      return clientRequestsCase_ == 4;
-    }
-    /**
-     * <code>.p4f_protocols.Order order = 4;</code>
-     * @return The order.
-     */
-    @java.lang.Override
-    public Order getOrder() {
-      if (orderBuilder_ == null) {
-        if (clientRequestsCase_ == 4) {
-          return (Order) clientRequests_;
-        }
-        return Order.getDefaultInstance();
-      } else {
-        if (clientRequestsCase_ == 4) {
-          return orderBuilder_.getMessage();
-        }
-        return Order.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.p4f_protocols.Order order = 4;</code>
-     */
-    public Builder setOrder(Order value) {
-      if (orderBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        clientRequests_ = value;
-        onChanged();
-      } else {
-        orderBuilder_.setMessage(value);
-      }
-      clientRequestsCase_ = 4;
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.Order order = 4;</code>
-     */
-    public Builder setOrder(
-        Order.Builder builderForValue) {
-      if (orderBuilder_ == null) {
-        clientRequests_ = builderForValue.build();
-        onChanged();
-      } else {
-        orderBuilder_.setMessage(builderForValue.build());
-      }
-      clientRequestsCase_ = 4;
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.Order order = 4;</code>
-     */
-    public Builder mergeOrder(Order value) {
-      if (orderBuilder_ == null) {
-        if (clientRequestsCase_ == 4 &&
-            clientRequests_ != Order.getDefaultInstance()) {
-          clientRequests_ = Order.newBuilder((Order) clientRequests_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          clientRequests_ = value;
-        }
-        onChanged();
-      } else {
-        if (clientRequestsCase_ == 4) {
-          orderBuilder_.mergeFrom(value);
-        }
-        orderBuilder_.setMessage(value);
-      }
-      clientRequestsCase_ = 4;
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.Order order = 4;</code>
-     */
-    public Builder clearOrder() {
-      if (orderBuilder_ == null) {
-        if (clientRequestsCase_ == 4) {
-          clientRequestsCase_ = 0;
-          clientRequests_ = null;
-          onChanged();
-        }
-      } else {
-        if (clientRequestsCase_ == 4) {
-          clientRequestsCase_ = 0;
-          clientRequests_ = null;
-        }
-        orderBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.Order order = 4;</code>
-     */
-    public Order.Builder getOrderBuilder() {
-      return getOrderFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.p4f_protocols.Order order = 4;</code>
-     */
-    @java.lang.Override
-    public OrderOrBuilder getOrderOrBuilder() {
-      if ((clientRequestsCase_ == 4) && (orderBuilder_ != null)) {
-        return orderBuilder_.getMessageOrBuilder();
-      } else {
-        if (clientRequestsCase_ == 4) {
-          return (Order) clientRequests_;
-        }
-        return Order.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.p4f_protocols.Order order = 4;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-            Order, Order.Builder, OrderOrBuilder>
-        getOrderFieldBuilder() {
-      if (orderBuilder_ == null) {
-        if (!(clientRequestsCase_ == 4)) {
-          clientRequests_ = Order.getDefaultInstance();
-        }
-        orderBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-                Order, Order.Builder, OrderOrBuilder>(
-                (Order) clientRequests_,
-                getParentForChildren(),
-                isClean());
-        clientRequests_ = null;
-      }
-      clientRequestsCase_ = 4;
-      onChanged();;
-      return orderBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-            changePassInfo, changePassInfo.Builder, changePassInfoOrBuilder> changeResBuilder_;
-    /**
-     * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-     * @return Whether the changeRes field is set.
-     */
-    @java.lang.Override
-    public boolean hasChangeRes() {
-      return clientRequestsCase_ == 5;
-    }
-    /**
-     * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-     * @return The changeRes.
-     */
-    @java.lang.Override
-    public changePassInfo getChangeRes() {
-      if (changeResBuilder_ == null) {
-        if (clientRequestsCase_ == 5) {
-          return (changePassInfo) clientRequests_;
-        }
-        return changePassInfo.getDefaultInstance();
-      } else {
-        if (clientRequestsCase_ == 5) {
-          return changeResBuilder_.getMessage();
-        }
-        return changePassInfo.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-     */
-    public Builder setChangeRes(changePassInfo value) {
-      if (changeResBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        clientRequests_ = value;
-        onChanged();
-      } else {
-        changeResBuilder_.setMessage(value);
-      }
-      clientRequestsCase_ = 5;
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-     */
-    public Builder setChangeRes(
-        changePassInfo.Builder builderForValue) {
-      if (changeResBuilder_ == null) {
-        clientRequests_ = builderForValue.build();
-        onChanged();
-      } else {
-        changeResBuilder_.setMessage(builderForValue.build());
-      }
-      clientRequestsCase_ = 5;
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-     */
-    public Builder mergeChangeRes(changePassInfo value) {
-      if (changeResBuilder_ == null) {
-        if (clientRequestsCase_ == 5 &&
-            clientRequests_ != changePassInfo.getDefaultInstance()) {
-          clientRequests_ = changePassInfo.newBuilder((changePassInfo) clientRequests_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          clientRequests_ = value;
-        }
-        onChanged();
-      } else {
-        if (clientRequestsCase_ == 5) {
-          changeResBuilder_.mergeFrom(value);
-        }
-        changeResBuilder_.setMessage(value);
-      }
-      clientRequestsCase_ = 5;
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-     */
-    public Builder clearChangeRes() {
-      if (changeResBuilder_ == null) {
-        if (clientRequestsCase_ == 5) {
-          clientRequestsCase_ = 0;
-          clientRequests_ = null;
-          onChanged();
-        }
-      } else {
-        if (clientRequestsCase_ == 5) {
-          clientRequestsCase_ = 0;
-          clientRequests_ = null;
-        }
-        changeResBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-     */
-    public changePassInfo.Builder getChangeResBuilder() {
-      return getChangeResFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-     */
-    @java.lang.Override
-    public changePassInfoOrBuilder getChangeResOrBuilder() {
-      if ((clientRequestsCase_ == 5) && (changeResBuilder_ != null)) {
-        return changeResBuilder_.getMessageOrBuilder();
-      } else {
-        if (clientRequestsCase_ == 5) {
-          return (changePassInfo) clientRequests_;
-        }
-        return changePassInfo.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-            changePassInfo, changePassInfo.Builder, changePassInfoOrBuilder>
-        getChangeResFieldBuilder() {
-      if (changeResBuilder_ == null) {
-        if (!(clientRequestsCase_ == 5)) {
-          clientRequests_ = changePassInfo.getDefaultInstance();
-        }
-        changeResBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-                changePassInfo, changePassInfo.Builder, changePassInfoOrBuilder>(
-                (changePassInfo) clientRequests_,
-                getParentForChildren(),
-                isClean());
-        clientRequests_ = null;
-      }
-      clientRequestsCase_ = 5;
-      onChanged();;
-      return changeResBuilder_;
+      return loginRequestBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
@@ -1422,16 +798,16 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:p4f_protocols.ClientMessage)
+    // @@protoc_insertion_point(builder_scope:foodzone_protocols.ClientMessage)
   }
 
-  // @@protoc_insertion_point(class_scope:p4f_protocols.ClientMessage)
-  private static final ClientMessage DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:foodzone_protocols.ClientMessage)
+  private static final com.fz.foodzoneserver.protocols.ClientMessage DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new ClientMessage();
+    DEFAULT_INSTANCE = new com.fz.foodzoneserver.protocols.ClientMessage();
   }
 
-  public static ClientMessage getDefaultInstance() {
+  public static com.fz.foodzoneserver.protocols.ClientMessage getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -1456,7 +832,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public ClientMessage getDefaultInstanceForType() {
+  public com.fz.foodzoneserver.protocols.ClientMessage getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

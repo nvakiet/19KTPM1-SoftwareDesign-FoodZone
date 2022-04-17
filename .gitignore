@@ -16,6 +16,10 @@ client/.idea/workspace.xml
 Server/.idea/discord.xml
 Server/.idea/deploymentTargetDropDown.xml
 Server/.idea/shelf
+Server/.idea/dataSources
+Server/.idea/dataSources.local.xml
+Server/.idea/dataSources.xml
+Server/.idea/sqldialects.xml
 Server/.idea/workspace.xml
 Server/out
 Server/logs

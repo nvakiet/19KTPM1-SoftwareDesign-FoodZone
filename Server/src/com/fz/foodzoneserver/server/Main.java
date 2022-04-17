@@ -12,10 +12,10 @@ public class Main {
             //String dbConnString = sc.nextLine();
             System.out.print("Input bind IP: ");
             String ip = sc.nextLine();
-            //String dbConnString = "jdbc:sqlserver://DESKTOP-18BTLCH\\SQLEXPRESS;databaseName=PrayForFood;integratedSecurity=true;";
-            String dbConnString = "jdbc:sqlserver://localhost\\SQLSERVER;databaseName=PrayForFood;integratedSecurity=true;encrypt=true;trustServerCertificate=true;";
+            //String dbConnString = "jdbc:sqlserver://DESKTOP-18BTLCH\\SQLEXPRESS;databaseName=FoodZone;integratedSecurity=true;";
+            String dbConnString = "jdbc:sqlserver://localhost\\SQLSERVER:49801;databaseName=FoodZone;integratedSecurity=true;encrypt=true;trustServerCertificate=true;";
 
-            ServerFoodZone server = new ServerFoodZone(dbConnString, ip, 8899);
+            ServerFoodZone server = new ServerFoodZone(dbConnString, ip, 9999);
             server.start();
             int code = sc.nextInt();
             if (code == 0)

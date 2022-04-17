@@ -4,11 +4,11 @@
 package com.fz.foodzoneserver.protocols;
 
 /**
- * Protobuf type {@code p4f_protocols.ServerMessage}
+ * Protobuf type {@code foodzone_protocols.ServerMessage}
  */
 public final class ServerMessage extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:p4f_protocols.ServerMessage)
+    // @@protoc_insertion_point(message_implements:foodzone_protocols.ServerMessage)
     ServerMessageOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use ServerMessage.newBuilder() to construct.
@@ -16,6 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private ServerMessage() {
+    msg_ = "";
   }
 
   @java.lang.Override
@@ -48,56 +49,24 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            opcode_ = input.readInt32();
+            msg_ = s;
             break;
           }
           case 18: {
-            InfoResponse.Builder subBuilder = null;
-            if (serverResponsesCase_ == 2) {
-              subBuilder = ((InfoResponse) serverResponses_).toBuilder();
+            com.fz.foodzoneserver.protocols.LoginResponse.Builder subBuilder = null;
+            if (responsesCase_ == 2) {
+              subBuilder = ((com.fz.foodzoneserver.protocols.LoginResponse) responses_).toBuilder();
             }
-            serverResponses_ =
-                input.readMessage(InfoResponse.parser(), extensionRegistry);
+            responses_ =
+                input.readMessage(com.fz.foodzoneserver.protocols.LoginResponse.parser(), extensionRegistry);
             if (subBuilder != null) {
-              subBuilder.mergeFrom((InfoResponse) serverResponses_);
-              serverResponses_ = subBuilder.buildPartial();
+              subBuilder.mergeFrom((com.fz.foodzoneserver.protocols.LoginResponse) responses_);
+              responses_ = subBuilder.buildPartial();
             }
-            serverResponsesCase_ = 2;
-            break;
-          }
-          case 24: {
-            serverResponsesCase_ = 3;
-            serverResponses_ = input.readInt32();
-            break;
-          }
-          case 34: {
-            orderResponse.Builder subBuilder = null;
-            if (serverResponsesCase_ == 4) {
-              subBuilder = ((orderResponse) serverResponses_).toBuilder();
-            }
-            serverResponses_ =
-                input.readMessage(orderResponse.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((orderResponse) serverResponses_);
-              serverResponses_ = subBuilder.buildPartial();
-            }
-            serverResponsesCase_ = 4;
-            break;
-          }
-          case 42: {
-            changePassInfo.Builder subBuilder = null;
-            if (serverResponsesCase_ == 5) {
-              subBuilder = ((changePassInfo) serverResponses_).toBuilder();
-            }
-            serverResponses_ =
-                input.readMessage(changePassInfo.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((changePassInfo) serverResponses_);
-              serverResponses_ = subBuilder.buildPartial();
-            }
-            serverResponsesCase_ = 5;
+            responsesCase_ = 2;
             break;
           }
           default: {
@@ -121,29 +90,26 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return MessageWrapper.internal_static_p4f_protocols_ServerMessage_descriptor;
+    return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_ServerMessage_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return MessageWrapper.internal_static_p4f_protocols_ServerMessage_fieldAccessorTable
+    return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_ServerMessage_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            ServerMessage.class, ServerMessage.Builder.class);
+            com.fz.foodzoneserver.protocols.ServerMessage.class, com.fz.foodzoneserver.protocols.ServerMessage.Builder.class);
   }
 
-  private int serverResponsesCase_ = 0;
-  private java.lang.Object serverResponses_;
-  public enum ServerResponsesCase
+  private int responsesCase_ = 0;
+  private java.lang.Object responses_;
+  public enum ResponsesCase
       implements com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-    INFORESPONSE(2),
-    RESPONSECODE(3),
-    ORDERRES(4),
-    CHANGERES(5),
-    SERVERRESPONSES_NOT_SET(0);
+    LOGINRESPONSE(2),
+    RESPONSES_NOT_SET(0);
     private final int value;
-    private ServerResponsesCase(int value) {
+    private ResponsesCase(int value) {
       this.value = value;
     }
     /**
@@ -152,17 +118,14 @@ private static final long serialVersionUID = 0L;
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
-    public static ServerResponsesCase valueOf(int value) {
+    public static ResponsesCase valueOf(int value) {
       return forNumber(value);
     }
 
-    public static ServerResponsesCase forNumber(int value) {
+    public static ResponsesCase forNumber(int value) {
       switch (value) {
-        case 2: return INFORESPONSE;
-        case 3: return RESPONSECODE;
-        case 4: return ORDERRES;
-        case 5: return CHANGERES;
-        case 0: return SERVERRESPONSES_NOT_SET;
+        case 2: return LOGINRESPONSE;
+        case 0: return RESPONSES_NOT_SET;
         default: return null;
       }
     }
@@ -171,143 +134,79 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public ServerResponsesCase
-  getServerResponsesCase() {
-    return ServerResponsesCase.forNumber(
-        serverResponsesCase_);
+  public ResponsesCase
+  getResponsesCase() {
+    return ResponsesCase.forNumber(
+        responsesCase_);
   }
 
-  public static final int OPCODE_FIELD_NUMBER = 1;
-  private int opcode_;
+  public static final int MSG_FIELD_NUMBER = 1;
+  private volatile java.lang.Object msg_;
   /**
-   * <code>int32 opcode = 1;</code>
-   * @return The opcode.
+   * <code>string msg = 1;</code>
+   * @return The msg.
    */
   @java.lang.Override
-  public int getOpcode() {
-    return opcode_;
+  public java.lang.String getMsg() {
+    java.lang.Object ref = msg_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      msg_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string msg = 1;</code>
+   * @return The bytes for msg.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getMsgBytes() {
+    java.lang.Object ref = msg_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      msg_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
-  public static final int INFORESPONSE_FIELD_NUMBER = 2;
+  public static final int LOGINRESPONSE_FIELD_NUMBER = 2;
   /**
-   * <code>.p4f_protocols.InfoResponse infoResponse = 2;</code>
-   * @return Whether the infoResponse field is set.
+   * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
+   * @return Whether the loginResponse field is set.
    */
   @java.lang.Override
-  public boolean hasInfoResponse() {
-    return serverResponsesCase_ == 2;
+  public boolean hasLoginResponse() {
+    return responsesCase_ == 2;
   }
   /**
-   * <code>.p4f_protocols.InfoResponse infoResponse = 2;</code>
-   * @return The infoResponse.
+   * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
+   * @return The loginResponse.
    */
   @java.lang.Override
-  public InfoResponse getInfoResponse() {
-    if (serverResponsesCase_ == 2) {
-       return (InfoResponse) serverResponses_;
+  public com.fz.foodzoneserver.protocols.LoginResponse getLoginResponse() {
+    if (responsesCase_ == 2) {
+       return (com.fz.foodzoneserver.protocols.LoginResponse) responses_;
     }
-    return InfoResponse.getDefaultInstance();
+    return com.fz.foodzoneserver.protocols.LoginResponse.getDefaultInstance();
   }
   /**
-   * <code>.p4f_protocols.InfoResponse infoResponse = 2;</code>
+   * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
    */
   @java.lang.Override
-  public InfoResponseOrBuilder getInfoResponseOrBuilder() {
-    if (serverResponsesCase_ == 2) {
-       return (InfoResponse) serverResponses_;
+  public com.fz.foodzoneserver.protocols.LoginResponseOrBuilder getLoginResponseOrBuilder() {
+    if (responsesCase_ == 2) {
+       return (com.fz.foodzoneserver.protocols.LoginResponse) responses_;
     }
-    return InfoResponse.getDefaultInstance();
-  }
-
-  public static final int RESPONSECODE_FIELD_NUMBER = 3;
-  /**
-   * <pre>
-   *Announce Register status and change password status
-   * </pre>
-   *
-   * <code>int32 responseCode = 3;</code>
-   * @return Whether the responseCode field is set.
-   */
-  @java.lang.Override
-  public boolean hasResponseCode() {
-    return serverResponsesCase_ == 3;
-  }
-  /**
-   * <pre>
-   *Announce Register status and change password status
-   * </pre>
-   *
-   * <code>int32 responseCode = 3;</code>
-   * @return The responseCode.
-   */
-  @java.lang.Override
-  public int getResponseCode() {
-    if (serverResponsesCase_ == 3) {
-      return (java.lang.Integer) serverResponses_;
-    }
-    return 0;
-  }
-
-  public static final int ORDERRES_FIELD_NUMBER = 4;
-  /**
-   * <code>.p4f_protocols.orderResponse orderRes = 4;</code>
-   * @return Whether the orderRes field is set.
-   */
-  @java.lang.Override
-  public boolean hasOrderRes() {
-    return serverResponsesCase_ == 4;
-  }
-  /**
-   * <code>.p4f_protocols.orderResponse orderRes = 4;</code>
-   * @return The orderRes.
-   */
-  @java.lang.Override
-  public orderResponse getOrderRes() {
-    if (serverResponsesCase_ == 4) {
-       return (orderResponse) serverResponses_;
-    }
-    return orderResponse.getDefaultInstance();
-  }
-  /**
-   * <code>.p4f_protocols.orderResponse orderRes = 4;</code>
-   */
-  @java.lang.Override
-  public orderResponseOrBuilder getOrderResOrBuilder() {
-    if (serverResponsesCase_ == 4) {
-       return (orderResponse) serverResponses_;
-    }
-    return orderResponse.getDefaultInstance();
-  }
-
-  public static final int CHANGERES_FIELD_NUMBER = 5;
-  /**
-   * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-   * @return Whether the changeRes field is set.
-   */
-  @java.lang.Override
-  public boolean hasChangeRes() {
-    return serverResponsesCase_ == 5;
-  }
-  /**
-   * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-   * @return The changeRes.
-   */
-  @java.lang.Override
-  public changePassInfo getChangeRes() {
-    if (serverResponsesCase_ == 5) {
-       return (changePassInfo) serverResponses_;
-    }
-    return changePassInfo.getDefaultInstance();
-  }
-  /**
-   * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-   */
-  @java.lang.Override
-  public changePassInfoOrBuilder getChangeResOrBuilder() {
-    if (serverResponsesCase_ == 5) {
-       return (changePassInfo) serverResponses_;
-    }
-    return changePassInfo.getDefaultInstance();
+    return com.fz.foodzoneserver.protocols.LoginResponse.getDefaultInstance();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -324,21 +223,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (opcode_ != 0) {
-      output.writeInt32(1, opcode_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(msg_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, msg_);
     }
-    if (serverResponsesCase_ == 2) {
-      output.writeMessage(2, (InfoResponse) serverResponses_);
-    }
-    if (serverResponsesCase_ == 3) {
-      output.writeInt32(
-          3, (int)((java.lang.Integer) serverResponses_));
-    }
-    if (serverResponsesCase_ == 4) {
-      output.writeMessage(4, (orderResponse) serverResponses_);
-    }
-    if (serverResponsesCase_ == 5) {
-      output.writeMessage(5, (changePassInfo) serverResponses_);
+    if (responsesCase_ == 2) {
+      output.writeMessage(2, (com.fz.foodzoneserver.protocols.LoginResponse) responses_);
     }
     unknownFields.writeTo(output);
   }
@@ -349,26 +238,12 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (opcode_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, opcode_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(msg_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, msg_);
     }
-    if (serverResponsesCase_ == 2) {
+    if (responsesCase_ == 2) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, (InfoResponse) serverResponses_);
-    }
-    if (serverResponsesCase_ == 3) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(
-            3, (int)((java.lang.Integer) serverResponses_));
-    }
-    if (serverResponsesCase_ == 4) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, (orderResponse) serverResponses_);
-    }
-    if (serverResponsesCase_ == 5) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, (changePassInfo) serverResponses_);
+        .computeMessageSize(2, (com.fz.foodzoneserver.protocols.LoginResponse) responses_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -380,30 +255,18 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof ServerMessage)) {
+    if (!(obj instanceof com.fz.foodzoneserver.protocols.ServerMessage)) {
       return super.equals(obj);
     }
-    ServerMessage other = (ServerMessage) obj;
+    com.fz.foodzoneserver.protocols.ServerMessage other = (com.fz.foodzoneserver.protocols.ServerMessage) obj;
 
-    if (getOpcode()
-        != other.getOpcode()) return false;
-    if (!getServerResponsesCase().equals(other.getServerResponsesCase())) return false;
-    switch (serverResponsesCase_) {
+    if (!getMsg()
+        .equals(other.getMsg())) return false;
+    if (!getResponsesCase().equals(other.getResponsesCase())) return false;
+    switch (responsesCase_) {
       case 2:
-        if (!getInfoResponse()
-            .equals(other.getInfoResponse())) return false;
-        break;
-      case 3:
-        if (getResponseCode()
-            != other.getResponseCode()) return false;
-        break;
-      case 4:
-        if (!getOrderRes()
-            .equals(other.getOrderRes())) return false;
-        break;
-      case 5:
-        if (!getChangeRes()
-            .equals(other.getChangeRes())) return false;
+        if (!getLoginResponse()
+            .equals(other.getLoginResponse())) return false;
         break;
       case 0:
       default:
@@ -419,24 +282,12 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + OPCODE_FIELD_NUMBER;
-    hash = (53 * hash) + getOpcode();
-    switch (serverResponsesCase_) {
+    hash = (37 * hash) + MSG_FIELD_NUMBER;
+    hash = (53 * hash) + getMsg().hashCode();
+    switch (responsesCase_) {
       case 2:
-        hash = (37 * hash) + INFORESPONSE_FIELD_NUMBER;
-        hash = (53 * hash) + getInfoResponse().hashCode();
-        break;
-      case 3:
-        hash = (37 * hash) + RESPONSECODE_FIELD_NUMBER;
-        hash = (53 * hash) + getResponseCode();
-        break;
-      case 4:
-        hash = (37 * hash) + ORDERRES_FIELD_NUMBER;
-        hash = (53 * hash) + getOrderRes().hashCode();
-        break;
-      case 5:
-        hash = (37 * hash) + CHANGERES_FIELD_NUMBER;
-        hash = (53 * hash) + getChangeRes().hashCode();
+        hash = (37 * hash) + LOGINRESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getLoginResponse().hashCode();
         break;
       case 0:
       default:
@@ -446,69 +297,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static ServerMessage parseFrom(
+  public static com.fz.foodzoneserver.protocols.ServerMessage parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ServerMessage parseFrom(
+  public static com.fz.foodzoneserver.protocols.ServerMessage parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ServerMessage parseFrom(
+  public static com.fz.foodzoneserver.protocols.ServerMessage parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ServerMessage parseFrom(
+  public static com.fz.foodzoneserver.protocols.ServerMessage parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ServerMessage parseFrom(byte[] data)
+  public static com.fz.foodzoneserver.protocols.ServerMessage parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ServerMessage parseFrom(
+  public static com.fz.foodzoneserver.protocols.ServerMessage parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ServerMessage parseFrom(java.io.InputStream input)
+  public static com.fz.foodzoneserver.protocols.ServerMessage parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ServerMessage parseFrom(
+  public static com.fz.foodzoneserver.protocols.ServerMessage parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ServerMessage parseDelimitedFrom(java.io.InputStream input)
+  public static com.fz.foodzoneserver.protocols.ServerMessage parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static ServerMessage parseDelimitedFrom(
+  public static com.fz.foodzoneserver.protocols.ServerMessage parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ServerMessage parseFrom(
+  public static com.fz.foodzoneserver.protocols.ServerMessage parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ServerMessage parseFrom(
+  public static com.fz.foodzoneserver.protocols.ServerMessage parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -521,7 +372,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(ServerMessage prototype) {
+  public static Builder newBuilder(com.fz.foodzoneserver.protocols.ServerMessage prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -537,26 +388,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code p4f_protocols.ServerMessage}
+   * Protobuf type {@code foodzone_protocols.ServerMessage}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:p4f_protocols.ServerMessage)
-          ServerMessageOrBuilder {
+      // @@protoc_insertion_point(builder_implements:foodzone_protocols.ServerMessage)
+      com.fz.foodzoneserver.protocols.ServerMessageOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return MessageWrapper.internal_static_p4f_protocols_ServerMessage_descriptor;
+      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_ServerMessage_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return MessageWrapper.internal_static_p4f_protocols_ServerMessage_fieldAccessorTable
+      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_ServerMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ServerMessage.class, ServerMessage.Builder.class);
+              com.fz.foodzoneserver.protocols.ServerMessage.class, com.fz.foodzoneserver.protocols.ServerMessage.Builder.class);
     }
 
-    // Construct using com.p2p.p4f.protocols.ServerMessage.newBuilder()
+    // Construct using com.fz.foodzoneserver.protocols.ServerMessage.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -574,27 +425,27 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      opcode_ = 0;
+      msg_ = "";
 
-      serverResponsesCase_ = 0;
-      serverResponses_ = null;
+      responsesCase_ = 0;
+      responses_ = null;
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return MessageWrapper.internal_static_p4f_protocols_ServerMessage_descriptor;
+      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_ServerMessage_descriptor;
     }
 
     @java.lang.Override
-    public ServerMessage getDefaultInstanceForType() {
-      return ServerMessage.getDefaultInstance();
+    public com.fz.foodzoneserver.protocols.ServerMessage getDefaultInstanceForType() {
+      return com.fz.foodzoneserver.protocols.ServerMessage.getDefaultInstance();
     }
 
     @java.lang.Override
-    public ServerMessage build() {
-      ServerMessage result = buildPartial();
+    public com.fz.foodzoneserver.protocols.ServerMessage build() {
+      com.fz.foodzoneserver.protocols.ServerMessage result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -602,34 +453,17 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public ServerMessage buildPartial() {
-      ServerMessage result = new ServerMessage(this);
-      result.opcode_ = opcode_;
-      if (serverResponsesCase_ == 2) {
-        if (infoResponseBuilder_ == null) {
-          result.serverResponses_ = serverResponses_;
+    public com.fz.foodzoneserver.protocols.ServerMessage buildPartial() {
+      com.fz.foodzoneserver.protocols.ServerMessage result = new com.fz.foodzoneserver.protocols.ServerMessage(this);
+      result.msg_ = msg_;
+      if (responsesCase_ == 2) {
+        if (loginResponseBuilder_ == null) {
+          result.responses_ = responses_;
         } else {
-          result.serverResponses_ = infoResponseBuilder_.build();
+          result.responses_ = loginResponseBuilder_.build();
         }
       }
-      if (serverResponsesCase_ == 3) {
-        result.serverResponses_ = serverResponses_;
-      }
-      if (serverResponsesCase_ == 4) {
-        if (orderResBuilder_ == null) {
-          result.serverResponses_ = serverResponses_;
-        } else {
-          result.serverResponses_ = orderResBuilder_.build();
-        }
-      }
-      if (serverResponsesCase_ == 5) {
-        if (changeResBuilder_ == null) {
-          result.serverResponses_ = serverResponses_;
-        } else {
-          result.serverResponses_ = changeResBuilder_.build();
-        }
-      }
-      result.serverResponsesCase_ = serverResponsesCase_;
+      result.responsesCase_ = responsesCase_;
       onBuilt();
       return result;
     }
@@ -668,37 +502,26 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof ServerMessage) {
-        return mergeFrom((ServerMessage)other);
+      if (other instanceof com.fz.foodzoneserver.protocols.ServerMessage) {
+        return mergeFrom((com.fz.foodzoneserver.protocols.ServerMessage)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(ServerMessage other) {
-      if (other == ServerMessage.getDefaultInstance()) return this;
-      if (other.getOpcode() != 0) {
-        setOpcode(other.getOpcode());
+    public Builder mergeFrom(com.fz.foodzoneserver.protocols.ServerMessage other) {
+      if (other == com.fz.foodzoneserver.protocols.ServerMessage.getDefaultInstance()) return this;
+      if (!other.getMsg().isEmpty()) {
+        msg_ = other.msg_;
+        onChanged();
       }
-      switch (other.getServerResponsesCase()) {
-        case INFORESPONSE: {
-          mergeInfoResponse(other.getInfoResponse());
+      switch (other.getResponsesCase()) {
+        case LOGINRESPONSE: {
+          mergeLoginResponse(other.getLoginResponse());
           break;
         }
-        case RESPONSECODE: {
-          setResponseCode(other.getResponseCode());
-          break;
-        }
-        case ORDERRES: {
-          mergeOrderRes(other.getOrderRes());
-          break;
-        }
-        case CHANGERES: {
-          mergeChangeRes(other.getChangeRes());
-          break;
-        }
-        case SERVERRESPONSES_NOT_SET: {
+        case RESPONSES_NOT_SET: {
           break;
         }
       }
@@ -717,11 +540,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      ServerMessage parsedMessage = null;
+      com.fz.foodzoneserver.protocols.ServerMessage parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (ServerMessage) e.getUnfinishedMessage();
+        parsedMessage = (com.fz.foodzoneserver.protocols.ServerMessage) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -730,531 +553,237 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    private int serverResponsesCase_ = 0;
-    private java.lang.Object serverResponses_;
-    public ServerResponsesCase
-        getServerResponsesCase() {
-      return ServerResponsesCase.forNumber(
-          serverResponsesCase_);
+    private int responsesCase_ = 0;
+    private java.lang.Object responses_;
+    public ResponsesCase
+        getResponsesCase() {
+      return ResponsesCase.forNumber(
+          responsesCase_);
     }
 
-    public Builder clearServerResponses() {
-      serverResponsesCase_ = 0;
-      serverResponses_ = null;
+    public Builder clearResponses() {
+      responsesCase_ = 0;
+      responses_ = null;
       onChanged();
       return this;
     }
 
 
-    private int opcode_ ;
+    private java.lang.Object msg_ = "";
     /**
-     * <code>int32 opcode = 1;</code>
-     * @return The opcode.
+     * <code>string msg = 1;</code>
+     * @return The msg.
      */
-    @java.lang.Override
-    public int getOpcode() {
-      return opcode_;
+    public java.lang.String getMsg() {
+      java.lang.Object ref = msg_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        msg_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>int32 opcode = 1;</code>
-     * @param value The opcode to set.
+     * <code>string msg = 1;</code>
+     * @return The bytes for msg.
+     */
+    public com.google.protobuf.ByteString
+        getMsgBytes() {
+      java.lang.Object ref = msg_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        msg_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string msg = 1;</code>
+     * @param value The msg to set.
      * @return This builder for chaining.
      */
-    public Builder setOpcode(int value) {
+    public Builder setMsg(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      msg_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string msg = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearMsg() {
       
-      opcode_ = value;
+      msg_ = getDefaultInstance().getMsg();
       onChanged();
       return this;
     }
     /**
-     * <code>int32 opcode = 1;</code>
+     * <code>string msg = 1;</code>
+     * @param value The bytes for msg to set.
      * @return This builder for chaining.
      */
-    public Builder clearOpcode() {
+    public Builder setMsgBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
       
-      opcode_ = 0;
+      msg_ = value;
       onChanged();
       return this;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-            InfoResponse, InfoResponse.Builder, InfoResponseOrBuilder> infoResponseBuilder_;
+        com.fz.foodzoneserver.protocols.LoginResponse, com.fz.foodzoneserver.protocols.LoginResponse.Builder, com.fz.foodzoneserver.protocols.LoginResponseOrBuilder> loginResponseBuilder_;
     /**
-     * <code>.p4f_protocols.InfoResponse infoResponse = 2;</code>
-     * @return Whether the infoResponse field is set.
+     * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
+     * @return Whether the loginResponse field is set.
      */
     @java.lang.Override
-    public boolean hasInfoResponse() {
-      return serverResponsesCase_ == 2;
+    public boolean hasLoginResponse() {
+      return responsesCase_ == 2;
     }
     /**
-     * <code>.p4f_protocols.InfoResponse infoResponse = 2;</code>
-     * @return The infoResponse.
+     * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
+     * @return The loginResponse.
      */
     @java.lang.Override
-    public InfoResponse getInfoResponse() {
-      if (infoResponseBuilder_ == null) {
-        if (serverResponsesCase_ == 2) {
-          return (InfoResponse) serverResponses_;
+    public com.fz.foodzoneserver.protocols.LoginResponse getLoginResponse() {
+      if (loginResponseBuilder_ == null) {
+        if (responsesCase_ == 2) {
+          return (com.fz.foodzoneserver.protocols.LoginResponse) responses_;
         }
-        return InfoResponse.getDefaultInstance();
+        return com.fz.foodzoneserver.protocols.LoginResponse.getDefaultInstance();
       } else {
-        if (serverResponsesCase_ == 2) {
-          return infoResponseBuilder_.getMessage();
+        if (responsesCase_ == 2) {
+          return loginResponseBuilder_.getMessage();
         }
-        return InfoResponse.getDefaultInstance();
+        return com.fz.foodzoneserver.protocols.LoginResponse.getDefaultInstance();
       }
     }
     /**
-     * <code>.p4f_protocols.InfoResponse infoResponse = 2;</code>
+     * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
      */
-    public Builder setInfoResponse(InfoResponse value) {
-      if (infoResponseBuilder_ == null) {
+    public Builder setLoginResponse(com.fz.foodzoneserver.protocols.LoginResponse value) {
+      if (loginResponseBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        serverResponses_ = value;
+        responses_ = value;
         onChanged();
       } else {
-        infoResponseBuilder_.setMessage(value);
+        loginResponseBuilder_.setMessage(value);
       }
-      serverResponsesCase_ = 2;
+      responsesCase_ = 2;
       return this;
     }
     /**
-     * <code>.p4f_protocols.InfoResponse infoResponse = 2;</code>
+     * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
      */
-    public Builder setInfoResponse(
-        InfoResponse.Builder builderForValue) {
-      if (infoResponseBuilder_ == null) {
-        serverResponses_ = builderForValue.build();
+    public Builder setLoginResponse(
+        com.fz.foodzoneserver.protocols.LoginResponse.Builder builderForValue) {
+      if (loginResponseBuilder_ == null) {
+        responses_ = builderForValue.build();
         onChanged();
       } else {
-        infoResponseBuilder_.setMessage(builderForValue.build());
+        loginResponseBuilder_.setMessage(builderForValue.build());
       }
-      serverResponsesCase_ = 2;
+      responsesCase_ = 2;
       return this;
     }
     /**
-     * <code>.p4f_protocols.InfoResponse infoResponse = 2;</code>
+     * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
      */
-    public Builder mergeInfoResponse(InfoResponse value) {
-      if (infoResponseBuilder_ == null) {
-        if (serverResponsesCase_ == 2 &&
-            serverResponses_ != InfoResponse.getDefaultInstance()) {
-          serverResponses_ = InfoResponse.newBuilder((InfoResponse) serverResponses_)
+    public Builder mergeLoginResponse(com.fz.foodzoneserver.protocols.LoginResponse value) {
+      if (loginResponseBuilder_ == null) {
+        if (responsesCase_ == 2 &&
+            responses_ != com.fz.foodzoneserver.protocols.LoginResponse.getDefaultInstance()) {
+          responses_ = com.fz.foodzoneserver.protocols.LoginResponse.newBuilder((com.fz.foodzoneserver.protocols.LoginResponse) responses_)
               .mergeFrom(value).buildPartial();
         } else {
-          serverResponses_ = value;
+          responses_ = value;
         }
         onChanged();
       } else {
-        if (serverResponsesCase_ == 2) {
-          infoResponseBuilder_.mergeFrom(value);
+        if (responsesCase_ == 2) {
+          loginResponseBuilder_.mergeFrom(value);
         }
-        infoResponseBuilder_.setMessage(value);
+        loginResponseBuilder_.setMessage(value);
       }
-      serverResponsesCase_ = 2;
+      responsesCase_ = 2;
       return this;
     }
     /**
-     * <code>.p4f_protocols.InfoResponse infoResponse = 2;</code>
+     * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
      */
-    public Builder clearInfoResponse() {
-      if (infoResponseBuilder_ == null) {
-        if (serverResponsesCase_ == 2) {
-          serverResponsesCase_ = 0;
-          serverResponses_ = null;
+    public Builder clearLoginResponse() {
+      if (loginResponseBuilder_ == null) {
+        if (responsesCase_ == 2) {
+          responsesCase_ = 0;
+          responses_ = null;
           onChanged();
         }
       } else {
-        if (serverResponsesCase_ == 2) {
-          serverResponsesCase_ = 0;
-          serverResponses_ = null;
+        if (responsesCase_ == 2) {
+          responsesCase_ = 0;
+          responses_ = null;
         }
-        infoResponseBuilder_.clear();
+        loginResponseBuilder_.clear();
       }
       return this;
     }
     /**
-     * <code>.p4f_protocols.InfoResponse infoResponse = 2;</code>
+     * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
      */
-    public InfoResponse.Builder getInfoResponseBuilder() {
-      return getInfoResponseFieldBuilder().getBuilder();
+    public com.fz.foodzoneserver.protocols.LoginResponse.Builder getLoginResponseBuilder() {
+      return getLoginResponseFieldBuilder().getBuilder();
     }
     /**
-     * <code>.p4f_protocols.InfoResponse infoResponse = 2;</code>
+     * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
      */
     @java.lang.Override
-    public InfoResponseOrBuilder getInfoResponseOrBuilder() {
-      if ((serverResponsesCase_ == 2) && (infoResponseBuilder_ != null)) {
-        return infoResponseBuilder_.getMessageOrBuilder();
+    public com.fz.foodzoneserver.protocols.LoginResponseOrBuilder getLoginResponseOrBuilder() {
+      if ((responsesCase_ == 2) && (loginResponseBuilder_ != null)) {
+        return loginResponseBuilder_.getMessageOrBuilder();
       } else {
-        if (serverResponsesCase_ == 2) {
-          return (InfoResponse) serverResponses_;
+        if (responsesCase_ == 2) {
+          return (com.fz.foodzoneserver.protocols.LoginResponse) responses_;
         }
-        return InfoResponse.getDefaultInstance();
+        return com.fz.foodzoneserver.protocols.LoginResponse.getDefaultInstance();
       }
     }
     /**
-     * <code>.p4f_protocols.InfoResponse infoResponse = 2;</code>
+     * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-            InfoResponse, InfoResponse.Builder, InfoResponseOrBuilder>
-        getInfoResponseFieldBuilder() {
-      if (infoResponseBuilder_ == null) {
-        if (!(serverResponsesCase_ == 2)) {
-          serverResponses_ = InfoResponse.getDefaultInstance();
+        com.fz.foodzoneserver.protocols.LoginResponse, com.fz.foodzoneserver.protocols.LoginResponse.Builder, com.fz.foodzoneserver.protocols.LoginResponseOrBuilder> 
+        getLoginResponseFieldBuilder() {
+      if (loginResponseBuilder_ == null) {
+        if (!(responsesCase_ == 2)) {
+          responses_ = com.fz.foodzoneserver.protocols.LoginResponse.getDefaultInstance();
         }
-        infoResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-                InfoResponse, InfoResponse.Builder, InfoResponseOrBuilder>(
-                (InfoResponse) serverResponses_,
+        loginResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.fz.foodzoneserver.protocols.LoginResponse, com.fz.foodzoneserver.protocols.LoginResponse.Builder, com.fz.foodzoneserver.protocols.LoginResponseOrBuilder>(
+                (com.fz.foodzoneserver.protocols.LoginResponse) responses_,
                 getParentForChildren(),
                 isClean());
-        serverResponses_ = null;
+        responses_ = null;
       }
-      serverResponsesCase_ = 2;
+      responsesCase_ = 2;
       onChanged();;
-      return infoResponseBuilder_;
-    }
-
-    /**
-     * <pre>
-     *Announce Register status and change password status
-     * </pre>
-     *
-     * <code>int32 responseCode = 3;</code>
-     * @return Whether the responseCode field is set.
-     */
-    public boolean hasResponseCode() {
-      return serverResponsesCase_ == 3;
-    }
-    /**
-     * <pre>
-     *Announce Register status and change password status
-     * </pre>
-     *
-     * <code>int32 responseCode = 3;</code>
-     * @return The responseCode.
-     */
-    public int getResponseCode() {
-      if (serverResponsesCase_ == 3) {
-        return (java.lang.Integer) serverResponses_;
-      }
-      return 0;
-    }
-    /**
-     * <pre>
-     *Announce Register status and change password status
-     * </pre>
-     *
-     * <code>int32 responseCode = 3;</code>
-     * @param value The responseCode to set.
-     * @return This builder for chaining.
-     */
-    public Builder setResponseCode(int value) {
-      serverResponsesCase_ = 3;
-      serverResponses_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *Announce Register status and change password status
-     * </pre>
-     *
-     * <code>int32 responseCode = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearResponseCode() {
-      if (serverResponsesCase_ == 3) {
-        serverResponsesCase_ = 0;
-        serverResponses_ = null;
-        onChanged();
-      }
-      return this;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-            orderResponse, orderResponse.Builder, orderResponseOrBuilder> orderResBuilder_;
-    /**
-     * <code>.p4f_protocols.orderResponse orderRes = 4;</code>
-     * @return Whether the orderRes field is set.
-     */
-    @java.lang.Override
-    public boolean hasOrderRes() {
-      return serverResponsesCase_ == 4;
-    }
-    /**
-     * <code>.p4f_protocols.orderResponse orderRes = 4;</code>
-     * @return The orderRes.
-     */
-    @java.lang.Override
-    public orderResponse getOrderRes() {
-      if (orderResBuilder_ == null) {
-        if (serverResponsesCase_ == 4) {
-          return (orderResponse) serverResponses_;
-        }
-        return orderResponse.getDefaultInstance();
-      } else {
-        if (serverResponsesCase_ == 4) {
-          return orderResBuilder_.getMessage();
-        }
-        return orderResponse.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.p4f_protocols.orderResponse orderRes = 4;</code>
-     */
-    public Builder setOrderRes(orderResponse value) {
-      if (orderResBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        serverResponses_ = value;
-        onChanged();
-      } else {
-        orderResBuilder_.setMessage(value);
-      }
-      serverResponsesCase_ = 4;
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.orderResponse orderRes = 4;</code>
-     */
-    public Builder setOrderRes(
-        orderResponse.Builder builderForValue) {
-      if (orderResBuilder_ == null) {
-        serverResponses_ = builderForValue.build();
-        onChanged();
-      } else {
-        orderResBuilder_.setMessage(builderForValue.build());
-      }
-      serverResponsesCase_ = 4;
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.orderResponse orderRes = 4;</code>
-     */
-    public Builder mergeOrderRes(orderResponse value) {
-      if (orderResBuilder_ == null) {
-        if (serverResponsesCase_ == 4 &&
-            serverResponses_ != orderResponse.getDefaultInstance()) {
-          serverResponses_ = orderResponse.newBuilder((orderResponse) serverResponses_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          serverResponses_ = value;
-        }
-        onChanged();
-      } else {
-        if (serverResponsesCase_ == 4) {
-          orderResBuilder_.mergeFrom(value);
-        }
-        orderResBuilder_.setMessage(value);
-      }
-      serverResponsesCase_ = 4;
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.orderResponse orderRes = 4;</code>
-     */
-    public Builder clearOrderRes() {
-      if (orderResBuilder_ == null) {
-        if (serverResponsesCase_ == 4) {
-          serverResponsesCase_ = 0;
-          serverResponses_ = null;
-          onChanged();
-        }
-      } else {
-        if (serverResponsesCase_ == 4) {
-          serverResponsesCase_ = 0;
-          serverResponses_ = null;
-        }
-        orderResBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.orderResponse orderRes = 4;</code>
-     */
-    public orderResponse.Builder getOrderResBuilder() {
-      return getOrderResFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.p4f_protocols.orderResponse orderRes = 4;</code>
-     */
-    @java.lang.Override
-    public orderResponseOrBuilder getOrderResOrBuilder() {
-      if ((serverResponsesCase_ == 4) && (orderResBuilder_ != null)) {
-        return orderResBuilder_.getMessageOrBuilder();
-      } else {
-        if (serverResponsesCase_ == 4) {
-          return (orderResponse) serverResponses_;
-        }
-        return orderResponse.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.p4f_protocols.orderResponse orderRes = 4;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-            orderResponse, orderResponse.Builder, orderResponseOrBuilder>
-        getOrderResFieldBuilder() {
-      if (orderResBuilder_ == null) {
-        if (!(serverResponsesCase_ == 4)) {
-          serverResponses_ = orderResponse.getDefaultInstance();
-        }
-        orderResBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-                orderResponse, orderResponse.Builder, orderResponseOrBuilder>(
-                (orderResponse) serverResponses_,
-                getParentForChildren(),
-                isClean());
-        serverResponses_ = null;
-      }
-      serverResponsesCase_ = 4;
-      onChanged();;
-      return orderResBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-            changePassInfo, changePassInfo.Builder, changePassInfoOrBuilder> changeResBuilder_;
-    /**
-     * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-     * @return Whether the changeRes field is set.
-     */
-    @java.lang.Override
-    public boolean hasChangeRes() {
-      return serverResponsesCase_ == 5;
-    }
-    /**
-     * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-     * @return The changeRes.
-     */
-    @java.lang.Override
-    public changePassInfo getChangeRes() {
-      if (changeResBuilder_ == null) {
-        if (serverResponsesCase_ == 5) {
-          return (changePassInfo) serverResponses_;
-        }
-        return changePassInfo.getDefaultInstance();
-      } else {
-        if (serverResponsesCase_ == 5) {
-          return changeResBuilder_.getMessage();
-        }
-        return changePassInfo.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-     */
-    public Builder setChangeRes(changePassInfo value) {
-      if (changeResBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        serverResponses_ = value;
-        onChanged();
-      } else {
-        changeResBuilder_.setMessage(value);
-      }
-      serverResponsesCase_ = 5;
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-     */
-    public Builder setChangeRes(
-        changePassInfo.Builder builderForValue) {
-      if (changeResBuilder_ == null) {
-        serverResponses_ = builderForValue.build();
-        onChanged();
-      } else {
-        changeResBuilder_.setMessage(builderForValue.build());
-      }
-      serverResponsesCase_ = 5;
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-     */
-    public Builder mergeChangeRes(changePassInfo value) {
-      if (changeResBuilder_ == null) {
-        if (serverResponsesCase_ == 5 &&
-            serverResponses_ != changePassInfo.getDefaultInstance()) {
-          serverResponses_ = changePassInfo.newBuilder((changePassInfo) serverResponses_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          serverResponses_ = value;
-        }
-        onChanged();
-      } else {
-        if (serverResponsesCase_ == 5) {
-          changeResBuilder_.mergeFrom(value);
-        }
-        changeResBuilder_.setMessage(value);
-      }
-      serverResponsesCase_ = 5;
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-     */
-    public Builder clearChangeRes() {
-      if (changeResBuilder_ == null) {
-        if (serverResponsesCase_ == 5) {
-          serverResponsesCase_ = 0;
-          serverResponses_ = null;
-          onChanged();
-        }
-      } else {
-        if (serverResponsesCase_ == 5) {
-          serverResponsesCase_ = 0;
-          serverResponses_ = null;
-        }
-        changeResBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-     */
-    public changePassInfo.Builder getChangeResBuilder() {
-      return getChangeResFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-     */
-    @java.lang.Override
-    public changePassInfoOrBuilder getChangeResOrBuilder() {
-      if ((serverResponsesCase_ == 5) && (changeResBuilder_ != null)) {
-        return changeResBuilder_.getMessageOrBuilder();
-      } else {
-        if (serverResponsesCase_ == 5) {
-          return (changePassInfo) serverResponses_;
-        }
-        return changePassInfo.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-            changePassInfo, changePassInfo.Builder, changePassInfoOrBuilder>
-        getChangeResFieldBuilder() {
-      if (changeResBuilder_ == null) {
-        if (!(serverResponsesCase_ == 5)) {
-          serverResponses_ = changePassInfo.getDefaultInstance();
-        }
-        changeResBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-                changePassInfo, changePassInfo.Builder, changePassInfoOrBuilder>(
-                (changePassInfo) serverResponses_,
-                getParentForChildren(),
-                isClean());
-        serverResponses_ = null;
-      }
-      serverResponsesCase_ = 5;
-      onChanged();;
-      return changeResBuilder_;
+      return loginResponseBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
@@ -1269,16 +798,16 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:p4f_protocols.ServerMessage)
+    // @@protoc_insertion_point(builder_scope:foodzone_protocols.ServerMessage)
   }
 
-  // @@protoc_insertion_point(class_scope:p4f_protocols.ServerMessage)
-  private static final ServerMessage DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:foodzone_protocols.ServerMessage)
+  private static final com.fz.foodzoneserver.protocols.ServerMessage DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new ServerMessage();
+    DEFAULT_INSTANCE = new com.fz.foodzoneserver.protocols.ServerMessage();
   }
 
-  public static ServerMessage getDefaultInstance() {
+  public static com.fz.foodzoneserver.protocols.ServerMessage getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -1303,7 +832,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public ServerMessage getDefaultInstanceForType() {
+  public com.fz.foodzoneserver.protocols.ServerMessage getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

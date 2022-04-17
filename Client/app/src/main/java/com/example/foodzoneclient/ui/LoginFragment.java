@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,8 @@ import android.widget.Toast;
 
 import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.backend.ContainerClient;
-import com.example.foodzoneclient.protocols.LoginInfo;
+import com.example.foodzoneclient.protocols.ClientMessage;
+import com.example.foodzoneclient.protocols.LoginRequest;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class LoginFragment extends Fragment {
@@ -76,34 +78,46 @@ public class LoginFragment extends Fragment {
             public void handleMessage(@NonNull Message msg) {
                 super.handleMessage(msg);
                 if (msg.what == 1) {
-                    Toast announce = Toast.makeText(getContext(), (String) msg.obj, Toast.LENGTH_SHORT);
+                    String result = (String) msg.obj;
+                    Toast announce = Toast.makeText(getContext(), result, Toast.LENGTH_SHORT);
                     announce.show();
-                    if (msg.arg1 == 0) {
+                    if (result.equals("Success")) {
                         toMainPageActivity();
                     }
                 }
-                else if (msg.what == -1) {
+                else if (msg.what == -100 || msg.what == -200) {
                     Toast announce = Toast.makeText(getContext(), (String) msg.obj, Toast.LENGTH_SHORT);
                     announce.show();
                 }
             }
         };
+
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //get username + password
-                LoginInfo loginInfo = LoginInfo.newBuilder()
-                        .setUsername(username.getText().toString())
-                        .setPassword(password.getText().toString()).build();
-                //Create Message to send to Client
-                Message msg = Message.obtain(ContainerClient.handler);
-                msg.what = 1;
-                msg.obj = loginInfo;
-                //send to client
-                msg.sendToTarget();
+                try {
+                    ClientMessage msg = ClientMessage.newBuilder()
+                            .setMsg("login")
+                            .setLoginRequest(LoginRequest.newBuilder()
+                                    .setUsername(username.getText().toString())
+                                    .setPassword(password.getText().toString())
+                                    .build())
+                            .build();
+                    ContainerClient.getInstance().sendToServer(msg);
+                } catch (Exception e) {
+                    Log.e(ContainerClient.LOG_TAG, "Can't send login request to server", e);
+                    Toast announce = Toast.makeText(getContext(), "Can't send login request to server", Toast.LENGTH_SHORT);
+                    announce.show();
+                }
             }
         });
         return root;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ContainerClient.getInstance().currentUIHandler = loginFragmentHandler;
     }
 
     public void toMainPageActivity() {

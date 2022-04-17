@@ -8,62 +8,27 @@ public interface ServerMessageOrBuilder extends
     com.google.protobuf.MessageLiteOrBuilder {
 
   /**
-   * <code>int32 opcode = 1;</code>
-   * @return The opcode.
+   * <code>string msg = 1;</code>
+   * @return The msg.
    */
-  int getOpcode();
+  java.lang.String getMsg();
+  /**
+   * <code>string msg = 1;</code>
+   * @return The bytes for msg.
+   */
+  com.google.protobuf.ByteString
+      getMsgBytes();
 
   /**
-   * <code>.foodzone_protocols.InfoResponse infoResponse = 2;</code>
-   * @return Whether the infoResponse field is set.
+   * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
+   * @return Whether the loginResponse field is set.
    */
-  boolean hasInfoResponse();
+  boolean hasLoginResponse();
   /**
-   * <code>.foodzone_protocols.InfoResponse infoResponse = 2;</code>
-   * @return The infoResponse.
+   * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
+   * @return The loginResponse.
    */
-  com.example.foodzoneclient.protocols.InfoResponse getInfoResponse();
+  com.example.foodzoneclient.protocols.LoginResponse getLoginResponse();
 
-  /**
-   * <pre>
-   *Announce Register status and change password status
-   * </pre>
-   *
-   * <code>int32 responseCode = 3;</code>
-   * @return Whether the responseCode field is set.
-   */
-  boolean hasResponseCode();
-  /**
-   * <pre>
-   *Announce Register status and change password status
-   * </pre>
-   *
-   * <code>int32 responseCode = 3;</code>
-   * @return The responseCode.
-   */
-  int getResponseCode();
-
-  /**
-   * <code>.foodzone_protocols.orderResponse orderRes = 4;</code>
-   * @return Whether the orderRes field is set.
-   */
-  boolean hasOrderRes();
-  /**
-   * <code>.foodzone_protocols.orderResponse orderRes = 4;</code>
-   * @return The orderRes.
-   */
-  com.example.foodzoneclient.protocols.orderResponse getOrderRes();
-
-  /**
-   * <code>.foodzone_protocols.changePassInfo changeRes = 5;</code>
-   * @return Whether the changeRes field is set.
-   */
-  boolean hasChangeRes();
-  /**
-   * <code>.foodzone_protocols.changePassInfo changeRes = 5;</code>
-   * @return The changeRes.
-   */
-  com.example.foodzoneclient.protocols.changePassInfo getChangeRes();
-
-  public com.example.foodzoneclient.protocols.ServerMessage.ServerResponsesCase getServerResponsesCase();
+  public com.example.foodzoneclient.protocols.ServerMessage.ResponsesCase getResponsesCase();
 }

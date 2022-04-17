@@ -19,7 +19,6 @@ import android.widget.Toast;
 import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.backend.ContainerClient;
 import com.example.foodzoneclient.FoodZone;
-import com.example.foodzoneclient.protocols.RegisterInfo;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -90,18 +89,7 @@ public class RegisterFragment extends Fragment {
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RegisterInfo registerInfo = RegisterInfo.newBuilder()
-                        .setUsername(reg_username.getText().toString())
-                        .setPassword(reg_password.getText().toString())
-                        .setEmail(email.getText().toString())
-                        .setPhone(phone.getText().toString())
-                        .setAddress(address.getText().toString()).build();
-                //Create Message to send to Client
-                Message msg = Message.obtain(ContainerClient.handler);
-                msg.what = 2;
-                msg.obj = registerInfo;
-                //send to client
-                msg.sendToTarget();
+
             }
         });
         return root;

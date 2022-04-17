@@ -4,78 +4,35 @@
 package com.fz.foodzoneserver.protocols;
 
 public interface ServerMessageOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:p4f_protocols.ServerMessage)
+    // @@protoc_insertion_point(interface_extends:foodzone_protocols.ServerMessage)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 opcode = 1;</code>
-   * @return The opcode.
+   * <code>string msg = 1;</code>
+   * @return The msg.
    */
-  int getOpcode();
+  java.lang.String getMsg();
+  /**
+   * <code>string msg = 1;</code>
+   * @return The bytes for msg.
+   */
+  com.google.protobuf.ByteString
+      getMsgBytes();
 
   /**
-   * <code>.p4f_protocols.InfoResponse infoResponse = 2;</code>
-   * @return Whether the infoResponse field is set.
+   * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
+   * @return Whether the loginResponse field is set.
    */
-  boolean hasInfoResponse();
+  boolean hasLoginResponse();
   /**
-   * <code>.p4f_protocols.InfoResponse infoResponse = 2;</code>
-   * @return The infoResponse.
+   * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
+   * @return The loginResponse.
    */
-  InfoResponse getInfoResponse();
+  com.fz.foodzoneserver.protocols.LoginResponse getLoginResponse();
   /**
-   * <code>.p4f_protocols.InfoResponse infoResponse = 2;</code>
+   * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
    */
-  InfoResponseOrBuilder getInfoResponseOrBuilder();
+  com.fz.foodzoneserver.protocols.LoginResponseOrBuilder getLoginResponseOrBuilder();
 
-  /**
-   * <pre>
-   *Announce Register status and change password status
-   * </pre>
-   *
-   * <code>int32 responseCode = 3;</code>
-   * @return Whether the responseCode field is set.
-   */
-  boolean hasResponseCode();
-  /**
-   * <pre>
-   *Announce Register status and change password status
-   * </pre>
-   *
-   * <code>int32 responseCode = 3;</code>
-   * @return The responseCode.
-   */
-  int getResponseCode();
-
-  /**
-   * <code>.p4f_protocols.orderResponse orderRes = 4;</code>
-   * @return Whether the orderRes field is set.
-   */
-  boolean hasOrderRes();
-  /**
-   * <code>.p4f_protocols.orderResponse orderRes = 4;</code>
-   * @return The orderRes.
-   */
-  orderResponse getOrderRes();
-  /**
-   * <code>.p4f_protocols.orderResponse orderRes = 4;</code>
-   */
-  orderResponseOrBuilder getOrderResOrBuilder();
-
-  /**
-   * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-   * @return Whether the changeRes field is set.
-   */
-  boolean hasChangeRes();
-  /**
-   * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-   * @return The changeRes.
-   */
-  changePassInfo getChangeRes();
-  /**
-   * <code>.p4f_protocols.changePassInfo changeRes = 5;</code>
-   */
-  changePassInfoOrBuilder getChangeResOrBuilder();
-
-  public ServerMessage.ServerResponsesCase getServerResponsesCase();
+  public com.fz.foodzoneserver.protocols.ServerMessage.ResponsesCase getResponsesCase();
 }

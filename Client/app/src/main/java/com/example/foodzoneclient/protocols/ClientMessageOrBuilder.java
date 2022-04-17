@@ -8,62 +8,27 @@ public interface ClientMessageOrBuilder extends
     com.google.protobuf.MessageLiteOrBuilder {
 
   /**
-   * <code>int32 opcode = 1;</code>
-   * @return The opcode.
+   * <code>string msg = 1;</code>
+   * @return The msg.
    */
-  int getOpcode();
+  java.lang.String getMsg();
+  /**
+   * <code>string msg = 1;</code>
+   * @return The bytes for msg.
+   */
+  com.google.protobuf.ByteString
+      getMsgBytes();
 
   /**
-   * <pre>
-   *Use for login and change password
-   * </pre>
-   *
-   * <code>.foodzone_protocols.LoginInfo account = 2;</code>
-   * @return Whether the account field is set.
+   * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
+   * @return Whether the loginRequest field is set.
    */
-  boolean hasAccount();
+  boolean hasLoginRequest();
   /**
-   * <pre>
-   *Use for login and change password
-   * </pre>
-   *
-   * <code>.foodzone_protocols.LoginInfo account = 2;</code>
-   * @return The account.
+   * <code>.foodzone_protocols.LoginRequest loginRequest = 2;</code>
+   * @return The loginRequest.
    */
-  com.example.foodzoneclient.protocols.LoginInfo getAccount();
+  com.example.foodzoneclient.protocols.LoginRequest getLoginRequest();
 
-  /**
-   * <code>.foodzone_protocols.RegisterInfo regAcc = 3;</code>
-   * @return Whether the regAcc field is set.
-   */
-  boolean hasRegAcc();
-  /**
-   * <code>.foodzone_protocols.RegisterInfo regAcc = 3;</code>
-   * @return The regAcc.
-   */
-  com.example.foodzoneclient.protocols.RegisterInfo getRegAcc();
-
-  /**
-   * <code>.foodzone_protocols.Order order = 4;</code>
-   * @return Whether the order field is set.
-   */
-  boolean hasOrder();
-  /**
-   * <code>.foodzone_protocols.Order order = 4;</code>
-   * @return The order.
-   */
-  com.example.foodzoneclient.protocols.Order getOrder();
-
-  /**
-   * <code>.foodzone_protocols.changePassInfo changeRes = 5;</code>
-   * @return Whether the changeRes field is set.
-   */
-  boolean hasChangeRes();
-  /**
-   * <code>.foodzone_protocols.changePassInfo changeRes = 5;</code>
-   * @return The changeRes.
-   */
-  com.example.foodzoneclient.protocols.changePassInfo getChangeRes();
-
-  public com.example.foodzoneclient.protocols.ClientMessage.ClientRequestsCase getClientRequestsCase();
+  public com.example.foodzoneclient.protocols.ClientMessage.RequestsCase getRequestsCase();
 }

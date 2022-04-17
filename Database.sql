@@ -5,7 +5,7 @@ GO
 USE FoodZone
 GO
 
-CREATE TABLE [User] (
+CREATE TABLE [Users] (
 	Username nvarchar(20) PRIMARY KEY,
 	[Password] nvarchar(16) NOT NULL CHECK(LEN([Password]) >= 8 AND LEN([Password]) <= 16 ),
 	Fullname nvarchar(40),
@@ -76,7 +76,7 @@ CREATE TABLE Recipient (
 GO
 
 ALTER TABLE Cart
-ADD CONSTRAINT fk_Cart_User FOREIGN KEY (Username) REFERENCES [User](Username)
+ADD CONSTRAINT fk_Cart_User FOREIGN KEY (Username) REFERENCES [Users](Username)
 GO
 
 ALTER TABLE CartDetails
@@ -103,11 +103,11 @@ ALTER TABLE [Order]
 ADD CONSTRAINT fk_Order_RecipientID FOREIGN KEY (RecipientID) REFERENCES Recipient(ID)
 GO
 
-INSERT INTO [User]
+INSERT INTO [Users]
 (Username,[Password]  ,Fullname			     ,ID		  ,[Address]		 ,Phone		  ,[Image]) VALUES
 ('admin' ,'adminadmin','Admin'				 ,'0000000000',null				 ,null		  ,null),
-('kiet'	 ,'12345678'  ,'Ngo Van Anh Kiet'    ,'0011223344',null				 ,null		  ,null),
-('phat'	 ,'12345678'  ,'Trieu Nguyen Phat'   ,'0011223345','12 Tran Hung Dao','0589199209','https://cdn.discordapp.com/emojis/876021937762074624.webp?size=128&quality=lossless'),
+('kiet'	 ,'12345678'  ,'Ngo Van Anh Kiet'    ,'0011223344','027C Chung cu An Quang',0901210304,kiet.jpg),
+('phat'	 ,'12345678'  ,'Trieu Nguyen Phat'   ,'0011223345','12 Tran Hung Dao','0589199209',null),
 ('khue'	 ,'12345678'  ,'Pham Trong Vinh Khue','0011223346','13 Tran Hung Dao',null		  ,null)
 GO
 

@@ -1,18 +1,19 @@
 package com.fz.foodzoneserver.server;
 
 import com.fz.foodzoneserver.protocols.ClientMessage;
-import com.fz.foodzoneserver.protocols.InfoResponse;
+import com.fz.foodzoneserver.protocols.LoginRequest;
+import com.fz.foodzoneserver.protocols.LoginResponse;
 import com.fz.foodzoneserver.protocols.ServerMessage;
-import com.fz.foodzoneserver.protocols.orderResponse;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.sql.SQLException;
+
 public class MessageHandler extends ChannelInboundHandlerAdapter {
 	private String username = null;
-	private int type = 0;
-	private Logger logger = LogManager.getLogger(MessageHandler.class.getName());
+	private static Logger logger = LogManager.getLogger(MessageHandler.class.getName());
 	
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -29,77 +30,16 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		super.channelRead(ctx, msg);
-		ClientMessage clientMsg = (ClientMessage) msg;
-		int op = clientMsg.getOpcode();
-		DBHandler dbHandler = new DBHandler();
-		ServerMessage.Builder response = ServerMessage.newBuilder();
-		if (op == 1) {
-			InfoResponse info = dbHandler.Login(clientMsg.getAccount());
-			username = ((ClientMessage) msg).getAccount().getUsername();
-			type = (info.getReCode() == 0)? 1 : 0;
-			logger.info(username + " has logged in system.");
-			if (info.getReCode() == 0 || info.getReCode() == 3) {
-				logger.info(username + " logged in ok");
-			}
-			else if (info.getReCode() == 1) {
-				logger.info(username + " logged in failed. Error: username fault");
-				username = "";
-			}
-			else if (info.getReCode() == 2) {
-				logger.info(username + " logged in failed. Error: pass fault");
-				username = "";
-			}
-			response.setOpcode(op);
-			response.setInfoResponse(info);
+		ClientMessage clientMessage = (ClientMessage) msg;
+		ServerMessage.Builder serverMessage = ServerMessage.newBuilder();
+		// Client requests login
+		if (clientMessage.getMsg().equals("login")) {
+			serverMessage.setMsg("login_response");
+			serverMessage.setLoginResponse(handleLoginRequest(clientMessage.getLoginRequest()));
 		}
-		else if (op == 2) {
-			// 0 = no fault, 1 = user fault, 2 = email fault, 3 = phone fault
-			int result = dbHandler.Register(clientMsg.getRegAcc());
-			switch (result) {
-				case 0:
-					logger.info(username + " register ok");
-					break;
-				case 1:
-					logger.info(username + " user fault");
-					break;
-				case 2:
-					logger.info(username + " email ok");
-					break;
-				case 3:
-					logger.info(username + " phone fault");
-					break;
-			}
-			response.setOpcode(op);
-			response.setResponseCode(result);
-		}
-		else if (op == 3) {
-			int result = dbHandler.ChangePassword(clientMsg.getChangeRes());
-			switch (result) {
-				case 1:
-					logger.info(username + " changed password ok");
-					break;
-				case -1:
-					logger.info(username + " changed password failed");
-					break;
-			}
-			response.setOpcode(op);
-			response.setResponseCode(result);
-		}
-		else if (op == 4) {
-			orderResponse orderRes = dbHandler.insertOrder(clientMsg.getOrder());
-			switch (orderRes.getOrderResult()) {
-				case 0:
-					logger.info(username + " made an order.");
-					break;
-				case 1:
-					logger.info(username + " made an order but failed.");
-					break;
-			}
-			response.setOpcode(op);
-			response.setOrderRes(orderRes);
-		}
-		dbHandler.releaseConn();
-		ctx.writeAndFlush(response.build());
+
+		ctx.writeAndFlush(serverMessage.build());
+		logger.info("Sent response back to client");
 	}
 	
 	@Override
@@ -107,5 +47,21 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
 		super.exceptionCaught(ctx, cause);
 		logger.error("An exception occured at client " + ctx.channel().remoteAddress().toString(), cause);
 		ctx.close();
+	}
+
+	public LoginResponse handleLoginRequest(LoginRequest request) {
+		LoginResponse.Builder response = LoginResponse.newBuilder();
+		try {
+			DBHandler dbHandler = new DBHandler();
+			String result = dbHandler.queryLogin(request.getUsername(), request.getPassword());
+			response.setResult(result);
+			if (result.equals("Success")) {
+				response.setUserInfo(dbHandler.queryUserInfo(request.getUsername()));
+			}
+			dbHandler.releaseConn();
+		} catch (SQLException e) {
+			logger.error("Can't get database connection from connection pool", e);
+		}
+		return response.build();
 	}
 }

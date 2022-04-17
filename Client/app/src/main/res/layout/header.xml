@@ -17,7 +17,7 @@
 
         <TextView android:layout_width="wrap_content"
             android:layout_height="92dp"
-            android:text="Welcome to\nPray for food"
+            android:text="Welcome to\nFood Zone"
             android:textSize="20dp"
             android:layout_marginLeft="0dp"
             android:textColor="@color/white"

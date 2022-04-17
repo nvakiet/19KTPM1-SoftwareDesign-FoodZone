@@ -4,29 +4,31 @@
 package com.fz.foodzoneserver.protocols;
 
 /**
- * Protobuf type {@code p4f_protocols.Order}
+ * Protobuf type {@code foodzone_protocols.UserInfo}
  */
-public final class Order extends
+public final class UserInfo extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:p4f_protocols.Order)
-    OrderOrBuilder {
+    // @@protoc_insertion_point(message_implements:foodzone_protocols.UserInfo)
+    UserInfoOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use Order.newBuilder() to construct.
-  private Order(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use UserInfo.newBuilder() to construct.
+  private UserInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private Order() {
+  private UserInfo() {
     username_ = "";
-    buyDate_ = "";
-    resID_ = "";
-    foodList_ = java.util.Collections.emptyList();
+    fullname_ = "";
+    id_ = "";
+    address_ = "";
+    phone_ = "";
+    imgName_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new Order();
+    return new UserInfo();
   }
 
   @java.lang.Override
@@ -34,7 +36,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private Order(
+  private UserInfo(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -42,7 +44,6 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
-    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -62,22 +63,31 @@ private static final long serialVersionUID = 0L;
           case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            buyDate_ = s;
+            fullname_ = s;
             break;
           }
           case 26: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            resID_ = s;
+            id_ = s;
             break;
           }
           case 34: {
-            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              foodList_ = new java.util.ArrayList<Food>();
-              mutable_bitField0_ |= 0x00000001;
-            }
-            foodList_.add(
-                input.readMessage(Food.parser(), extensionRegistry));
+            java.lang.String s = input.readStringRequireUtf8();
+
+            address_ = s;
+            break;
+          }
+          case 42: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            phone_ = s;
+            break;
+          }
+          case 50: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            imgName_ = s;
             break;
           }
           default: {
@@ -95,24 +105,21 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
-      if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        foodList_ = java.util.Collections.unmodifiableList(foodList_);
-      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return MessageWrapper.internal_static_p4f_protocols_Order_descriptor;
+    return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_UserInfo_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return MessageWrapper.internal_static_p4f_protocols_Order_fieldAccessorTable
+    return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_UserInfo_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            Order.class, Order.Builder.class);
+            com.fz.foodzoneserver.protocols.UserInfo.class, com.fz.foodzoneserver.protocols.UserInfo.Builder.class);
   }
 
   public static final int USERNAME_FIELD_NUMBER = 1;
@@ -153,120 +160,194 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int BUYDATE_FIELD_NUMBER = 2;
-  private volatile java.lang.Object buyDate_;
+  public static final int FULLNAME_FIELD_NUMBER = 2;
+  private volatile java.lang.Object fullname_;
   /**
-   * <code>string buyDate = 2;</code>
-   * @return The buyDate.
+   * <code>string fullname = 2;</code>
+   * @return The fullname.
    */
   @java.lang.Override
-  public java.lang.String getBuyDate() {
-    java.lang.Object ref = buyDate_;
+  public java.lang.String getFullname() {
+    java.lang.Object ref = fullname_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      buyDate_ = s;
+      fullname_ = s;
       return s;
     }
   }
   /**
-   * <code>string buyDate = 2;</code>
-   * @return The bytes for buyDate.
+   * <code>string fullname = 2;</code>
+   * @return The bytes for fullname.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getBuyDateBytes() {
-    java.lang.Object ref = buyDate_;
+      getFullnameBytes() {
+    java.lang.Object ref = fullname_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      buyDate_ = b;
+      fullname_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int RESID_FIELD_NUMBER = 3;
-  private volatile java.lang.Object resID_;
+  public static final int ID_FIELD_NUMBER = 3;
+  private volatile java.lang.Object id_;
   /**
-   * <code>string resID = 3;</code>
-   * @return The resID.
+   * <code>string id = 3;</code>
+   * @return The id.
    */
   @java.lang.Override
-  public java.lang.String getResID() {
-    java.lang.Object ref = resID_;
+  public java.lang.String getId() {
+    java.lang.Object ref = id_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      resID_ = s;
+      id_ = s;
       return s;
     }
   }
   /**
-   * <code>string resID = 3;</code>
-   * @return The bytes for resID.
+   * <code>string id = 3;</code>
+   * @return The bytes for id.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getResIDBytes() {
-    java.lang.Object ref = resID_;
+      getIdBytes() {
+    java.lang.Object ref = id_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      resID_ = b;
+      id_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int FOODLIST_FIELD_NUMBER = 4;
-  private java.util.List<Food> foodList_;
+  public static final int ADDRESS_FIELD_NUMBER = 4;
+  private volatile java.lang.Object address_;
   /**
-   * <code>repeated .p4f_protocols.Food foodList = 4;</code>
+   * <code>string address = 4;</code>
+   * @return The address.
    */
   @java.lang.Override
-  public java.util.List<Food> getFoodListList() {
-    return foodList_;
+  public java.lang.String getAddress() {
+    java.lang.Object ref = address_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      address_ = s;
+      return s;
+    }
   }
   /**
-   * <code>repeated .p4f_protocols.Food foodList = 4;</code>
+   * <code>string address = 4;</code>
+   * @return The bytes for address.
    */
   @java.lang.Override
-  public java.util.List<? extends FoodOrBuilder>
-      getFoodListOrBuilderList() {
-    return foodList_;
+  public com.google.protobuf.ByteString
+      getAddressBytes() {
+    java.lang.Object ref = address_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      address_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int PHONE_FIELD_NUMBER = 5;
+  private volatile java.lang.Object phone_;
+  /**
+   * <code>string phone = 5;</code>
+   * @return The phone.
+   */
+  @java.lang.Override
+  public java.lang.String getPhone() {
+    java.lang.Object ref = phone_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      phone_ = s;
+      return s;
+    }
   }
   /**
-   * <code>repeated .p4f_protocols.Food foodList = 4;</code>
+   * <code>string phone = 5;</code>
+   * @return The bytes for phone.
    */
   @java.lang.Override
-  public int getFoodListCount() {
-    return foodList_.size();
+  public com.google.protobuf.ByteString
+      getPhoneBytes() {
+    java.lang.Object ref = phone_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      phone_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int IMGNAME_FIELD_NUMBER = 6;
+  private volatile java.lang.Object imgName_;
+  /**
+   * <code>string imgName = 6;</code>
+   * @return The imgName.
+   */
+  @java.lang.Override
+  public java.lang.String getImgName() {
+    java.lang.Object ref = imgName_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      imgName_ = s;
+      return s;
+    }
   }
   /**
-   * <code>repeated .p4f_protocols.Food foodList = 4;</code>
+   * <code>string imgName = 6;</code>
+   * @return The bytes for imgName.
    */
   @java.lang.Override
-  public Food getFoodList(int index) {
-    return foodList_.get(index);
-  }
-  /**
-   * <code>repeated .p4f_protocols.Food foodList = 4;</code>
-   */
-  @java.lang.Override
-  public FoodOrBuilder getFoodListOrBuilder(
-      int index) {
-    return foodList_.get(index);
+  public com.google.protobuf.ByteString
+      getImgNameBytes() {
+    java.lang.Object ref = imgName_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      imgName_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -283,17 +364,23 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getUsernameBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(username_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, username_);
     }
-    if (!getBuyDateBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, buyDate_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(fullname_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, fullname_);
     }
-    if (!getResIDBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, resID_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, id_);
     }
-    for (int i = 0; i < foodList_.size(); i++) {
-      output.writeMessage(4, foodList_.get(i));
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(address_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, address_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(phone_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, phone_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(imgName_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, imgName_);
     }
     unknownFields.writeTo(output);
   }
@@ -304,18 +391,23 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getUsernameBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(username_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, username_);
     }
-    if (!getBuyDateBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, buyDate_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(fullname_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, fullname_);
     }
-    if (!getResIDBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, resID_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, id_);
     }
-    for (int i = 0; i < foodList_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, foodList_.get(i));
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(address_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, address_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(phone_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, phone_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(imgName_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, imgName_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -327,19 +419,23 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof Order)) {
+    if (!(obj instanceof com.fz.foodzoneserver.protocols.UserInfo)) {
       return super.equals(obj);
     }
-    Order other = (Order) obj;
+    com.fz.foodzoneserver.protocols.UserInfo other = (com.fz.foodzoneserver.protocols.UserInfo) obj;
 
     if (!getUsername()
         .equals(other.getUsername())) return false;
-    if (!getBuyDate()
-        .equals(other.getBuyDate())) return false;
-    if (!getResID()
-        .equals(other.getResID())) return false;
-    if (!getFoodListList()
-        .equals(other.getFoodListList())) return false;
+    if (!getFullname()
+        .equals(other.getFullname())) return false;
+    if (!getId()
+        .equals(other.getId())) return false;
+    if (!getAddress()
+        .equals(other.getAddress())) return false;
+    if (!getPhone()
+        .equals(other.getPhone())) return false;
+    if (!getImgName()
+        .equals(other.getImgName())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -353,82 +449,84 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + USERNAME_FIELD_NUMBER;
     hash = (53 * hash) + getUsername().hashCode();
-    hash = (37 * hash) + BUYDATE_FIELD_NUMBER;
-    hash = (53 * hash) + getBuyDate().hashCode();
-    hash = (37 * hash) + RESID_FIELD_NUMBER;
-    hash = (53 * hash) + getResID().hashCode();
-    if (getFoodListCount() > 0) {
-      hash = (37 * hash) + FOODLIST_FIELD_NUMBER;
-      hash = (53 * hash) + getFoodListList().hashCode();
-    }
+    hash = (37 * hash) + FULLNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getFullname().hashCode();
+    hash = (37 * hash) + ID_FIELD_NUMBER;
+    hash = (53 * hash) + getId().hashCode();
+    hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+    hash = (53 * hash) + getAddress().hashCode();
+    hash = (37 * hash) + PHONE_FIELD_NUMBER;
+    hash = (53 * hash) + getPhone().hashCode();
+    hash = (37 * hash) + IMGNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getImgName().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static Order parseFrom(
+  public static com.fz.foodzoneserver.protocols.UserInfo parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static Order parseFrom(
+  public static com.fz.foodzoneserver.protocols.UserInfo parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static Order parseFrom(
+  public static com.fz.foodzoneserver.protocols.UserInfo parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static Order parseFrom(
+  public static com.fz.foodzoneserver.protocols.UserInfo parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static Order parseFrom(byte[] data)
+  public static com.fz.foodzoneserver.protocols.UserInfo parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static Order parseFrom(
+  public static com.fz.foodzoneserver.protocols.UserInfo parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static Order parseFrom(java.io.InputStream input)
+  public static com.fz.foodzoneserver.protocols.UserInfo parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static Order parseFrom(
+  public static com.fz.foodzoneserver.protocols.UserInfo parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static Order parseDelimitedFrom(java.io.InputStream input)
+  public static com.fz.foodzoneserver.protocols.UserInfo parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static Order parseDelimitedFrom(
+  public static com.fz.foodzoneserver.protocols.UserInfo parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static Order parseFrom(
+  public static com.fz.foodzoneserver.protocols.UserInfo parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static Order parseFrom(
+  public static com.fz.foodzoneserver.protocols.UserInfo parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -441,7 +539,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(Order prototype) {
+  public static Builder newBuilder(com.fz.foodzoneserver.protocols.UserInfo prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -457,26 +555,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code p4f_protocols.Order}
+   * Protobuf type {@code foodzone_protocols.UserInfo}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:p4f_protocols.Order)
-          OrderOrBuilder {
+      // @@protoc_insertion_point(builder_implements:foodzone_protocols.UserInfo)
+      com.fz.foodzoneserver.protocols.UserInfoOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return MessageWrapper.internal_static_p4f_protocols_Order_descriptor;
+      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_UserInfo_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return MessageWrapper.internal_static_p4f_protocols_Order_fieldAccessorTable
+      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_UserInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Order.class, Order.Builder.class);
+              com.fz.foodzoneserver.protocols.UserInfo.class, com.fz.foodzoneserver.protocols.UserInfo.Builder.class);
     }
 
-    // Construct using com.p2p.p4f.protocols.Order.newBuilder()
+    // Construct using com.fz.foodzoneserver.protocols.UserInfo.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -489,7 +587,6 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getFoodListFieldBuilder();
       }
     }
     @java.lang.Override
@@ -497,33 +594,33 @@ private static final long serialVersionUID = 0L;
       super.clear();
       username_ = "";
 
-      buyDate_ = "";
+      fullname_ = "";
 
-      resID_ = "";
+      id_ = "";
 
-      if (foodListBuilder_ == null) {
-        foodList_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-      } else {
-        foodListBuilder_.clear();
-      }
+      address_ = "";
+
+      phone_ = "";
+
+      imgName_ = "";
+
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return MessageWrapper.internal_static_p4f_protocols_Order_descriptor;
+      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_UserInfo_descriptor;
     }
 
     @java.lang.Override
-    public Order getDefaultInstanceForType() {
-      return Order.getDefaultInstance();
+    public com.fz.foodzoneserver.protocols.UserInfo getDefaultInstanceForType() {
+      return com.fz.foodzoneserver.protocols.UserInfo.getDefaultInstance();
     }
 
     @java.lang.Override
-    public Order build() {
-      Order result = buildPartial();
+    public com.fz.foodzoneserver.protocols.UserInfo build() {
+      com.fz.foodzoneserver.protocols.UserInfo result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -531,21 +628,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public Order buildPartial() {
-      Order result = new Order(this);
-      int from_bitField0_ = bitField0_;
+    public com.fz.foodzoneserver.protocols.UserInfo buildPartial() {
+      com.fz.foodzoneserver.protocols.UserInfo result = new com.fz.foodzoneserver.protocols.UserInfo(this);
       result.username_ = username_;
-      result.buyDate_ = buyDate_;
-      result.resID_ = resID_;
-      if (foodListBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          foodList_ = java.util.Collections.unmodifiableList(foodList_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.foodList_ = foodList_;
-      } else {
-        result.foodList_ = foodListBuilder_.build();
-      }
+      result.fullname_ = fullname_;
+      result.id_ = id_;
+      result.address_ = address_;
+      result.phone_ = phone_;
+      result.imgName_ = imgName_;
       onBuilt();
       return result;
     }
@@ -584,53 +674,39 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof Order) {
-        return mergeFrom((Order)other);
+      if (other instanceof com.fz.foodzoneserver.protocols.UserInfo) {
+        return mergeFrom((com.fz.foodzoneserver.protocols.UserInfo)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(Order other) {
-      if (other == Order.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.fz.foodzoneserver.protocols.UserInfo other) {
+      if (other == com.fz.foodzoneserver.protocols.UserInfo.getDefaultInstance()) return this;
       if (!other.getUsername().isEmpty()) {
         username_ = other.username_;
         onChanged();
       }
-      if (!other.getBuyDate().isEmpty()) {
-        buyDate_ = other.buyDate_;
+      if (!other.getFullname().isEmpty()) {
+        fullname_ = other.fullname_;
         onChanged();
       }
-      if (!other.getResID().isEmpty()) {
-        resID_ = other.resID_;
+      if (!other.getId().isEmpty()) {
+        id_ = other.id_;
         onChanged();
       }
-      if (foodListBuilder_ == null) {
-        if (!other.foodList_.isEmpty()) {
-          if (foodList_.isEmpty()) {
-            foodList_ = other.foodList_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureFoodListIsMutable();
-            foodList_.addAll(other.foodList_);
-          }
-          onChanged();
-        }
-      } else {
-        if (!other.foodList_.isEmpty()) {
-          if (foodListBuilder_.isEmpty()) {
-            foodListBuilder_.dispose();
-            foodListBuilder_ = null;
-            foodList_ = other.foodList_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-            foodListBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getFoodListFieldBuilder() : null;
-          } else {
-            foodListBuilder_.addAllMessages(other.foodList_);
-          }
-        }
+      if (!other.getAddress().isEmpty()) {
+        address_ = other.address_;
+        onChanged();
+      }
+      if (!other.getPhone().isEmpty()) {
+        phone_ = other.phone_;
+        onChanged();
+      }
+      if (!other.getImgName().isEmpty()) {
+        imgName_ = other.imgName_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -647,11 +723,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Order parsedMessage = null;
+      com.fz.foodzoneserver.protocols.UserInfo parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (Order) e.getUnfinishedMessage();
+        parsedMessage = (com.fz.foodzoneserver.protocols.UserInfo) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -660,7 +736,6 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    private int bitField0_;
 
     private java.lang.Object username_ = "";
     /**
@@ -738,396 +813,384 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object buyDate_ = "";
+    private java.lang.Object fullname_ = "";
     /**
-     * <code>string buyDate = 2;</code>
-     * @return The buyDate.
+     * <code>string fullname = 2;</code>
+     * @return The fullname.
      */
-    public java.lang.String getBuyDate() {
-      java.lang.Object ref = buyDate_;
+    public java.lang.String getFullname() {
+      java.lang.Object ref = fullname_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        buyDate_ = s;
+        fullname_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string buyDate = 2;</code>
-     * @return The bytes for buyDate.
+     * <code>string fullname = 2;</code>
+     * @return The bytes for fullname.
      */
     public com.google.protobuf.ByteString
-        getBuyDateBytes() {
-      java.lang.Object ref = buyDate_;
+        getFullnameBytes() {
+      java.lang.Object ref = fullname_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        buyDate_ = b;
+        fullname_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string buyDate = 2;</code>
-     * @param value The buyDate to set.
+     * <code>string fullname = 2;</code>
+     * @param value The fullname to set.
      * @return This builder for chaining.
      */
-    public Builder setBuyDate(
+    public Builder setFullname(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      buyDate_ = value;
+      fullname_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string buyDate = 2;</code>
+     * <code>string fullname = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearBuyDate() {
+    public Builder clearFullname() {
       
-      buyDate_ = getDefaultInstance().getBuyDate();
+      fullname_ = getDefaultInstance().getFullname();
       onChanged();
       return this;
     }
     /**
-     * <code>string buyDate = 2;</code>
-     * @param value The bytes for buyDate to set.
+     * <code>string fullname = 2;</code>
+     * @param value The bytes for fullname to set.
      * @return This builder for chaining.
      */
-    public Builder setBuyDateBytes(
+    public Builder setFullnameBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      buyDate_ = value;
+      fullname_ = value;
       onChanged();
       return this;
     }
 
-    private java.lang.Object resID_ = "";
+    private java.lang.Object id_ = "";
     /**
-     * <code>string resID = 3;</code>
-     * @return The resID.
+     * <code>string id = 3;</code>
+     * @return The id.
      */
-    public java.lang.String getResID() {
-      java.lang.Object ref = resID_;
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        resID_ = s;
+        id_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string resID = 3;</code>
-     * @return The bytes for resID.
+     * <code>string id = 3;</code>
+     * @return The bytes for id.
      */
     public com.google.protobuf.ByteString
-        getResIDBytes() {
-      java.lang.Object ref = resID_;
+        getIdBytes() {
+      java.lang.Object ref = id_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        resID_ = b;
+        id_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string resID = 3;</code>
-     * @param value The resID to set.
+     * <code>string id = 3;</code>
+     * @param value The id to set.
      * @return This builder for chaining.
      */
-    public Builder setResID(
+    public Builder setId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      resID_ = value;
+      id_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string resID = 3;</code>
+     * <code>string id = 3;</code>
      * @return This builder for chaining.
      */
-    public Builder clearResID() {
+    public Builder clearId() {
       
-      resID_ = getDefaultInstance().getResID();
+      id_ = getDefaultInstance().getId();
       onChanged();
       return this;
     }
     /**
-     * <code>string resID = 3;</code>
-     * @param value The bytes for resID to set.
+     * <code>string id = 3;</code>
+     * @param value The bytes for id to set.
      * @return This builder for chaining.
      */
-    public Builder setResIDBytes(
+    public Builder setIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      resID_ = value;
+      id_ = value;
       onChanged();
       return this;
     }
 
-    private java.util.List<Food> foodList_ =
-      java.util.Collections.emptyList();
-    private void ensureFoodListIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
-        foodList_ = new java.util.ArrayList<Food>(foodList_);
-        bitField0_ |= 0x00000001;
-       }
+    private java.lang.Object address_ = "";
+    /**
+     * <code>string address = 4;</code>
+     * @return The address.
+     */
+    public java.lang.String getAddress() {
+      java.lang.Object ref = address_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        address_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string address = 4;</code>
+     * @return The bytes for address.
+     */
+    public com.google.protobuf.ByteString
+        getAddressBytes() {
+      java.lang.Object ref = address_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        address_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string address = 4;</code>
+     * @param value The address to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAddress(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      address_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string address = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearAddress() {
+      
+      address_ = getDefaultInstance().getAddress();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string address = 4;</code>
+     * @param value The bytes for address to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAddressBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      address_ = value;
+      onChanged();
+      return this;
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-            Food, Food.Builder, FoodOrBuilder> foodListBuilder_;
+    private java.lang.Object phone_ = "";
+    /**
+     * <code>string phone = 5;</code>
+     * @return The phone.
+     */
+    public java.lang.String getPhone() {
+      java.lang.Object ref = phone_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        phone_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string phone = 5;</code>
+     * @return The bytes for phone.
+     */
+    public com.google.protobuf.ByteString
+        getPhoneBytes() {
+      java.lang.Object ref = phone_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        phone_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string phone = 5;</code>
+     * @param value The phone to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPhone(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      phone_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string phone = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearPhone() {
+      
+      phone_ = getDefaultInstance().getPhone();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string phone = 5;</code>
+     * @param value The bytes for phone to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPhoneBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      phone_ = value;
+      onChanged();
+      return this;
+    }
 
+    private java.lang.Object imgName_ = "";
     /**
-     * <code>repeated .p4f_protocols.Food foodList = 4;</code>
+     * <code>string imgName = 6;</code>
+     * @return The imgName.
      */
-    public java.util.List<Food> getFoodListList() {
-      if (foodListBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(foodList_);
+    public java.lang.String getImgName() {
+      java.lang.Object ref = imgName_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        imgName_ = s;
+        return s;
       } else {
-        return foodListBuilder_.getMessageList();
+        return (java.lang.String) ref;
       }
     }
     /**
-     * <code>repeated .p4f_protocols.Food foodList = 4;</code>
+     * <code>string imgName = 6;</code>
+     * @return The bytes for imgName.
      */
-    public int getFoodListCount() {
-      if (foodListBuilder_ == null) {
-        return foodList_.size();
+    public com.google.protobuf.ByteString
+        getImgNameBytes() {
+      java.lang.Object ref = imgName_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        imgName_ = b;
+        return b;
       } else {
-        return foodListBuilder_.getCount();
+        return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>repeated .p4f_protocols.Food foodList = 4;</code>
+     * <code>string imgName = 6;</code>
+     * @param value The imgName to set.
+     * @return This builder for chaining.
      */
-    public Food getFoodList(int index) {
-      if (foodListBuilder_ == null) {
-        return foodList_.get(index);
-      } else {
-        return foodListBuilder_.getMessage(index);
-      }
-    }
-    /**
-     * <code>repeated .p4f_protocols.Food foodList = 4;</code>
-     */
-    public Builder setFoodList(
-        int index, Food value) {
-      if (foodListBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureFoodListIsMutable();
-        foodList_.set(index, value);
-        onChanged();
-      } else {
-        foodListBuilder_.setMessage(index, value);
-      }
+    public Builder setImgName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      imgName_ = value;
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .p4f_protocols.Food foodList = 4;</code>
+     * <code>string imgName = 6;</code>
+     * @return This builder for chaining.
      */
-    public Builder setFoodList(
-        int index, Food.Builder builderForValue) {
-      if (foodListBuilder_ == null) {
-        ensureFoodListIsMutable();
-        foodList_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        foodListBuilder_.setMessage(index, builderForValue.build());
-      }
+    public Builder clearImgName() {
+      
+      imgName_ = getDefaultInstance().getImgName();
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .p4f_protocols.Food foodList = 4;</code>
+     * <code>string imgName = 6;</code>
+     * @param value The bytes for imgName to set.
+     * @return This builder for chaining.
      */
-    public Builder addFoodList(Food value) {
-      if (foodListBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureFoodListIsMutable();
-        foodList_.add(value);
-        onChanged();
-      } else {
-        foodListBuilder_.addMessage(value);
-      }
+    public Builder setImgNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      imgName_ = value;
+      onChanged();
       return this;
-    }
-    /**
-     * <code>repeated .p4f_protocols.Food foodList = 4;</code>
-     */
-    public Builder addFoodList(
-        int index, Food value) {
-      if (foodListBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureFoodListIsMutable();
-        foodList_.add(index, value);
-        onChanged();
-      } else {
-        foodListBuilder_.addMessage(index, value);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .p4f_protocols.Food foodList = 4;</code>
-     */
-    public Builder addFoodList(
-        Food.Builder builderForValue) {
-      if (foodListBuilder_ == null) {
-        ensureFoodListIsMutable();
-        foodList_.add(builderForValue.build());
-        onChanged();
-      } else {
-        foodListBuilder_.addMessage(builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .p4f_protocols.Food foodList = 4;</code>
-     */
-    public Builder addFoodList(
-        int index, Food.Builder builderForValue) {
-      if (foodListBuilder_ == null) {
-        ensureFoodListIsMutable();
-        foodList_.add(index, builderForValue.build());
-        onChanged();
-      } else {
-        foodListBuilder_.addMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .p4f_protocols.Food foodList = 4;</code>
-     */
-    public Builder addAllFoodList(
-        java.lang.Iterable<? extends Food> values) {
-      if (foodListBuilder_ == null) {
-        ensureFoodListIsMutable();
-        addAll(
-            values, foodList_);
-        onChanged();
-      } else {
-        foodListBuilder_.addAllMessages(values);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .p4f_protocols.Food foodList = 4;</code>
-     */
-    public Builder clearFoodList() {
-      if (foodListBuilder_ == null) {
-        foodList_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-      } else {
-        foodListBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .p4f_protocols.Food foodList = 4;</code>
-     */
-    public Builder removeFoodList(int index) {
-      if (foodListBuilder_ == null) {
-        ensureFoodListIsMutable();
-        foodList_.remove(index);
-        onChanged();
-      } else {
-        foodListBuilder_.remove(index);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .p4f_protocols.Food foodList = 4;</code>
-     */
-    public Food.Builder getFoodListBuilder(
-        int index) {
-      return getFoodListFieldBuilder().getBuilder(index);
-    }
-    /**
-     * <code>repeated .p4f_protocols.Food foodList = 4;</code>
-     */
-    public FoodOrBuilder getFoodListOrBuilder(
-        int index) {
-      if (foodListBuilder_ == null) {
-        return foodList_.get(index);  } else {
-        return foodListBuilder_.getMessageOrBuilder(index);
-      }
-    }
-    /**
-     * <code>repeated .p4f_protocols.Food foodList = 4;</code>
-     */
-    public java.util.List<? extends FoodOrBuilder>
-         getFoodListOrBuilderList() {
-      if (foodListBuilder_ != null) {
-        return foodListBuilder_.getMessageOrBuilderList();
-      } else {
-        return java.util.Collections.unmodifiableList(foodList_);
-      }
-    }
-    /**
-     * <code>repeated .p4f_protocols.Food foodList = 4;</code>
-     */
-    public Food.Builder addFoodListBuilder() {
-      return getFoodListFieldBuilder().addBuilder(
-          Food.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .p4f_protocols.Food foodList = 4;</code>
-     */
-    public Food.Builder addFoodListBuilder(
-        int index) {
-      return getFoodListFieldBuilder().addBuilder(
-          index, Food.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .p4f_protocols.Food foodList = 4;</code>
-     */
-    public java.util.List<Food.Builder>
-         getFoodListBuilderList() {
-      return getFoodListFieldBuilder().getBuilderList();
-    }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-            Food, Food.Builder, FoodOrBuilder>
-        getFoodListFieldBuilder() {
-      if (foodListBuilder_ == null) {
-        foodListBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-                Food, Food.Builder, FoodOrBuilder>(
-                foodList_,
-                ((bitField0_ & 0x00000001) != 0),
-                getParentForChildren(),
-                isClean());
-        foodList_ = null;
-      }
-      return foodListBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
@@ -1142,41 +1205,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:p4f_protocols.Order)
+    // @@protoc_insertion_point(builder_scope:foodzone_protocols.UserInfo)
   }
 
-  // @@protoc_insertion_point(class_scope:p4f_protocols.Order)
-  private static final Order DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:foodzone_protocols.UserInfo)
+  private static final com.fz.foodzoneserver.protocols.UserInfo DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new Order();
+    DEFAULT_INSTANCE = new com.fz.foodzoneserver.protocols.UserInfo();
   }
 
-  public static Order getDefaultInstance() {
+  public static com.fz.foodzoneserver.protocols.UserInfo getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Order>
-      PARSER = new com.google.protobuf.AbstractParser<Order>() {
+  private static final com.google.protobuf.Parser<UserInfo>
+      PARSER = new com.google.protobuf.AbstractParser<UserInfo>() {
     @java.lang.Override
-    public Order parsePartialFrom(
+    public UserInfo parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new Order(input, extensionRegistry);
+      return new UserInfo(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<Order> parser() {
+  public static com.google.protobuf.Parser<UserInfo> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<Order> getParserForType() {
+  public com.google.protobuf.Parser<UserInfo> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public Order getDefaultInstanceForType() {
+  public com.fz.foodzoneserver.protocols.UserInfo getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

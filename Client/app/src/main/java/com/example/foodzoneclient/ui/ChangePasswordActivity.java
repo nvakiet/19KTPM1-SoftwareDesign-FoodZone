@@ -22,7 +22,6 @@ import android.widget.Toast;
 
 import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.backend.ContainerClient;
-import com.example.foodzoneclient.protocols.changePassInfo;
 
 public class ChangePasswordActivity extends AppCompatActivity implements View.OnClickListener {
     Button confirmChangePass;
@@ -76,15 +75,7 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.btn_confirmChangePass:
-                changePassInfo changeInfo = changePassInfo.newBuilder()
-                        .setUsername(profile_name.getText().toString())
-                        .setOldPass(oldPass.getText().toString())
-                        .setNewPass(newPass.getText().toString())
-                        .setNewPassConfirm(newPassConfirm.getText().toString()).build();
-                Message msg = Message.obtain(ContainerClient.handler);
-                msg.what = 3;
-                msg.obj = changeInfo;
-                msg.sendToTarget();
+                break;
 
             case R.id.backtoprofile:
                 Intent confirmIntent=new Intent(ChangePasswordActivity.this, ProfileActivity.class);

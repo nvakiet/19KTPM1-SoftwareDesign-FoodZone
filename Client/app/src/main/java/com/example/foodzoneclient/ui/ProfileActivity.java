@@ -21,7 +21,7 @@ import com.example.foodzoneclient.backend.ContainerClient;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
     ImageView profile_backtomain;
-    TextView profile_name, profile_address, profile_phone, profile_email;
+    TextView profile_name, profile_address, profile_phone, profile_id;
     Button logout,changePass;
     SharedPreferences myPreferences;
     private Context mContext;
@@ -34,12 +34,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_profile);
         findID();
         profile_backtomain.setOnClickListener(this);
-        prefGet = getApplicationContext().getSharedPreferences("user_info", MODE_PRIVATE);
+        prefGet = getApplicationContext().getSharedPreferences("UserInfo", MODE_PRIVATE);
         prefGetEdit = prefGet.edit();
-        profile_name.setText(prefGet.getString("Username", null));
-        profile_address.setText(prefGet.getString("UserAddress", null));
-        profile_phone.setText(prefGet.getString("UserPhone", null));
-        profile_email.setText(prefGet.getString("UserEmail", null));
+        profile_name.setText(prefGet.getString("Fullname", null));
+        profile_address.setText(prefGet.getString("Address", null));
+        profile_phone.setText(prefGet.getString("Phone", null));
+        profile_id.setText(prefGet.getString("ID", null));
         //use Handler to receive Message
         ProfileActivity.profileHandler = new Handler(Looper.getMainLooper()){
             @Override
@@ -51,13 +51,20 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         logout.setOnClickListener(this);
         changePass.setOnClickListener(this);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ContainerClient.getInstance().currentUIHandler = profileHandler;
+    }
+
     public void findID(){
         profile_backtomain=(ImageView) findViewById(R.id.profile_backtomain);
         profile_name=(TextView) findViewById(R.id.profile_name);
         logout=(Button) findViewById(R.id.logout_button);
         changePass=(Button) findViewById(R.id.btn_changePass);
         profile_address = findViewById(R.id.profile_address);
-        profile_email = findViewById(R.id.profile_email);
+        profile_id = findViewById(R.id.profile_id);
         profile_phone = findViewById(R.id.profile_phone);
     }
     @Override
@@ -68,18 +75,14 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 //finish();
                 break;
             case R.id.logout_button:
+                ContainerClient.getInstance().disconnect();
+                prefGetEdit.clear().apply();
                 Intent outIntent=new Intent(ProfileActivity.this, LoginActivity.class);
                 startActivity(outIntent);
-                prefGetEdit.clear().apply();
 
-                Message msg = Message.obtain(ContainerClient.handler);
-                msg.what = 0; // Opcode for logout
-                msg.sendToTarget();
-                finish();
-
-                Intent myIntent = new Intent(ProfileActivity.this, LoginActivity.class);
-                startActivity(myIntent);
-                finish();
+//                Intent myIntent = new Intent(ProfileActivity.this, LoginActivity.class);
+//                startActivity(myIntent);
+//                finish();
 
                 break;
                 

@@ -108,7 +108,7 @@
         android:id="@+id/profile_email_view"
         app:layout_constraintTop_toBottomOf="@+id/addressPr" android:layout_marginTop="28dp"/>
     <TextView
-        android:id="@+id/profile_email"
+        android:id="@+id/profile_id"
         android:layout_width="200dp"
         android:layout_height="30dp"
         android:background="@drawable/custom_textview"
@@ -128,7 +128,7 @@
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="104dp"
-        app:layout_constraintTop_toBottomOf="@+id/profile_email"
+        app:layout_constraintTop_toBottomOf="@+id/profile_id"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/alice"/>
     <ImageView

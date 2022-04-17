@@ -4,26 +4,27 @@
 package com.fz.foodzoneserver.protocols;
 
 /**
- * Protobuf type {@code p4f_protocols.orderResponse}
+ * Protobuf type {@code foodzone_protocols.LoginRequest}
  */
-public final class orderResponse extends
+public final class LoginRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:p4f_protocols.orderResponse)
-    orderResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:foodzone_protocols.LoginRequest)
+    LoginRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use orderResponse.newBuilder() to construct.
-  private orderResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use LoginRequest.newBuilder() to construct.
+  private LoginRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private orderResponse() {
-    orderID_ = "";
+  private LoginRequest() {
+    username_ = "";
+    password_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new orderResponse();
+    return new LoginRequest();
   }
 
   @java.lang.Override
@@ -31,7 +32,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private orderResponse(
+  private LoginRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -39,7 +40,6 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
-    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -52,13 +52,14 @@ private static final long serialVersionUID = 0L;
             break;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
-            bitField0_ |= 0x00000001;
-            orderID_ = s;
+
+            username_ = s;
             break;
           }
-          case 16: {
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            orderResult_ = input.readInt32();
+            password_ = s;
             break;
           }
           default: {
@@ -82,85 +83,91 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return MessageWrapper.internal_static_p4f_protocols_orderResponse_descriptor;
+    return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_LoginRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return MessageWrapper.internal_static_p4f_protocols_orderResponse_fieldAccessorTable
+    return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_LoginRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            orderResponse.class, orderResponse.Builder.class);
+            com.fz.foodzoneserver.protocols.LoginRequest.class, com.fz.foodzoneserver.protocols.LoginRequest.Builder.class);
   }
 
-  private int bitField0_;
-  public static final int ORDERID_FIELD_NUMBER = 1;
-  private volatile java.lang.Object orderID_;
+  public static final int USERNAME_FIELD_NUMBER = 1;
+  private volatile java.lang.Object username_;
   /**
-   * <pre>
-   *orderID = username +_+ buyDate +_+ resID
-   * </pre>
-   *
-   * <code>optional string orderID = 1;</code>
-   * @return Whether the orderID field is set.
+   * <code>string username = 1;</code>
+   * @return The username.
    */
   @java.lang.Override
-  public boolean hasOrderID() {
-    return ((bitField0_ & 0x00000001) != 0);
-  }
-  /**
-   * <pre>
-   *orderID = username +_+ buyDate +_+ resID
-   * </pre>
-   *
-   * <code>optional string orderID = 1;</code>
-   * @return The orderID.
-   */
-  @java.lang.Override
-  public java.lang.String getOrderID() {
-    java.lang.Object ref = orderID_;
+  public java.lang.String getUsername() {
+    java.lang.Object ref = username_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      orderID_ = s;
+      username_ = s;
       return s;
     }
   }
   /**
-   * <pre>
-   *orderID = username +_+ buyDate +_+ resID
-   * </pre>
-   *
-   * <code>optional string orderID = 1;</code>
-   * @return The bytes for orderID.
+   * <code>string username = 1;</code>
+   * @return The bytes for username.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getOrderIDBytes() {
-    java.lang.Object ref = orderID_;
+      getUsernameBytes() {
+    java.lang.Object ref = username_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      orderID_ = b;
+      username_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int ORDERRESULT_FIELD_NUMBER = 2;
-  private int orderResult_;
+  public static final int PASSWORD_FIELD_NUMBER = 2;
+  private volatile java.lang.Object password_;
   /**
-   * <code>int32 orderResult = 2;</code>
-   * @return The orderResult.
+   * <code>string password = 2;</code>
+   * @return The password.
    */
   @java.lang.Override
-  public int getOrderResult() {
-    return orderResult_;
+  public java.lang.String getPassword() {
+    java.lang.Object ref = password_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      password_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string password = 2;</code>
+   * @return The bytes for password.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getPasswordBytes() {
+    java.lang.Object ref = password_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      password_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -177,11 +184,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (((bitField0_ & 0x00000001) != 0)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, orderID_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(username_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, username_);
     }
-    if (orderResult_ != 0) {
-      output.writeInt32(2, orderResult_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(password_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, password_);
     }
     unknownFields.writeTo(output);
   }
@@ -192,12 +199,11 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, orderID_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(username_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, username_);
     }
-    if (orderResult_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, orderResult_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(password_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, password_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -209,18 +215,15 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof orderResponse)) {
+    if (!(obj instanceof com.fz.foodzoneserver.protocols.LoginRequest)) {
       return super.equals(obj);
     }
-    orderResponse other = (orderResponse) obj;
+    com.fz.foodzoneserver.protocols.LoginRequest other = (com.fz.foodzoneserver.protocols.LoginRequest) obj;
 
-    if (hasOrderID() != other.hasOrderID()) return false;
-    if (hasOrderID()) {
-      if (!getOrderID()
-          .equals(other.getOrderID())) return false;
-    }
-    if (getOrderResult()
-        != other.getOrderResult()) return false;
+    if (!getUsername()
+        .equals(other.getUsername())) return false;
+    if (!getPassword()
+        .equals(other.getPassword())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -232,80 +235,78 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasOrderID()) {
-      hash = (37 * hash) + ORDERID_FIELD_NUMBER;
-      hash = (53 * hash) + getOrderID().hashCode();
-    }
-    hash = (37 * hash) + ORDERRESULT_FIELD_NUMBER;
-    hash = (53 * hash) + getOrderResult();
+    hash = (37 * hash) + USERNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getUsername().hashCode();
+    hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
+    hash = (53 * hash) + getPassword().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static orderResponse parseFrom(
+  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static orderResponse parseFrom(
+  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static orderResponse parseFrom(
+  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static orderResponse parseFrom(
+  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static orderResponse parseFrom(byte[] data)
+  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static orderResponse parseFrom(
+  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static orderResponse parseFrom(java.io.InputStream input)
+  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static orderResponse parseFrom(
+  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static orderResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.fz.foodzoneserver.protocols.LoginRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static orderResponse parseDelimitedFrom(
+  public static com.fz.foodzoneserver.protocols.LoginRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static orderResponse parseFrom(
+  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static orderResponse parseFrom(
+  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -318,7 +319,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(orderResponse prototype) {
+  public static Builder newBuilder(com.fz.foodzoneserver.protocols.LoginRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -334,26 +335,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code p4f_protocols.orderResponse}
+   * Protobuf type {@code foodzone_protocols.LoginRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:p4f_protocols.orderResponse)
-          orderResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:foodzone_protocols.LoginRequest)
+      com.fz.foodzoneserver.protocols.LoginRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return MessageWrapper.internal_static_p4f_protocols_orderResponse_descriptor;
+      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_LoginRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return MessageWrapper.internal_static_p4f_protocols_orderResponse_fieldAccessorTable
+      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_LoginRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              orderResponse.class, orderResponse.Builder.class);
+              com.fz.foodzoneserver.protocols.LoginRequest.class, com.fz.foodzoneserver.protocols.LoginRequest.Builder.class);
     }
 
-    // Construct using com.p2p.p4f.protocols.orderResponse.newBuilder()
+    // Construct using com.fz.foodzoneserver.protocols.LoginRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -371,9 +372,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      orderID_ = "";
-      bitField0_ = (bitField0_ & ~0x00000001);
-      orderResult_ = 0;
+      username_ = "";
+
+      password_ = "";
 
       return this;
     }
@@ -381,17 +382,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return MessageWrapper.internal_static_p4f_protocols_orderResponse_descriptor;
+      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_LoginRequest_descriptor;
     }
 
     @java.lang.Override
-    public orderResponse getDefaultInstanceForType() {
-      return orderResponse.getDefaultInstance();
+    public com.fz.foodzoneserver.protocols.LoginRequest getDefaultInstanceForType() {
+      return com.fz.foodzoneserver.protocols.LoginRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public orderResponse build() {
-      orderResponse result = buildPartial();
+    public com.fz.foodzoneserver.protocols.LoginRequest build() {
+      com.fz.foodzoneserver.protocols.LoginRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -399,16 +400,10 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public orderResponse buildPartial() {
-      orderResponse result = new orderResponse(this);
-      int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        to_bitField0_ |= 0x00000001;
-      }
-      result.orderID_ = orderID_;
-      result.orderResult_ = orderResult_;
-      result.bitField0_ = to_bitField0_;
+    public com.fz.foodzoneserver.protocols.LoginRequest buildPartial() {
+      com.fz.foodzoneserver.protocols.LoginRequest result = new com.fz.foodzoneserver.protocols.LoginRequest(this);
+      result.username_ = username_;
+      result.password_ = password_;
       onBuilt();
       return result;
     }
@@ -447,23 +442,23 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof orderResponse) {
-        return mergeFrom((orderResponse)other);
+      if (other instanceof com.fz.foodzoneserver.protocols.LoginRequest) {
+        return mergeFrom((com.fz.foodzoneserver.protocols.LoginRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(orderResponse other) {
-      if (other == orderResponse.getDefaultInstance()) return this;
-      if (other.hasOrderID()) {
-        bitField0_ |= 0x00000001;
-        orderID_ = other.orderID_;
+    public Builder mergeFrom(com.fz.foodzoneserver.protocols.LoginRequest other) {
+      if (other == com.fz.foodzoneserver.protocols.LoginRequest.getDefaultInstance()) return this;
+      if (!other.getUsername().isEmpty()) {
+        username_ = other.username_;
         onChanged();
       }
-      if (other.getOrderResult() != 0) {
-        setOrderResult(other.getOrderResult());
+      if (!other.getPassword().isEmpty()) {
+        password_ = other.password_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -480,11 +475,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      orderResponse parsedMessage = null;
+      com.fz.foodzoneserver.protocols.LoginRequest parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (orderResponse) e.getUnfinishedMessage();
+        parsedMessage = (com.fz.foodzoneserver.protocols.LoginRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -493,142 +488,155 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    private int bitField0_;
 
-    private java.lang.Object orderID_ = "";
+    private java.lang.Object username_ = "";
     /**
-     * <pre>
-     *orderID = username +_+ buyDate +_+ resID
-     * </pre>
-     *
-     * <code>optional string orderID = 1;</code>
-     * @return Whether the orderID field is set.
+     * <code>string username = 1;</code>
+     * @return The username.
      */
-    public boolean hasOrderID() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <pre>
-     *orderID = username +_+ buyDate +_+ resID
-     * </pre>
-     *
-     * <code>optional string orderID = 1;</code>
-     * @return The orderID.
-     */
-    public java.lang.String getOrderID() {
-      java.lang.Object ref = orderID_;
+    public java.lang.String getUsername() {
+      java.lang.Object ref = username_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        orderID_ = s;
+        username_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <pre>
-     *orderID = username +_+ buyDate +_+ resID
-     * </pre>
-     *
-     * <code>optional string orderID = 1;</code>
-     * @return The bytes for orderID.
+     * <code>string username = 1;</code>
+     * @return The bytes for username.
      */
     public com.google.protobuf.ByteString
-        getOrderIDBytes() {
-      java.lang.Object ref = orderID_;
+        getUsernameBytes() {
+      java.lang.Object ref = username_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        orderID_ = b;
+        username_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <pre>
-     *orderID = username +_+ buyDate +_+ resID
-     * </pre>
-     *
-     * <code>optional string orderID = 1;</code>
-     * @param value The orderID to set.
+     * <code>string username = 1;</code>
+     * @param value The username to set.
      * @return This builder for chaining.
      */
-    public Builder setOrderID(
+    public Builder setUsername(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
-      orderID_ = value;
+  
+      username_ = value;
       onChanged();
       return this;
     }
     /**
-     * <pre>
-     *orderID = username +_+ buyDate +_+ resID
-     * </pre>
-     *
-     * <code>optional string orderID = 1;</code>
+     * <code>string username = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearOrderID() {
-      bitField0_ = (bitField0_ & ~0x00000001);
-      orderID_ = getDefaultInstance().getOrderID();
+    public Builder clearUsername() {
+      
+      username_ = getDefaultInstance().getUsername();
       onChanged();
       return this;
     }
     /**
-     * <pre>
-     *orderID = username +_+ buyDate +_+ resID
-     * </pre>
-     *
-     * <code>optional string orderID = 1;</code>
-     * @param value The bytes for orderID to set.
+     * <code>string username = 1;</code>
+     * @param value The bytes for username to set.
      * @return This builder for chaining.
      */
-    public Builder setOrderIDBytes(
+    public Builder setUsernameBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-      bitField0_ |= 0x00000001;
-      orderID_ = value;
+      
+      username_ = value;
       onChanged();
       return this;
     }
 
-    private int orderResult_ ;
+    private java.lang.Object password_ = "";
     /**
-     * <code>int32 orderResult = 2;</code>
-     * @return The orderResult.
+     * <code>string password = 2;</code>
+     * @return The password.
      */
-    @java.lang.Override
-    public int getOrderResult() {
-      return orderResult_;
+    public java.lang.String getPassword() {
+      java.lang.Object ref = password_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        password_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>int32 orderResult = 2;</code>
-     * @param value The orderResult to set.
+     * <code>string password = 2;</code>
+     * @return The bytes for password.
+     */
+    public com.google.protobuf.ByteString
+        getPasswordBytes() {
+      java.lang.Object ref = password_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        password_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string password = 2;</code>
+     * @param value The password to set.
      * @return This builder for chaining.
      */
-    public Builder setOrderResult(int value) {
-      
-      orderResult_ = value;
+    public Builder setPassword(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      password_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 orderResult = 2;</code>
+     * <code>string password = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearOrderResult() {
+    public Builder clearPassword() {
       
-      orderResult_ = 0;
+      password_ = getDefaultInstance().getPassword();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string password = 2;</code>
+     * @param value The bytes for password to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPasswordBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      password_ = value;
       onChanged();
       return this;
     }
@@ -645,41 +653,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:p4f_protocols.orderResponse)
+    // @@protoc_insertion_point(builder_scope:foodzone_protocols.LoginRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:p4f_protocols.orderResponse)
-  private static final orderResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:foodzone_protocols.LoginRequest)
+  private static final com.fz.foodzoneserver.protocols.LoginRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new orderResponse();
+    DEFAULT_INSTANCE = new com.fz.foodzoneserver.protocols.LoginRequest();
   }
 
-  public static orderResponse getDefaultInstance() {
+  public static com.fz.foodzoneserver.protocols.LoginRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<orderResponse>
-      PARSER = new com.google.protobuf.AbstractParser<orderResponse>() {
+  private static final com.google.protobuf.Parser<LoginRequest>
+      PARSER = new com.google.protobuf.AbstractParser<LoginRequest>() {
     @java.lang.Override
-    public orderResponse parsePartialFrom(
+    public LoginRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new orderResponse(input, extensionRegistry);
+      return new LoginRequest(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<orderResponse> parser() {
+  public static com.google.protobuf.Parser<LoginRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<orderResponse> getParserForType() {
+  public com.google.protobuf.Parser<LoginRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public orderResponse getDefaultInstanceForType() {
+  public com.fz.foodzoneserver.protocols.LoginRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

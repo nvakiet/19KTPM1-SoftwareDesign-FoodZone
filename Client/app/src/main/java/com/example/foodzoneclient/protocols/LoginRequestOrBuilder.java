@@ -3,8 +3,8 @@
 
 package com.example.foodzoneclient.protocols;
 
-public interface LoginInfoOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:foodzone_protocols.LoginInfo)
+public interface LoginRequestOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:foodzone_protocols.LoginRequest)
     com.google.protobuf.MessageLiteOrBuilder {
 
   /**

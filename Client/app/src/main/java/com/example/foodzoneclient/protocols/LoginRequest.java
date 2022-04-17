@@ -4,14 +4,14 @@
 package com.example.foodzoneclient.protocols;
 
 /**
- * Protobuf type {@code foodzone_protocols.LoginInfo}
+ * Protobuf type {@code foodzone_protocols.LoginRequest}
  */
-public  final class LoginInfo extends
+public  final class LoginRequest extends
     com.google.protobuf.GeneratedMessageLite<
-        LoginInfo, LoginInfo.Builder> implements
-    // @@protoc_insertion_point(message_implements:foodzone_protocols.LoginInfo)
-    LoginInfoOrBuilder {
-  private LoginInfo() {
+        LoginRequest, LoginRequest.Builder> implements
+    // @@protoc_insertion_point(message_implements:foodzone_protocols.LoginRequest)
+    LoginRequestOrBuilder {
+  private LoginRequest() {
     username_ = "";
     password_ = "";
   }
@@ -109,73 +109,73 @@ public  final class LoginInfo extends
     
   }
 
-  public static com.example.foodzoneclient.protocols.LoginInfo parseFrom(
+  public static com.example.foodzoneclient.protocols.LoginRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, data);
   }
-  public static com.example.foodzoneclient.protocols.LoginInfo parseFrom(
+  public static com.example.foodzoneclient.protocols.LoginRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, data, extensionRegistry);
   }
-  public static com.example.foodzoneclient.protocols.LoginInfo parseFrom(
+  public static com.example.foodzoneclient.protocols.LoginRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, data);
   }
-  public static com.example.foodzoneclient.protocols.LoginInfo parseFrom(
+  public static com.example.foodzoneclient.protocols.LoginRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, data, extensionRegistry);
   }
-  public static com.example.foodzoneclient.protocols.LoginInfo parseFrom(byte[] data)
+  public static com.example.foodzoneclient.protocols.LoginRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, data);
   }
-  public static com.example.foodzoneclient.protocols.LoginInfo parseFrom(
+  public static com.example.foodzoneclient.protocols.LoginRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, data, extensionRegistry);
   }
-  public static com.example.foodzoneclient.protocols.LoginInfo parseFrom(java.io.InputStream input)
+  public static com.example.foodzoneclient.protocols.LoginRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, input);
   }
-  public static com.example.foodzoneclient.protocols.LoginInfo parseFrom(
+  public static com.example.foodzoneclient.protocols.LoginRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, input, extensionRegistry);
   }
-  public static com.example.foodzoneclient.protocols.LoginInfo parseDelimitedFrom(java.io.InputStream input)
+  public static com.example.foodzoneclient.protocols.LoginRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return parseDelimitedFrom(DEFAULT_INSTANCE, input);
   }
-  public static com.example.foodzoneclient.protocols.LoginInfo parseDelimitedFrom(
+  public static com.example.foodzoneclient.protocols.LoginRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
   }
-  public static com.example.foodzoneclient.protocols.LoginInfo parseFrom(
+  public static com.example.foodzoneclient.protocols.LoginRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, input);
   }
-  public static com.example.foodzoneclient.protocols.LoginInfo parseFrom(
+  public static com.example.foodzoneclient.protocols.LoginRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -186,19 +186,19 @@ public  final class LoginInfo extends
   public static Builder newBuilder() {
     return (Builder) DEFAULT_INSTANCE.createBuilder();
   }
-  public static Builder newBuilder(com.example.foodzoneclient.protocols.LoginInfo prototype) {
+  public static Builder newBuilder(com.example.foodzoneclient.protocols.LoginRequest prototype) {
     return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
   }
 
   /**
-   * Protobuf type {@code foodzone_protocols.LoginInfo}
+   * Protobuf type {@code foodzone_protocols.LoginRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageLite.Builder<
-        com.example.foodzoneclient.protocols.LoginInfo, Builder> implements
-      // @@protoc_insertion_point(builder_implements:foodzone_protocols.LoginInfo)
-      com.example.foodzoneclient.protocols.LoginInfoOrBuilder {
-    // Construct using com.example.foodzoneclient.protocols.LoginInfo.newBuilder()
+        com.example.foodzoneclient.protocols.LoginRequest, Builder> implements
+      // @@protoc_insertion_point(builder_implements:foodzone_protocols.LoginRequest)
+      com.example.foodzoneclient.protocols.LoginRequestOrBuilder {
+    // Construct using com.example.foodzoneclient.protocols.LoginRequest.newBuilder()
     private Builder() {
       super(DEFAULT_INSTANCE);
     }
@@ -302,7 +302,7 @@ public  final class LoginInfo extends
       return this;
     }
 
-    // @@protoc_insertion_point(builder_scope:foodzone_protocols.LoginInfo)
+    // @@protoc_insertion_point(builder_scope:foodzone_protocols.LoginRequest)
   }
   @java.lang.Override
   @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
@@ -311,7 +311,7 @@ public  final class LoginInfo extends
       java.lang.Object arg0, java.lang.Object arg1) {
     switch (method) {
       case NEW_MUTABLE_INSTANCE: {
-        return new com.example.foodzoneclient.protocols.LoginInfo();
+        return new com.example.foodzoneclient.protocols.LoginRequest();
       }
       case NEW_BUILDER: {
         return new Builder();
@@ -331,13 +331,13 @@ public  final class LoginInfo extends
         return DEFAULT_INSTANCE;
       }
       case GET_PARSER: {
-        com.google.protobuf.Parser<com.example.foodzoneclient.protocols.LoginInfo> parser = PARSER;
+        com.google.protobuf.Parser<com.example.foodzoneclient.protocols.LoginRequest> parser = PARSER;
         if (parser == null) {
-          synchronized (com.example.foodzoneclient.protocols.LoginInfo.class) {
+          synchronized (com.example.foodzoneclient.protocols.LoginRequest.class) {
             parser = PARSER;
             if (parser == null) {
               parser =
-                  new DefaultInstanceBasedParser<com.example.foodzoneclient.protocols.LoginInfo>(
+                  new DefaultInstanceBasedParser<com.example.foodzoneclient.protocols.LoginRequest>(
                       DEFAULT_INSTANCE);
               PARSER = parser;
             }
@@ -356,24 +356,24 @@ public  final class LoginInfo extends
   }
 
 
-  // @@protoc_insertion_point(class_scope:foodzone_protocols.LoginInfo)
-  private static final com.example.foodzoneclient.protocols.LoginInfo DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:foodzone_protocols.LoginRequest)
+  private static final com.example.foodzoneclient.protocols.LoginRequest DEFAULT_INSTANCE;
   static {
-    LoginInfo defaultInstance = new LoginInfo();
+    LoginRequest defaultInstance = new LoginRequest();
     // New instances are implicitly immutable so no need to make
     // immutable.
     DEFAULT_INSTANCE = defaultInstance;
     com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
-      LoginInfo.class, defaultInstance);
+      LoginRequest.class, defaultInstance);
   }
 
-  public static com.example.foodzoneclient.protocols.LoginInfo getDefaultInstance() {
+  public static com.example.foodzoneclient.protocols.LoginRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static volatile com.google.protobuf.Parser<LoginInfo> PARSER;
+  private static volatile com.google.protobuf.Parser<LoginRequest> PARSER;
 
-  public static com.google.protobuf.Parser<LoginInfo> parser() {
+  public static com.google.protobuf.Parser<LoginRequest> parser() {
     return DEFAULT_INSTANCE.getParserForType();
   }
 }

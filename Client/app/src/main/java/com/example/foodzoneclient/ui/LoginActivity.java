@@ -10,6 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.backend.ContainerClient;
@@ -20,11 +21,9 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class LoginActivity extends AppCompatActivity {
-
     TabLayout tabLayout;
     ViewPager viewPager;
     float v=0;
-    public static Thread worker = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +34,11 @@ public class LoginActivity extends AppCompatActivity {
         try {
             is = assetManager.open("server.txt");
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(ContainerClient.LOG_TAG, "Can't read server list.", e);
         }
         if (is != null) {
-            worker = new Thread(new ContainerClient(is, 9999));
-            worker.setDaemon(true);
-            worker.start();
+            // Initialize the server IPs
+            ContainerClient.getInstance().initServerIPs(is);
         }
         // find id of these things
         tabLayout=findViewById(R.id.tab_layout);
