@@ -56,8 +56,9 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="195dp"
+        android:layout_width="145dp"
         android:layout_height="145dp"
+        android:padding="15dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
