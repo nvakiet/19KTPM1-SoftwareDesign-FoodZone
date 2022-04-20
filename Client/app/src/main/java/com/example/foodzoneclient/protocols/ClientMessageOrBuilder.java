@@ -30,5 +30,16 @@ public interface ClientMessageOrBuilder extends
    */
   com.example.foodzoneclient.protocols.LoginRequest getLoginRequest();
 
+  /**
+   * <code>.foodzone_protocols.RegisterRequest registerRequest = 3;</code>
+   * @return Whether the registerRequest field is set.
+   */
+  boolean hasRegisterRequest();
+  /**
+   * <code>.foodzone_protocols.RegisterRequest registerRequest = 3;</code>
+   * @return The registerRequest.
+   */
+  com.example.foodzoneclient.protocols.RegisterRequest getRegisterRequest();
+
   public com.example.foodzoneclient.protocols.ClientMessage.RequestsCase getRequestsCase();
 }

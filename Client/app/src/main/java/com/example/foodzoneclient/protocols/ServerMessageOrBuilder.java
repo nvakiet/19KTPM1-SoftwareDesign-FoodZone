@@ -30,5 +30,16 @@ public interface ServerMessageOrBuilder extends
    */
   com.example.foodzoneclient.protocols.LoginResponse getLoginResponse();
 
+  /**
+   * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+   * @return Whether the registerResponse field is set.
+   */
+  boolean hasRegisterResponse();
+  /**
+   * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+   * @return The registerResponse.
+   */
+  com.example.foodzoneclient.protocols.RegisterResponse getRegisterResponse();
+
   public com.example.foodzoneclient.protocols.ServerMessage.ResponsesCase getResponsesCase();
 }

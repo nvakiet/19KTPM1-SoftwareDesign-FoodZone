@@ -18,6 +18,7 @@ public  final class ClientMessage extends
   private java.lang.Object requests_;
   public enum RequestsCase {
     LOGINREQUEST(2),
+    REGISTERREQUEST(3),
     REQUESTS_NOT_SET(0);
     private final int value;
     private RequestsCase(int value) {
@@ -34,6 +35,7 @@ public  final class ClientMessage extends
     public static RequestsCase forNumber(int value) {
       switch (value) {
         case 2: return LOGINREQUEST;
+        case 3: return REGISTERREQUEST;
         case 0: return REQUESTS_NOT_SET;
         default: return null;
       }
@@ -147,6 +149,56 @@ public  final class ClientMessage extends
    */
   private void clearLoginRequest() {
     if (requestsCase_ == 2) {
+      requestsCase_ = 0;
+      requests_ = null;
+    }
+  }
+
+  public static final int REGISTERREQUEST_FIELD_NUMBER = 3;
+  /**
+   * <code>.foodzone_protocols.RegisterRequest registerRequest = 3;</code>
+   */
+  @java.lang.Override
+  public boolean hasRegisterRequest() {
+    return requestsCase_ == 3;
+  }
+  /**
+   * <code>.foodzone_protocols.RegisterRequest registerRequest = 3;</code>
+   */
+  @java.lang.Override
+  public com.example.foodzoneclient.protocols.RegisterRequest getRegisterRequest() {
+    if (requestsCase_ == 3) {
+       return (com.example.foodzoneclient.protocols.RegisterRequest) requests_;
+    }
+    return com.example.foodzoneclient.protocols.RegisterRequest.getDefaultInstance();
+  }
+  /**
+   * <code>.foodzone_protocols.RegisterRequest registerRequest = 3;</code>
+   */
+  private void setRegisterRequest(com.example.foodzoneclient.protocols.RegisterRequest value) {
+    value.getClass();
+  requests_ = value;
+    requestsCase_ = 3;
+  }
+  /**
+   * <code>.foodzone_protocols.RegisterRequest registerRequest = 3;</code>
+   */
+  private void mergeRegisterRequest(com.example.foodzoneclient.protocols.RegisterRequest value) {
+    value.getClass();
+  if (requestsCase_ == 3 &&
+        requests_ != com.example.foodzoneclient.protocols.RegisterRequest.getDefaultInstance()) {
+      requests_ = com.example.foodzoneclient.protocols.RegisterRequest.newBuilder((com.example.foodzoneclient.protocols.RegisterRequest) requests_)
+          .mergeFrom(value).buildPartial();
+    } else {
+      requests_ = value;
+    }
+    requestsCase_ = 3;
+  }
+  /**
+   * <code>.foodzone_protocols.RegisterRequest registerRequest = 3;</code>
+   */
+  private void clearRegisterRequest() {
+    if (requestsCase_ == 3) {
       requestsCase_ = 0;
       requests_ = null;
     }
@@ -356,6 +408,54 @@ public  final class ClientMessage extends
       return this;
     }
 
+    /**
+     * <code>.foodzone_protocols.RegisterRequest registerRequest = 3;</code>
+     */
+    @java.lang.Override
+    public boolean hasRegisterRequest() {
+      return instance.hasRegisterRequest();
+    }
+    /**
+     * <code>.foodzone_protocols.RegisterRequest registerRequest = 3;</code>
+     */
+    @java.lang.Override
+    public com.example.foodzoneclient.protocols.RegisterRequest getRegisterRequest() {
+      return instance.getRegisterRequest();
+    }
+    /**
+     * <code>.foodzone_protocols.RegisterRequest registerRequest = 3;</code>
+     */
+    public Builder setRegisterRequest(com.example.foodzoneclient.protocols.RegisterRequest value) {
+      copyOnWrite();
+      instance.setRegisterRequest(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.RegisterRequest registerRequest = 3;</code>
+     */
+    public Builder setRegisterRequest(
+        com.example.foodzoneclient.protocols.RegisterRequest.Builder builderForValue) {
+      copyOnWrite();
+      instance.setRegisterRequest(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.RegisterRequest registerRequest = 3;</code>
+     */
+    public Builder mergeRegisterRequest(com.example.foodzoneclient.protocols.RegisterRequest value) {
+      copyOnWrite();
+      instance.mergeRegisterRequest(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.RegisterRequest registerRequest = 3;</code>
+     */
+    public Builder clearRegisterRequest() {
+      copyOnWrite();
+      instance.clearRegisterRequest();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:foodzone_protocols.ClientMessage)
   }
   @java.lang.Override
@@ -376,10 +476,11 @@ public  final class ClientMessage extends
             "requestsCase_",
             "msg_",
             com.example.foodzoneclient.protocols.LoginRequest.class,
+            com.example.foodzoneclient.protocols.RegisterRequest.class,
           };
           java.lang.String info =
-              "\u0000\u0002\u0001\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u0208\u0002<\u0000" +
-              "";
+              "\u0000\u0003\u0001\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u0208\u0002<\u0000" +
+              "\u0003<\u0000";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

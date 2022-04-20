@@ -7,7 +7,7 @@ GO
 
 CREATE TABLE [Users] (
 	Username nvarchar(20) PRIMARY KEY,
-	[Password] nvarchar(16) NOT NULL CHECK(LEN([Password]) >= 8 AND LEN([Password]) <= 16 ),
+	[Password] nvarchar(16) NOT NULL CHECK(LEN([Password]) >= 8 AND LEN([Password]) <= 64),
 	Fullname nvarchar(40),
 	ID nvarchar(12),
 	[Address] nvarchar(70),

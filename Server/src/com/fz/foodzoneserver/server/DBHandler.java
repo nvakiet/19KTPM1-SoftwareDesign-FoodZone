@@ -1,29 +1,10 @@
 package com.fz.foodzoneserver.server;
 
+import com.fz.foodzoneserver.protocols.RegisterRequest;
 import com.fz.foodzoneserver.protocols.UserInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.sql.*;
-
-
-//class Restaurant{
-//    public String Branch_ID,
-//            Branch_Name,
-//            Branch_Address,
-//            Branch_image,
-//            Branch_Location_Longtitude,
-//            Branch_Location_Latitude = "NULL";
-//    public Restaurant(){}
-//    public Restaurant(String Branch_ID,String Branch_Name,String Branch_Address,String Branch_image,
-//                      String Branch_Location_Longtitude, String Branch_Location_Latitude){
-//        this.Branch_ID = Branch_ID;
-//        this.Branch_Name = Branch_Name;
-//        this.Branch_Address = Branch_Address;
-//        this.Branch_image = Branch_image;
-//        this.Branch_Location_Longtitude = Branch_Location_Longtitude;
-//        this.Branch_Location_Latitude = Branch_Location_Latitude;
-//    }
-//}
 
 //Each time using the new query, you have to create new dbhandler
 public class DBHandler {
@@ -91,6 +72,44 @@ public class DBHandler {
             logger.error(e);
         }
         return info.build();
+    }
+
+    public String insertUser(RegisterRequest request) {
+        String result;
+        try{
+            // Check if the user already exists
+            String checkExist = "select u.Username from Users as u where u.Username = '" + request.getUsername() + "'";
+            PreparedStatement st = conn.prepareStatement(checkExist);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                result = "Username already exists";
+                rs.close();
+                st.close();
+                return result;
+            }
+            // Insert the new user
+            rs.close();
+            st.close();
+            String sqlInsert = "insert into Users (Username, Password, Fullname, ID, Address, Phone, Image) values (?,?,?,?,?,?,?)";
+            st = conn.prepareStatement(sqlInsert);
+            st.setString(1, request.getUsername());
+            st.setString(2, request.getPassword());
+            st.setString(3, request.getFullname());
+            st.setString(4, request.getId());
+            st.setString(5, request.getAddress());
+            st.setString(6, request.getPhone());
+            st.setNull(7, Types.NVARCHAR);
+            st.executeUpdate();
+            st.close();
+            result = "Success";
+        } catch (SQLIntegrityConstraintViolationException constraintViolationException) {
+            logger.error(constraintViolationException);
+            result = "New user data violates database constraints";
+        } catch (SQLException e) {
+            logger.error(e);
+            result = "Query Error";
+        }
+        return result;
     }
 
     public void releaseConn() {

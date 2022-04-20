@@ -1,9 +1,6 @@
 package com.fz.foodzoneserver.server;
 
-import com.fz.foodzoneserver.protocols.ClientMessage;
-import com.fz.foodzoneserver.protocols.LoginRequest;
-import com.fz.foodzoneserver.protocols.LoginResponse;
-import com.fz.foodzoneserver.protocols.ServerMessage;
+import com.fz.foodzoneserver.protocols.*;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import org.apache.logging.log4j.LogManager;
@@ -34,18 +31,21 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
 		ServerMessage.Builder serverMessage = ServerMessage.newBuilder();
 		// Client requests login
 		if (clientMessage.getMsg().equals("login")) {
-			serverMessage.setMsg("login_response");
-			serverMessage.setLoginResponse(handleLoginRequest(clientMessage.getLoginRequest()));
+			serverMessage.setMsg("login_response")
+					.setLoginResponse(handleLoginRequest(clientMessage.getLoginRequest()));
 		}
-
+		// Client requests register
+		else if (clientMessage.getMsg().equals("register")) {
+			serverMessage.setMsg("register_response")
+					.setRegisterResponse(handleRegisterRequest(clientMessage.getRegisterRequest()));
+		}
 		ctx.writeAndFlush(serverMessage.build());
-		logger.info("Sent response back to client");
 	}
 	
 	@Override
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
 		super.exceptionCaught(ctx, cause);
-		logger.error("An exception occured at client " + ctx.channel().remoteAddress().toString(), cause);
+		logger.error("An exception occurred at client " + ctx.channel().remoteAddress().toString(), cause);
 		ctx.close();
 	}
 
@@ -57,6 +57,24 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
 			response.setResult(result);
 			if (result.equals("Success")) {
 				response.setUserInfo(dbHandler.queryUserInfo(request.getUsername()));
+				username = request.getUsername();
+				logger.info("User \"" + username + "\" has logged in");
+			}
+			dbHandler.releaseConn();
+		} catch (SQLException e) {
+			logger.error("Can't get database connection from connection pool", e);
+		}
+		return response.build();
+	}
+
+	public RegisterResponse handleRegisterRequest(RegisterRequest request) {
+		RegisterResponse.Builder response = RegisterResponse.newBuilder();
+		try {
+			DBHandler dbHandler = new DBHandler();
+			String result = dbHandler.insertUser(request);
+			response.setResult(result);
+			if (result.equals("Success")) {
+				logger.info("New user \"" + request.getUsername() + "\" has been registered");
 			}
 			dbHandler.releaseConn();
 		} catch (SQLException e) {

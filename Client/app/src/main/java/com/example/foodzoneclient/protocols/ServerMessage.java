@@ -18,6 +18,7 @@ public  final class ServerMessage extends
   private java.lang.Object responses_;
   public enum ResponsesCase {
     LOGINRESPONSE(2),
+    REGISTERRESPONSE(3),
     RESPONSES_NOT_SET(0);
     private final int value;
     private ResponsesCase(int value) {
@@ -34,6 +35,7 @@ public  final class ServerMessage extends
     public static ResponsesCase forNumber(int value) {
       switch (value) {
         case 2: return LOGINRESPONSE;
+        case 3: return REGISTERRESPONSE;
         case 0: return RESPONSES_NOT_SET;
         default: return null;
       }
@@ -147,6 +149,56 @@ public  final class ServerMessage extends
    */
   private void clearLoginResponse() {
     if (responsesCase_ == 2) {
+      responsesCase_ = 0;
+      responses_ = null;
+    }
+  }
+
+  public static final int REGISTERRESPONSE_FIELD_NUMBER = 3;
+  /**
+   * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+   */
+  @java.lang.Override
+  public boolean hasRegisterResponse() {
+    return responsesCase_ == 3;
+  }
+  /**
+   * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+   */
+  @java.lang.Override
+  public com.example.foodzoneclient.protocols.RegisterResponse getRegisterResponse() {
+    if (responsesCase_ == 3) {
+       return (com.example.foodzoneclient.protocols.RegisterResponse) responses_;
+    }
+    return com.example.foodzoneclient.protocols.RegisterResponse.getDefaultInstance();
+  }
+  /**
+   * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+   */
+  private void setRegisterResponse(com.example.foodzoneclient.protocols.RegisterResponse value) {
+    value.getClass();
+  responses_ = value;
+    responsesCase_ = 3;
+  }
+  /**
+   * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+   */
+  private void mergeRegisterResponse(com.example.foodzoneclient.protocols.RegisterResponse value) {
+    value.getClass();
+  if (responsesCase_ == 3 &&
+        responses_ != com.example.foodzoneclient.protocols.RegisterResponse.getDefaultInstance()) {
+      responses_ = com.example.foodzoneclient.protocols.RegisterResponse.newBuilder((com.example.foodzoneclient.protocols.RegisterResponse) responses_)
+          .mergeFrom(value).buildPartial();
+    } else {
+      responses_ = value;
+    }
+    responsesCase_ = 3;
+  }
+  /**
+   * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+   */
+  private void clearRegisterResponse() {
+    if (responsesCase_ == 3) {
       responsesCase_ = 0;
       responses_ = null;
     }
@@ -356,6 +408,54 @@ public  final class ServerMessage extends
       return this;
     }
 
+    /**
+     * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+     */
+    @java.lang.Override
+    public boolean hasRegisterResponse() {
+      return instance.hasRegisterResponse();
+    }
+    /**
+     * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+     */
+    @java.lang.Override
+    public com.example.foodzoneclient.protocols.RegisterResponse getRegisterResponse() {
+      return instance.getRegisterResponse();
+    }
+    /**
+     * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+     */
+    public Builder setRegisterResponse(com.example.foodzoneclient.protocols.RegisterResponse value) {
+      copyOnWrite();
+      instance.setRegisterResponse(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+     */
+    public Builder setRegisterResponse(
+        com.example.foodzoneclient.protocols.RegisterResponse.Builder builderForValue) {
+      copyOnWrite();
+      instance.setRegisterResponse(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+     */
+    public Builder mergeRegisterResponse(com.example.foodzoneclient.protocols.RegisterResponse value) {
+      copyOnWrite();
+      instance.mergeRegisterResponse(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+     */
+    public Builder clearRegisterResponse() {
+      copyOnWrite();
+      instance.clearRegisterResponse();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:foodzone_protocols.ServerMessage)
   }
   @java.lang.Override
@@ -376,10 +476,11 @@ public  final class ServerMessage extends
             "responsesCase_",
             "msg_",
             com.example.foodzoneclient.protocols.LoginResponse.class,
+            com.example.foodzoneclient.protocols.RegisterResponse.class,
           };
           java.lang.String info =
-              "\u0000\u0002\u0001\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u0208\u0002<\u0000" +
-              "";
+              "\u0000\u0003\u0001\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u0208\u0002<\u0000" +
+              "\u0003<\u0000";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

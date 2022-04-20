@@ -61,6 +61,10 @@ public class LoginActivity extends AppCompatActivity {
         ViewPager pager = (ViewPager) findViewById(R.id.view_pager);
         pager.setOffscreenPageLimit(2);
     }
+
+    public void selectFragment(int index) {
+        viewPager.setCurrentItem(index, true);
+    }
 }
 
 class LoginAdapter extends FragmentStatePagerAdapter  {

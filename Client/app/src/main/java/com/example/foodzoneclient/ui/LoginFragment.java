@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.backend.ContainerClient;
 import com.example.foodzoneclient.protocols.ClientMessage;
@@ -79,15 +80,13 @@ public class LoginFragment extends Fragment {
                 super.handleMessage(msg);
                 if (msg.what == 1) {
                     String result = (String) msg.obj;
-                    Toast announce = Toast.makeText(getContext(), result, Toast.LENGTH_SHORT);
-                    announce.show();
+                    FoodZone.showToast(loginFragmentHandler, result);
                     if (result.equals("Success")) {
                         toMainPageActivity();
                     }
                 }
                 else if (msg.what == -100 || msg.what == -200) {
-                    Toast announce = Toast.makeText(getContext(), (String) msg.obj, Toast.LENGTH_SHORT);
-                    announce.show();
+                    FoodZone.showToast(loginFragmentHandler, (String) msg.obj);
                 }
             }
         };
@@ -96,14 +95,11 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    ClientMessage msg = ClientMessage.newBuilder()
-                            .setMsg("login")
-                            .setLoginRequest(LoginRequest.newBuilder()
-                                    .setUsername(username.getText().toString())
-                                    .setPassword(password.getText().toString())
-                                    .build())
+                    LoginRequest request = LoginRequest.newBuilder()
+                            .setUsername(username.getText().toString())
+                            .setPassword(password.getText().toString())
                             .build();
-                    ContainerClient.getInstance().sendToServer(msg);
+                    ContainerClient.getInstance().sendLoginRequest(request);
                 } catch (Exception e) {
                     Log.e(ContainerClient.LOG_TAG, "Can't send login request to server", e);
                     Toast announce = Toast.makeText(getContext(), "Can't send login request to server", Toast.LENGTH_SHORT);

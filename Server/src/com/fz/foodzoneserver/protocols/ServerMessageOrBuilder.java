@@ -34,5 +34,20 @@ public interface ServerMessageOrBuilder extends
    */
   com.fz.foodzoneserver.protocols.LoginResponseOrBuilder getLoginResponseOrBuilder();
 
+  /**
+   * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+   * @return Whether the registerResponse field is set.
+   */
+  boolean hasRegisterResponse();
+  /**
+   * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+   * @return The registerResponse.
+   */
+  com.fz.foodzoneserver.protocols.RegisterResponse getRegisterResponse();
+  /**
+   * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+   */
+  com.fz.foodzoneserver.protocols.RegisterResponseOrBuilder getRegisterResponseOrBuilder();
+
   public com.fz.foodzoneserver.protocols.ServerMessage.ResponsesCase getResponsesCase();
 }

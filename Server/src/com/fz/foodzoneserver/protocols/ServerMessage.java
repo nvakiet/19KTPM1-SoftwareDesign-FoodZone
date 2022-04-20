@@ -69,6 +69,20 @@ private static final long serialVersionUID = 0L;
             responsesCase_ = 2;
             break;
           }
+          case 26: {
+            com.fz.foodzoneserver.protocols.RegisterResponse.Builder subBuilder = null;
+            if (responsesCase_ == 3) {
+              subBuilder = ((com.fz.foodzoneserver.protocols.RegisterResponse) responses_).toBuilder();
+            }
+            responses_ =
+                input.readMessage(com.fz.foodzoneserver.protocols.RegisterResponse.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((com.fz.foodzoneserver.protocols.RegisterResponse) responses_);
+              responses_ = subBuilder.buildPartial();
+            }
+            responsesCase_ = 3;
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -107,6 +121,7 @@ private static final long serialVersionUID = 0L;
       implements com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     LOGINRESPONSE(2),
+    REGISTERRESPONSE(3),
     RESPONSES_NOT_SET(0);
     private final int value;
     private ResponsesCase(int value) {
@@ -125,6 +140,7 @@ private static final long serialVersionUID = 0L;
     public static ResponsesCase forNumber(int value) {
       switch (value) {
         case 2: return LOGINRESPONSE;
+        case 3: return REGISTERRESPONSE;
         case 0: return RESPONSES_NOT_SET;
         default: return null;
       }
@@ -209,6 +225,37 @@ private static final long serialVersionUID = 0L;
     return com.fz.foodzoneserver.protocols.LoginResponse.getDefaultInstance();
   }
 
+  public static final int REGISTERRESPONSE_FIELD_NUMBER = 3;
+  /**
+   * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+   * @return Whether the registerResponse field is set.
+   */
+  @java.lang.Override
+  public boolean hasRegisterResponse() {
+    return responsesCase_ == 3;
+  }
+  /**
+   * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+   * @return The registerResponse.
+   */
+  @java.lang.Override
+  public com.fz.foodzoneserver.protocols.RegisterResponse getRegisterResponse() {
+    if (responsesCase_ == 3) {
+       return (com.fz.foodzoneserver.protocols.RegisterResponse) responses_;
+    }
+    return com.fz.foodzoneserver.protocols.RegisterResponse.getDefaultInstance();
+  }
+  /**
+   * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+   */
+  @java.lang.Override
+  public com.fz.foodzoneserver.protocols.RegisterResponseOrBuilder getRegisterResponseOrBuilder() {
+    if (responsesCase_ == 3) {
+       return (com.fz.foodzoneserver.protocols.RegisterResponse) responses_;
+    }
+    return com.fz.foodzoneserver.protocols.RegisterResponse.getDefaultInstance();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -229,6 +276,9 @@ private static final long serialVersionUID = 0L;
     if (responsesCase_ == 2) {
       output.writeMessage(2, (com.fz.foodzoneserver.protocols.LoginResponse) responses_);
     }
+    if (responsesCase_ == 3) {
+      output.writeMessage(3, (com.fz.foodzoneserver.protocols.RegisterResponse) responses_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -244,6 +294,10 @@ private static final long serialVersionUID = 0L;
     if (responsesCase_ == 2) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, (com.fz.foodzoneserver.protocols.LoginResponse) responses_);
+    }
+    if (responsesCase_ == 3) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(3, (com.fz.foodzoneserver.protocols.RegisterResponse) responses_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -268,6 +322,10 @@ private static final long serialVersionUID = 0L;
         if (!getLoginResponse()
             .equals(other.getLoginResponse())) return false;
         break;
+      case 3:
+        if (!getRegisterResponse()
+            .equals(other.getRegisterResponse())) return false;
+        break;
       case 0:
       default:
     }
@@ -288,6 +346,10 @@ private static final long serialVersionUID = 0L;
       case 2:
         hash = (37 * hash) + LOGINRESPONSE_FIELD_NUMBER;
         hash = (53 * hash) + getLoginResponse().hashCode();
+        break;
+      case 3:
+        hash = (37 * hash) + REGISTERRESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getRegisterResponse().hashCode();
         break;
       case 0:
       default:
@@ -463,6 +525,13 @@ private static final long serialVersionUID = 0L;
           result.responses_ = loginResponseBuilder_.build();
         }
       }
+      if (responsesCase_ == 3) {
+        if (registerResponseBuilder_ == null) {
+          result.responses_ = responses_;
+        } else {
+          result.responses_ = registerResponseBuilder_.build();
+        }
+      }
       result.responsesCase_ = responsesCase_;
       onBuilt();
       return result;
@@ -519,6 +588,10 @@ private static final long serialVersionUID = 0L;
       switch (other.getResponsesCase()) {
         case LOGINRESPONSE: {
           mergeLoginResponse(other.getLoginResponse());
+          break;
+        }
+        case REGISTERRESPONSE: {
+          mergeRegisterResponse(other.getRegisterResponse());
           break;
         }
         case RESPONSES_NOT_SET: {
@@ -784,6 +857,147 @@ private static final long serialVersionUID = 0L;
       responsesCase_ = 2;
       onChanged();;
       return loginResponseBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.fz.foodzoneserver.protocols.RegisterResponse, com.fz.foodzoneserver.protocols.RegisterResponse.Builder, com.fz.foodzoneserver.protocols.RegisterResponseOrBuilder> registerResponseBuilder_;
+    /**
+     * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+     * @return Whether the registerResponse field is set.
+     */
+    @java.lang.Override
+    public boolean hasRegisterResponse() {
+      return responsesCase_ == 3;
+    }
+    /**
+     * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+     * @return The registerResponse.
+     */
+    @java.lang.Override
+    public com.fz.foodzoneserver.protocols.RegisterResponse getRegisterResponse() {
+      if (registerResponseBuilder_ == null) {
+        if (responsesCase_ == 3) {
+          return (com.fz.foodzoneserver.protocols.RegisterResponse) responses_;
+        }
+        return com.fz.foodzoneserver.protocols.RegisterResponse.getDefaultInstance();
+      } else {
+        if (responsesCase_ == 3) {
+          return registerResponseBuilder_.getMessage();
+        }
+        return com.fz.foodzoneserver.protocols.RegisterResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+     */
+    public Builder setRegisterResponse(com.fz.foodzoneserver.protocols.RegisterResponse value) {
+      if (registerResponseBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        responses_ = value;
+        onChanged();
+      } else {
+        registerResponseBuilder_.setMessage(value);
+      }
+      responsesCase_ = 3;
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+     */
+    public Builder setRegisterResponse(
+        com.fz.foodzoneserver.protocols.RegisterResponse.Builder builderForValue) {
+      if (registerResponseBuilder_ == null) {
+        responses_ = builderForValue.build();
+        onChanged();
+      } else {
+        registerResponseBuilder_.setMessage(builderForValue.build());
+      }
+      responsesCase_ = 3;
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+     */
+    public Builder mergeRegisterResponse(com.fz.foodzoneserver.protocols.RegisterResponse value) {
+      if (registerResponseBuilder_ == null) {
+        if (responsesCase_ == 3 &&
+            responses_ != com.fz.foodzoneserver.protocols.RegisterResponse.getDefaultInstance()) {
+          responses_ = com.fz.foodzoneserver.protocols.RegisterResponse.newBuilder((com.fz.foodzoneserver.protocols.RegisterResponse) responses_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          responses_ = value;
+        }
+        onChanged();
+      } else {
+        if (responsesCase_ == 3) {
+          registerResponseBuilder_.mergeFrom(value);
+        }
+        registerResponseBuilder_.setMessage(value);
+      }
+      responsesCase_ = 3;
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+     */
+    public Builder clearRegisterResponse() {
+      if (registerResponseBuilder_ == null) {
+        if (responsesCase_ == 3) {
+          responsesCase_ = 0;
+          responses_ = null;
+          onChanged();
+        }
+      } else {
+        if (responsesCase_ == 3) {
+          responsesCase_ = 0;
+          responses_ = null;
+        }
+        registerResponseBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+     */
+    public com.fz.foodzoneserver.protocols.RegisterResponse.Builder getRegisterResponseBuilder() {
+      return getRegisterResponseFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+     */
+    @java.lang.Override
+    public com.fz.foodzoneserver.protocols.RegisterResponseOrBuilder getRegisterResponseOrBuilder() {
+      if ((responsesCase_ == 3) && (registerResponseBuilder_ != null)) {
+        return registerResponseBuilder_.getMessageOrBuilder();
+      } else {
+        if (responsesCase_ == 3) {
+          return (com.fz.foodzoneserver.protocols.RegisterResponse) responses_;
+        }
+        return com.fz.foodzoneserver.protocols.RegisterResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.fz.foodzoneserver.protocols.RegisterResponse, com.fz.foodzoneserver.protocols.RegisterResponse.Builder, com.fz.foodzoneserver.protocols.RegisterResponseOrBuilder> 
+        getRegisterResponseFieldBuilder() {
+      if (registerResponseBuilder_ == null) {
+        if (!(responsesCase_ == 3)) {
+          responses_ = com.fz.foodzoneserver.protocols.RegisterResponse.getDefaultInstance();
+        }
+        registerResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.fz.foodzoneserver.protocols.RegisterResponse, com.fz.foodzoneserver.protocols.RegisterResponse.Builder, com.fz.foodzoneserver.protocols.RegisterResponseOrBuilder>(
+                (com.fz.foodzoneserver.protocols.RegisterResponse) responses_,
+                getParentForChildren(),
+                isClean());
+        responses_ = null;
+      }
+      responsesCase_ = 3;
+      onChanged();;
+      return registerResponseBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

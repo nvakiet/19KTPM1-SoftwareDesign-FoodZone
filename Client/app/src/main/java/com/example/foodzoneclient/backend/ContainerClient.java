@@ -3,7 +3,13 @@ package com.example.foodzoneclient.backend;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+
+import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.protocols.ClientMessage;
+import com.example.foodzoneclient.protocols.LoginRequest;
+import com.example.foodzoneclient.protocols.RegisterRequest;
+import com.example.foodzoneclient.ui.LoginFragment;
+
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -151,6 +157,8 @@ public enum ContainerClient {
     }
 
     public void disconnect() {
+        if (recvGroup.isShutdown())
+            return;
         recvGroup.execute(new Runnable() {
             @Override
             public void run() {
@@ -170,7 +178,7 @@ public enum ContainerClient {
                     connect(9999);
                     while (isConnecting) {
                         try {
-                            Thread.sleep(400);
+                            Thread.sleep(200);
                         } catch (InterruptedException ignored) {}
                     }
                 }
@@ -181,6 +189,8 @@ public enum ContainerClient {
                     public void operationComplete(ChannelFuture future) throws Exception {
                         if (!future.isSuccess()) {
                             Log.e(LOG_TAG, "Failed to send client message to server.");
+                            FoodZone.showToast(currentUIHandler, "Can't send request to server. Please try again");
+                            disconnect();
                         }
                     }
                 });
@@ -195,72 +205,69 @@ public enum ContainerClient {
         return isSpecial;
     }
 
-    private boolean checkEmpty(String input){
-        if(input.length()==0){
-            return false;
-        }
-        return true;
+    public void sendLoginRequest(LoginRequest loginRequest) {
+
+        sendGroup.execute(new Runnable() {
+            @Override
+            public void run() {
+                // Case username has special characters
+                if(checkString(loginRequest.getUsername())){
+                    FoodZone.showToast(currentUIHandler, "Username can only contain alphabetic and numeric characters");
+                    return;
+                }
+                // case username or password is blank
+                if(loginRequest.getUsername().isEmpty() || loginRequest.getPassword().isEmpty()){
+                    FoodZone.showToast(currentUIHandler, "Username and password can't be empty");
+                    return;
+                }
+                // Send the request to the server after validation success
+                ClientMessage msg = ClientMessage.newBuilder()
+                        .setMsg("login")
+                        .setLoginRequest(loginRequest).build();
+                sendToServer(msg);
+            }
+        });
     }
 
-    private boolean validatePhoneNumber(String phone){
-        if(phone.matches("[0-9]+") &&phone.length()==10){
-            return true;
-        }
-        return false;
+    public void sendRegisterRequest(RegisterRequest request){
+        sendGroup.execute(new Runnable() {
+            @Override
+            public void run() {
+                // check if Username contains special characters
+                if(checkString(request.getUsername())){
+                    FoodZone.showToast(currentUIHandler, "Username can only contain alphabetic and numeric characters");
+                    return;
+                }
+
+                // check if any field is missing
+                if(request.getUsername().isEmpty() || request.getPassword().isEmpty() ||
+                    request.getFullname().isEmpty() || request.getId().isEmpty() ||
+                    request.getPhone().isEmpty() || request.getAddress().isEmpty()) {
+                    FoodZone.showToast(currentUIHandler, "Please fill in all information fields");
+                    return;
+                }
+
+                // check if a phone number is valid: exactly 10 characters long and only has numeric characters
+                if(!request.getPhone().matches("^0[0-9]{9}$")){
+                    FoodZone.showToast(currentUIHandler, "Vietnam phone number must be exactly 10 characters long, only contains digits and starts with 0 (no country code)");
+                    return;
+                }
+
+                // check if password length is valid (>=8)
+                if((request.getPassword()).length() < 8 || request.getPassword().length() > 64) {
+                    FoodZone.showToast(currentUIHandler, "Password must have at least 8 characters and at most 64 characters");
+                    return;
+                }
+
+                ClientMessage msg = ClientMessage.newBuilder()
+                        .setMsg("register")
+                        .setRegisterRequest(request)
+                        .build();
+                sendToServer(msg);
+            }
+        });
     }
 
-//    private int validateLoginInfo(LoginInfo loginInfo) {
-//        // Case username has special characters
-//        if(checkString(loginInfo.getUsername())){
-//            return 1;
-//        }
-//        // Username is shorter than 5 characters
-//        if(loginInfo.getUsername().length()<5 && loginInfo.getUsername().length()!=0){
-//            return 2;
-//        }
-//        // case username or password is blank
-//        if(loginInfo.getUsername().length()==0){
-//            return 3;
-//        }
-//        if(loginInfo.getPassword().length()==0){
-//            return 4;
-//        }
-//        // case password length <8 characters
-//        if(loginInfo.getPassword().length()<8){
-//            return 5;
-//        }
-//        return 0;
-//    }
-//
-//    private int validateRegister(RegisterInfo registerInfo){
-//        // check if Username contains special characters
-//        if(checkString(registerInfo.getUsername())){
-//            return 1;
-//        }
-//
-//        // check if any field is missed
-//        if(checkEmpty(registerInfo.getUsername())==false || checkEmpty(registerInfo.getPassword())==false ||
-//                checkEmpty(registerInfo.getEmail())==false|| checkEmpty(registerInfo.getAddress())==false || checkEmpty(registerInfo.getPhone())==false){
-//            return 2;
-//        }
-//
-//        // check if a phone number is validate
-//        if(validatePhoneNumber(registerInfo.getPhone())==false){
-//            return 3;
-//        }
-//
-//        // check if Username length is valid (>=5)
-//        if((registerInfo.getUsername()).length()<5){
-//            return 4;
-//        }
-//
-//        // check if password length is valid (>=8)
-//        if((registerInfo.getPassword()).length()<8){
-//            return 5;
-//        }
-//        return 0;
-//    }
-//
 //    private int checkChangePassword(changePassInfo changePassword) {
 //        boolean flag=true; // used to check change pass successfully
 //
