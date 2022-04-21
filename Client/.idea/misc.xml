@@ -17,7 +17,7 @@
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_food_menu.xml" value="0.17074275362318841" />
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_history.xml" value="0.17074275362318841" />
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_main_screen.xml" value="0.17074275362318841" />
+        <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_main_screen.xml" value="0.25" />
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_order.xml" value="0.17074275362318841" />
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_profile.xml" value="0.17074275362318841" />
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_search.xml" value="0.17074275362318841" />
@@ -27,7 +27,8 @@
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/fragment_register.xml" value="0.17074275362318841" />
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/header.xml" value="0.17074275362318841" />
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/item_list_order.xml" value="0.17074275362318841" />
-        <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/item_list_restaurant.xml" value="0.17074275362318841" />
+        <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/item_list_restaurant.xml" value="0.21" />
+        <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/item_restaurant.xml" value="0.21" />
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/menu/main_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.158" />
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/drawable-anydpi/ic_action_username.xml" value="0.1735" />

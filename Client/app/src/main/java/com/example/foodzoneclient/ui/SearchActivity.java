@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -98,7 +97,7 @@ class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.ResViewHo
         private TextView tv_resAdd;
         public ResViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgRes=itemView.findViewById(R.id.resImg1);
+            imgRes=itemView.findViewById(R.id.imv_restaurant_avatar);
             tv_resName=itemView.findViewById(R.id.tv_res1Name);
             tv_resAdd=itemView.findViewById(R.id.tv_res1Address);
         }
