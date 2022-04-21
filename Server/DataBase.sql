@@ -1,4 +1,4 @@
-﻿USE master
+USE master
 GO
 CREATE DATABASE FoodZone
 GO
@@ -106,7 +106,7 @@ GO
 INSERT INTO [Users]
 (Username,[Password]  ,Fullname			     ,ID		  ,[Address]		 ,Phone		  ,[Image]) VALUES
 ('admin' ,'adminadmin','Admin'				 ,'0000000000',null				 ,null		  ,null),
-('kiet'	 ,'12345678'  ,'Ngo Van Anh Kiet'    ,'0011223344','027C Chung cu An Quang',0901210304,kiet.jpg),
+('kiet'	 ,'12345678'  ,'Ngo Van Anh Kiet'    ,'0011223344','027C Chung cu An Quang', '0901210304', 'kiet.jpg'),
 ('phat'	 ,'12345678'  ,'Trieu Nguyen Phat'   ,'0011223345','12 Tran Hung Dao','0589199209',null),
 ('khue'	 ,'12345678'  ,'Pham Trong Vinh Khue','0011223346','13 Tran Hung Dao',null		  ,null)
 GO
@@ -120,21 +120,21 @@ GO
 
 INSERT INTO Restaurant(RestaurantID, [Name], [Address]) VALUES
 ('001','Pickles'	,'1 Nguyen Dinh Chieu'),
-('002','Qua Môn'	,'3 Nguyen Ngoc Thach'),
+('002','Qua M�n'	,'3 Nguyen Ngoc Thach'),
 ('003','Rem'		,'8 Nguyen Thi Minh Khai'),
-('004','Qua Môn 2'	,'3 30/4'),
+('004','Qua M�n 2'	,'3 30/4'),
 ('005','MonkaS'		,'7 Tran Nhan Tong')
 GO
 
 INSERT INTO Meal
 (MealID, [Name], [Description], Price, [Image], RestaurantID) VALUES
-('f01' ,'Món 1','có 3 cục phô mai',300000,null,'001'),
-('f02' ,'Món 2','khiến bạn nhớ nhà',12345,null,'001'),
-('f03' ,'Món 3','hmm',500000,null,'002'),
-('f04' ,'Món 4','ăn đi rồi biết',60000,null,'002'),
-('f05' ,'Món 5','Lẩu ăn càng nhiều người, giá càng mắc!',200000,null,'003'),
-('f06' ,'Món 6','Càng ăn càng buồn',40000,null,'003'),
-('f07' ,'Món 7','Trà sữa vị cà chua, thử ngay hôm qua!',152500,null,'004'),
-('f08' ,'Món 8','69 nghìn có ngay nước lẩu buffet cho 1 người ăn! (Chưa bao gồm thịt và rau)',69000,null,'005'),
-('f09' ,'Món 9','Thịt và rau',420000,null,'005')
+('f01' ,'M�n 1','c� 3 c?c ph� mai',300000,null,'001'),
+('f02' ,'M�n 2','khi?n b?n nh? nh�',12345,null,'001'),
+('f03' ,'M�n 3','hmm',500000,null,'002'),
+('f04' ,'M�n 4','?n ?i r?i bi?t',60000,null,'002'),
+('f05' ,'M�n 5','L?u ?n c�ng nhi?u ng??i, gi� c�ng m?c!',200000,null,'003'),
+('f06' ,'M�n 6','C�ng ?n c�ng bu?n',40000,null,'003'),
+('f07' ,'M�n 7','Tr� s?a v? c� chua, th? ngay h�m qua!',152500,null,'004'),
+('f08' ,'M�n 8','69 ngh�n c� ngay n??c l?u buffet cho 1 ng??i ?n! (Ch?a bao g?m th?t v� rau)',69000,null,'005'),
+('f09' ,'M�n 9','Th?t v� rau',420000,null,'005')
 GO
