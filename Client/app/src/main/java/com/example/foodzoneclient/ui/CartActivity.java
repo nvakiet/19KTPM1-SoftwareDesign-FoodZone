@@ -1,12 +1,17 @@
 package com.example.foodzoneclient.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +23,7 @@ import android.widget.TextView;
 
 import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.model.Product;
+import com.example.foodzoneclient.model.Restaurant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +52,7 @@ public class CartActivity extends AppCompatActivity {
                 Intent backIntent = getIntent();
                 backIntent.putExtra("resID",rID);
                 backIntent.putParcelableArrayListExtra("cart_list", foodList);
+                setResult(Activity.RESULT_OK, backIntent);
                 finish();
             }
         });
@@ -71,6 +78,9 @@ public class CartActivity extends AppCompatActivity {
             TextView totalbox;
             final ListView listView = (ListView) findViewById(R.id.listView);
             listView.setAdapter(new CartListAdapter(this,foodList));
+            for (int i = 0; i < foodList.size(); i++) {
+                Log.i("CartRemove", foodList.get(i).getID());
+            }
             // Iterate list view to calculate total price
             long total = 0;
             for (int i = 0; i < listView.getCount(); ++i) {
@@ -95,6 +105,15 @@ class CartListAdapter extends BaseAdapter {
     private List<Product> listData;
     private LayoutInflater layoutInflater;
     private Context context;
+
+    private class ViewHolder {
+        ImageView foodImg;
+        TextView foodName;
+        TextView foodDes;
+        TextView foodPrice;
+        TextView foodAmount;
+        Button remove;
+    }
 
     public CartListAdapter(Context aContext,  List<Product> listData) {
         this.context = aContext;
@@ -131,6 +150,7 @@ class CartListAdapter extends BaseAdapter {
             holder.foodDes = (TextView) convertView.findViewById(R.id.itemDes);
             holder.foodPrice = (TextView) convertView.findViewById(R.id.total);
             holder.foodAmount = (TextView) convertView.findViewById(R.id.amount);
+            holder.remove = convertView.findViewById(R.id.bt_remove);
             convertView.setTag(holder);
         }
         else {
@@ -142,6 +162,16 @@ class CartListAdapter extends BaseAdapter {
         holder.foodPrice.setText("Price: "+String.valueOf(product.getPrice() * product.getAmount())+" VND");
         holder.foodAmount.setText("Amount: "+String.valueOf(product.getAmount()));
         holder.foodImg.setImageResource(getImageID(product.getID()));
+        holder.remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listData.remove(position);
+                for (int i = 0; i < listData.size(); i++) {
+                    Log.i("CartRemove", listData.get(i).getID());
+                }
+                notifyDataSetChanged();
+            }
+        });
         return convertView;
     }
 
@@ -151,11 +181,76 @@ class CartListAdapter extends BaseAdapter {
         int resID = res.getIdentifier(imgName , "drawable", context.getPackageName());
         return resID;
     }
-    private class ViewHolder {
-        ImageView foodImg;
-        TextView foodName;
-        TextView foodDes;
-        TextView foodPrice;
-        TextView foodAmount;
-    }
 }
+
+//class CartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+//    private ArrayList<Product> products;
+//    OnItemClickCallback callback;
+//
+//    public class CartViewHolder extends RecyclerView.ViewHolder {
+//        ImageView foodImg;
+//        TextView foodName;
+//        TextView foodDes;
+//        TextView foodPrice;
+//        TextView foodAmount;
+//        Button remove;
+//
+//        public CartViewHolder(@NonNull View itemView) {
+//            super(itemView);
+//
+//            foodImg = itemView.findViewById(R.id.itemImg);
+//            foodName = itemView.findViewById(R.id.item_name);
+//            foodDes = itemView.findViewById(R.id.itemDes);
+//            foodPrice = itemView.findViewById(R.id.total);
+//            foodAmount = itemView.findViewById(R.id.amount);
+//            remove = itemView.findViewById(R.id.bt_remove);
+//        }
+//    }
+//
+//    interface OnItemClickCallback {
+//        void invoke(View v, Restaurant res);
+//    }
+//
+//    public CartAdapter(ArrayList<Product> products) {
+//        this.p = restaurants;
+//    }
+//
+//    @NonNull
+//    @Override
+//    public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_restaurant,parent,false);
+//        return new CartViewHolder(view);
+//    }
+//
+//    @Override
+//    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, @SuppressLint("RecyclerView") int position) {
+//        CartViewHolder holder = (CartViewHolder) viewHolder;
+//
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                callback.invoke(v, restaurants.get(position));
+//            }
+//        });
+//
+//        Restaurant res = restaurants.get(position);
+//        if(res == null){
+//            return;
+//        }
+//
+//        holder.img.setImageResource(res.getImage());
+//        holder.name.setText(res.getName());
+//    }
+//
+//    @Override
+//    public int getItemCount() {
+//        if(restaurants != null){
+//            return restaurants.size();
+//        }
+//        return 0;
+//    }
+//
+//    public void setItemCallback(OnItemClickCallback callback) {
+//        this.callback = callback;
+//    }
+//}

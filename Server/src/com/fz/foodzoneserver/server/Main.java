@@ -12,7 +12,7 @@ public class Main {
             //String dbConnString = sc.nextLine();
             System.out.print("Input bind IP: ");
             String ip = sc.nextLine();
-            String dbConnString = "jdbc:sqlserver://DESKTOP-18BTLCH\\SQLEXPRESS;databaseName=FoodZone;integratedSecurity=true;";
+            String dbConnString = "jdbc:sqlserver://DESKTOP-18BTLCH\\SQLEXPRESS;databaseName=FoodZone;integratedSecurity=true;encrypt=true;trustServerCertificate=true;";
 //            String dbConnString = "jdbc:sqlserver://localhost\\SQLSERVER:49801;databaseName=FoodZone;integratedSecurity=true;encrypt=true;trustServerCertificate=true;";
             //String dbConnString = "";
             ServerFoodZone server = new ServerFoodZone(dbConnString, ip, 9999);

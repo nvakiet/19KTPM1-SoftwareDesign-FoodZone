@@ -1,7 +1,9 @@
 package com.example.foodzoneclient.ui;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
@@ -39,17 +41,17 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
         backBtt.setOnClickListener(this);
         cartButton.setOnClickListener(this);
         Intent intent = getIntent();
-        foodList = intent.getParcelableArrayListExtra("cart_list");
+//        foodList = intent.getParcelableArrayListExtra("cart_list");
         rID = intent.getStringExtra("resID");
         if (foodList == null) {
             foodList = new ArrayList<Product>();
         }
-        else {
-            for (Product item : foodList) {
-                int i = Integer.parseInt(item.getID().substring(4, item.getID().length()));
-                tempArr.set(i-1, true);
-            }
-        }
+//        else {
+//            for (Product item : foodList) {
+//                int i = Integer.parseInt(item.getID().substring(4, item.getID().length()));
+//                tempArr.set(i-1, true);
+//            }
+//        }
         BufferedReader reader = null;
         AssetManager assetManager = FoodZone.getContext().getResources().getAssets();
         InputStream is = null;
@@ -156,13 +158,31 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
                 Intent cartIntent= new Intent(FoodMenuActivity.this, CartActivity.class);
                 cartIntent.putExtra("resID", rID);
                 cartIntent.putParcelableArrayListExtra("food_list", foodList);
-                startActivity(cartIntent);
+                startActivityForResult(cartIntent, REQUEST_CODE);
 //                while (cart.cartScreenHandler == null) {
 //                    continue;
 //                }
                 break;
         }
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            foodList = data.getParcelableArrayListExtra("cart_list");
+            rID = data.getStringExtra("resID");
+
+            tempArr = new ArrayList<Boolean>(Collections.nCopies(4,false));
+            for (int i = 0; i < foodList.size(); i++) {
+                int tmp = Integer.parseInt(foodList.get(i).getID().substring(4));
+                tempArr.set(tmp - 1, true);
+            }
+        }
+    }
+
+    int REQUEST_CODE = 1111;
 //
 //    private void readFood(BufferedReader reader,int ind){
 //        String temp;
