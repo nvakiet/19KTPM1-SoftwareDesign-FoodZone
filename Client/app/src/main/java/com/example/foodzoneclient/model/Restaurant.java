@@ -1,14 +1,26 @@
 package com.example.foodzoneclient.model;
 
 public class Restaurant {
+    private String ID;
     private int image;
     private String name;
     private String address;
+
+    public Restaurant(String ID, int image, String name, String address) {
+        this.ID = ID;
+        this.image = image;
+        this.name = name;
+        this.address = address;
+    }
 
     public Restaurant(int image, String name, String address) {
         this.image = image;
         this.name = name;
         this.address = address;
+    }
+
+    public String getID() {
+        return ID;
     }
 
     public int getImage() {

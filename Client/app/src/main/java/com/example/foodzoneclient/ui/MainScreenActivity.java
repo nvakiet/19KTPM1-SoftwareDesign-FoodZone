@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.model.Restaurant;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -98,12 +100,12 @@ public class MainScreenActivity extends AppCompatActivity {
         });
 
         ArrayList<Restaurant> restaurants = new ArrayList();
-        Restaurant test1 = new Restaurant(R.drawable.tcf1, "Highlands Cao Lỗ", "34 Cao Lỗ");
-        Restaurant test2 = new Restaurant(R.drawable.tcf1, "Highlands Cao Lỗ", "34 Cao Lỗ");
-        Restaurant test3 = new Restaurant(R.drawable.tcf1, "Highlands Cao Lỗ", "34 Cao Lỗ");
-        Restaurant test4 = new Restaurant(R.drawable.tcf1, "Highlands Cao Lỗ", "34 Cao Lỗ");
-        Restaurant test5 = new Restaurant(R.drawable.tcf1, "Highlands Cao Lỗ", "34 Cao Lỗ");
-        Restaurant test6 = new Restaurant(R.drawable.tcf1, "Highlands Cao Lỗ", "34 Cao Lỗ");
+        Restaurant test1 = new Restaurant("0001", R.drawable.tcf1, "Highlands Cao Lỗ", "34 Cao Lỗ");
+        Restaurant test2 = new Restaurant("0002", R.drawable.tcf2, "Phúc Long Topaz", "195 Hoàng Diệu");
+        Restaurant test3 = new Restaurant("0003", R.drawable.tcf3, "KFC Nguyễn Chí Thanh", "339 Nguyễn Chí Thanh");
+        Restaurant test4 = new Restaurant("0004", R.drawable.tcf4, "Lotteria NowZone", "272 Nguyễn Văn Cừ");
+        Restaurant test5 = new Restaurant("0005", R.drawable.tcf1, "PizzaHut Nguyễn Trãi", "144 Nguyễn Trãi");
+        Restaurant test6 = new Restaurant("0006", R.drawable.tcf2, "The Coffee House Cao Thắng", "275 Cao Thắng");
         restaurants.add(test1);
         restaurants.add(test2);
         restaurants.add(test3);
@@ -119,6 +121,15 @@ public class MainScreenActivity extends AppCompatActivity {
         restaurantList.setLayoutManager(new GridLayoutManager(this, 2));
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         restaurantList.addItemDecoration(itemDecoration);
+
+        recyclerViewAdapter.setItemCallback(new RestaurantsAdapter.OnItemClickCallback() {
+            @Override
+            public void invoke(View v, Restaurant res) {
+                Intent intent = new Intent(MainScreenActivity.this, FoodMenuActivity.class);
+                intent.putExtra("resID", res.getID());
+                startActivity(intent);
+            }
+        });
 
 //        // ???
 //        imageView1=(ImageView) findViewById(R.id.res1);
@@ -194,6 +205,22 @@ class RestaurantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<Restaurant> restaurants;
     OnItemClickCallback callback;
 
+    public class ResViewHolder extends RecyclerView.ViewHolder {
+        CircleImageView img;
+        TextView name;
+
+        public ResViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            img = itemView.findViewById(R.id.imv_restaurant_avatar);
+            name = itemView.findViewById(R.id.tv_restaurant_name);
+        }
+    }
+
+    interface OnItemClickCallback {
+        void invoke(View v, Restaurant res);
+    }
+
     public RestaurantsAdapter(ArrayList<Restaurant> restaurants) {
         this.restaurants = restaurants;
     }
@@ -212,7 +239,7 @@ class RestaurantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callback.invoke(restaurants.get(position));
+                callback.invoke(v, restaurants.get(position));
             }
         });
 
@@ -233,19 +260,7 @@ class RestaurantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return 0;
     }
 
-    public class ResViewHolder extends RecyclerView.ViewHolder {
-        CircleImageView img;
-        TextView name;
-
-        public ResViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            img = itemView.findViewById(R.id.imv_restaurant_avatar);
-            name = itemView.findViewById(R.id.tv_restaurant_name);
-        }
-    }
-
-    interface OnItemClickCallback {
-        void invoke(Restaurant restaurant);
+    public void setItemCallback(OnItemClickCallback callback) {
+        this.callback = callback;
     }
 }
