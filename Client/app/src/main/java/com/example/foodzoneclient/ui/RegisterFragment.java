@@ -2,11 +2,6 @@ package com.example.foodzoneclient.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
-
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -16,15 +11,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.example.foodzoneclient.R;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import com.example.foodzoneclient.FoodZone;
+import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.backend.ContainerClient;
 import com.example.foodzoneclient.protocols.RegisterRequest;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class RegisterFragment extends Fragment {
     EditText reg_username;
@@ -125,8 +119,8 @@ public class RegisterFragment extends Fragment {
     }
 
     public void clearData(){
-        reg_username. getText(). clear();
-        reg_password. getText(). clear();
+        reg_username.getText().clear();
+        reg_password.getText().clear();
         phone.getText().clear();
         address.getText().clear();
         fullname.getText().clear();

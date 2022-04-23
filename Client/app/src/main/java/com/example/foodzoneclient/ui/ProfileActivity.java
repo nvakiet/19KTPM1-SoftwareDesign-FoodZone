@@ -14,10 +14,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.backend.ContainerClient;
 import com.example.foodzoneclient.protocols.UserInfo;
@@ -28,11 +30,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     ImageView profile_backtomain;
     EditText  profile_name, profile_address, profile_phone, profile_id;
     Button logout, updateInfo, changePass;
-    SharedPreferences myPreferences;
     private       Context mContext;
     public static Handler profileHandler;
-    SharedPreferences        prefGet;
-    SharedPreferences.Editor prefGetEdit;
+    SharedPreferences        pref;
+    SharedPreferences.Editor prefEdit;
     CircleImageView          profile_image;
 
     @Override
@@ -43,12 +44,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         profile_backtomain.setOnClickListener(this);
 
-        prefGet     = getApplicationContext().getSharedPreferences("UserInfo", MODE_PRIVATE);
-        prefGetEdit = prefGet.edit();
-        profile_name.setText(prefGet.getString("Fullname", null));
-        profile_address.setText(prefGet.getString("Address", null));
-        profile_phone.setText(prefGet.getString("Phone", null));
-        profile_id.setText(prefGet.getString("ID", null));
+        pref     = FoodZone.getContext().getSharedPreferences("UserInfo", MODE_PRIVATE);
+        prefEdit = pref.edit();
+        profile_name.setText(pref.getString("Fullname", null));
+        profile_address.setText(pref.getString("Address", null));
+        profile_id.setText(pref.getString("ID", null));
+        profile_phone.setText(pref.getString("Phone", null));
+
         //use Handler to receive Message
         ProfileActivity.profileHandler = new Handler(Looper.getMainLooper()) {
             @Override
@@ -61,6 +63,27 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         updateInfo.setOnClickListener(this);
         changePass.setOnClickListener(this);
         logout.setOnClickListener(this);
+
+        profileHandler = new Handler(Looper.myLooper()) {
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                super.handleMessage(msg);
+                if (msg.what == 1) {
+                    String result = (String) msg.obj;
+                    FoodZone.showToast(profileHandler, "Updated Successful");
+                    if (result.equals("Success")) {
+
+                        prefEdit.putString("Fullname", profile_name.getText().toString())
+                                .putString("Address", profile_address.getText().toString())
+                                .putString("ID", profile_id.getText().toString())
+                                .putString("Phone", profile_phone.getText().toString())
+                                .apply();
+                    }
+                } else if (msg.what == -100 || msg.what == -200) {
+                    FoodZone.showToast(profileHandler, (String) msg.obj);
+                }
+            }
+        };
     }
 
     @Override
@@ -94,7 +117,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         .setMessage("Do you want to update your profile with the current information?")
                         .setPositiveButton("Yes", (dialogInterface, i) -> {
                             UserInfo userInfo = UserInfo.newBuilder()
-                                    .setUsername(prefGet.getString("Username", null))
+                                    .setUsername(pref.getString("Username", null))
                                     .setFullname(profile_name.getText().toString())
                                     .setAddress(profile_address.getText().toString())
                                     .setId(profile_id.getText().toString())
@@ -117,7 +140,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         .setMessage("Are you sure you want to logout?")
                         .setPositiveButton("Yes", (dialogInterface, i) -> {
                             ContainerClient.getInstance().disconnect();
-                            prefGetEdit.clear().apply();
+                            prefEdit.clear().apply();
                             Intent outIntent = new Intent(ProfileActivity.this, LoginActivity.class);
                             startActivity(outIntent);
                         })

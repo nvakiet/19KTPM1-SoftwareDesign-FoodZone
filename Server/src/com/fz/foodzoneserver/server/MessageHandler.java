@@ -57,7 +57,6 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
     }
 
 
-
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         super.exceptionCaught(ctx, cause);
@@ -99,15 +98,15 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
         return response.build();
     }
 
-    private UpdateInfoResponse handleUpdateInfoResponse(UserInfo info) {
+    private UpdateInfoResponse handleUpdateInfoResponse(UserInfo request) {
         UpdateInfoResponse.Builder response = UpdateInfoResponse.newBuilder();
         try {
             DBHandler dbHandler = new DBHandler();
-            String    result    = dbHandler.updateUserInfo(info);
+            String    result    = dbHandler.updateUserInfo(request);
             response.setResult(result);
-            if (result.equals("Success")) {
-                logger.info("New user \"" + info.getUsername() + "\" has been registered");
-            }
+            if (result.equals("Success"))
+                logger.info("User \"" + request.getUsername() + "\" has changed their info");
+
             dbHandler.releaseConn();
         } catch (SQLException e) {
             logger.error("Can't get database connection from connection pool", e);

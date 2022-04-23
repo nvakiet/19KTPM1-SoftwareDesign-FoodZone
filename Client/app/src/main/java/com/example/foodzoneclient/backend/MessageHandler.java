@@ -9,14 +9,14 @@ import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.protocols.LoginResponse;
 import com.example.foodzoneclient.protocols.RegisterResponse;
 import com.example.foodzoneclient.protocols.ServerMessage;
+import com.example.foodzoneclient.protocols.UpdateInfoResponse;
 import com.example.foodzoneclient.protocols.UserInfo;
 import com.example.foodzoneclient.ui.LoginFragment;
+import com.example.foodzoneclient.ui.ProfileActivity;
 import com.example.foodzoneclient.ui.RegisterFragment;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.handler.codec.http.websocketx.WebSocketClientProtocolConfig;
-import io.netty.handler.codec.http.websocketx.WebSocketClientProtocolHandler;
 
 public class MessageHandler extends ChannelInboundHandlerAdapter {
     @Override
@@ -29,7 +29,7 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         super.channelInactive(ctx);
-        Log.i(ContainerClient.LOG_TAG,"Disconnect from the server");
+        Log.i(ContainerClient.LOG_TAG, "Disconnect from the server");
     }
 
     @Override
@@ -37,13 +37,23 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
         super.channelRead(ctx, msg);
         Log.i(ContainerClient.LOG_TAG, "Receive response from server");
         ServerMessage serverMessage = (ServerMessage) msg;
-        // Login result
-        if (serverMessage.getMsg().equals("login_response")) {
-            handleLoginResponse(serverMessage.getLoginResponse());
-        }
-        // Register result
-        else if (serverMessage.getMsg().equals("register_response")) {
-            handleRegisterResponse(serverMessage.getRegisterResponse());
+
+        switch (serverMessage.getMsg()) {
+
+            // Receives login response from server
+            case "login_response":
+                handleLoginResponse(serverMessage.getLoginResponse());
+                break;
+
+            // Receives register response from server
+            case "register_response":
+                handleRegisterResponse(serverMessage.getRegisterResponse());
+                break;
+
+            // Receives register response from server
+            case "updateInfo_response":
+                handleUpdateInfoResponse(serverMessage.getUpdateInfoResponse());
+                break;
         }
     }
 
@@ -53,7 +63,7 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
         Log.e(ContainerClient.LOG_TAG, "AN EXCEPTION HAS OCCURRED IN THE CLIENT MESSAGE HANDLER!", cause);
         Message msg = Message.obtain(ContainerClient.getInstance().currentUIHandler);
         msg.what = -200; // Error code for failed connection
-        msg.obj = "Server communication error. The connection will be closed.";
+        msg.obj  = "Server communication error. The connection will be closed.";
         msg.sendToTarget();
         ContainerClient.getInstance().disconnect();
 
@@ -61,14 +71,14 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
 
     private void handleLoginResponse(LoginResponse response) {
         Message uiMsg;
-        uiMsg = Message.obtain(LoginFragment.loginFragmentHandler);
+        uiMsg      = Message.obtain(LoginFragment.loginFragmentHandler);
         uiMsg.what = 1;
         String result = response.getResult();
         uiMsg.obj = result;
         if (result.equals("Success")) {
             UserInfo info = response.getUserInfo();
             // If login success, save user info to a shared preference file
-            SharedPreferences prefs = FoodZone.getContext().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+            SharedPreferences        prefs      = FoodZone.getContext().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor prefEditor = prefs.edit();
             prefEditor.putString("Username", info.getUsername());
             prefEditor.putString("Fullname", info.getFullname());
@@ -83,10 +93,18 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
 
     private void handleRegisterResponse(RegisterResponse response) {
         Message uiMsg;
-        uiMsg = Message.obtain(RegisterFragment.registerFragmentHandler);
+        uiMsg      = Message.obtain(RegisterFragment.registerFragmentHandler);
         uiMsg.what = 1;
         String result = response.getResult();
         uiMsg.obj = result;
+        uiMsg.sendToTarget();
+    }
+
+    private void handleUpdateInfoResponse(UpdateInfoResponse response) {
+        Message uiMsg;
+        uiMsg      = Message.obtain(ProfileActivity.profileHandler);
+        uiMsg.what = 1;
+        uiMsg.obj = response.getResult();
         uiMsg.sendToTarget();
     }
 }
