@@ -83,6 +83,20 @@ private static final long serialVersionUID = 0L;
             requestsCase_ = 3;
             break;
           }
+          case 34: {
+            com.fz.foodzoneserver.protocols.UserInfo.Builder subBuilder = null;
+            if (requestsCase_ == 4) {
+              subBuilder = ((com.fz.foodzoneserver.protocols.UserInfo) requests_).toBuilder();
+            }
+            requests_ =
+                input.readMessage(com.fz.foodzoneserver.protocols.UserInfo.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((com.fz.foodzoneserver.protocols.UserInfo) requests_);
+              requests_ = subBuilder.buildPartial();
+            }
+            requestsCase_ = 4;
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -122,6 +136,7 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     LOGINREQUEST(2),
     REGISTERREQUEST(3),
+    UPDATEINFOREQUEST(4),
     REQUESTS_NOT_SET(0);
     private final int value;
     private RequestsCase(int value) {
@@ -141,6 +156,7 @@ private static final long serialVersionUID = 0L;
       switch (value) {
         case 2: return LOGINREQUEST;
         case 3: return REGISTERREQUEST;
+        case 4: return UPDATEINFOREQUEST;
         case 0: return REQUESTS_NOT_SET;
         default: return null;
       }
@@ -256,6 +272,37 @@ private static final long serialVersionUID = 0L;
     return com.fz.foodzoneserver.protocols.RegisterRequest.getDefaultInstance();
   }
 
+  public static final int UPDATEINFOREQUEST_FIELD_NUMBER = 4;
+  /**
+   * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+   * @return Whether the updateInfoRequest field is set.
+   */
+  @java.lang.Override
+  public boolean hasUpdateInfoRequest() {
+    return requestsCase_ == 4;
+  }
+  /**
+   * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+   * @return The updateInfoRequest.
+   */
+  @java.lang.Override
+  public com.fz.foodzoneserver.protocols.UserInfo getUpdateInfoRequest() {
+    if (requestsCase_ == 4) {
+       return (com.fz.foodzoneserver.protocols.UserInfo) requests_;
+    }
+    return com.fz.foodzoneserver.protocols.UserInfo.getDefaultInstance();
+  }
+  /**
+   * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+   */
+  @java.lang.Override
+  public com.fz.foodzoneserver.protocols.UserInfoOrBuilder getUpdateInfoRequestOrBuilder() {
+    if (requestsCase_ == 4) {
+       return (com.fz.foodzoneserver.protocols.UserInfo) requests_;
+    }
+    return com.fz.foodzoneserver.protocols.UserInfo.getDefaultInstance();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -279,6 +326,9 @@ private static final long serialVersionUID = 0L;
     if (requestsCase_ == 3) {
       output.writeMessage(3, (com.fz.foodzoneserver.protocols.RegisterRequest) requests_);
     }
+    if (requestsCase_ == 4) {
+      output.writeMessage(4, (com.fz.foodzoneserver.protocols.UserInfo) requests_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -298,6 +348,10 @@ private static final long serialVersionUID = 0L;
     if (requestsCase_ == 3) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(3, (com.fz.foodzoneserver.protocols.RegisterRequest) requests_);
+    }
+    if (requestsCase_ == 4) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(4, (com.fz.foodzoneserver.protocols.UserInfo) requests_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -326,6 +380,10 @@ private static final long serialVersionUID = 0L;
         if (!getRegisterRequest()
             .equals(other.getRegisterRequest())) return false;
         break;
+      case 4:
+        if (!getUpdateInfoRequest()
+            .equals(other.getUpdateInfoRequest())) return false;
+        break;
       case 0:
       default:
     }
@@ -350,6 +408,10 @@ private static final long serialVersionUID = 0L;
       case 3:
         hash = (37 * hash) + REGISTERREQUEST_FIELD_NUMBER;
         hash = (53 * hash) + getRegisterRequest().hashCode();
+        break;
+      case 4:
+        hash = (37 * hash) + UPDATEINFOREQUEST_FIELD_NUMBER;
+        hash = (53 * hash) + getUpdateInfoRequest().hashCode();
         break;
       case 0:
       default:
@@ -532,6 +594,13 @@ private static final long serialVersionUID = 0L;
           result.requests_ = registerRequestBuilder_.build();
         }
       }
+      if (requestsCase_ == 4) {
+        if (updateInfoRequestBuilder_ == null) {
+          result.requests_ = requests_;
+        } else {
+          result.requests_ = updateInfoRequestBuilder_.build();
+        }
+      }
       result.requestsCase_ = requestsCase_;
       onBuilt();
       return result;
@@ -592,6 +661,10 @@ private static final long serialVersionUID = 0L;
         }
         case REGISTERREQUEST: {
           mergeRegisterRequest(other.getRegisterRequest());
+          break;
+        }
+        case UPDATEINFOREQUEST: {
+          mergeUpdateInfoRequest(other.getUpdateInfoRequest());
           break;
         }
         case REQUESTS_NOT_SET: {
@@ -998,6 +1071,147 @@ private static final long serialVersionUID = 0L;
       requestsCase_ = 3;
       onChanged();;
       return registerRequestBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.fz.foodzoneserver.protocols.UserInfo, com.fz.foodzoneserver.protocols.UserInfo.Builder, com.fz.foodzoneserver.protocols.UserInfoOrBuilder> updateInfoRequestBuilder_;
+    /**
+     * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+     * @return Whether the updateInfoRequest field is set.
+     */
+    @java.lang.Override
+    public boolean hasUpdateInfoRequest() {
+      return requestsCase_ == 4;
+    }
+    /**
+     * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+     * @return The updateInfoRequest.
+     */
+    @java.lang.Override
+    public com.fz.foodzoneserver.protocols.UserInfo getUpdateInfoRequest() {
+      if (updateInfoRequestBuilder_ == null) {
+        if (requestsCase_ == 4) {
+          return (com.fz.foodzoneserver.protocols.UserInfo) requests_;
+        }
+        return com.fz.foodzoneserver.protocols.UserInfo.getDefaultInstance();
+      } else {
+        if (requestsCase_ == 4) {
+          return updateInfoRequestBuilder_.getMessage();
+        }
+        return com.fz.foodzoneserver.protocols.UserInfo.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+     */
+    public Builder setUpdateInfoRequest(com.fz.foodzoneserver.protocols.UserInfo value) {
+      if (updateInfoRequestBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        requests_ = value;
+        onChanged();
+      } else {
+        updateInfoRequestBuilder_.setMessage(value);
+      }
+      requestsCase_ = 4;
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+     */
+    public Builder setUpdateInfoRequest(
+        com.fz.foodzoneserver.protocols.UserInfo.Builder builderForValue) {
+      if (updateInfoRequestBuilder_ == null) {
+        requests_ = builderForValue.build();
+        onChanged();
+      } else {
+        updateInfoRequestBuilder_.setMessage(builderForValue.build());
+      }
+      requestsCase_ = 4;
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+     */
+    public Builder mergeUpdateInfoRequest(com.fz.foodzoneserver.protocols.UserInfo value) {
+      if (updateInfoRequestBuilder_ == null) {
+        if (requestsCase_ == 4 &&
+            requests_ != com.fz.foodzoneserver.protocols.UserInfo.getDefaultInstance()) {
+          requests_ = com.fz.foodzoneserver.protocols.UserInfo.newBuilder((com.fz.foodzoneserver.protocols.UserInfo) requests_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          requests_ = value;
+        }
+        onChanged();
+      } else {
+        if (requestsCase_ == 4) {
+          updateInfoRequestBuilder_.mergeFrom(value);
+        }
+        updateInfoRequestBuilder_.setMessage(value);
+      }
+      requestsCase_ = 4;
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+     */
+    public Builder clearUpdateInfoRequest() {
+      if (updateInfoRequestBuilder_ == null) {
+        if (requestsCase_ == 4) {
+          requestsCase_ = 0;
+          requests_ = null;
+          onChanged();
+        }
+      } else {
+        if (requestsCase_ == 4) {
+          requestsCase_ = 0;
+          requests_ = null;
+        }
+        updateInfoRequestBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+     */
+    public com.fz.foodzoneserver.protocols.UserInfo.Builder getUpdateInfoRequestBuilder() {
+      return getUpdateInfoRequestFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+     */
+    @java.lang.Override
+    public com.fz.foodzoneserver.protocols.UserInfoOrBuilder getUpdateInfoRequestOrBuilder() {
+      if ((requestsCase_ == 4) && (updateInfoRequestBuilder_ != null)) {
+        return updateInfoRequestBuilder_.getMessageOrBuilder();
+      } else {
+        if (requestsCase_ == 4) {
+          return (com.fz.foodzoneserver.protocols.UserInfo) requests_;
+        }
+        return com.fz.foodzoneserver.protocols.UserInfo.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.fz.foodzoneserver.protocols.UserInfo, com.fz.foodzoneserver.protocols.UserInfo.Builder, com.fz.foodzoneserver.protocols.UserInfoOrBuilder> 
+        getUpdateInfoRequestFieldBuilder() {
+      if (updateInfoRequestBuilder_ == null) {
+        if (!(requestsCase_ == 4)) {
+          requests_ = com.fz.foodzoneserver.protocols.UserInfo.getDefaultInstance();
+        }
+        updateInfoRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.fz.foodzoneserver.protocols.UserInfo, com.fz.foodzoneserver.protocols.UserInfo.Builder, com.fz.foodzoneserver.protocols.UserInfoOrBuilder>(
+                (com.fz.foodzoneserver.protocols.UserInfo) requests_,
+                getParentForChildren(),
+                isClean());
+        requests_ = null;
+      }
+      requestsCase_ = 4;
+      onChanged();;
+      return updateInfoRequestBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

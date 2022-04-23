@@ -19,6 +19,7 @@ public  final class ClientMessage extends
   public enum RequestsCase {
     LOGINREQUEST(2),
     REGISTERREQUEST(3),
+    UPDATEINFOREQUEST(4),
     REQUESTS_NOT_SET(0);
     private final int value;
     private RequestsCase(int value) {
@@ -36,6 +37,7 @@ public  final class ClientMessage extends
       switch (value) {
         case 2: return LOGINREQUEST;
         case 3: return REGISTERREQUEST;
+        case 4: return UPDATEINFOREQUEST;
         case 0: return REQUESTS_NOT_SET;
         default: return null;
       }
@@ -199,6 +201,56 @@ public  final class ClientMessage extends
    */
   private void clearRegisterRequest() {
     if (requestsCase_ == 3) {
+      requestsCase_ = 0;
+      requests_ = null;
+    }
+  }
+
+  public static final int UPDATEINFOREQUEST_FIELD_NUMBER = 4;
+  /**
+   * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+   */
+  @java.lang.Override
+  public boolean hasUpdateInfoRequest() {
+    return requestsCase_ == 4;
+  }
+  /**
+   * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+   */
+  @java.lang.Override
+  public com.example.foodzoneclient.protocols.UserInfo getUpdateInfoRequest() {
+    if (requestsCase_ == 4) {
+       return (com.example.foodzoneclient.protocols.UserInfo) requests_;
+    }
+    return com.example.foodzoneclient.protocols.UserInfo.getDefaultInstance();
+  }
+  /**
+   * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+   */
+  private void setUpdateInfoRequest(com.example.foodzoneclient.protocols.UserInfo value) {
+    value.getClass();
+  requests_ = value;
+    requestsCase_ = 4;
+  }
+  /**
+   * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+   */
+  private void mergeUpdateInfoRequest(com.example.foodzoneclient.protocols.UserInfo value) {
+    value.getClass();
+  if (requestsCase_ == 4 &&
+        requests_ != com.example.foodzoneclient.protocols.UserInfo.getDefaultInstance()) {
+      requests_ = com.example.foodzoneclient.protocols.UserInfo.newBuilder((com.example.foodzoneclient.protocols.UserInfo) requests_)
+          .mergeFrom(value).buildPartial();
+    } else {
+      requests_ = value;
+    }
+    requestsCase_ = 4;
+  }
+  /**
+   * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+   */
+  private void clearUpdateInfoRequest() {
+    if (requestsCase_ == 4) {
       requestsCase_ = 0;
       requests_ = null;
     }
@@ -456,6 +508,54 @@ public  final class ClientMessage extends
       return this;
     }
 
+    /**
+     * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+     */
+    @java.lang.Override
+    public boolean hasUpdateInfoRequest() {
+      return instance.hasUpdateInfoRequest();
+    }
+    /**
+     * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+     */
+    @java.lang.Override
+    public com.example.foodzoneclient.protocols.UserInfo getUpdateInfoRequest() {
+      return instance.getUpdateInfoRequest();
+    }
+    /**
+     * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+     */
+    public Builder setUpdateInfoRequest(com.example.foodzoneclient.protocols.UserInfo value) {
+      copyOnWrite();
+      instance.setUpdateInfoRequest(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+     */
+    public Builder setUpdateInfoRequest(
+        com.example.foodzoneclient.protocols.UserInfo.Builder builderForValue) {
+      copyOnWrite();
+      instance.setUpdateInfoRequest(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+     */
+    public Builder mergeUpdateInfoRequest(com.example.foodzoneclient.protocols.UserInfo value) {
+      copyOnWrite();
+      instance.mergeUpdateInfoRequest(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+     */
+    public Builder clearUpdateInfoRequest() {
+      copyOnWrite();
+      instance.clearUpdateInfoRequest();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:foodzone_protocols.ClientMessage)
   }
   @java.lang.Override
@@ -477,10 +577,11 @@ public  final class ClientMessage extends
             "msg_",
             com.example.foodzoneclient.protocols.LoginRequest.class,
             com.example.foodzoneclient.protocols.RegisterRequest.class,
+            com.example.foodzoneclient.protocols.UserInfo.class,
           };
           java.lang.String info =
-              "\u0000\u0003\u0001\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u0208\u0002<\u0000" +
-              "\u0003<\u0000";
+              "\u0000\u0004\u0001\u0000\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u0208\u0002<\u0000" +
+              "\u0003<\u0000\u0004<\u0000";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

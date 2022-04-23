@@ -37,11 +37,16 @@ message RegisterResponse {
   string result = 1;
 }
 
+message UpdateInfoResponse{
+  string result = 1;
+}
+
 message ClientMessage {
   string msg = 1;
   oneof requests {
     LoginRequest loginRequest = 2;
     RegisterRequest registerRequest = 3;
+    UserInfo updateInfoRequest = 4;
   }
 }
 
@@ -50,5 +55,6 @@ message ServerMessage {
   oneof responses {
     LoginResponse loginResponse = 2;
     RegisterResponse registerResponse = 3;
+    UpdateInfoResponse updateInfoResponse = 4;
   }
 }

@@ -119,4 +119,8 @@ public class DBHandler {
             logger.error(e);
         }
     }
+
+    public String updateUserInfo(UserInfo info) {
+        return "ok";
+    }
 }

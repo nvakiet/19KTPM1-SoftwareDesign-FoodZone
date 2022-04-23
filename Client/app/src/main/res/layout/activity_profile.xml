@@ -32,7 +32,6 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/poppins"
-            android:gravity="center"
             android:text="Account Information"
             android:textColor="#999999"
             android:textSize="24dp"
@@ -103,14 +102,13 @@
 
     <EditText
         android:id="@+id/profile_id"
-
         android:layout_width="0dp"
         android:layout_height="44dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/edit_text_bg"
-        android:drawableLeft="@drawable/profile_email"
+        android:drawableLeft="@drawable/profile_id"
         android:drawablePadding="8dp"
-        android:hint="Email"
+        android:hint="ID/Passport"
         android:paddingLeft="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -19,6 +19,7 @@ public  final class ServerMessage extends
   public enum ResponsesCase {
     LOGINRESPONSE(2),
     REGISTERRESPONSE(3),
+    UPDATEINFORESPONSE(4),
     RESPONSES_NOT_SET(0);
     private final int value;
     private ResponsesCase(int value) {
@@ -36,6 +37,7 @@ public  final class ServerMessage extends
       switch (value) {
         case 2: return LOGINRESPONSE;
         case 3: return REGISTERRESPONSE;
+        case 4: return UPDATEINFORESPONSE;
         case 0: return RESPONSES_NOT_SET;
         default: return null;
       }
@@ -199,6 +201,56 @@ public  final class ServerMessage extends
    */
   private void clearRegisterResponse() {
     if (responsesCase_ == 3) {
+      responsesCase_ = 0;
+      responses_ = null;
+    }
+  }
+
+  public static final int UPDATEINFORESPONSE_FIELD_NUMBER = 4;
+  /**
+   * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
+   */
+  @java.lang.Override
+  public boolean hasUpdateInfoResponse() {
+    return responsesCase_ == 4;
+  }
+  /**
+   * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
+   */
+  @java.lang.Override
+  public com.example.foodzoneclient.protocols.UpdateInfoResponse getUpdateInfoResponse() {
+    if (responsesCase_ == 4) {
+       return (com.example.foodzoneclient.protocols.UpdateInfoResponse) responses_;
+    }
+    return com.example.foodzoneclient.protocols.UpdateInfoResponse.getDefaultInstance();
+  }
+  /**
+   * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
+   */
+  private void setUpdateInfoResponse(com.example.foodzoneclient.protocols.UpdateInfoResponse value) {
+    value.getClass();
+  responses_ = value;
+    responsesCase_ = 4;
+  }
+  /**
+   * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
+   */
+  private void mergeUpdateInfoResponse(com.example.foodzoneclient.protocols.UpdateInfoResponse value) {
+    value.getClass();
+  if (responsesCase_ == 4 &&
+        responses_ != com.example.foodzoneclient.protocols.UpdateInfoResponse.getDefaultInstance()) {
+      responses_ = com.example.foodzoneclient.protocols.UpdateInfoResponse.newBuilder((com.example.foodzoneclient.protocols.UpdateInfoResponse) responses_)
+          .mergeFrom(value).buildPartial();
+    } else {
+      responses_ = value;
+    }
+    responsesCase_ = 4;
+  }
+  /**
+   * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
+   */
+  private void clearUpdateInfoResponse() {
+    if (responsesCase_ == 4) {
       responsesCase_ = 0;
       responses_ = null;
     }
@@ -456,6 +508,54 @@ public  final class ServerMessage extends
       return this;
     }
 
+    /**
+     * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
+     */
+    @java.lang.Override
+    public boolean hasUpdateInfoResponse() {
+      return instance.hasUpdateInfoResponse();
+    }
+    /**
+     * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
+     */
+    @java.lang.Override
+    public com.example.foodzoneclient.protocols.UpdateInfoResponse getUpdateInfoResponse() {
+      return instance.getUpdateInfoResponse();
+    }
+    /**
+     * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
+     */
+    public Builder setUpdateInfoResponse(com.example.foodzoneclient.protocols.UpdateInfoResponse value) {
+      copyOnWrite();
+      instance.setUpdateInfoResponse(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
+     */
+    public Builder setUpdateInfoResponse(
+        com.example.foodzoneclient.protocols.UpdateInfoResponse.Builder builderForValue) {
+      copyOnWrite();
+      instance.setUpdateInfoResponse(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
+     */
+    public Builder mergeUpdateInfoResponse(com.example.foodzoneclient.protocols.UpdateInfoResponse value) {
+      copyOnWrite();
+      instance.mergeUpdateInfoResponse(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
+     */
+    public Builder clearUpdateInfoResponse() {
+      copyOnWrite();
+      instance.clearUpdateInfoResponse();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:foodzone_protocols.ServerMessage)
   }
   @java.lang.Override
@@ -477,10 +577,11 @@ public  final class ServerMessage extends
             "msg_",
             com.example.foodzoneclient.protocols.LoginResponse.class,
             com.example.foodzoneclient.protocols.RegisterResponse.class,
+            com.example.foodzoneclient.protocols.UpdateInfoResponse.class,
           };
           java.lang.String info =
-              "\u0000\u0003\u0001\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u0208\u0002<\u0000" +
-              "\u0003<\u0000";
+              "\u0000\u0004\u0001\u0000\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u0208\u0002<\u0000" +
+              "\u0003<\u0000\u0004<\u0000";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

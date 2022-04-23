@@ -49,5 +49,20 @@ public interface ServerMessageOrBuilder extends
    */
   com.fz.foodzoneserver.protocols.RegisterResponseOrBuilder getRegisterResponseOrBuilder();
 
+  /**
+   * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
+   * @return Whether the updateInfoResponse field is set.
+   */
+  boolean hasUpdateInfoResponse();
+  /**
+   * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
+   * @return The updateInfoResponse.
+   */
+  com.fz.foodzoneserver.protocols.UpdateInfoResponse getUpdateInfoResponse();
+  /**
+   * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
+   */
+  com.fz.foodzoneserver.protocols.UpdateInfoResponseOrBuilder getUpdateInfoResponseOrBuilder();
+
   public com.fz.foodzoneserver.protocols.ServerMessage.ResponsesCase getResponsesCase();
 }

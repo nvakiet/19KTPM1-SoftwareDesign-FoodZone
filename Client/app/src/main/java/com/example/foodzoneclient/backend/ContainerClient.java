@@ -8,6 +8,7 @@ import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.protocols.ClientMessage;
 import com.example.foodzoneclient.protocols.LoginRequest;
 import com.example.foodzoneclient.protocols.RegisterRequest;
+import com.example.foodzoneclient.protocols.UserInfo;
 import com.example.foodzoneclient.ui.LoginFragment;
 
 import io.netty.bootstrap.Bootstrap;
@@ -262,6 +263,25 @@ public enum ContainerClient {
                 ClientMessage msg = ClientMessage.newBuilder()
                         .setMsg("register")
                         .setRegisterRequest(request)
+                        .build();
+                sendToServer(msg);
+            }
+        });
+    }
+
+    public void sendUpdateInfoRequest(UserInfo info) {
+        sendGroup.execute(new Runnable() {
+            @Override
+            public void run() {
+                // check if a phone number is valid: exactly 10 characters long and only has numeric characters
+                if(!info.getPhone().matches("^0[0-9]{9}$")){
+                    FoodZone.showToast(currentUIHandler, "Vietnam phone number must be exactly 10 characters long, only contains digits and starts with 0 (no country code)");
+                    return;
+                }
+
+                ClientMessage msg = ClientMessage.newBuilder()
+                        .setMsg("updateInfo")
+                        .setUpdateInfoRequest(info)
                         .build();
                 sendToServer(msg);
             }

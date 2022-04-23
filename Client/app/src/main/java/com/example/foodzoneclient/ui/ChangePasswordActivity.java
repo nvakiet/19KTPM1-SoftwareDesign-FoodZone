@@ -26,7 +26,6 @@ import com.example.foodzoneclient.backend.ContainerClient;
 public class ChangePasswordActivity extends AppCompatActivity implements View.OnClickListener {
     Button confirmChangePass;
     EditText oldPass,newPass,newPassConfirm;
-    TextView profile_name;
     ImageView backToProfile;
     SharedPreferences myPreferences;
     private Context mContext;
@@ -38,8 +37,6 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_change_password);
         findID();
         SharedPreferences prefs = getSharedPreferences("user_info", MODE_PRIVATE);
-        String name = prefs.getString("Username", null);
-        profile_name.setText(name);
         confirmChangePass.setOnClickListener(this);
         changePasswordhandler = new Handler(Looper.myLooper()) {
             @Override
@@ -63,7 +60,6 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
 
     }
     public void findID(){
-        profile_name=(TextView) findViewById(R.id.profile_name);
         backToProfile=(ImageView) findViewById(R.id.backtoprofile);
         confirmChangePass=(Button) findViewById(R.id.btn_confirmChangePass);
         oldPass=(EditText) findViewById(R.id.et_oldPass);

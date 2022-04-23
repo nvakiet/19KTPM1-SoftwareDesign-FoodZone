@@ -22,6 +22,8 @@ import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.backend.ContainerClient;
 import com.example.foodzoneclient.protocols.UserInfo;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
     ImageView profile_backtomain;
     EditText  profile_name, profile_address, profile_phone, profile_id;
@@ -31,6 +33,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     public static Handler profileHandler;
     SharedPreferences        prefGet;
     SharedPreferences.Editor prefGetEdit;
+    CircleImageView          profile_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +78,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         profile_id         = findViewById(R.id.profile_id);
         profile_phone      = findViewById(R.id.profile_phone);
         updateInfo         = findViewById(R.id.btn_updateInfo);
+        profile_image      = findViewById(R.id.profile_image);
     }
 
     @Override
@@ -89,7 +93,14 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         .setTitle("Update")
                         .setMessage("Do you want to update your profile with the current information?")
                         .setPositiveButton("Yes", (dialogInterface, i) -> {
-                            UserInfo userInfo = UserInfo.newBuilder().build();
+                            UserInfo userInfo = UserInfo.newBuilder()
+                                    .setUsername(prefGet.getString("Username", null))
+                                    .setFullname(profile_name.getText().toString())
+                                    .setAddress(profile_address.getText().toString())
+                                    .setId(profile_id.getText().toString())
+                                    .setPhone(profile_phone.getText().toString())
+                                    .build();
+                            ContainerClient.getInstance().sendUpdateInfoRequest(userInfo);
                         })
                         .setNegativeButton("No", null)
                         .setIcon(R.drawable.dialog_info)

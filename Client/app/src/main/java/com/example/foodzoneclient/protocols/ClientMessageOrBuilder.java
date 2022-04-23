@@ -41,5 +41,16 @@ public interface ClientMessageOrBuilder extends
    */
   com.example.foodzoneclient.protocols.RegisterRequest getRegisterRequest();
 
+  /**
+   * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+   * @return Whether the updateInfoRequest field is set.
+   */
+  boolean hasUpdateInfoRequest();
+  /**
+   * <code>.foodzone_protocols.UserInfo updateInfoRequest = 4;</code>
+   * @return The updateInfoRequest.
+   */
+  com.example.foodzoneclient.protocols.UserInfo getUpdateInfoRequest();
+
   public com.example.foodzoneclient.protocols.ClientMessage.RequestsCase getRequestsCase();
 }
