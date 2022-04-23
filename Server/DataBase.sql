@@ -128,13 +128,13 @@ GO
 
 INSERT INTO Meal
 (MealID, [Name], [Description], Price, [Image], RestaurantID) VALUES
-('f01' ,'Món 1','có 3 c?c phô mai',300000,null,'001'),
-('f02' ,'Món 2','khi?n b?n nh? nhà',12345,null,'001'),
+('f01' ,'Món 1','co 3 cuc pho mai',300000,null,'001'),
+('f02' ,'Món 2','khien ban nho nha',12345,null,'001'),
 ('f03' ,'Món 3','hmm',500000,null,'002'),
-('f04' ,'Món 4','?n ?i r?i bi?t',60000,null,'002'),
-('f05' ,'Món 5','L?u ?n càng nhi?u ng??i, giá càng m?c!',200000,null,'003'),
-('f06' ,'Món 6','Càng ?n càng bu?n',40000,null,'003'),
-('f07' ,'Món 7','Trà s?a v? cà chua, th? ngay hôm qua!',152500,null,'004'),
-('f08' ,'Món 8','69 nghìn có ngay n??c l?u buffet cho 1 ng??i ?n! (Ch?a bao g?m th?t và rau)',69000,null,'005'),
-('f09' ,'Món 9','Th?t và rau',420000,null,'005')
+('f04' ,'Món 4','an di roi biet',60000,null,'002'),
+('f05' ,'Món 5','Lau an cang nhieu nguoi, gia cang mac!',200000,null,'003'),
+('f06' ,'Món 6','Cang an cang buon',40000,null,'003'),
+('f07' ,'Món 7','Tra sua vi ca chua, thu ngay hom qua!',152500,null,'004'),
+('f08' ,'Món 8','69 nghin co ngay nuoc lau buffet cho 1 nguoi an! (Chua bao gom thit va rau)',69000,null,'005'),
+('f09' ,'Món 9','Thit va rau',420000,null,'005')
 GO
