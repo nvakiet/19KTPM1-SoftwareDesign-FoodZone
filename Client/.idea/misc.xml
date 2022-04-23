@@ -14,7 +14,7 @@
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/font/croissant_one.xml" value="0.234375" />
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_cart.xml" value="0.17074275362318841" />
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_change_password.xml" value="0.17074275362318841" />
-        <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_food_menu.xml" value="0.17074275362318841" />
+        <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_food_menu.xml" value="0.18" />
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_history.xml" value="0.17074275362318841" />
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_main_screen.xml" value="0.25" />
@@ -26,6 +26,7 @@
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/fragment_register.xml" value="0.17074275362318841" />
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/header.xml" value="0.17074275362318841" />
+        <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/item_food.xml" value="0.33" />
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/item_list_cart.xml" value="0.25" />
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/item_list_order.xml" value="0.17074275362318841" />
         <entry key="..\:/Study/University/3rdYear/2ndSemester/SoftwareDesign/Project/Project/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/item_list_restaurant.xml" value="0.21" />

@@ -34,32 +34,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp" app:layout_constraintHorizontal_bias="0.497"/>
+
     <ListView
         android:id="@+id/listView"
-        android:layout_width="412dp"
-        android:layout_height="600dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:paddingTop="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cartbar"
-        app:layout_constraintBottom_toTopOf="@+id/relativeLayout3"/>
+        app:layout_constraintTop_toBottomOf="@+id/cartbar" />
     <RelativeLayout android:layout_width="match_parent" android:layout_height="50dp"
         android:gravity="bottom"
         android:background="@drawable/mintbg" app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
         android:id="@+id/relativeLayout3">
-        <TextView android:layout_width="210dp" android:layout_height="50dp"
-            android:text="Total price:"
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            android:gravity="center"
+
+        <TextView
+            android:id="@+id/totalPrice"
+            android:layout_width="210dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="-3dp"
             android:background="@drawable/textviewshape"
-            app:layout_constraintStart_toStartOf="parent" android:id="@+id/totalPrice"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_alignParentStart="true"
-            android:layout_marginStart="-3dp"/>
+            android:gravity="center"
+            android:text="Total price:"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
         <Button
             android:layout_width="205dp" android:layout_height="50dp"
             android:id="@+id/orderButton"

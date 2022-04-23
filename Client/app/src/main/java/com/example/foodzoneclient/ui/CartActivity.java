@@ -1,10 +1,7 @@
 package com.example.foodzoneclient.ui;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -23,7 +20,6 @@ import android.widget.TextView;
 
 import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.model.Product;
-import com.example.foodzoneclient.model.Restaurant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,27 +62,25 @@ public class CartActivity extends AppCompatActivity {
                 startActivity(orderIntent);
             }
         });
+
         Intent intent = getIntent();
         ArrayList<Product> newList = intent.getParcelableArrayListExtra("food_list");
         rID = intent.getStringExtra("resID");
         if (foodList == null) {
             foodList = newList;
-            newList = null;
         }
 
         if(foodList!=null){
             TextView totalbox;
             final ListView listView = (ListView) findViewById(R.id.listView);
             listView.setAdapter(new CartListAdapter(this,foodList));
-            for (int i = 0; i < foodList.size(); i++) {
-                Log.i("CartRemove", foodList.get(i).getID());
-            }
+
             // Iterate list view to calculate total price
             long total = 0;
             for (int i = 0; i < listView.getCount(); ++i) {
                 View v = listView.getAdapter().getView(i, null, null);
                 if (v != null) {
-                    totalbox = (TextView) v.findViewById(R.id.total);
+                    totalbox = (TextView) v.findViewById(R.id.cart_price);
                     total += Integer.parseInt(totalbox.getText().toString().substring(7, totalbox.getText().length()-4));
                 }
             }
@@ -145,12 +139,12 @@ class CartListAdapter extends BaseAdapter {
         if(convertView==null){
             convertView = layoutInflater.inflate(R.layout.item_list_cart, null);
             holder = new ViewHolder();
-            holder.foodImg = (ImageView) convertView.findViewById(R.id.itemImg);
-            holder.foodName = (TextView) convertView.findViewById(R.id.item_name);
-            holder.foodDes = (TextView) convertView.findViewById(R.id.itemDes);
-            holder.foodPrice = (TextView) convertView.findViewById(R.id.total);
-            holder.foodAmount = (TextView) convertView.findViewById(R.id.amount);
-            holder.remove = convertView.findViewById(R.id.bt_remove);
+            holder.foodImg = (ImageView) convertView.findViewById(R.id.cart_itemImg);
+            holder.foodName = (TextView) convertView.findViewById(R.id.cart_item_name);
+            holder.foodDes = (TextView) convertView.findViewById(R.id.cart_itemDes);
+            holder.foodPrice = (TextView) convertView.findViewById(R.id.cart_price);
+            holder.foodAmount = (TextView) convertView.findViewById(R.id.cart_amount);
+            holder.remove = convertView.findViewById(R.id.bt_addToCart);
             convertView.setTag(holder);
         }
         else {
@@ -169,6 +163,7 @@ class CartListAdapter extends BaseAdapter {
                 for (int i = 0; i < listData.size(); i++) {
                     Log.i("CartRemove", listData.get(i).getID());
                 }
+
                 notifyDataSetChanged();
             }
         });

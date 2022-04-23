@@ -17,16 +17,16 @@ public class Main {
             // TEST -----------------------------------------------------
 
             // KHUE
-            //String dbConnString = "jdbc:sqlserver://DESKTOP-18BTLCH\\SQLEXPRESS;databaseName=FoodZone;integratedSecurity=true;";
-            //String ip = "";
+            String dbConnString = "jdbc:sqlserver://DESKTOP-18BTLCH\\SQLEXPRESS;databaseName=FoodZone;integratedSecurity=true;encrypt=true;trustServerCertificate=true;";
+            String ip = "192.168.1.239";
 
             // KIET
             //String dbConnString = "jdbc:sqlserver://localhost\\SQLSERVER:49801;databaseName=FoodZone;integratedSecurity=true;encrypt=true;trustServerCertificate=true;";
             //String ip = "";
 
             // PHAT
-            String dbConnString = "jdbc:sqlserver://localhost\\SQLSERVER:1433;databaseName=FoodZone;integratedSecurity=true;encrypt=true;trustServerCertificate=true;";
-            String ip = "192.168.1.12";
+//            String dbConnString = "jdbc:sqlserver://localhost\\SQLSERVER:1433;databaseName=FoodZone;integratedSecurity=true;encrypt=true;trustServerCertificate=true;";
+//            String ip = "192.168.1.12";
 
             // ----------------------------------------------------------
 
