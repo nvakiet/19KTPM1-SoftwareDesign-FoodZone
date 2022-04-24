@@ -1,15 +1,9 @@
 package com.fz.foodzoneserver.server;
 
-import com.fz.foodzoneserver.protocols.ClientMessage;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.protobuf.ProtobufDecoder;
-import io.netty.handler.codec.protobuf.ProtobufEncoder;
-import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
-import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import org.apache.logging.log4j.LogManager;
@@ -43,7 +37,7 @@ public class ServerFoodZone {
 				ServerBootstrap serverBs = new ServerBootstrap();
 				serverBs.group(bossGroup, workerGroup)
 						.channel(NioServerSocketChannel.class)
-						.handler(new LoggingHandler(LogLevel.INFO))
+						//.handler(new LoggingHandler(LogLevel.INFO)) Uncomment this for debugging
 						.childHandler(new ServerChannelInitializer())
 						.option(ChannelOption.SO_BACKLOG, 25)
 						.childOption(ChannelOption.SO_KEEPALIVE, true)

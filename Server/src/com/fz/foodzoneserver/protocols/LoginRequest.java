@@ -83,15 +83,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_LoginRequest_descriptor;
+    return MessageWrapper.internal_static_foodzone_protocols_LoginRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_LoginRequest_fieldAccessorTable
+    return MessageWrapper.internal_static_foodzone_protocols_LoginRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.fz.foodzoneserver.protocols.LoginRequest.class, com.fz.foodzoneserver.protocols.LoginRequest.Builder.class);
+            LoginRequest.class, LoginRequest.Builder.class);
   }
 
   public static final int USERNAME_FIELD_NUMBER = 1;
@@ -215,10 +215,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.fz.foodzoneserver.protocols.LoginRequest)) {
+    if (!(obj instanceof LoginRequest)) {
       return super.equals(obj);
     }
-    com.fz.foodzoneserver.protocols.LoginRequest other = (com.fz.foodzoneserver.protocols.LoginRequest) obj;
+    LoginRequest other = (LoginRequest) obj;
 
     if (!getUsername()
         .equals(other.getUsername())) return false;
@@ -244,69 +244,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
+  public static LoginRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
+  public static LoginRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
+  public static LoginRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
+  public static LoginRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(byte[] data)
+  public static LoginRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
+  public static LoginRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(java.io.InputStream input)
+  public static LoginRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
+  public static LoginRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseDelimitedFrom(java.io.InputStream input)
+  public static LoginRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseDelimitedFrom(
+  public static LoginRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
+  public static LoginRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
+  public static LoginRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -319,7 +319,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.fz.foodzoneserver.protocols.LoginRequest prototype) {
+  public static Builder newBuilder(LoginRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -340,18 +340,18 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:foodzone_protocols.LoginRequest)
-      com.fz.foodzoneserver.protocols.LoginRequestOrBuilder {
+		  LoginRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_LoginRequest_descriptor;
+      return MessageWrapper.internal_static_foodzone_protocols_LoginRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_LoginRequest_fieldAccessorTable
+      return MessageWrapper.internal_static_foodzone_protocols_LoginRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.fz.foodzoneserver.protocols.LoginRequest.class, com.fz.foodzoneserver.protocols.LoginRequest.Builder.class);
+              LoginRequest.class, LoginRequest.Builder.class);
     }
 
     // Construct using com.fz.foodzoneserver.protocols.LoginRequest.newBuilder()
@@ -382,17 +382,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_LoginRequest_descriptor;
+      return MessageWrapper.internal_static_foodzone_protocols_LoginRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.fz.foodzoneserver.protocols.LoginRequest getDefaultInstanceForType() {
-      return com.fz.foodzoneserver.protocols.LoginRequest.getDefaultInstance();
+    public LoginRequest getDefaultInstanceForType() {
+      return LoginRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.fz.foodzoneserver.protocols.LoginRequest build() {
-      com.fz.foodzoneserver.protocols.LoginRequest result = buildPartial();
+    public LoginRequest build() {
+      LoginRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -400,8 +400,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.fz.foodzoneserver.protocols.LoginRequest buildPartial() {
-      com.fz.foodzoneserver.protocols.LoginRequest result = new com.fz.foodzoneserver.protocols.LoginRequest(this);
+    public LoginRequest buildPartial() {
+      LoginRequest result = new LoginRequest(this);
       result.username_ = username_;
       result.password_ = password_;
       onBuilt();
@@ -442,16 +442,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.fz.foodzoneserver.protocols.LoginRequest) {
-        return mergeFrom((com.fz.foodzoneserver.protocols.LoginRequest)other);
+      if (other instanceof LoginRequest) {
+        return mergeFrom((LoginRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.fz.foodzoneserver.protocols.LoginRequest other) {
-      if (other == com.fz.foodzoneserver.protocols.LoginRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(LoginRequest other) {
+      if (other == LoginRequest.getDefaultInstance()) return this;
       if (!other.getUsername().isEmpty()) {
         username_ = other.username_;
         onChanged();
@@ -475,11 +475,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.fz.foodzoneserver.protocols.LoginRequest parsedMessage = null;
+      LoginRequest parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.fz.foodzoneserver.protocols.LoginRequest) e.getUnfinishedMessage();
+        parsedMessage = (LoginRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -657,12 +657,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:foodzone_protocols.LoginRequest)
-  private static final com.fz.foodzoneserver.protocols.LoginRequest DEFAULT_INSTANCE;
+  private static final LoginRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.fz.foodzoneserver.protocols.LoginRequest();
+    DEFAULT_INSTANCE = new LoginRequest();
   }
 
-  public static com.fz.foodzoneserver.protocols.LoginRequest getDefaultInstance() {
+  public static LoginRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -687,7 +687,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.fz.foodzoneserver.protocols.LoginRequest getDefaultInstanceForType() {
+  public LoginRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

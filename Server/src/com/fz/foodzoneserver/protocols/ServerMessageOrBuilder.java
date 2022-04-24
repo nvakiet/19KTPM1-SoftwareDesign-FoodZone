@@ -28,11 +28,11 @@ public interface ServerMessageOrBuilder extends
    * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
    * @return The loginResponse.
    */
-  com.fz.foodzoneserver.protocols.LoginResponse getLoginResponse();
+  LoginResponse getLoginResponse();
   /**
    * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
    */
-  com.fz.foodzoneserver.protocols.LoginResponseOrBuilder getLoginResponseOrBuilder();
+  LoginResponseOrBuilder getLoginResponseOrBuilder();
 
   /**
    * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
@@ -43,11 +43,11 @@ public interface ServerMessageOrBuilder extends
    * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
    * @return The registerResponse.
    */
-  com.fz.foodzoneserver.protocols.RegisterResponse getRegisterResponse();
+  RegisterResponse getRegisterResponse();
   /**
    * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
    */
-  com.fz.foodzoneserver.protocols.RegisterResponseOrBuilder getRegisterResponseOrBuilder();
+  RegisterResponseOrBuilder getRegisterResponseOrBuilder();
 
   /**
    * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
@@ -58,11 +58,11 @@ public interface ServerMessageOrBuilder extends
    * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
    * @return The updateInfoResponse.
    */
-  com.fz.foodzoneserver.protocols.UpdateInfoResponse getUpdateInfoResponse();
+  UpdateInfoResponse getUpdateInfoResponse();
   /**
    * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
    */
-  com.fz.foodzoneserver.protocols.UpdateInfoResponseOrBuilder getUpdateInfoResponseOrBuilder();
+  UpdateInfoResponseOrBuilder getUpdateInfoResponseOrBuilder();
 
-  public com.fz.foodzoneserver.protocols.ServerMessage.ResponsesCase getResponsesCase();
+  public ServerMessage.ResponsesCase getResponsesCase();
 }
