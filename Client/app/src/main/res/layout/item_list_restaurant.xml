@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:text="The Coffee House 1"
             android:textSize="18dp"
-            android:fontFamily="@font/sue_ellen_francisco"
+            android:fontFamily="@font/poppins"
             android:textColor="@color/black"
             android:textStyle="bold"
             />

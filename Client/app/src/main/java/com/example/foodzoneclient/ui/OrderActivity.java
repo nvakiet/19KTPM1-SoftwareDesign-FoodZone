@@ -36,8 +36,8 @@ public class OrderActivity extends AppCompatActivity {
     ArrayList<Product> foodList;
     ImageView backbtt;
     String rID;
-    SharedPreferences prefGet;
-    SharedPreferences.Editor prefGetEdit;
+    SharedPreferences pref;
+    SharedPreferences.Editor prefEdit;
     Button confirmPurchase;
     String userName,userAddress,userPhone;
     public static Handler orderActivityHandler;
@@ -46,6 +46,13 @@ public class OrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         findID();
+
+        pref     = FoodZone.getContext().getSharedPreferences("UserInfo", MODE_PRIVATE);
+        prefEdit = pref.edit();
+        userName = pref.getString("Fullname", null);
+        userAddress = pref.getString("Address", null);
+        userPhone = pref.getString("Phone", null);
+        
         backbtt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,8 +70,7 @@ public class OrderActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                prefGet = getApplicationContext().getSharedPreferences("user_info", MODE_PRIVATE);
-
+                pref = getApplicationContext().getSharedPreferences("UserInfo", MODE_PRIVATE);
             }
         });
 
@@ -88,19 +94,13 @@ public class OrderActivity extends AppCompatActivity {
             }
         };
         // Get SharedPrereferences
-        prefGet = getApplicationContext().getSharedPreferences("user_info", MODE_PRIVATE);
-        prefGetEdit = prefGet.edit();
-        getUserInform();
+        pref = getApplicationContext().getSharedPreferences("user_info", MODE_PRIVATE);
+        prefEdit = pref.edit();
         retrieveCartList();
     }
     private void findID(){
         backbtt=(ImageView) findViewById(R.id.back2cart);
         confirmPurchase= (Button) findViewById(R.id.Confirm);
-    }
-    private void getUserInform(){
-        userName=prefGet.getString("Username", null);
-        userAddress=prefGet.getString("UserAddress", null);
-        userPhone=prefGet.getString("UserPhone", null);
     }
     private void retrieveCartList() {
         Intent intent = getIntent();
@@ -124,7 +124,7 @@ public class OrderActivity extends AppCompatActivity {
                 }
             }
             TextView detailBox=(TextView) findViewById(R.id.Orderdetails);
-            detailBox.setText("Total: "+String.valueOf(total)+" VND\nName: "+userName+"\nAddress: "+userAddress+"\nPhone: "+userPhone);
+            detailBox.setText("Please confirm your information:\nTotal: "+String.valueOf(total)+" VND\nName: "+userName+"\nAddress: "+userAddress+"\nPhone: "+userPhone);
         }
     }
 }

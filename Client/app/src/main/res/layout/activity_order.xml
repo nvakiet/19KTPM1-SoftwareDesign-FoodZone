@@ -42,18 +42,36 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/orderbar"/>
+        app:layout_constraintTop_toBottomOf="@+id/orderbar">
+
+
+    </ListView>
+
     <RelativeLayout android:layout_width="match_parent" android:layout_height="100dp"
         app:layout_constraintBottom_toTopOf="@id/rltlButton">
-        <TextView android:layout_width="match_parent" android:layout_height="70dp"
-            android:id="@+id/Orderdetails" app:layout_constraintStart_toStartOf="parent"
+
+
+        <TextView
+            android:id="@+id/Orderdetails"
+            android:layout_width="380dp"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
             android:text="Details here"
             android:textColor="@color/black"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            tools:layout_editor_absoluteY="132dp" android:layout_alignParentStart="true"
-            android:layout_marginStart="0dp"/>
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_create_outline"
+            android:layout_toRightOf="@id/Orderdetails"/>
     </RelativeLayout>
+
     <RelativeLayout android:layout_width="match_parent" android:layout_height="50dp"
         android:gravity="bottom"
         android:id="@+id/rltlButton"
@@ -67,4 +85,6 @@
             android:background="@drawable/mintbg" app:layout_constraintBottom_toBottomOf="parent"
             android:layout_alignParentStart="true" android:layout_marginStart="0dp"/>
     </RelativeLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

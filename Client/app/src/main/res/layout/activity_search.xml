@@ -26,8 +26,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleView_res"
         android:layout_width="match_parent"
-        android:layout_height="561dp" android:layout_marginTop="2dp"
-        android:layout_marginBottom="99dp"
-        android:layout_below= "@+id/relativeLayout"
-        android:layout_alignParentBottom="true"/>
+        android:layout_height="561dp"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="99dp"/>
 </RelativeLayout>
