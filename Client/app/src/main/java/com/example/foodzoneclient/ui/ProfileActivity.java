@@ -6,15 +6,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,6 +36,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     SharedPreferences        pref;
     SharedPreferences.Editor prefEdit;
     CircleImageView          profile_image;
+    Uri                      newlySelectedImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             }
         };
 
+        profile_image.setOnClickListener(this);
         updateInfo.setOnClickListener(this);
         changePass.setOnClickListener(this);
         logout.setOnClickListener(this);
@@ -108,20 +111,25 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.profile_backtomain:
-                Intent newIntent = new Intent(ProfileActivity.this, MainScreenActivity.class);
-                //finish();
+                new Intent(ProfileActivity.this, MainScreenActivity.class);
                 break;
             case R.id.btn_updateInfo: {
                 AlertDialog dialog = new AlertDialog.Builder(ProfileActivity.this)
                         .setTitle("Update")
                         .setMessage("Do you want to update your profile with the current information?")
                         .setPositiveButton("Yes", (dialogInterface, i) -> {
+
+                            if (newlySelectedImage != null) {
+                                //upload newlySelectedImage
+                            }
+
                             UserInfo userInfo = UserInfo.newBuilder()
                                     .setUsername(pref.getString("Username", null))
                                     .setFullname(profile_name.getText().toString())
                                     .setAddress(profile_address.getText().toString())
                                     .setId(profile_id.getText().toString())
                                     .setPhone(profile_phone.getText().toString())
+                                    //setImgLink(newlySelectedImage == null ? "", url)
                                     .build();
                             ContainerClient.getInstance().sendUpdateInfoRequest(userInfo);
                         })
@@ -151,18 +159,25 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 dialog.getButton(Dialog.BUTTON_POSITIVE).setTextSize(18);
                 dialog.getButton(Dialog.BUTTON_POSITIVE).setTextColor(Color.parseColor("#ff999999"));
                 dialog.getButton(Dialog.BUTTON_NEGATIVE).setTextSize(18);
-
-
-//                Intent myIntent = new Intent(ProfileActivity.this, LoginActivity.class);
-//                startActivity(myIntent);
-//                finish();
-
                 break;
             }
             case R.id.btn_changePass:
                 Intent changePassIntent = new Intent(ProfileActivity.this, ChangePasswordActivity.class);
                 startActivity(changePassIntent);
+                break;
+            case R.id.profile_image:
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, 3);
+                break;
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && data != null) {
+            newlySelectedImage = data.getData();
+            ((ImageView) findViewById(R.id.profile_image)).setImageURI(newlySelectedImage);
+        }
+    }
 }
