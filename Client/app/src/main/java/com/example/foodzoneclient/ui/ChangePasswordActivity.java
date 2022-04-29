@@ -38,6 +38,8 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_change_password);
         findID();
         confirmChangePass.setOnClickListener(this);
+        prefs     = FoodZone.getContext().getSharedPreferences("UserInfo", MODE_PRIVATE);
+
         changePasswordhandler = new Handler(Looper.myLooper()) {
             @Override
             public void handleMessage(@NonNull Message msg) {
