@@ -21,6 +21,7 @@ public  final class ServerMessage extends
     REGISTERRESPONSE(3),
     UPDATEINFORESPONSE(4),
     UPDATEPASSWORDRESPONSE(5),
+    SUBMITORDERRESPONSE(6),
     RESPONSES_NOT_SET(0);
     private final int value;
     private ResponsesCase(int value) {
@@ -40,6 +41,7 @@ public  final class ServerMessage extends
         case 3: return REGISTERRESPONSE;
         case 4: return UPDATEINFORESPONSE;
         case 5: return UPDATEPASSWORDRESPONSE;
+        case 6: return SUBMITORDERRESPONSE;
         case 0: return RESPONSES_NOT_SET;
         default: return null;
       }
@@ -303,6 +305,56 @@ public  final class ServerMessage extends
    */
   private void clearUpdatePasswordResponse() {
     if (responsesCase_ == 5) {
+      responsesCase_ = 0;
+      responses_ = null;
+    }
+  }
+
+  public static final int SUBMITORDERRESPONSE_FIELD_NUMBER = 6;
+  /**
+   * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+   */
+  @java.lang.Override
+  public boolean hasSubmitOrderResponse() {
+    return responsesCase_ == 6;
+  }
+  /**
+   * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+   */
+  @java.lang.Override
+  public com.example.foodzoneclient.protocols.SubmitOrderResponse getSubmitOrderResponse() {
+    if (responsesCase_ == 6) {
+       return (com.example.foodzoneclient.protocols.SubmitOrderResponse) responses_;
+    }
+    return com.example.foodzoneclient.protocols.SubmitOrderResponse.getDefaultInstance();
+  }
+  /**
+   * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+   */
+  private void setSubmitOrderResponse(com.example.foodzoneclient.protocols.SubmitOrderResponse value) {
+    value.getClass();
+  responses_ = value;
+    responsesCase_ = 6;
+  }
+  /**
+   * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+   */
+  private void mergeSubmitOrderResponse(com.example.foodzoneclient.protocols.SubmitOrderResponse value) {
+    value.getClass();
+  if (responsesCase_ == 6 &&
+        responses_ != com.example.foodzoneclient.protocols.SubmitOrderResponse.getDefaultInstance()) {
+      responses_ = com.example.foodzoneclient.protocols.SubmitOrderResponse.newBuilder((com.example.foodzoneclient.protocols.SubmitOrderResponse) responses_)
+          .mergeFrom(value).buildPartial();
+    } else {
+      responses_ = value;
+    }
+    responsesCase_ = 6;
+  }
+  /**
+   * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+   */
+  private void clearSubmitOrderResponse() {
+    if (responsesCase_ == 6) {
       responsesCase_ = 0;
       responses_ = null;
     }
@@ -656,6 +708,54 @@ public  final class ServerMessage extends
       return this;
     }
 
+    /**
+     * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+     */
+    @java.lang.Override
+    public boolean hasSubmitOrderResponse() {
+      return instance.hasSubmitOrderResponse();
+    }
+    /**
+     * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+     */
+    @java.lang.Override
+    public com.example.foodzoneclient.protocols.SubmitOrderResponse getSubmitOrderResponse() {
+      return instance.getSubmitOrderResponse();
+    }
+    /**
+     * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+     */
+    public Builder setSubmitOrderResponse(com.example.foodzoneclient.protocols.SubmitOrderResponse value) {
+      copyOnWrite();
+      instance.setSubmitOrderResponse(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+     */
+    public Builder setSubmitOrderResponse(
+        com.example.foodzoneclient.protocols.SubmitOrderResponse.Builder builderForValue) {
+      copyOnWrite();
+      instance.setSubmitOrderResponse(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+     */
+    public Builder mergeSubmitOrderResponse(com.example.foodzoneclient.protocols.SubmitOrderResponse value) {
+      copyOnWrite();
+      instance.mergeSubmitOrderResponse(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+     */
+    public Builder clearSubmitOrderResponse() {
+      copyOnWrite();
+      instance.clearSubmitOrderResponse();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:foodzone_protocols.ServerMessage)
   }
   @java.lang.Override
@@ -679,10 +779,11 @@ public  final class ServerMessage extends
             com.example.foodzoneclient.protocols.RegisterResponse.class,
             com.example.foodzoneclient.protocols.UpdateInfoResponse.class,
             com.example.foodzoneclient.protocols.UpdatePasswordResponse.class,
+            com.example.foodzoneclient.protocols.SubmitOrderResponse.class,
           };
           java.lang.String info =
-              "\u0000\u0005\u0001\u0000\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u0208\u0002<\u0000" +
-              "\u0003<\u0000\u0004<\u0000\u0005<\u0000";
+              "\u0000\u0006\u0001\u0000\u0001\u0006\u0006\u0000\u0000\u0000\u0001\u0208\u0002<\u0000" +
+              "\u0003<\u0000\u0004<\u0000\u0005<\u0000\u0006<\u0000";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

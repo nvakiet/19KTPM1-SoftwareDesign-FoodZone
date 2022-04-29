@@ -111,6 +111,20 @@ private static final long serialVersionUID = 0L;
             responsesCase_ = 5;
             break;
           }
+          case 50: {
+            com.fz.foodzoneserver.protocols.SubmitOrderResponse.Builder subBuilder = null;
+            if (responsesCase_ == 6) {
+              subBuilder = ((com.fz.foodzoneserver.protocols.SubmitOrderResponse) responses_).toBuilder();
+            }
+            responses_ =
+                input.readMessage(com.fz.foodzoneserver.protocols.SubmitOrderResponse.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((com.fz.foodzoneserver.protocols.SubmitOrderResponse) responses_);
+              responses_ = subBuilder.buildPartial();
+            }
+            responsesCase_ = 6;
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -152,6 +166,7 @@ private static final long serialVersionUID = 0L;
     REGISTERRESPONSE(3),
     UPDATEINFORESPONSE(4),
     UPDATEPASSWORDRESPONSE(5),
+    SUBMITORDERRESPONSE(6),
     RESPONSES_NOT_SET(0);
     private final int value;
     private ResponsesCase(int value) {
@@ -173,6 +188,7 @@ private static final long serialVersionUID = 0L;
         case 3: return REGISTERRESPONSE;
         case 4: return UPDATEINFORESPONSE;
         case 5: return UPDATEPASSWORDRESPONSE;
+        case 6: return SUBMITORDERRESPONSE;
         case 0: return RESPONSES_NOT_SET;
         default: return null;
       }
@@ -350,6 +366,37 @@ private static final long serialVersionUID = 0L;
     return com.fz.foodzoneserver.protocols.UpdatePasswordResponse.getDefaultInstance();
   }
 
+  public static final int SUBMITORDERRESPONSE_FIELD_NUMBER = 6;
+  /**
+   * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+   * @return Whether the submitOrderResponse field is set.
+   */
+  @java.lang.Override
+  public boolean hasSubmitOrderResponse() {
+    return responsesCase_ == 6;
+  }
+  /**
+   * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+   * @return The submitOrderResponse.
+   */
+  @java.lang.Override
+  public com.fz.foodzoneserver.protocols.SubmitOrderResponse getSubmitOrderResponse() {
+    if (responsesCase_ == 6) {
+       return (com.fz.foodzoneserver.protocols.SubmitOrderResponse) responses_;
+    }
+    return com.fz.foodzoneserver.protocols.SubmitOrderResponse.getDefaultInstance();
+  }
+  /**
+   * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+   */
+  @java.lang.Override
+  public com.fz.foodzoneserver.protocols.SubmitOrderResponseOrBuilder getSubmitOrderResponseOrBuilder() {
+    if (responsesCase_ == 6) {
+       return (com.fz.foodzoneserver.protocols.SubmitOrderResponse) responses_;
+    }
+    return com.fz.foodzoneserver.protocols.SubmitOrderResponse.getDefaultInstance();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -379,6 +426,9 @@ private static final long serialVersionUID = 0L;
     if (responsesCase_ == 5) {
       output.writeMessage(5, (com.fz.foodzoneserver.protocols.UpdatePasswordResponse) responses_);
     }
+    if (responsesCase_ == 6) {
+      output.writeMessage(6, (com.fz.foodzoneserver.protocols.SubmitOrderResponse) responses_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -406,6 +456,10 @@ private static final long serialVersionUID = 0L;
     if (responsesCase_ == 5) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(5, (com.fz.foodzoneserver.protocols.UpdatePasswordResponse) responses_);
+    }
+    if (responsesCase_ == 6) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(6, (com.fz.foodzoneserver.protocols.SubmitOrderResponse) responses_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -442,6 +496,10 @@ private static final long serialVersionUID = 0L;
         if (!getUpdatePasswordResponse()
             .equals(other.getUpdatePasswordResponse())) return false;
         break;
+      case 6:
+        if (!getSubmitOrderResponse()
+            .equals(other.getSubmitOrderResponse())) return false;
+        break;
       case 0:
       default:
     }
@@ -474,6 +532,10 @@ private static final long serialVersionUID = 0L;
       case 5:
         hash = (37 * hash) + UPDATEPASSWORDRESPONSE_FIELD_NUMBER;
         hash = (53 * hash) + getUpdatePasswordResponse().hashCode();
+        break;
+      case 6:
+        hash = (37 * hash) + SUBMITORDERRESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getSubmitOrderResponse().hashCode();
         break;
       case 0:
       default:
@@ -670,6 +732,13 @@ private static final long serialVersionUID = 0L;
           result.responses_ = updatePasswordResponseBuilder_.build();
         }
       }
+      if (responsesCase_ == 6) {
+        if (submitOrderResponseBuilder_ == null) {
+          result.responses_ = responses_;
+        } else {
+          result.responses_ = submitOrderResponseBuilder_.build();
+        }
+      }
       result.responsesCase_ = responsesCase_;
       onBuilt();
       return result;
@@ -738,6 +807,10 @@ private static final long serialVersionUID = 0L;
         }
         case UPDATEPASSWORDRESPONSE: {
           mergeUpdatePasswordResponse(other.getUpdatePasswordResponse());
+          break;
+        }
+        case SUBMITORDERRESPONSE: {
+          mergeSubmitOrderResponse(other.getSubmitOrderResponse());
           break;
         }
         case RESPONSES_NOT_SET: {
@@ -1426,6 +1499,147 @@ private static final long serialVersionUID = 0L;
       responsesCase_ = 5;
       onChanged();;
       return updatePasswordResponseBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.fz.foodzoneserver.protocols.SubmitOrderResponse, com.fz.foodzoneserver.protocols.SubmitOrderResponse.Builder, com.fz.foodzoneserver.protocols.SubmitOrderResponseOrBuilder> submitOrderResponseBuilder_;
+    /**
+     * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+     * @return Whether the submitOrderResponse field is set.
+     */
+    @java.lang.Override
+    public boolean hasSubmitOrderResponse() {
+      return responsesCase_ == 6;
+    }
+    /**
+     * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+     * @return The submitOrderResponse.
+     */
+    @java.lang.Override
+    public com.fz.foodzoneserver.protocols.SubmitOrderResponse getSubmitOrderResponse() {
+      if (submitOrderResponseBuilder_ == null) {
+        if (responsesCase_ == 6) {
+          return (com.fz.foodzoneserver.protocols.SubmitOrderResponse) responses_;
+        }
+        return com.fz.foodzoneserver.protocols.SubmitOrderResponse.getDefaultInstance();
+      } else {
+        if (responsesCase_ == 6) {
+          return submitOrderResponseBuilder_.getMessage();
+        }
+        return com.fz.foodzoneserver.protocols.SubmitOrderResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+     */
+    public Builder setSubmitOrderResponse(com.fz.foodzoneserver.protocols.SubmitOrderResponse value) {
+      if (submitOrderResponseBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        responses_ = value;
+        onChanged();
+      } else {
+        submitOrderResponseBuilder_.setMessage(value);
+      }
+      responsesCase_ = 6;
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+     */
+    public Builder setSubmitOrderResponse(
+        com.fz.foodzoneserver.protocols.SubmitOrderResponse.Builder builderForValue) {
+      if (submitOrderResponseBuilder_ == null) {
+        responses_ = builderForValue.build();
+        onChanged();
+      } else {
+        submitOrderResponseBuilder_.setMessage(builderForValue.build());
+      }
+      responsesCase_ = 6;
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+     */
+    public Builder mergeSubmitOrderResponse(com.fz.foodzoneserver.protocols.SubmitOrderResponse value) {
+      if (submitOrderResponseBuilder_ == null) {
+        if (responsesCase_ == 6 &&
+            responses_ != com.fz.foodzoneserver.protocols.SubmitOrderResponse.getDefaultInstance()) {
+          responses_ = com.fz.foodzoneserver.protocols.SubmitOrderResponse.newBuilder((com.fz.foodzoneserver.protocols.SubmitOrderResponse) responses_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          responses_ = value;
+        }
+        onChanged();
+      } else {
+        if (responsesCase_ == 6) {
+          submitOrderResponseBuilder_.mergeFrom(value);
+        }
+        submitOrderResponseBuilder_.setMessage(value);
+      }
+      responsesCase_ = 6;
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+     */
+    public Builder clearSubmitOrderResponse() {
+      if (submitOrderResponseBuilder_ == null) {
+        if (responsesCase_ == 6) {
+          responsesCase_ = 0;
+          responses_ = null;
+          onChanged();
+        }
+      } else {
+        if (responsesCase_ == 6) {
+          responsesCase_ = 0;
+          responses_ = null;
+        }
+        submitOrderResponseBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+     */
+    public com.fz.foodzoneserver.protocols.SubmitOrderResponse.Builder getSubmitOrderResponseBuilder() {
+      return getSubmitOrderResponseFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+     */
+    @java.lang.Override
+    public com.fz.foodzoneserver.protocols.SubmitOrderResponseOrBuilder getSubmitOrderResponseOrBuilder() {
+      if ((responsesCase_ == 6) && (submitOrderResponseBuilder_ != null)) {
+        return submitOrderResponseBuilder_.getMessageOrBuilder();
+      } else {
+        if (responsesCase_ == 6) {
+          return (com.fz.foodzoneserver.protocols.SubmitOrderResponse) responses_;
+        }
+        return com.fz.foodzoneserver.protocols.SubmitOrderResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.fz.foodzoneserver.protocols.SubmitOrderResponse, com.fz.foodzoneserver.protocols.SubmitOrderResponse.Builder, com.fz.foodzoneserver.protocols.SubmitOrderResponseOrBuilder> 
+        getSubmitOrderResponseFieldBuilder() {
+      if (submitOrderResponseBuilder_ == null) {
+        if (!(responsesCase_ == 6)) {
+          responses_ = com.fz.foodzoneserver.protocols.SubmitOrderResponse.getDefaultInstance();
+        }
+        submitOrderResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.fz.foodzoneserver.protocols.SubmitOrderResponse, com.fz.foodzoneserver.protocols.SubmitOrderResponse.Builder, com.fz.foodzoneserver.protocols.SubmitOrderResponseOrBuilder>(
+                (com.fz.foodzoneserver.protocols.SubmitOrderResponse) responses_,
+                getParentForChildren(),
+                isClean());
+        responses_ = null;
+      }
+      responsesCase_ = 6;
+      onChanged();;
+      return submitOrderResponseBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

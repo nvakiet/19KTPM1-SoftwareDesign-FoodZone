@@ -39,6 +39,13 @@ message UpdatePasswordRequest {
   string newPassword = 3;
 }
 
+message SubmitOrder {
+  string username = 1;
+  string datetime = 2;
+  repeated string mealID = 3;
+  repeated int32 mealQuantity = 4;
+}
+
 message RegisterResponse {
   string result = 1;
 }
@@ -51,6 +58,10 @@ message UpdatePasswordResponse {
   string result = 1;
 }
 
+message SubmitOrderResponse {
+  string result = 1;
+}
+
 message ClientMessage {
   string msg = 1;
   oneof requests {
@@ -58,6 +69,7 @@ message ClientMessage {
     RegisterRequest registerRequest = 3;
     UserInfo updateInfoRequest = 4;
     UpdatePasswordRequest updatePasswordRequest = 5;
+    SubmitOrder submitOrder = 6;
   }
 }
 
@@ -68,5 +80,6 @@ message ServerMessage {
     RegisterResponse registerResponse = 3;
     UpdateInfoResponse updateInfoResponse = 4;
     UpdatePasswordResponse updatePasswordResponse = 5;
+    SubmitOrderResponse submitOrderResponse = 6;
   }
 }

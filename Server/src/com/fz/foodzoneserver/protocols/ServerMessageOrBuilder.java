@@ -79,5 +79,20 @@ public interface ServerMessageOrBuilder extends
    */
   com.fz.foodzoneserver.protocols.UpdatePasswordResponseOrBuilder getUpdatePasswordResponseOrBuilder();
 
+  /**
+   * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+   * @return Whether the submitOrderResponse field is set.
+   */
+  boolean hasSubmitOrderResponse();
+  /**
+   * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+   * @return The submitOrderResponse.
+   */
+  com.fz.foodzoneserver.protocols.SubmitOrderResponse getSubmitOrderResponse();
+  /**
+   * <code>.foodzone_protocols.SubmitOrderResponse submitOrderResponse = 6;</code>
+   */
+  com.fz.foodzoneserver.protocols.SubmitOrderResponseOrBuilder getSubmitOrderResponseOrBuilder();
+
   public com.fz.foodzoneserver.protocols.ServerMessage.ResponsesCase getResponsesCase();
 }
