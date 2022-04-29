@@ -20,6 +20,7 @@ public  final class ClientMessage extends
     LOGINREQUEST(2),
     REGISTERREQUEST(3),
     UPDATEINFOREQUEST(4),
+    UPDATEPASSWORDREQUEST(5),
     REQUESTS_NOT_SET(0);
     private final int value;
     private RequestsCase(int value) {
@@ -38,6 +39,7 @@ public  final class ClientMessage extends
         case 2: return LOGINREQUEST;
         case 3: return REGISTERREQUEST;
         case 4: return UPDATEINFOREQUEST;
+        case 5: return UPDATEPASSWORDREQUEST;
         case 0: return REQUESTS_NOT_SET;
         default: return null;
       }
@@ -251,6 +253,56 @@ public  final class ClientMessage extends
    */
   private void clearUpdateInfoRequest() {
     if (requestsCase_ == 4) {
+      requestsCase_ = 0;
+      requests_ = null;
+    }
+  }
+
+  public static final int UPDATEPASSWORDREQUEST_FIELD_NUMBER = 5;
+  /**
+   * <code>.foodzone_protocols.UpdatePasswordRequest updatePasswordRequest = 5;</code>
+   */
+  @java.lang.Override
+  public boolean hasUpdatePasswordRequest() {
+    return requestsCase_ == 5;
+  }
+  /**
+   * <code>.foodzone_protocols.UpdatePasswordRequest updatePasswordRequest = 5;</code>
+   */
+  @java.lang.Override
+  public com.example.foodzoneclient.protocols.UpdatePasswordRequest getUpdatePasswordRequest() {
+    if (requestsCase_ == 5) {
+       return (com.example.foodzoneclient.protocols.UpdatePasswordRequest) requests_;
+    }
+    return com.example.foodzoneclient.protocols.UpdatePasswordRequest.getDefaultInstance();
+  }
+  /**
+   * <code>.foodzone_protocols.UpdatePasswordRequest updatePasswordRequest = 5;</code>
+   */
+  private void setUpdatePasswordRequest(com.example.foodzoneclient.protocols.UpdatePasswordRequest value) {
+    value.getClass();
+  requests_ = value;
+    requestsCase_ = 5;
+  }
+  /**
+   * <code>.foodzone_protocols.UpdatePasswordRequest updatePasswordRequest = 5;</code>
+   */
+  private void mergeUpdatePasswordRequest(com.example.foodzoneclient.protocols.UpdatePasswordRequest value) {
+    value.getClass();
+  if (requestsCase_ == 5 &&
+        requests_ != com.example.foodzoneclient.protocols.UpdatePasswordRequest.getDefaultInstance()) {
+      requests_ = com.example.foodzoneclient.protocols.UpdatePasswordRequest.newBuilder((com.example.foodzoneclient.protocols.UpdatePasswordRequest) requests_)
+          .mergeFrom(value).buildPartial();
+    } else {
+      requests_ = value;
+    }
+    requestsCase_ = 5;
+  }
+  /**
+   * <code>.foodzone_protocols.UpdatePasswordRequest updatePasswordRequest = 5;</code>
+   */
+  private void clearUpdatePasswordRequest() {
+    if (requestsCase_ == 5) {
       requestsCase_ = 0;
       requests_ = null;
     }
@@ -556,6 +608,54 @@ public  final class ClientMessage extends
       return this;
     }
 
+    /**
+     * <code>.foodzone_protocols.UpdatePasswordRequest updatePasswordRequest = 5;</code>
+     */
+    @java.lang.Override
+    public boolean hasUpdatePasswordRequest() {
+      return instance.hasUpdatePasswordRequest();
+    }
+    /**
+     * <code>.foodzone_protocols.UpdatePasswordRequest updatePasswordRequest = 5;</code>
+     */
+    @java.lang.Override
+    public com.example.foodzoneclient.protocols.UpdatePasswordRequest getUpdatePasswordRequest() {
+      return instance.getUpdatePasswordRequest();
+    }
+    /**
+     * <code>.foodzone_protocols.UpdatePasswordRequest updatePasswordRequest = 5;</code>
+     */
+    public Builder setUpdatePasswordRequest(com.example.foodzoneclient.protocols.UpdatePasswordRequest value) {
+      copyOnWrite();
+      instance.setUpdatePasswordRequest(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.UpdatePasswordRequest updatePasswordRequest = 5;</code>
+     */
+    public Builder setUpdatePasswordRequest(
+        com.example.foodzoneclient.protocols.UpdatePasswordRequest.Builder builderForValue) {
+      copyOnWrite();
+      instance.setUpdatePasswordRequest(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.UpdatePasswordRequest updatePasswordRequest = 5;</code>
+     */
+    public Builder mergeUpdatePasswordRequest(com.example.foodzoneclient.protocols.UpdatePasswordRequest value) {
+      copyOnWrite();
+      instance.mergeUpdatePasswordRequest(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.UpdatePasswordRequest updatePasswordRequest = 5;</code>
+     */
+    public Builder clearUpdatePasswordRequest() {
+      copyOnWrite();
+      instance.clearUpdatePasswordRequest();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:foodzone_protocols.ClientMessage)
   }
   @java.lang.Override
@@ -578,10 +678,11 @@ public  final class ClientMessage extends
             com.example.foodzoneclient.protocols.LoginRequest.class,
             com.example.foodzoneclient.protocols.RegisterRequest.class,
             com.example.foodzoneclient.protocols.UserInfo.class,
+            com.example.foodzoneclient.protocols.UpdatePasswordRequest.class,
           };
           java.lang.String info =
-              "\u0000\u0004\u0001\u0000\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u0208\u0002<\u0000" +
-              "\u0003<\u0000\u0004<\u0000";
+              "\u0000\u0005\u0001\u0000\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u0208\u0002<\u0000" +
+              "\u0003<\u0000\u0004<\u0000\u0005<\u0000";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

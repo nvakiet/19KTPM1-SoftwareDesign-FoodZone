@@ -33,11 +33,21 @@ message RegisterRequest {
   string phone = 6;
 }
 
+message UpdatePasswordRequest {
+  string username = 1;
+  string oldPassword = 2;
+  string newPassword = 3;
+}
+
 message RegisterResponse {
   string result = 1;
 }
 
 message UpdateInfoResponse{
+  string result = 1;
+}
+
+message UpdatePasswordResponse {
   string result = 1;
 }
 
@@ -47,6 +57,7 @@ message ClientMessage {
     LoginRequest loginRequest = 2;
     RegisterRequest registerRequest = 3;
     UserInfo updateInfoRequest = 4;
+    UpdatePasswordRequest updatePasswordRequest = 5;
   }
 }
 
@@ -56,5 +67,6 @@ message ServerMessage {
     LoginResponse loginResponse = 2;
     RegisterResponse registerResponse = 3;
     UpdateInfoResponse updateInfoResponse = 4;
+    UpdatePasswordResponse updatePasswordResponse = 5;
   }
 }

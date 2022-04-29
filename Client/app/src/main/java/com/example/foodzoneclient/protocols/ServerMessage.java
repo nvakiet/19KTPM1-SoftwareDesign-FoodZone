@@ -20,6 +20,7 @@ public  final class ServerMessage extends
     LOGINRESPONSE(2),
     REGISTERRESPONSE(3),
     UPDATEINFORESPONSE(4),
+    UPDATEPASSWORDRESPONSE(5),
     RESPONSES_NOT_SET(0);
     private final int value;
     private ResponsesCase(int value) {
@@ -38,6 +39,7 @@ public  final class ServerMessage extends
         case 2: return LOGINRESPONSE;
         case 3: return REGISTERRESPONSE;
         case 4: return UPDATEINFORESPONSE;
+        case 5: return UPDATEPASSWORDRESPONSE;
         case 0: return RESPONSES_NOT_SET;
         default: return null;
       }
@@ -251,6 +253,56 @@ public  final class ServerMessage extends
    */
   private void clearUpdateInfoResponse() {
     if (responsesCase_ == 4) {
+      responsesCase_ = 0;
+      responses_ = null;
+    }
+  }
+
+  public static final int UPDATEPASSWORDRESPONSE_FIELD_NUMBER = 5;
+  /**
+   * <code>.foodzone_protocols.UpdatePasswordResponse updatePasswordResponse = 5;</code>
+   */
+  @java.lang.Override
+  public boolean hasUpdatePasswordResponse() {
+    return responsesCase_ == 5;
+  }
+  /**
+   * <code>.foodzone_protocols.UpdatePasswordResponse updatePasswordResponse = 5;</code>
+   */
+  @java.lang.Override
+  public com.example.foodzoneclient.protocols.UpdatePasswordResponse getUpdatePasswordResponse() {
+    if (responsesCase_ == 5) {
+       return (com.example.foodzoneclient.protocols.UpdatePasswordResponse) responses_;
+    }
+    return com.example.foodzoneclient.protocols.UpdatePasswordResponse.getDefaultInstance();
+  }
+  /**
+   * <code>.foodzone_protocols.UpdatePasswordResponse updatePasswordResponse = 5;</code>
+   */
+  private void setUpdatePasswordResponse(com.example.foodzoneclient.protocols.UpdatePasswordResponse value) {
+    value.getClass();
+  responses_ = value;
+    responsesCase_ = 5;
+  }
+  /**
+   * <code>.foodzone_protocols.UpdatePasswordResponse updatePasswordResponse = 5;</code>
+   */
+  private void mergeUpdatePasswordResponse(com.example.foodzoneclient.protocols.UpdatePasswordResponse value) {
+    value.getClass();
+  if (responsesCase_ == 5 &&
+        responses_ != com.example.foodzoneclient.protocols.UpdatePasswordResponse.getDefaultInstance()) {
+      responses_ = com.example.foodzoneclient.protocols.UpdatePasswordResponse.newBuilder((com.example.foodzoneclient.protocols.UpdatePasswordResponse) responses_)
+          .mergeFrom(value).buildPartial();
+    } else {
+      responses_ = value;
+    }
+    responsesCase_ = 5;
+  }
+  /**
+   * <code>.foodzone_protocols.UpdatePasswordResponse updatePasswordResponse = 5;</code>
+   */
+  private void clearUpdatePasswordResponse() {
+    if (responsesCase_ == 5) {
       responsesCase_ = 0;
       responses_ = null;
     }
@@ -556,6 +608,54 @@ public  final class ServerMessage extends
       return this;
     }
 
+    /**
+     * <code>.foodzone_protocols.UpdatePasswordResponse updatePasswordResponse = 5;</code>
+     */
+    @java.lang.Override
+    public boolean hasUpdatePasswordResponse() {
+      return instance.hasUpdatePasswordResponse();
+    }
+    /**
+     * <code>.foodzone_protocols.UpdatePasswordResponse updatePasswordResponse = 5;</code>
+     */
+    @java.lang.Override
+    public com.example.foodzoneclient.protocols.UpdatePasswordResponse getUpdatePasswordResponse() {
+      return instance.getUpdatePasswordResponse();
+    }
+    /**
+     * <code>.foodzone_protocols.UpdatePasswordResponse updatePasswordResponse = 5;</code>
+     */
+    public Builder setUpdatePasswordResponse(com.example.foodzoneclient.protocols.UpdatePasswordResponse value) {
+      copyOnWrite();
+      instance.setUpdatePasswordResponse(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.UpdatePasswordResponse updatePasswordResponse = 5;</code>
+     */
+    public Builder setUpdatePasswordResponse(
+        com.example.foodzoneclient.protocols.UpdatePasswordResponse.Builder builderForValue) {
+      copyOnWrite();
+      instance.setUpdatePasswordResponse(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.UpdatePasswordResponse updatePasswordResponse = 5;</code>
+     */
+    public Builder mergeUpdatePasswordResponse(com.example.foodzoneclient.protocols.UpdatePasswordResponse value) {
+      copyOnWrite();
+      instance.mergeUpdatePasswordResponse(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.UpdatePasswordResponse updatePasswordResponse = 5;</code>
+     */
+    public Builder clearUpdatePasswordResponse() {
+      copyOnWrite();
+      instance.clearUpdatePasswordResponse();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:foodzone_protocols.ServerMessage)
   }
   @java.lang.Override
@@ -578,10 +678,11 @@ public  final class ServerMessage extends
             com.example.foodzoneclient.protocols.LoginResponse.class,
             com.example.foodzoneclient.protocols.RegisterResponse.class,
             com.example.foodzoneclient.protocols.UpdateInfoResponse.class,
+            com.example.foodzoneclient.protocols.UpdatePasswordResponse.class,
           };
           java.lang.String info =
-              "\u0000\u0004\u0001\u0000\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u0208\u0002<\u0000" +
-              "\u0003<\u0000\u0004<\u0000";
+              "\u0000\u0005\u0001\u0000\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u0208\u0002<\u0000" +
+              "\u0003<\u0000\u0004<\u0000\u0005<\u0000";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

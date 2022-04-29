@@ -52,5 +52,16 @@ public interface ServerMessageOrBuilder extends
    */
   com.example.foodzoneclient.protocols.UpdateInfoResponse getUpdateInfoResponse();
 
+  /**
+   * <code>.foodzone_protocols.UpdatePasswordResponse updatePasswordResponse = 5;</code>
+   * @return Whether the updatePasswordResponse field is set.
+   */
+  boolean hasUpdatePasswordResponse();
+  /**
+   * <code>.foodzone_protocols.UpdatePasswordResponse updatePasswordResponse = 5;</code>
+   * @return The updatePasswordResponse.
+   */
+  com.example.foodzoneclient.protocols.UpdatePasswordResponse getUpdatePasswordResponse();
+
   public com.example.foodzoneclient.protocols.ServerMessage.ResponsesCase getResponsesCase();
 }

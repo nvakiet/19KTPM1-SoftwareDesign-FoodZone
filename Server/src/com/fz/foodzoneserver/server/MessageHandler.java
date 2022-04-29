@@ -51,11 +51,15 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
                 serverMessage.setMsg("updateInfo_response")
                         .setUpdateInfoResponse(handleUpdateInfoResponse(clientMessage.getUpdateInfoRequest()));
                 break;
-
+                
+            // Client requests update password
+            case "updatePassword":
+                serverMessage.setMsg("updatePassword_response")
+                        .setUpdatePasswordResponse(handleUpdatePasswordResponse(clientMessage.getUpdatePasswordRequest()));
+                break;
         }
         ctx.writeAndFlush(serverMessage.build());
     }
-
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
@@ -106,6 +110,22 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
             response.setResult(result);
             if (result.equals("Success"))
                 logger.info("User \"" + request.getUsername() + "\" has changed their info");
+
+            dbHandler.releaseConn();
+        } catch (SQLException e) {
+            logger.error("Can't get database connection from connection pool", e);
+        }
+        return response.build();
+    }
+
+    private UpdatePasswordResponse handleUpdatePasswordResponse(UpdatePasswordRequest request) {
+        UpdatePasswordResponse.Builder response = UpdatePasswordResponse.newBuilder();
+        try {
+            DBHandler dbHandler = new DBHandler();
+            String    result    = dbHandler.updateUserPassword(request);
+            response.setResult(result);
+            if (result.equals("Success"))
+                logger.info("User \"" + request.getUsername() + "\" has changed their password");
 
             dbHandler.releaseConn();
         } catch (SQLException e) {

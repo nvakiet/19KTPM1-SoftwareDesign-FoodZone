@@ -36,7 +36,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     SharedPreferences        pref;
     SharedPreferences.Editor prefEdit;
     CircleImageView          profile_image;
-    Uri                      newlySelectedImage;
+    Uri                      newlySelectedImage = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,9 +73,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 super.handleMessage(msg);
                 if (msg.what == 1) {
                     String result = (String) msg.obj;
-                    FoodZone.showToast(profileHandler, "Updated Successful");
                     if (result.equals("Success")) {
 
+                        FoodZone.showToast(profileHandler, "Updated Successful");
                         prefEdit.putString("Fullname", profile_name.getText().toString())
                                 .putString("Address", profile_address.getText().toString())
                                 .putString("ID", profile_id.getText().toString())

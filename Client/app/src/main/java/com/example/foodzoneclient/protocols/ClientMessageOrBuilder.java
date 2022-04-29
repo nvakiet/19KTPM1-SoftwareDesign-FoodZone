@@ -52,5 +52,16 @@ public interface ClientMessageOrBuilder extends
    */
   com.example.foodzoneclient.protocols.UserInfo getUpdateInfoRequest();
 
+  /**
+   * <code>.foodzone_protocols.UpdatePasswordRequest updatePasswordRequest = 5;</code>
+   * @return Whether the updatePasswordRequest field is set.
+   */
+  boolean hasUpdatePasswordRequest();
+  /**
+   * <code>.foodzone_protocols.UpdatePasswordRequest updatePasswordRequest = 5;</code>
+   * @return The updatePasswordRequest.
+   */
+  com.example.foodzoneclient.protocols.UpdatePasswordRequest getUpdatePasswordRequest();
+
   public com.example.foodzoneclient.protocols.ClientMessage.RequestsCase getRequestsCase();
 }

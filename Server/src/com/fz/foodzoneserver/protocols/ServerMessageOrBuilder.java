@@ -28,11 +28,11 @@ public interface ServerMessageOrBuilder extends
    * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
    * @return The loginResponse.
    */
-  LoginResponse getLoginResponse();
+  com.fz.foodzoneserver.protocols.LoginResponse getLoginResponse();
   /**
    * <code>.foodzone_protocols.LoginResponse loginResponse = 2;</code>
    */
-  LoginResponseOrBuilder getLoginResponseOrBuilder();
+  com.fz.foodzoneserver.protocols.LoginResponseOrBuilder getLoginResponseOrBuilder();
 
   /**
    * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
@@ -43,11 +43,11 @@ public interface ServerMessageOrBuilder extends
    * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
    * @return The registerResponse.
    */
-  RegisterResponse getRegisterResponse();
+  com.fz.foodzoneserver.protocols.RegisterResponse getRegisterResponse();
   /**
    * <code>.foodzone_protocols.RegisterResponse registerResponse = 3;</code>
    */
-  RegisterResponseOrBuilder getRegisterResponseOrBuilder();
+  com.fz.foodzoneserver.protocols.RegisterResponseOrBuilder getRegisterResponseOrBuilder();
 
   /**
    * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
@@ -58,11 +58,26 @@ public interface ServerMessageOrBuilder extends
    * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
    * @return The updateInfoResponse.
    */
-  UpdateInfoResponse getUpdateInfoResponse();
+  com.fz.foodzoneserver.protocols.UpdateInfoResponse getUpdateInfoResponse();
   /**
    * <code>.foodzone_protocols.UpdateInfoResponse updateInfoResponse = 4;</code>
    */
-  UpdateInfoResponseOrBuilder getUpdateInfoResponseOrBuilder();
+  com.fz.foodzoneserver.protocols.UpdateInfoResponseOrBuilder getUpdateInfoResponseOrBuilder();
 
-  public ServerMessage.ResponsesCase getResponsesCase();
+  /**
+   * <code>.foodzone_protocols.UpdatePasswordResponse updatePasswordResponse = 5;</code>
+   * @return Whether the updatePasswordResponse field is set.
+   */
+  boolean hasUpdatePasswordResponse();
+  /**
+   * <code>.foodzone_protocols.UpdatePasswordResponse updatePasswordResponse = 5;</code>
+   * @return The updatePasswordResponse.
+   */
+  com.fz.foodzoneserver.protocols.UpdatePasswordResponse getUpdatePasswordResponse();
+  /**
+   * <code>.foodzone_protocols.UpdatePasswordResponse updatePasswordResponse = 5;</code>
+   */
+  com.fz.foodzoneserver.protocols.UpdatePasswordResponseOrBuilder getUpdatePasswordResponseOrBuilder();
+
+  public com.fz.foodzoneserver.protocols.ServerMessage.ResponsesCase getResponsesCase();
 }

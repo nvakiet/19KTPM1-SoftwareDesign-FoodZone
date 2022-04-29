@@ -4,27 +4,28 @@
 package com.fz.foodzoneserver.protocols;
 
 /**
- * Protobuf type {@code foodzone_protocols.LoginRequest}
+ * Protobuf type {@code foodzone_protocols.UpdatePasswordRequest}
  */
-public final class LoginRequest extends
+public final class UpdatePasswordRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:foodzone_protocols.LoginRequest)
-    LoginRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:foodzone_protocols.UpdatePasswordRequest)
+    UpdatePasswordRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use LoginRequest.newBuilder() to construct.
-  private LoginRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use UpdatePasswordRequest.newBuilder() to construct.
+  private UpdatePasswordRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private LoginRequest() {
+  private UpdatePasswordRequest() {
     username_ = "";
-    password_ = "";
+    oldPassword_ = "";
+    newPassword_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new LoginRequest();
+    return new UpdatePasswordRequest();
   }
 
   @java.lang.Override
@@ -32,7 +33,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private LoginRequest(
+  private UpdatePasswordRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -59,7 +60,13 @@ private static final long serialVersionUID = 0L;
           case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            password_ = s;
+            oldPassword_ = s;
+            break;
+          }
+          case 26: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            newPassword_ = s;
             break;
           }
           default: {
@@ -83,15 +90,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_LoginRequest_descriptor;
+    return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_UpdatePasswordRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_LoginRequest_fieldAccessorTable
+    return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_UpdatePasswordRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.fz.foodzoneserver.protocols.LoginRequest.class, com.fz.foodzoneserver.protocols.LoginRequest.Builder.class);
+            com.fz.foodzoneserver.protocols.UpdatePasswordRequest.class, com.fz.foodzoneserver.protocols.UpdatePasswordRequest.Builder.class);
   }
 
   public static final int USERNAME_FIELD_NUMBER = 1;
@@ -132,38 +139,76 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int PASSWORD_FIELD_NUMBER = 2;
-  private volatile java.lang.Object password_;
+  public static final int OLDPASSWORD_FIELD_NUMBER = 2;
+  private volatile java.lang.Object oldPassword_;
   /**
-   * <code>string password = 2;</code>
-   * @return The password.
+   * <code>string oldPassword = 2;</code>
+   * @return The oldPassword.
    */
   @java.lang.Override
-  public java.lang.String getPassword() {
-    java.lang.Object ref = password_;
+  public java.lang.String getOldPassword() {
+    java.lang.Object ref = oldPassword_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      password_ = s;
+      oldPassword_ = s;
       return s;
     }
   }
   /**
-   * <code>string password = 2;</code>
-   * @return The bytes for password.
+   * <code>string oldPassword = 2;</code>
+   * @return The bytes for oldPassword.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getPasswordBytes() {
-    java.lang.Object ref = password_;
+      getOldPasswordBytes() {
+    java.lang.Object ref = oldPassword_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      password_ = b;
+      oldPassword_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int NEWPASSWORD_FIELD_NUMBER = 3;
+  private volatile java.lang.Object newPassword_;
+  /**
+   * <code>string newPassword = 3;</code>
+   * @return The newPassword.
+   */
+  @java.lang.Override
+  public java.lang.String getNewPassword() {
+    java.lang.Object ref = newPassword_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      newPassword_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string newPassword = 3;</code>
+   * @return The bytes for newPassword.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getNewPasswordBytes() {
+    java.lang.Object ref = newPassword_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      newPassword_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -187,8 +232,11 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(username_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, username_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(password_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, password_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(oldPassword_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, oldPassword_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(newPassword_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, newPassword_);
     }
     unknownFields.writeTo(output);
   }
@@ -202,8 +250,11 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(username_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, username_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(password_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, password_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(oldPassword_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, oldPassword_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(newPassword_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, newPassword_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -215,15 +266,17 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.fz.foodzoneserver.protocols.LoginRequest)) {
+    if (!(obj instanceof com.fz.foodzoneserver.protocols.UpdatePasswordRequest)) {
       return super.equals(obj);
     }
-    com.fz.foodzoneserver.protocols.LoginRequest other = (com.fz.foodzoneserver.protocols.LoginRequest) obj;
+    com.fz.foodzoneserver.protocols.UpdatePasswordRequest other = (com.fz.foodzoneserver.protocols.UpdatePasswordRequest) obj;
 
     if (!getUsername()
         .equals(other.getUsername())) return false;
-    if (!getPassword()
-        .equals(other.getPassword())) return false;
+    if (!getOldPassword()
+        .equals(other.getOldPassword())) return false;
+    if (!getNewPassword()
+        .equals(other.getNewPassword())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -237,76 +290,78 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + USERNAME_FIELD_NUMBER;
     hash = (53 * hash) + getUsername().hashCode();
-    hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
-    hash = (53 * hash) + getPassword().hashCode();
+    hash = (37 * hash) + OLDPASSWORD_FIELD_NUMBER;
+    hash = (53 * hash) + getOldPassword().hashCode();
+    hash = (37 * hash) + NEWPASSWORD_FIELD_NUMBER;
+    hash = (53 * hash) + getNewPassword().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
+  public static com.fz.foodzoneserver.protocols.UpdatePasswordRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
+  public static com.fz.foodzoneserver.protocols.UpdatePasswordRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
+  public static com.fz.foodzoneserver.protocols.UpdatePasswordRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
+  public static com.fz.foodzoneserver.protocols.UpdatePasswordRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(byte[] data)
+  public static com.fz.foodzoneserver.protocols.UpdatePasswordRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
+  public static com.fz.foodzoneserver.protocols.UpdatePasswordRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(java.io.InputStream input)
+  public static com.fz.foodzoneserver.protocols.UpdatePasswordRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
+  public static com.fz.foodzoneserver.protocols.UpdatePasswordRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.fz.foodzoneserver.protocols.UpdatePasswordRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseDelimitedFrom(
+  public static com.fz.foodzoneserver.protocols.UpdatePasswordRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
+  public static com.fz.foodzoneserver.protocols.UpdatePasswordRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.fz.foodzoneserver.protocols.LoginRequest parseFrom(
+  public static com.fz.foodzoneserver.protocols.UpdatePasswordRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -319,7 +374,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.fz.foodzoneserver.protocols.LoginRequest prototype) {
+  public static Builder newBuilder(com.fz.foodzoneserver.protocols.UpdatePasswordRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -335,26 +390,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code foodzone_protocols.LoginRequest}
+   * Protobuf type {@code foodzone_protocols.UpdatePasswordRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:foodzone_protocols.LoginRequest)
-      com.fz.foodzoneserver.protocols.LoginRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:foodzone_protocols.UpdatePasswordRequest)
+      com.fz.foodzoneserver.protocols.UpdatePasswordRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_LoginRequest_descriptor;
+      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_UpdatePasswordRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_LoginRequest_fieldAccessorTable
+      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_UpdatePasswordRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.fz.foodzoneserver.protocols.LoginRequest.class, com.fz.foodzoneserver.protocols.LoginRequest.Builder.class);
+              com.fz.foodzoneserver.protocols.UpdatePasswordRequest.class, com.fz.foodzoneserver.protocols.UpdatePasswordRequest.Builder.class);
     }
 
-    // Construct using com.fz.foodzoneserver.protocols.LoginRequest.newBuilder()
+    // Construct using com.fz.foodzoneserver.protocols.UpdatePasswordRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -374,7 +429,9 @@ private static final long serialVersionUID = 0L;
       super.clear();
       username_ = "";
 
-      password_ = "";
+      oldPassword_ = "";
+
+      newPassword_ = "";
 
       return this;
     }
@@ -382,17 +439,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_LoginRequest_descriptor;
+      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_UpdatePasswordRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.fz.foodzoneserver.protocols.LoginRequest getDefaultInstanceForType() {
-      return com.fz.foodzoneserver.protocols.LoginRequest.getDefaultInstance();
+    public com.fz.foodzoneserver.protocols.UpdatePasswordRequest getDefaultInstanceForType() {
+      return com.fz.foodzoneserver.protocols.UpdatePasswordRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.fz.foodzoneserver.protocols.LoginRequest build() {
-      com.fz.foodzoneserver.protocols.LoginRequest result = buildPartial();
+    public com.fz.foodzoneserver.protocols.UpdatePasswordRequest build() {
+      com.fz.foodzoneserver.protocols.UpdatePasswordRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -400,10 +457,11 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.fz.foodzoneserver.protocols.LoginRequest buildPartial() {
-      com.fz.foodzoneserver.protocols.LoginRequest result = new com.fz.foodzoneserver.protocols.LoginRequest(this);
+    public com.fz.foodzoneserver.protocols.UpdatePasswordRequest buildPartial() {
+      com.fz.foodzoneserver.protocols.UpdatePasswordRequest result = new com.fz.foodzoneserver.protocols.UpdatePasswordRequest(this);
       result.username_ = username_;
-      result.password_ = password_;
+      result.oldPassword_ = oldPassword_;
+      result.newPassword_ = newPassword_;
       onBuilt();
       return result;
     }
@@ -442,22 +500,26 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.fz.foodzoneserver.protocols.LoginRequest) {
-        return mergeFrom((com.fz.foodzoneserver.protocols.LoginRequest)other);
+      if (other instanceof com.fz.foodzoneserver.protocols.UpdatePasswordRequest) {
+        return mergeFrom((com.fz.foodzoneserver.protocols.UpdatePasswordRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.fz.foodzoneserver.protocols.LoginRequest other) {
-      if (other == com.fz.foodzoneserver.protocols.LoginRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.fz.foodzoneserver.protocols.UpdatePasswordRequest other) {
+      if (other == com.fz.foodzoneserver.protocols.UpdatePasswordRequest.getDefaultInstance()) return this;
       if (!other.getUsername().isEmpty()) {
         username_ = other.username_;
         onChanged();
       }
-      if (!other.getPassword().isEmpty()) {
-        password_ = other.password_;
+      if (!other.getOldPassword().isEmpty()) {
+        oldPassword_ = other.oldPassword_;
+        onChanged();
+      }
+      if (!other.getNewPassword().isEmpty()) {
+        newPassword_ = other.newPassword_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -475,11 +537,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.fz.foodzoneserver.protocols.LoginRequest parsedMessage = null;
+      com.fz.foodzoneserver.protocols.UpdatePasswordRequest parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.fz.foodzoneserver.protocols.LoginRequest) e.getUnfinishedMessage();
+        parsedMessage = (com.fz.foodzoneserver.protocols.UpdatePasswordRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -565,78 +627,154 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object password_ = "";
+    private java.lang.Object oldPassword_ = "";
     /**
-     * <code>string password = 2;</code>
-     * @return The password.
+     * <code>string oldPassword = 2;</code>
+     * @return The oldPassword.
      */
-    public java.lang.String getPassword() {
-      java.lang.Object ref = password_;
+    public java.lang.String getOldPassword() {
+      java.lang.Object ref = oldPassword_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        password_ = s;
+        oldPassword_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string password = 2;</code>
-     * @return The bytes for password.
+     * <code>string oldPassword = 2;</code>
+     * @return The bytes for oldPassword.
      */
     public com.google.protobuf.ByteString
-        getPasswordBytes() {
-      java.lang.Object ref = password_;
+        getOldPasswordBytes() {
+      java.lang.Object ref = oldPassword_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        password_ = b;
+        oldPassword_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string password = 2;</code>
-     * @param value The password to set.
+     * <code>string oldPassword = 2;</code>
+     * @param value The oldPassword to set.
      * @return This builder for chaining.
      */
-    public Builder setPassword(
+    public Builder setOldPassword(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      password_ = value;
+      oldPassword_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string password = 2;</code>
+     * <code>string oldPassword = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearPassword() {
+    public Builder clearOldPassword() {
       
-      password_ = getDefaultInstance().getPassword();
+      oldPassword_ = getDefaultInstance().getOldPassword();
       onChanged();
       return this;
     }
     /**
-     * <code>string password = 2;</code>
-     * @param value The bytes for password to set.
+     * <code>string oldPassword = 2;</code>
+     * @param value The bytes for oldPassword to set.
      * @return This builder for chaining.
      */
-    public Builder setPasswordBytes(
+    public Builder setOldPasswordBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      password_ = value;
+      oldPassword_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object newPassword_ = "";
+    /**
+     * <code>string newPassword = 3;</code>
+     * @return The newPassword.
+     */
+    public java.lang.String getNewPassword() {
+      java.lang.Object ref = newPassword_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        newPassword_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string newPassword = 3;</code>
+     * @return The bytes for newPassword.
+     */
+    public com.google.protobuf.ByteString
+        getNewPasswordBytes() {
+      java.lang.Object ref = newPassword_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        newPassword_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string newPassword = 3;</code>
+     * @param value The newPassword to set.
+     * @return This builder for chaining.
+     */
+    public Builder setNewPassword(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      newPassword_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string newPassword = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearNewPassword() {
+      
+      newPassword_ = getDefaultInstance().getNewPassword();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string newPassword = 3;</code>
+     * @param value The bytes for newPassword to set.
+     * @return This builder for chaining.
+     */
+    public Builder setNewPasswordBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      newPassword_ = value;
       onChanged();
       return this;
     }
@@ -653,41 +791,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:foodzone_protocols.LoginRequest)
+    // @@protoc_insertion_point(builder_scope:foodzone_protocols.UpdatePasswordRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:foodzone_protocols.LoginRequest)
-  private static final com.fz.foodzoneserver.protocols.LoginRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:foodzone_protocols.UpdatePasswordRequest)
+  private static final com.fz.foodzoneserver.protocols.UpdatePasswordRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.fz.foodzoneserver.protocols.LoginRequest();
+    DEFAULT_INSTANCE = new com.fz.foodzoneserver.protocols.UpdatePasswordRequest();
   }
 
-  public static com.fz.foodzoneserver.protocols.LoginRequest getDefaultInstance() {
+  public static com.fz.foodzoneserver.protocols.UpdatePasswordRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<LoginRequest>
-      PARSER = new com.google.protobuf.AbstractParser<LoginRequest>() {
+  private static final com.google.protobuf.Parser<UpdatePasswordRequest>
+      PARSER = new com.google.protobuf.AbstractParser<UpdatePasswordRequest>() {
     @java.lang.Override
-    public LoginRequest parsePartialFrom(
+    public UpdatePasswordRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new LoginRequest(input, extensionRegistry);
+      return new UpdatePasswordRequest(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<LoginRequest> parser() {
+  public static com.google.protobuf.Parser<UpdatePasswordRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<LoginRequest> getParserForType() {
+  public com.google.protobuf.Parser<UpdatePasswordRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.fz.foodzoneserver.protocols.LoginRequest getDefaultInstanceForType() {
+  public com.fz.foodzoneserver.protocols.UpdatePasswordRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

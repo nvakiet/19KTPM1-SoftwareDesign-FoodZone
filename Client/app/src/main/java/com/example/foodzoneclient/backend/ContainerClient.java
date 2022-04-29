@@ -8,6 +8,7 @@ import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.protocols.ClientMessage;
 import com.example.foodzoneclient.protocols.LoginRequest;
 import com.example.foodzoneclient.protocols.RegisterRequest;
+import com.example.foodzoneclient.protocols.UpdatePasswordRequest;
 import com.example.foodzoneclient.protocols.UserInfo;
 import com.example.foodzoneclient.ui.LoginFragment;
 
@@ -282,6 +283,19 @@ public enum ContainerClient {
                 ClientMessage msg = ClientMessage.newBuilder()
                         .setMsg("updateInfo")
                         .setUpdateInfoRequest(info)
+                        .build();
+                sendToServer(msg);
+            }
+        });
+    }
+
+    public void sendUpdatePasswordRequest(UpdatePasswordRequest request) {
+        sendGroup.execute(new Runnable() {
+            @Override
+            public void run() {
+                ClientMessage msg = ClientMessage.newBuilder()
+                        .setMsg("updatePassword")
+                        .setUpdatePasswordRequest(request)
                         .build();
                 sendToServer(msg);
             }

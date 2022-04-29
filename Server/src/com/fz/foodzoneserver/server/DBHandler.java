@@ -1,6 +1,7 @@
 package com.fz.foodzoneserver.server;
 
 import com.fz.foodzoneserver.protocols.RegisterRequest;
+import com.fz.foodzoneserver.protocols.UpdatePasswordRequest;
 import com.fz.foodzoneserver.protocols.UserInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -129,12 +130,46 @@ public class DBHandler {
                     "set Fullname = ?, ID = ?, Address = ?, Phone = ?, Image = ? " +
                     "where Username = ?";
             PreparedStatement st = conn.prepareStatement(sqlUpdate);
-            st.setString(6, request.getUsername());
             st.setString(1, request.getFullname());
             st.setString(2, request.getId());
             st.setString(3, request.getAddress());
             st.setString(4, request.getPhone());
             st.setString(5, request.getImgName());
+            st.setString(6, request.getUsername());
+            st.executeUpdate();
+            st.close();
+            return "Success";
+        } catch (SQLIntegrityConstraintViolationException constraintViolationException) {
+            return "New user data violates database constraints";
+        } catch (SQLException e) {
+            return "Query Error";
+        }
+    }
+
+    public String updateUserPassword(UpdatePasswordRequest request) {
+        try {
+            String checkPassword = "select u.Password from Users as u where u.Username = '" + request.getUsername() + "'";
+            PreparedStatement st         = conn.prepareStatement(checkPassword);
+            ResultSet         rs         = st.executeQuery();
+
+            // Check old password
+            if (!rs.getString(1).equals(request.getOldPassword())) {
+                rs.close();
+                st.close();
+                return "Old password field does not match your current password";
+            }
+
+            // Update to new password
+            rs.close();
+            st.close();
+
+            String sqlUpdate = "update Users " +
+                    "set Password = ?" +
+                    "where Username = ?";
+
+            st = conn.prepareStatement(sqlUpdate);
+            st.setString(1, request.getNewPassword());
+            st.setString(2, request.getUsername());
             st.executeUpdate();
             st.close();
             return "Success";

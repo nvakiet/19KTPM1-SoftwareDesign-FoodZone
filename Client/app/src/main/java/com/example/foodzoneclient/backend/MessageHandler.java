@@ -10,7 +10,9 @@ import com.example.foodzoneclient.protocols.LoginResponse;
 import com.example.foodzoneclient.protocols.RegisterResponse;
 import com.example.foodzoneclient.protocols.ServerMessage;
 import com.example.foodzoneclient.protocols.UpdateInfoResponse;
+import com.example.foodzoneclient.protocols.UpdatePasswordResponse;
 import com.example.foodzoneclient.protocols.UserInfo;
+import com.example.foodzoneclient.ui.ChangePasswordActivity;
 import com.example.foodzoneclient.ui.LoginFragment;
 import com.example.foodzoneclient.ui.ProfileActivity;
 import com.example.foodzoneclient.ui.RegisterFragment;
@@ -53,6 +55,11 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
             // Receives register response from server
             case "updateInfo_response":
                 handleUpdateInfoResponse(serverMessage.getUpdateInfoResponse());
+                break;
+
+            // Receives register response from server
+            case "updatePassword_response":
+                handleUpdatePasswordResponse(serverMessage.getUpdatePasswordResponse());
                 break;
         }
     }
@@ -103,6 +110,14 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
     private void handleUpdateInfoResponse(UpdateInfoResponse response) {
         Message uiMsg;
         uiMsg      = Message.obtain(ProfileActivity.profileHandler);
+        uiMsg.what = 1;
+        uiMsg.obj = response.getResult();
+        uiMsg.sendToTarget();
+    }
+
+    private void handleUpdatePasswordResponse(UpdatePasswordResponse response) {
+        Message uiMsg;
+        uiMsg      = Message.obtain(ChangePasswordActivity.changePasswordhandler);
         uiMsg.what = 1;
         uiMsg.obj = response.getResult();
         uiMsg.sendToTarget();

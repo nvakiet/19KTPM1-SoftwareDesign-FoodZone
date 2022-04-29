@@ -35,6 +35,11 @@ public final class MessageWrapper {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_foodzone_protocols_RegisterRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_foodzone_protocols_UpdatePasswordRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_foodzone_protocols_UpdatePasswordRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_foodzone_protocols_RegisterResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -44,6 +49,11 @@ public final class MessageWrapper {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_foodzone_protocols_UpdateInfoResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_foodzone_protocols_UpdatePasswordResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_foodzone_protocols_UpdatePasswordResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_foodzone_protocols_ClientMessage_descriptor;
   static final 
@@ -73,22 +83,29 @@ public final class MessageWrapper {
       ".UserInfoH\000\210\001\001B\013\n\t_userInfo\"s\n\017RegisterR" +
       "equest\022\020\n\010username\030\001 \001(\t\022\020\n\010password\030\002 \001" +
       "(\t\022\020\n\010fullname\030\003 \001(\t\022\n\n\002id\030\004 \001(\t\022\017\n\007addr" +
-      "ess\030\005 \001(\t\022\r\n\005phone\030\006 \001(\t\"\"\n\020RegisterResp" +
-      "onse\022\016\n\006result\030\001 \001(\t\"$\n\022UpdateInfoRespon" +
-      "se\022\016\n\006result\030\001 \001(\t\"\335\001\n\rClientMessage\022\013\n\003" +
-      "msg\030\001 \001(\t\0228\n\014loginRequest\030\002 \001(\0132 .foodzo" +
-      "ne_protocols.LoginRequestH\000\022>\n\017registerR" +
-      "equest\030\003 \001(\0132#.foodzone_protocols.Regist" +
-      "erRequestH\000\0229\n\021updateInfoRequest\030\004 \001(\0132\034" +
-      ".foodzone_protocols.UserInfoH\000B\n\n\010reques" +
-      "ts\"\355\001\n\rServerMessage\022\013\n\003msg\030\001 \001(\t\022:\n\rlog" +
-      "inResponse\030\002 \001(\0132!.foodzone_protocols.Lo" +
-      "ginResponseH\000\022@\n\020registerResponse\030\003 \001(\0132" +
-      "$.foodzone_protocols.RegisterResponseH\000\022" +
-      "D\n\022updateInfoResponse\030\004 \001(\0132&.foodzone_p" +
-      "rotocols.UpdateInfoResponseH\000B\013\n\trespons" +
-      "esB#\n\037com.fz.foodzoneserver.protocolsP\001b" +
-      "\006proto3"
+      "ess\030\005 \001(\t\022\r\n\005phone\030\006 \001(\t\"S\n\025UpdatePasswo" +
+      "rdRequest\022\020\n\010username\030\001 \001(\t\022\023\n\013oldPasswo" +
+      "rd\030\002 \001(\t\022\023\n\013newPassword\030\003 \001(\t\"\"\n\020Registe" +
+      "rResponse\022\016\n\006result\030\001 \001(\t\"$\n\022UpdateInfoR" +
+      "esponse\022\016\n\006result\030\001 \001(\t\"(\n\026UpdatePasswor" +
+      "dResponse\022\016\n\006result\030\001 \001(\t\"\251\002\n\rClientMess" +
+      "age\022\013\n\003msg\030\001 \001(\t\0228\n\014loginRequest\030\002 \001(\0132 " +
+      ".foodzone_protocols.LoginRequestH\000\022>\n\017re" +
+      "gisterRequest\030\003 \001(\0132#.foodzone_protocols" +
+      ".RegisterRequestH\000\0229\n\021updateInfoRequest\030" +
+      "\004 \001(\0132\034.foodzone_protocols.UserInfoH\000\022J\n" +
+      "\025updatePasswordRequest\030\005 \001(\0132).foodzone_" +
+      "protocols.UpdatePasswordRequestH\000B\n\n\010req" +
+      "uests\"\273\002\n\rServerMessage\022\013\n\003msg\030\001 \001(\t\022:\n\r" +
+      "loginResponse\030\002 \001(\0132!.foodzone_protocols" +
+      ".LoginResponseH\000\022@\n\020registerResponse\030\003 \001" +
+      "(\0132$.foodzone_protocols.RegisterResponse" +
+      "H\000\022D\n\022updateInfoResponse\030\004 \001(\0132&.foodzon" +
+      "e_protocols.UpdateInfoResponseH\000\022L\n\026upda" +
+      "tePasswordResponse\030\005 \001(\0132*.foodzone_prot" +
+      "ocols.UpdatePasswordResponseH\000B\013\n\trespon" +
+      "sesB#\n\037com.fz.foodzoneserver.protocolsP\001" +
+      "b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -118,30 +135,42 @@ public final class MessageWrapper {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_foodzone_protocols_RegisterRequest_descriptor,
         new java.lang.String[] { "Username", "Password", "Fullname", "Id", "Address", "Phone", });
-    internal_static_foodzone_protocols_RegisterResponse_descriptor =
+    internal_static_foodzone_protocols_UpdatePasswordRequest_descriptor =
       getDescriptor().getMessageTypes().get(4);
+    internal_static_foodzone_protocols_UpdatePasswordRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_foodzone_protocols_UpdatePasswordRequest_descriptor,
+        new java.lang.String[] { "Username", "OldPassword", "NewPassword", });
+    internal_static_foodzone_protocols_RegisterResponse_descriptor =
+      getDescriptor().getMessageTypes().get(5);
     internal_static_foodzone_protocols_RegisterResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_foodzone_protocols_RegisterResponse_descriptor,
         new java.lang.String[] { "Result", });
     internal_static_foodzone_protocols_UpdateInfoResponse_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_foodzone_protocols_UpdateInfoResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_foodzone_protocols_UpdateInfoResponse_descriptor,
         new java.lang.String[] { "Result", });
+    internal_static_foodzone_protocols_UpdatePasswordResponse_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_foodzone_protocols_UpdatePasswordResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_foodzone_protocols_UpdatePasswordResponse_descriptor,
+        new java.lang.String[] { "Result", });
     internal_static_foodzone_protocols_ClientMessage_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_foodzone_protocols_ClientMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_foodzone_protocols_ClientMessage_descriptor,
-        new java.lang.String[] { "Msg", "LoginRequest", "RegisterRequest", "UpdateInfoRequest", "Requests", });
+        new java.lang.String[] { "Msg", "LoginRequest", "RegisterRequest", "UpdateInfoRequest", "UpdatePasswordRequest", "Requests", });
     internal_static_foodzone_protocols_ServerMessage_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_foodzone_protocols_ServerMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_foodzone_protocols_ServerMessage_descriptor,
-        new java.lang.String[] { "Msg", "LoginResponse", "RegisterResponse", "UpdateInfoResponse", "Responses", });
+        new java.lang.String[] { "Msg", "LoginResponse", "RegisterResponse", "UpdateInfoResponse", "UpdatePasswordResponse", "Responses", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

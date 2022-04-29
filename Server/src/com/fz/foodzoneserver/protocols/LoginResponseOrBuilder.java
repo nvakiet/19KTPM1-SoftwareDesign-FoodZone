@@ -28,9 +28,9 @@ public interface LoginResponseOrBuilder extends
    * <code>optional .foodzone_protocols.UserInfo userInfo = 2;</code>
    * @return The userInfo.
    */
-  UserInfo getUserInfo();
+  com.fz.foodzoneserver.protocols.UserInfo getUserInfo();
   /**
    * <code>optional .foodzone_protocols.UserInfo userInfo = 2;</code>
    */
-  UserInfoOrBuilder getUserInfoOrBuilder();
+  com.fz.foodzoneserver.protocols.UserInfoOrBuilder getUserInfoOrBuilder();
 }
