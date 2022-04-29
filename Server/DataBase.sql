@@ -75,6 +75,15 @@ CREATE TABLE Recipient (
 )
 GO
 
+CREATE TABLE OrderHistory (
+	Username nvarchar(20),
+	MealID nvarchar(10),
+	MealQuantity integer,
+	OrderDateTime datetime,
+--	RecipientID  nvarchar(12),
+	PRIMARY KEY(Username, MealID, OrderDateTime)
+)
+
 ALTER TABLE Cart
 ADD CONSTRAINT fk_Cart_User FOREIGN KEY (Username) REFERENCES [Users](Username)
 GO
@@ -100,8 +109,16 @@ ADD CONSTRAINT fk_Meal_Restaurant FOREIGN KEY (RestaurantID) REFERENCES Restaura
 GO
 
 ALTER TABLE [Order]
-ADD CONSTRAINT fk_Order_RecipientID FOREIGN KEY (RecipientID) REFERENCES Recipient(ID)
+ADD CONSTRAINT fk_Order_Recipient FOREIGN KEY (RecipientID) REFERENCES Recipient(ID)
 GO
+
+ALTER TABLE OrderHistory
+ADD CONSTRAINT fk_OrderHistory_User FOREIGN KEY (Username) REFERENCES [Users](Username)
+GO
+
+-- ALTER TABLE OrderHistory
+-- ADD CONSTRAINT fk_OrderHistory_Recipient FOREIGN KEY (RecipientID) REFERENCES Recipient(ID)
+-- GO
 
 INSERT INTO [Users]
 (Username,[Password]  ,Fullname			     ,ID		  ,[Address]		 ,Phone		  ,[Image]) VALUES
@@ -120,21 +137,21 @@ GO
 
 INSERT INTO Restaurant(RestaurantID, [Name], [Address]) VALUES
 ('001','Pickles'	,'1 Nguyen Dinh Chieu'),
-('002','Qua Môn'	,'3 Nguyen Ngoc Thach'),
+('002','Qua Mon'	,'3 Nguyen Ngoc Thach'),
 ('003','Rem'		,'8 Nguyen Thi Minh Khai'),
-('004','Qua Môn 2'	,'3 30/4'),
+('004','Qua Mon 2'	,'3 30/4'),
 ('005','MonkaS'		,'7 Tran Nhan Tong')
 GO
 
 INSERT INTO Meal
 (MealID, [Name], [Description], Price, [Image], RestaurantID) VALUES
-('f01' ,'Món 1','co 3 cuc pho mai',300000,null,'001'),
-('f02' ,'Món 2','khien ban nho nha',12345,null,'001'),
-('f03' ,'Món 3','hmm',500000,null,'002'),
-('f04' ,'Món 4','an di roi biet',60000,null,'002'),
-('f05' ,'Món 5','Lau an cang nhieu nguoi, gia cang mac!',200000,null,'003'),
-('f06' ,'Món 6','Cang an cang buon',40000,null,'003'),
-('f07' ,'Món 7','Tra sua vi ca chua, thu ngay hom qua!',152500,null,'004'),
-('f08' ,'Món 8','69 nghin co ngay nuoc lau buffet cho 1 nguoi an! (Chua bao gom thit va rau)',69000,null,'005'),
-('f09' ,'Món 9','Thit va rau',420000,null,'005')
+('f01' ,'Mon 1','co 3 cuc pho mai',300000,null,'001'),
+('f02' ,'Mon 2','khien ban nho nha',12345,null,'001'),
+('f03' ,'Mon 3','hmm',500000,null,'002'),
+('f04' ,'Mon 4','an di roi biet',60000,null,'002'),
+('f05' ,'Mon 5','Lau an cang nhieu nguoi, gia cang mac!',200000,null,'003'),
+('f06' ,'Mon 6','Cang an cang buon',40000,null,'003'),
+('f07' ,'Mon 7','Tra sua vi ca chua, thu ngay hom qua!',152500,null,'004'),
+('f08' ,'Mon 8','69 nghin co ngay nuoc lau buffet cho 1 nguoi an! (Chua bao gom thit va rau)',69000,null,'005'),
+('f09' ,'Mon 9','Thit va rau',420000,null,'005')
 GO
