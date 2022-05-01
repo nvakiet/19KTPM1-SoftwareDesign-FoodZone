@@ -125,6 +125,20 @@ private static final long serialVersionUID = 0L;
             responsesCase_ = 6;
             break;
           }
+          case 58: {
+            com.fz.foodzoneserver.protocols.RestaurantListResponse.Builder subBuilder = null;
+            if (responsesCase_ == 7) {
+              subBuilder = ((com.fz.foodzoneserver.protocols.RestaurantListResponse) responses_).toBuilder();
+            }
+            responses_ =
+                input.readMessage(com.fz.foodzoneserver.protocols.RestaurantListResponse.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((com.fz.foodzoneserver.protocols.RestaurantListResponse) responses_);
+              responses_ = subBuilder.buildPartial();
+            }
+            responsesCase_ = 7;
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -167,6 +181,7 @@ private static final long serialVersionUID = 0L;
     UPDATEINFORESPONSE(4),
     UPDATEPASSWORDRESPONSE(5),
     SUBMITORDERRESPONSE(6),
+    RESTAURANTLISTRESPONSE(7),
     RESPONSES_NOT_SET(0);
     private final int value;
     private ResponsesCase(int value) {
@@ -189,6 +204,7 @@ private static final long serialVersionUID = 0L;
         case 4: return UPDATEINFORESPONSE;
         case 5: return UPDATEPASSWORDRESPONSE;
         case 6: return SUBMITORDERRESPONSE;
+        case 7: return RESTAURANTLISTRESPONSE;
         case 0: return RESPONSES_NOT_SET;
         default: return null;
       }
@@ -397,6 +413,37 @@ private static final long serialVersionUID = 0L;
     return com.fz.foodzoneserver.protocols.SubmitOrderResponse.getDefaultInstance();
   }
 
+  public static final int RESTAURANTLISTRESPONSE_FIELD_NUMBER = 7;
+  /**
+   * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+   * @return Whether the restaurantListResponse field is set.
+   */
+  @java.lang.Override
+  public boolean hasRestaurantListResponse() {
+    return responsesCase_ == 7;
+  }
+  /**
+   * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+   * @return The restaurantListResponse.
+   */
+  @java.lang.Override
+  public com.fz.foodzoneserver.protocols.RestaurantListResponse getRestaurantListResponse() {
+    if (responsesCase_ == 7) {
+       return (com.fz.foodzoneserver.protocols.RestaurantListResponse) responses_;
+    }
+    return com.fz.foodzoneserver.protocols.RestaurantListResponse.getDefaultInstance();
+  }
+  /**
+   * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+   */
+  @java.lang.Override
+  public com.fz.foodzoneserver.protocols.RestaurantListResponseOrBuilder getRestaurantListResponseOrBuilder() {
+    if (responsesCase_ == 7) {
+       return (com.fz.foodzoneserver.protocols.RestaurantListResponse) responses_;
+    }
+    return com.fz.foodzoneserver.protocols.RestaurantListResponse.getDefaultInstance();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -429,6 +476,9 @@ private static final long serialVersionUID = 0L;
     if (responsesCase_ == 6) {
       output.writeMessage(6, (com.fz.foodzoneserver.protocols.SubmitOrderResponse) responses_);
     }
+    if (responsesCase_ == 7) {
+      output.writeMessage(7, (com.fz.foodzoneserver.protocols.RestaurantListResponse) responses_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -460,6 +510,10 @@ private static final long serialVersionUID = 0L;
     if (responsesCase_ == 6) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(6, (com.fz.foodzoneserver.protocols.SubmitOrderResponse) responses_);
+    }
+    if (responsesCase_ == 7) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(7, (com.fz.foodzoneserver.protocols.RestaurantListResponse) responses_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -500,6 +554,10 @@ private static final long serialVersionUID = 0L;
         if (!getSubmitOrderResponse()
             .equals(other.getSubmitOrderResponse())) return false;
         break;
+      case 7:
+        if (!getRestaurantListResponse()
+            .equals(other.getRestaurantListResponse())) return false;
+        break;
       case 0:
       default:
     }
@@ -536,6 +594,10 @@ private static final long serialVersionUID = 0L;
       case 6:
         hash = (37 * hash) + SUBMITORDERRESPONSE_FIELD_NUMBER;
         hash = (53 * hash) + getSubmitOrderResponse().hashCode();
+        break;
+      case 7:
+        hash = (37 * hash) + RESTAURANTLISTRESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getRestaurantListResponse().hashCode();
         break;
       case 0:
       default:
@@ -739,6 +801,13 @@ private static final long serialVersionUID = 0L;
           result.responses_ = submitOrderResponseBuilder_.build();
         }
       }
+      if (responsesCase_ == 7) {
+        if (restaurantListResponseBuilder_ == null) {
+          result.responses_ = responses_;
+        } else {
+          result.responses_ = restaurantListResponseBuilder_.build();
+        }
+      }
       result.responsesCase_ = responsesCase_;
       onBuilt();
       return result;
@@ -811,6 +880,10 @@ private static final long serialVersionUID = 0L;
         }
         case SUBMITORDERRESPONSE: {
           mergeSubmitOrderResponse(other.getSubmitOrderResponse());
+          break;
+        }
+        case RESTAURANTLISTRESPONSE: {
+          mergeRestaurantListResponse(other.getRestaurantListResponse());
           break;
         }
         case RESPONSES_NOT_SET: {
@@ -1640,6 +1713,147 @@ private static final long serialVersionUID = 0L;
       responsesCase_ = 6;
       onChanged();;
       return submitOrderResponseBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.fz.foodzoneserver.protocols.RestaurantListResponse, com.fz.foodzoneserver.protocols.RestaurantListResponse.Builder, com.fz.foodzoneserver.protocols.RestaurantListResponseOrBuilder> restaurantListResponseBuilder_;
+    /**
+     * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+     * @return Whether the restaurantListResponse field is set.
+     */
+    @java.lang.Override
+    public boolean hasRestaurantListResponse() {
+      return responsesCase_ == 7;
+    }
+    /**
+     * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+     * @return The restaurantListResponse.
+     */
+    @java.lang.Override
+    public com.fz.foodzoneserver.protocols.RestaurantListResponse getRestaurantListResponse() {
+      if (restaurantListResponseBuilder_ == null) {
+        if (responsesCase_ == 7) {
+          return (com.fz.foodzoneserver.protocols.RestaurantListResponse) responses_;
+        }
+        return com.fz.foodzoneserver.protocols.RestaurantListResponse.getDefaultInstance();
+      } else {
+        if (responsesCase_ == 7) {
+          return restaurantListResponseBuilder_.getMessage();
+        }
+        return com.fz.foodzoneserver.protocols.RestaurantListResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+     */
+    public Builder setRestaurantListResponse(com.fz.foodzoneserver.protocols.RestaurantListResponse value) {
+      if (restaurantListResponseBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        responses_ = value;
+        onChanged();
+      } else {
+        restaurantListResponseBuilder_.setMessage(value);
+      }
+      responsesCase_ = 7;
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+     */
+    public Builder setRestaurantListResponse(
+        com.fz.foodzoneserver.protocols.RestaurantListResponse.Builder builderForValue) {
+      if (restaurantListResponseBuilder_ == null) {
+        responses_ = builderForValue.build();
+        onChanged();
+      } else {
+        restaurantListResponseBuilder_.setMessage(builderForValue.build());
+      }
+      responsesCase_ = 7;
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+     */
+    public Builder mergeRestaurantListResponse(com.fz.foodzoneserver.protocols.RestaurantListResponse value) {
+      if (restaurantListResponseBuilder_ == null) {
+        if (responsesCase_ == 7 &&
+            responses_ != com.fz.foodzoneserver.protocols.RestaurantListResponse.getDefaultInstance()) {
+          responses_ = com.fz.foodzoneserver.protocols.RestaurantListResponse.newBuilder((com.fz.foodzoneserver.protocols.RestaurantListResponse) responses_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          responses_ = value;
+        }
+        onChanged();
+      } else {
+        if (responsesCase_ == 7) {
+          restaurantListResponseBuilder_.mergeFrom(value);
+        }
+        restaurantListResponseBuilder_.setMessage(value);
+      }
+      responsesCase_ = 7;
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+     */
+    public Builder clearRestaurantListResponse() {
+      if (restaurantListResponseBuilder_ == null) {
+        if (responsesCase_ == 7) {
+          responsesCase_ = 0;
+          responses_ = null;
+          onChanged();
+        }
+      } else {
+        if (responsesCase_ == 7) {
+          responsesCase_ = 0;
+          responses_ = null;
+        }
+        restaurantListResponseBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+     */
+    public com.fz.foodzoneserver.protocols.RestaurantListResponse.Builder getRestaurantListResponseBuilder() {
+      return getRestaurantListResponseFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+     */
+    @java.lang.Override
+    public com.fz.foodzoneserver.protocols.RestaurantListResponseOrBuilder getRestaurantListResponseOrBuilder() {
+      if ((responsesCase_ == 7) && (restaurantListResponseBuilder_ != null)) {
+        return restaurantListResponseBuilder_.getMessageOrBuilder();
+      } else {
+        if (responsesCase_ == 7) {
+          return (com.fz.foodzoneserver.protocols.RestaurantListResponse) responses_;
+        }
+        return com.fz.foodzoneserver.protocols.RestaurantListResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.fz.foodzoneserver.protocols.RestaurantListResponse, com.fz.foodzoneserver.protocols.RestaurantListResponse.Builder, com.fz.foodzoneserver.protocols.RestaurantListResponseOrBuilder> 
+        getRestaurantListResponseFieldBuilder() {
+      if (restaurantListResponseBuilder_ == null) {
+        if (!(responsesCase_ == 7)) {
+          responses_ = com.fz.foodzoneserver.protocols.RestaurantListResponse.getDefaultInstance();
+        }
+        restaurantListResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.fz.foodzoneserver.protocols.RestaurantListResponse, com.fz.foodzoneserver.protocols.RestaurantListResponse.Builder, com.fz.foodzoneserver.protocols.RestaurantListResponseOrBuilder>(
+                (com.fz.foodzoneserver.protocols.RestaurantListResponse) responses_,
+                getParentForChildren(),
+                isClean());
+        responses_ = null;
+      }
+      responsesCase_ = 7;
+      onChanged();;
+      return restaurantListResponseBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

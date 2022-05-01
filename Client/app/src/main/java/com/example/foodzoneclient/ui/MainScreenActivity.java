@@ -1,5 +1,7 @@
 package com.example.foodzoneclient.ui;
 
+import static com.example.foodzoneclient.FoodZone.getContext;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -12,6 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,10 +24,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.R;
+import com.example.foodzoneclient.backend.ContainerClient;
 import com.example.foodzoneclient.model.Restaurant;
+import com.example.foodzoneclient.protocols.LoginRequest;
+import com.example.foodzoneclient.protocols.RestaurantListRequest;
+import com.example.foodzoneclient.protocols.RestaurantListResponse;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -37,6 +47,10 @@ public class MainScreenActivity extends AppCompatActivity {
     private RecyclerView restaurantList;
     //private ImageView imageView1,imageView2,imageView3,imageView4;
     Toolbar toolbar;
+
+    public static Handler restaurantListHandler;
+    public static Handler restaurantHandler;
+    public static ArrayList<Restaurant> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +129,7 @@ public class MainScreenActivity extends AppCompatActivity {
 
         // recycler view
         restaurantList = findViewById(R.id.rv_restaurant);
-        RestaurantsAdapter recyclerViewAdapter = new RestaurantsAdapter(restaurants);
+        RestaurantsAdapter recyclerViewAdapter = new RestaurantsAdapter(list);
         restaurantList.setAdapter(recyclerViewAdapter);
 
         restaurantList.setLayoutManager(new GridLayoutManager(this, 2));
@@ -131,45 +145,34 @@ public class MainScreenActivity extends AppCompatActivity {
             }
         });
 
-//        // ???
-//        imageView1=(ImageView) findViewById(R.id.res1);
-//        imageView2=(ImageView) findViewById(R.id.res2);
-//        imageView3=(ImageView) findViewById(R.id.res3);
-//        imageView4=(ImageView) findViewById(R.id.res4);
-//        imageView1.setOnClickListener(this);
-//        imageView2.setOnClickListener(this);
-//        imageView3.setOnClickListener(this);
-//        imageView4.setOnClickListener(this);
-//        imageView1.setOnClickListener( v -> {
-//        });
+        // get Restaurant List
+        try {
+            RestaurantListRequest request = RestaurantListRequest.newBuilder()
+                    .build();
+            ContainerClient.getInstance().sendRestaurantListRequest(request);
+        } catch (Exception e) {
+            Log.e(ContainerClient.LOG_TAG, "Can't send restaurant list request to server", e);
+            Toast announce = Toast.makeText(getContext(), "Can't send restaurant list request to server", Toast.LENGTH_SHORT);
+            announce.show();
+        }
 
+        restaurantListHandler = new Handler(Looper.myLooper()) {
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                super.handleMessage(msg);
+                if (msg.what == 1) {
+                    String result = (String) msg.obj;
+                    FoodZone.showToast(restaurantListHandler, result);
+                    if (result.equals("Success")) {
+                        recyclerViewAdapter.notifyDataSetChanged();
+                    }
+                }
+                else if (msg.what == -100 || msg.what == -200) {
+                    FoodZone.showToast(restaurantListHandler, (String) msg.obj);
+                }
+            }
+        };
     }
-
-//    @Override
-//    public void onClick(View v) {
-//        switch(v.getId()){
-//            case R.id.res1:
-//                Intent res1Intent= new Intent(MainScreenActivity.this,FoodMenuActivity.class);
-//                res1Intent.putExtra("resID", "0001");
-//                startActivity(res1Intent);
-//                break;
-//            case R.id.res2:
-//                Intent res2Intent= new Intent(MainScreenActivity.this,FoodMenuActivity.class);
-//                res2Intent.putExtra("resID","0002");
-//                startActivity(res2Intent);
-//                break;
-//            case R.id.res3:
-//                Intent res3Intent= new Intent(MainScreenActivity.this,FoodMenuActivity.class);
-//                res3Intent.putExtra("resID","0003");
-//                startActivity(res3Intent);
-//                break;
-//            case R.id.res4:
-//                Intent res4Intent= new Intent(MainScreenActivity.this,FoodMenuActivity.class);
-//                res4Intent.putExtra("resID","0004");
-//                startActivity(res4Intent);
-//                break;
-//        }
-//    }
 
     private void toolbarAction() {
         setSupportActionBar(toolbar);   // cung cap chuc nang cho toolbar

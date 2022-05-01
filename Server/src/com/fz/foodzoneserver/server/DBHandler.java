@@ -1,12 +1,16 @@
 package com.fz.foodzoneserver.server;
 
 import com.fz.foodzoneserver.protocols.RegisterRequest;
+import com.fz.foodzoneserver.protocols.RestaurantInfo;
 import com.fz.foodzoneserver.protocols.UpdatePasswordRequest;
 import com.fz.foodzoneserver.protocols.UserInfo;
+import org.apache.commons.logging.Log;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 //Each time using the new query, you have to create new dbhandler
 public class DBHandler {
@@ -178,5 +182,37 @@ public class DBHandler {
         } catch (SQLException e) {
             return "Query Error";
         }
+    }
+
+    public String queryRestaurantList() {
+        String result = "Success";
+
+        return result;
+    }
+
+    public List<RestaurantInfo> queryAllRestaurant() {
+        List<RestaurantInfo> result = new ArrayList<>();
+
+        try {
+            String            sqlState = "select u.RestaurantID, u.Name, u.Address from Restaurant as u";
+            PreparedStatement st       = conn.prepareStatement(sqlState);
+            ResultSet         rs       = st.executeQuery();
+
+            while (rs.next()) {
+                RestaurantInfo.Builder restaurant = RestaurantInfo.newBuilder();
+                restaurant.setID(rs.getString(1));
+                restaurant.setName(rs.getString(2));
+                restaurant.setAddress(rs.getString(3));
+                restaurant.setImage(0);
+
+                result.add(restaurant.build());
+            }
+
+            st.close();
+            rs.close();
+        } catch (SQLException e) {
+            logger.error(e);
+        }
+        return result;
     }
 }

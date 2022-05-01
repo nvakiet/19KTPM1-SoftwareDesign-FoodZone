@@ -7,6 +7,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MessageHandler extends ChannelInboundHandlerAdapter {
     private        String username = null;
@@ -56,6 +58,11 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
             case "updatePassword":
                 serverMessage.setMsg("updatePassword_response")
                         .setUpdatePasswordResponse(handleUpdatePasswordResponse(clientMessage.getUpdatePasswordRequest()));
+                break;
+
+            case "restaurantList":
+                serverMessage.setMsg("restaurantList_response")
+                        .setRestaurantListResponse(handleRestaurantListResponse(clientMessage.getRestaurantListRequest()));
                 break;
         }
         ctx.writeAndFlush(serverMessage.build());
@@ -127,6 +134,29 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
             if (result.equals("Success"))
                 logger.info("User \"" + request.getUsername() + "\" has changed their password");
 
+            dbHandler.releaseConn();
+        } catch (SQLException e) {
+            logger.error("Can't get database connection from connection pool", e);
+        }
+        return response.build();
+    }
+
+    private RestaurantListResponse handleRestaurantListResponse(RestaurantListRequest request) {
+        RestaurantListResponse.Builder response = RestaurantListResponse.newBuilder();
+        try {
+            DBHandler dbHandler = new DBHandler();
+            String    result    = dbHandler.queryRestaurantList();
+            response.setResult(result);
+            if (result.equals("Success")) {
+                List<RestaurantInfo> tmp = dbHandler.queryAllRestaurant();
+                logger.info("query size", tmp.size());
+
+                for (int i = 0; i < tmp.size(); i++) {
+                    response.addRestaurant(tmp.get(i));
+                }
+
+                logger.info("Get restaurant list complete");
+            }
             dbHandler.releaseConn();
         } catch (SQLException e) {
             logger.error("Can't get database connection from connection pool", e);

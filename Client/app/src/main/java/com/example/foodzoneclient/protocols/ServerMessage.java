@@ -22,6 +22,7 @@ public  final class ServerMessage extends
     UPDATEINFORESPONSE(4),
     UPDATEPASSWORDRESPONSE(5),
     SUBMITORDERRESPONSE(6),
+    RESTAURANTLISTRESPONSE(7),
     RESPONSES_NOT_SET(0);
     private final int value;
     private ResponsesCase(int value) {
@@ -42,6 +43,7 @@ public  final class ServerMessage extends
         case 4: return UPDATEINFORESPONSE;
         case 5: return UPDATEPASSWORDRESPONSE;
         case 6: return SUBMITORDERRESPONSE;
+        case 7: return RESTAURANTLISTRESPONSE;
         case 0: return RESPONSES_NOT_SET;
         default: return null;
       }
@@ -355,6 +357,56 @@ public  final class ServerMessage extends
    */
   private void clearSubmitOrderResponse() {
     if (responsesCase_ == 6) {
+      responsesCase_ = 0;
+      responses_ = null;
+    }
+  }
+
+  public static final int RESTAURANTLISTRESPONSE_FIELD_NUMBER = 7;
+  /**
+   * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+   */
+  @java.lang.Override
+  public boolean hasRestaurantListResponse() {
+    return responsesCase_ == 7;
+  }
+  /**
+   * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+   */
+  @java.lang.Override
+  public com.example.foodzoneclient.protocols.RestaurantListResponse getRestaurantListResponse() {
+    if (responsesCase_ == 7) {
+       return (com.example.foodzoneclient.protocols.RestaurantListResponse) responses_;
+    }
+    return com.example.foodzoneclient.protocols.RestaurantListResponse.getDefaultInstance();
+  }
+  /**
+   * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+   */
+  private void setRestaurantListResponse(com.example.foodzoneclient.protocols.RestaurantListResponse value) {
+    value.getClass();
+  responses_ = value;
+    responsesCase_ = 7;
+  }
+  /**
+   * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+   */
+  private void mergeRestaurantListResponse(com.example.foodzoneclient.protocols.RestaurantListResponse value) {
+    value.getClass();
+  if (responsesCase_ == 7 &&
+        responses_ != com.example.foodzoneclient.protocols.RestaurantListResponse.getDefaultInstance()) {
+      responses_ = com.example.foodzoneclient.protocols.RestaurantListResponse.newBuilder((com.example.foodzoneclient.protocols.RestaurantListResponse) responses_)
+          .mergeFrom(value).buildPartial();
+    } else {
+      responses_ = value;
+    }
+    responsesCase_ = 7;
+  }
+  /**
+   * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+   */
+  private void clearRestaurantListResponse() {
+    if (responsesCase_ == 7) {
       responsesCase_ = 0;
       responses_ = null;
     }
@@ -756,6 +808,54 @@ public  final class ServerMessage extends
       return this;
     }
 
+    /**
+     * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+     */
+    @java.lang.Override
+    public boolean hasRestaurantListResponse() {
+      return instance.hasRestaurantListResponse();
+    }
+    /**
+     * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+     */
+    @java.lang.Override
+    public com.example.foodzoneclient.protocols.RestaurantListResponse getRestaurantListResponse() {
+      return instance.getRestaurantListResponse();
+    }
+    /**
+     * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+     */
+    public Builder setRestaurantListResponse(com.example.foodzoneclient.protocols.RestaurantListResponse value) {
+      copyOnWrite();
+      instance.setRestaurantListResponse(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+     */
+    public Builder setRestaurantListResponse(
+        com.example.foodzoneclient.protocols.RestaurantListResponse.Builder builderForValue) {
+      copyOnWrite();
+      instance.setRestaurantListResponse(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+     */
+    public Builder mergeRestaurantListResponse(com.example.foodzoneclient.protocols.RestaurantListResponse value) {
+      copyOnWrite();
+      instance.mergeRestaurantListResponse(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+     */
+    public Builder clearRestaurantListResponse() {
+      copyOnWrite();
+      instance.clearRestaurantListResponse();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:foodzone_protocols.ServerMessage)
   }
   @java.lang.Override
@@ -780,10 +880,11 @@ public  final class ServerMessage extends
             com.example.foodzoneclient.protocols.UpdateInfoResponse.class,
             com.example.foodzoneclient.protocols.UpdatePasswordResponse.class,
             com.example.foodzoneclient.protocols.SubmitOrderResponse.class,
+            com.example.foodzoneclient.protocols.RestaurantListResponse.class,
           };
           java.lang.String info =
-              "\u0000\u0006\u0001\u0000\u0001\u0006\u0006\u0000\u0000\u0000\u0001\u0208\u0002<\u0000" +
-              "\u0003<\u0000\u0004<\u0000\u0005<\u0000\u0006<\u0000";
+              "\u0000\u0007\u0001\u0000\u0001\u0007\u0007\u0000\u0000\u0000\u0001\u0208\u0002<\u0000" +
+              "\u0003<\u0000\u0004<\u0000\u0005<\u0000\u0006<\u0000\u0007<\u0000";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

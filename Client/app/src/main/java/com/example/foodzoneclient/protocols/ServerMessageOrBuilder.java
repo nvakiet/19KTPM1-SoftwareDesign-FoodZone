@@ -74,5 +74,16 @@ public interface ServerMessageOrBuilder extends
    */
   com.example.foodzoneclient.protocols.SubmitOrderResponse getSubmitOrderResponse();
 
+  /**
+   * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+   * @return Whether the restaurantListResponse field is set.
+   */
+  boolean hasRestaurantListResponse();
+  /**
+   * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+   * @return The restaurantListResponse.
+   */
+  com.example.foodzoneclient.protocols.RestaurantListResponse getRestaurantListResponse();
+
   public com.example.foodzoneclient.protocols.ServerMessage.ResponsesCase getResponsesCase();
 }

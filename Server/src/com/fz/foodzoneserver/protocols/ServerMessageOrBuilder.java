@@ -94,5 +94,20 @@ public interface ServerMessageOrBuilder extends
    */
   com.fz.foodzoneserver.protocols.SubmitOrderResponseOrBuilder getSubmitOrderResponseOrBuilder();
 
+  /**
+   * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+   * @return Whether the restaurantListResponse field is set.
+   */
+  boolean hasRestaurantListResponse();
+  /**
+   * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+   * @return The restaurantListResponse.
+   */
+  com.fz.foodzoneserver.protocols.RestaurantListResponse getRestaurantListResponse();
+  /**
+   * <code>.foodzone_protocols.RestaurantListResponse restaurantListResponse = 7;</code>
+   */
+  com.fz.foodzoneserver.protocols.RestaurantListResponseOrBuilder getRestaurantListResponseOrBuilder();
+
   public com.fz.foodzoneserver.protocols.ServerMessage.ResponsesCase getResponsesCase();
 }
