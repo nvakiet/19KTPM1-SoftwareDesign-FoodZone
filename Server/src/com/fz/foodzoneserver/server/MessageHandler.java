@@ -64,6 +64,11 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
                 serverMessage.setMsg("restaurantList_response")
                         .setRestaurantListResponse(handleRestaurantListResponse(clientMessage.getRestaurantListRequest()));
                 break;
+
+            case "foodList":
+                serverMessage.setMsg("foodList_response")
+                        .setFoodListResponse(handleFoodListResponse(clientMessage.getFoodListRequest()));
+                break;
         }
         ctx.writeAndFlush(serverMessage.build());
     }
@@ -156,6 +161,29 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
                 }
 
                 logger.info("Get restaurant list complete");
+            }
+            dbHandler.releaseConn();
+        } catch (SQLException e) {
+            logger.error("Can't get database connection from connection pool", e);
+        }
+        return response.build();
+    }
+
+    private FoodListResponse handleFoodListResponse(FoodListRequest request) {
+        FoodListResponse.Builder response = FoodListResponse.newBuilder();
+        try {
+            DBHandler dbHandler = new DBHandler();
+            String    result    = dbHandler.queryFoodList();
+            response.setResult(result);
+            if (result.equals("Success")) {
+                List<FoodInfo> tmp = dbHandler.queryFood(request);
+                logger.info("query size", tmp.size());
+
+                for (int i = 0; i < tmp.size(); i++) {
+                    response.addFood(tmp.get(i));
+                }
+
+                logger.info("Get food list complete");
             }
             dbHandler.releaseConn();
         } catch (SQLException e) {

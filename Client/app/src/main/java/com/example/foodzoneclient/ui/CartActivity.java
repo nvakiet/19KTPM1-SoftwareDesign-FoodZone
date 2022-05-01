@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.foodzoneclient.R;
+import com.example.foodzoneclient.model.Cart;
 import com.example.foodzoneclient.model.Product;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class CartActivity extends AppCompatActivity {
     String rID;
     Button orderButton;
     public static Handler cartScreenHandler = null;
-    ArrayList<Product> foodList;
+    //ArrayList<Product> foodList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,39 +42,37 @@ public class CartActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent myIntent=new Intent(CartActivity.this, FoodMenuActivity.class);
-//                myIntent.putExtra("resID",rID);
-//                myIntent.putParcelableArrayListExtra("cart_list", foodList);
-//                startActivity(myIntent);
                 Intent backIntent = getIntent();
-                backIntent.putExtra("resID",rID);
-                backIntent.putParcelableArrayListExtra("cart_list", foodList);
+                //backIntent.putExtra("resID", rID);
+                //backIntent.putParcelableArrayListExtra("cart_list", foodList);
                 setResult(Activity.RESULT_OK, backIntent);
                 finish();
             }
         });
+
         // foward to Order screen
         orderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent orderIntent=new Intent(CartActivity.this, OrderActivity.class);
-                orderIntent.putExtra("resID",rID);
-                orderIntent.putParcelableArrayListExtra("cart_list", foodList);
+                orderIntent.putExtra("resID", rID);
+                orderIntent.putParcelableArrayListExtra("cart_list", Cart.getProductList());
                 startActivity(orderIntent);
             }
         });
 
         Intent intent = getIntent();
-        ArrayList<Product> newList = intent.getParcelableArrayListExtra("food_list");
+        //ArrayList<Product> newList = intent.getParcelableArrayListExtra("food_list");
         rID = intent.getStringExtra("resID");
-        if (foodList == null) {
-            foodList = newList;
-        }
+        Cart.getCartInstance();
+//        if (foodList == null) {
+//            foodList = newList;
+//        }
 
-        if(foodList!=null){
+        if (Cart.getCartInstance() != null) {
             TextView totalbox;
             final ListView listView = (ListView) findViewById(R.id.listView);
-            listView.setAdapter(new CartListAdapter(this,foodList));
+            listView.setAdapter(new CartListAdapter(this, Cart.getProductList()));
 
             // Iterate list view to calculate total price
             long total = 0;

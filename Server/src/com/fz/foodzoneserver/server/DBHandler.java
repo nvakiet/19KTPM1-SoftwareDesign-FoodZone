@@ -1,9 +1,6 @@
 package com.fz.foodzoneserver.server;
 
-import com.fz.foodzoneserver.protocols.RegisterRequest;
-import com.fz.foodzoneserver.protocols.RestaurantInfo;
-import com.fz.foodzoneserver.protocols.UpdatePasswordRequest;
-import com.fz.foodzoneserver.protocols.UserInfo;
+import com.fz.foodzoneserver.protocols.*;
 import org.apache.commons.logging.Log;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -206,6 +203,39 @@ public class DBHandler {
                 restaurant.setImage(0);
 
                 result.add(restaurant.build());
+            }
+
+            st.close();
+            rs.close();
+        } catch (SQLException e) {
+            logger.error(e);
+        }
+        return result;
+    }
+
+    public String queryFoodList() {
+        String result = "Success";
+
+        return result;
+    }
+
+    public List<FoodInfo> queryFood(FoodListRequest request) {
+        List<FoodInfo> result = new ArrayList<>();
+
+        try {
+            String            sqlState = "select u.MealID, u.Name, u.Description, u.Price, u.Image from Meal as u where u.RestaurantID = '" + request.getRestaurantID() + "'";
+            PreparedStatement st       = conn.prepareStatement(sqlState);
+            ResultSet         rs       = st.executeQuery();
+
+            while (rs.next()) {
+                FoodInfo.Builder food = FoodInfo.newBuilder();
+                food.setID(rs.getString(1));
+                food.setName(rs.getString(2));
+                food.setDescription(rs.getString(3));
+                food.setPrice(rs.getInt(4));
+                food.setImage(0);
+
+                result.add(food.build());
             }
 
             st.close();

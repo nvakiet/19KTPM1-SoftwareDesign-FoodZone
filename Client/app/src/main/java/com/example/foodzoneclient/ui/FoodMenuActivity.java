@@ -1,5 +1,8 @@
 package com.example.foodzoneclient.ui;
 
+import static com.example.foodzoneclient.FoodZone.getContext;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +12,10 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +24,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.FoodZone;
+import com.example.foodzoneclient.backend.ContainerClient;
+import com.example.foodzoneclient.model.Cart;
 import com.example.foodzoneclient.model.Product;
+import com.example.foodzoneclient.protocols.FoodListRequest;
+import com.example.foodzoneclient.protocols.RestaurantListRequest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -35,58 +47,84 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
     Button cartButton;
     ListView food;
     String rID;
-    ArrayList<Boolean> tempArr = new ArrayList<Boolean>(Collections.nCopies(4, false));
-    ArrayList<Product> foodList;
-    ArrayList<Product> foodMenu = new ArrayList<Product>();
+
+    public static Handler foodListHandler;
+
+    ArrayList<Boolean> tempArr;
+    //ArrayList<Product> foodList;
+    //ArrayList<Product> foodMenu = new ArrayList<Product>();
+    public static ArrayList<Product> list = new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_menu);
         findID();
 
-        Intent intent = getIntent();
-//        foodList = intent.getParcelableArrayListExtra("cart_list");
-        rID = intent.getStringExtra("resID");
-        if (foodList == null) {
-            foodList = new ArrayList<Product>();
-        }
-//        else {
-//            for (Product item : foodList) {
-//                int i = Integer.parseInt(item.getID().substring(4, item.getID().length()));
-//                tempArr.set(i-1, true);
-//            }
-//        }
-
-        BufferedReader reader = null;
-        AssetManager assetManager = FoodZone.getContext().getResources().getAssets();
-        InputStream is = null;
-        try {
-            is = assetManager.open("Food.txt");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (is != null) {
-            reader = new BufferedReader(new InputStreamReader(is));
-            try {
-                String line = reader.readLine();
-                while (line != null) {
-                    String id = line;
-                    String name = reader.readLine();
-                    String Des = reader.readLine();
-                    int price = Integer.parseInt(reader.readLine());
-                    foodMenu.add(new Product(id, name, Des, price));
-                    line = reader.readLine();
-                }
-                is.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
         backBtt.setOnClickListener(this);
         cartButton.setOnClickListener(this);
 
-        food.setAdapter(new FoodMenuAdapter(this, foodMenu, foodList, tempArr));
+        Intent intent = getIntent();
+        rID = intent.getStringExtra("resID");
+        Cart.getCartInstance();
+//        if (foodList == null) {
+//            foodList = new ArrayList<Product>();
+//        }
+
+        // get Food List of a Restaurant
+        try {
+            FoodListRequest request = FoodListRequest.newBuilder()
+                    .setRestaurantID(rID)
+                    .build();
+            ContainerClient.getInstance().sendFoodListRequest(request);
+        } catch (Exception e) {
+            Log.e(ContainerClient.LOG_TAG, "Can't send food list request to server", e);
+            Toast announce = Toast.makeText(getContext(), "Can't send food list request to server", Toast.LENGTH_SHORT);
+            announce.show();
+        }
+
+        foodListHandler = new Handler(Looper.myLooper()) {
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                super.handleMessage(msg);
+                if (msg.what == 1) {
+                    String result = (String) msg.obj;
+                    //FoodZone.showToast(foodListHandler, result);
+                    if (result.equals("Success")) {
+                        tempArr = new ArrayList<Boolean>(Collections.nCopies(list.size(), false));
+                        food.setAdapter(new FoodMenuAdapter(getContext(), list, tempArr));
+                    }
+                }
+                else if (msg.what == -100 || msg.what == -200) {
+                    FoodZone.showToast(foodListHandler, (String) msg.obj);
+                }
+            }
+        };
+
+//        BufferedReader reader = null;
+//        AssetManager assetManager = FoodZone.getContext().getResources().getAssets();
+//        InputStream is = null;
+//        try {
+//            is = assetManager.open("Food.txt");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        if (is != null) {
+//            reader = new BufferedReader(new InputStreamReader(is));
+//            try {
+//                String line = reader.readLine();
+//                while (line != null) {
+//                    String id = line;
+//                    String name = reader.readLine();
+//                    String Des = reader.readLine();
+//                    int price = Integer.parseInt(reader.readLine());
+//                    foodMenu.add(new Product(id, name, Des, price));
+//                    line = reader.readLine();
+//                }
+//                is.close();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 
     public void findID() {
@@ -98,77 +136,17 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-//            case R.id.addToCart1:
-//                if(tempArr.get(0) ==false){
-//                    //readFood(reader,0);
-//                    foodList.add(foodMenu.get(0));
-//                    tempArr.set(0,true);
-//                }
-//                else{
-//                    for(int j =0;j<foodList.size();j++){
-//                        if(foodList.get(j).getID().equals("item1")) {
-//                            foodList.get(j).increaseAmount(1);
-//                            break;
-//                        }
-//                    }
-//                }
-//                break;
-//            case R.id.addToCart2:
-//                if(tempArr.get(1) ==false){
-//                    //readFood(reader,1);
-//                    foodList.add(foodMenu.get(1));
-//                    tempArr.set(1,true);
-//                }
-//                else{
-//                    for(int j =0;j<foodList.size();j++){
-//                        if(foodList.get(j).getID().equals("item2")) {
-//                            foodList.get(j).increaseAmount(1);
-//                            break;
-//                        }
-//                    }
-//                }
-//                break;
-//            case R.id.addToCart3:
-//                if(tempArr.get(2) ==false){
-//                    //readFood(reader,2);
-//                    foodList.add(foodMenu.get(2));
-//                    tempArr.set(2,true);
-//                }
-//                else{
-//                    for(int j =0;j<foodList.size();j++){
-//                        if(foodList.get(j).getID().equals("item3")) {
-//                            foodList.get(j).increaseAmount(1);
-//                            break;
-//                        }
-//                    }
-//                }
-//                break;
-//            case R.id.addToCart4:
-//                if(tempArr.get(3) ==false){
-//                    //readFood(reader,3);
-//                    foodList.add(foodMenu.get(3));
-//                    tempArr.set(3,true);
-//                }
-//                else{
-//                    for(int j =0;j<foodList.size();j++){
-//                        if(foodList.get(j).getID().equals("item4")) {
-//                            foodList.get(j).increaseAmount(1);
-//                            break;
-//                        }
-//                    }
-//                }
-//                break;
             case R.id.back2main:
+                list = new ArrayList<>();
+                Cart.clear();
                 finish();
                 break;
+
             case R.id.CartButton:
                 Intent cartIntent = new Intent(FoodMenuActivity.this, CartActivity.class);
                 cartIntent.putExtra("resID", rID);
-                cartIntent.putParcelableArrayListExtra("food_list", foodList);
+                //cartIntent.putParcelableArrayListExtra("food_list", foodList);
                 startActivityForResult(cartIntent, REQUEST_CODE);
-//                while (cart.cartScreenHandler == null) {
-//                    continue;
-//                }
                 break;
         }
     }
@@ -178,50 +156,33 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            foodList = data.getParcelableArrayListExtra("cart_list");
-            rID = data.getStringExtra("resID");
+            //foodList = data.getParcelableArrayListExtra("cart_list");
+            //rID = data.getStringExtra("resID");
 
             for (int i = 0; i < tempArr.size(); i++) {
                 tempArr.set(i, false);
             }
 
-            for (int i = 0; i < foodList.size(); i++) {
-                int tmp = Integer.parseInt(foodList.get(i).getID().substring(4));
-                tempArr.set(tmp - 1, true);
+            for (int i = 0; i < Cart.size(); i++) {
+//                int tmp = Integer.parseInt(Cart.get(i).getID().substring(1));
+//                tempArr.set(tmp - 1, true);
+                for (int j = 0; j < list.size(); j++) {
+                    if (list.get(j).getID() == Cart.get(i).getID()) {
+                        tempArr.set(j, true);
+                    }
+                }
             }
 
-            food.setAdapter(new FoodMenuAdapter(this, foodMenu, foodList, tempArr));
+            food.setAdapter(new FoodMenuAdapter(this, list, tempArr));
         }
     }
 
     int REQUEST_CODE = 1111;
-
-//    private void readFood(BufferedReader reader,int ind){
-//        String temp;
-//        int i=0;
-//        try{
-//            while((temp=reader.readLine())!=null){
-//                if(i<ind){
-//                    for(int j=0;j<3;j++){
-//                        reader.readLine();
-//                    }
-//                    continue;
-//                }
-//                String id=temp;
-//                String name=reader.readLine();
-//                String Des=reader.readLine();
-//                int price=Integer.parseInt(reader.readLine());
-//                foodList.add(new Product(temp,name,Des,price));
-//                break;
-//            }
-//        }
-//        catch (Exception e){e.printStackTrace();}
-//    }
 }
 
 class FoodMenuAdapter extends BaseAdapter {
     private List<Product> listData;
-    private List<Product> listCart;
+    //private List<Product> listCart;
     private List<Boolean> listCheck;
     private LayoutInflater layoutInflater;
     private Context context;
@@ -234,9 +195,8 @@ class FoodMenuAdapter extends BaseAdapter {
         Button addToCart;
     }
 
-    public FoodMenuAdapter(Context aContext, List<Product> listData, List<Product> listCart, List<Boolean> listCheck) {
+    public FoodMenuAdapter(Context aContext, List<Product> listData, List<Boolean> listCheck) {
         this.context = aContext;
-        this.listCart = listCart;
         this.listData = listData;
         this.listCheck = listCheck;
         layoutInflater = LayoutInflater.from(aContext);
@@ -289,13 +249,14 @@ class FoodMenuAdapter extends BaseAdapter {
             public void onClick(View v) {
 
                 if (listCheck.get(position) == false) {
-                    listCart.add(listData.get(position));
+                    Cart.add(listData.get(position));
+                    Cart.get(Cart.size() - 1).setAmount(1);
                     listCheck.set(position, true);
                 }
                 else {
-                    for (int i = 0; i < listCart.size(); i++) {
-                        if (listCart.get(i).getID().equals(listData.get(position).getID())) {
-                            listCart.get(i).increaseAmount(1);
+                    for (int i = 0; i < Cart.size(); i++) {
+                        if (Cart.get(i).getID().equals(listData.get(position).getID())) {
+                            Cart.get(i).increaseAmount(1);
                             break;
                         }
                     }

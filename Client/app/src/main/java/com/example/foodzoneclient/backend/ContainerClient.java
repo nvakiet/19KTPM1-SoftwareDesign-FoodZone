@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.protocols.ClientMessage;
+import com.example.foodzoneclient.protocols.FoodListRequest;
 import com.example.foodzoneclient.protocols.LoginRequest;
 import com.example.foodzoneclient.protocols.RegisterRequest;
 import com.example.foodzoneclient.protocols.RestaurantListRequest;
@@ -310,6 +311,19 @@ public enum ContainerClient {
                 ClientMessage msg = ClientMessage.newBuilder()
                         .setMsg("restaurantList")
                         .setRestaurantListRequest(request)
+                        .build();
+                sendToServer(msg);
+            }
+        });
+    }
+
+    public void sendFoodListRequest(FoodListRequest request) {
+        sendGroup.execute(new Runnable() {
+            @Override
+            public void run() {
+                ClientMessage msg = ClientMessage.newBuilder()
+                        .setMsg("foodList")
+                        .setFoodListRequest(request)
                         .build();
                 sendToServer(msg);
             }

@@ -18,6 +18,14 @@ public class Product implements Parcelable {
         Price = in.readInt();
     }
 
+    public Product(String id, String name, String description, int amount, int price) {
+        ID = id;
+        Name = name;
+        Des = description;
+        this.amount = amount;
+        Price = price;
+    }
+
     public static final Creator<Product> CREATOR = new Creator<Product>() {
         @Override
         public Product createFromParcel(Parcel in) {

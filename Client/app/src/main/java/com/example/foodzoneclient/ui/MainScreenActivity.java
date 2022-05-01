@@ -162,7 +162,7 @@ public class MainScreenActivity extends AppCompatActivity {
                 super.handleMessage(msg);
                 if (msg.what == 1) {
                     String result = (String) msg.obj;
-                    FoodZone.showToast(restaurantListHandler, result);
+                    //FoodZone.showToast(restaurantListHandler, result);
                     if (result.equals("Success")) {
                         recyclerViewAdapter.notifyDataSetChanged();
                     }

@@ -21,6 +21,14 @@ message RestaurantInfo {
   string address = 4;
 }
 
+message FoodInfo {
+  string ID = 1;
+  string name = 2;
+  string description = 3;
+  int32 price = 4;
+  int32 image = 5;
+}
+
 message LoginRequest {
   string username = 1;
   string password = 2;
@@ -67,6 +75,15 @@ message RestaurantListResponse {
   repeated RestaurantInfo restaurant = 2;
 }
 
+message FoodListRequest {
+  string restaurantID = 1;
+}
+
+message FoodListResponse {
+  string result = 1;
+  repeated FoodInfo food = 2;
+}
+
 message RegisterResponse {
   string result = 1;
 }
@@ -92,6 +109,7 @@ message ClientMessage {
     UpdatePasswordRequest updatePasswordRequest = 5;
     SubmitOrderRequest submitOrder = 6;
     RestaurantListRequest restaurantListRequest = 7;
+    FoodListRequest foodListRequest = 8;
   }
 }
 
@@ -104,5 +122,6 @@ message ServerMessage {
     UpdatePasswordResponse updatePasswordResponse = 5;
     SubmitOrderResponse submitOrderResponse = 6;
     RestaurantListResponse restaurantListResponse = 7;
+    FoodListResponse foodListResponse = 8;
   }
 }

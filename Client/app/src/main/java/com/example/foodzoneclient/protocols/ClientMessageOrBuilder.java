@@ -85,5 +85,16 @@ public interface ClientMessageOrBuilder extends
    */
   com.example.foodzoneclient.protocols.RestaurantListRequest getRestaurantListRequest();
 
+  /**
+   * <code>.foodzone_protocols.FoodListRequest foodListRequest = 8;</code>
+   * @return Whether the foodListRequest field is set.
+   */
+  boolean hasFoodListRequest();
+  /**
+   * <code>.foodzone_protocols.FoodListRequest foodListRequest = 8;</code>
+   * @return The foodListRequest.
+   */
+  com.example.foodzoneclient.protocols.FoodListRequest getFoodListRequest();
+
   public com.example.foodzoneclient.protocols.ClientMessage.RequestsCase getRequestsCase();
 }

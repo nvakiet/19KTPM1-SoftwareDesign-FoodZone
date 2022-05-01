@@ -23,6 +23,7 @@ public  final class ClientMessage extends
     UPDATEPASSWORDREQUEST(5),
     SUBMITORDER(6),
     RESTAURANTLISTREQUEST(7),
+    FOODLISTREQUEST(8),
     REQUESTS_NOT_SET(0);
     private final int value;
     private RequestsCase(int value) {
@@ -44,6 +45,7 @@ public  final class ClientMessage extends
         case 5: return UPDATEPASSWORDREQUEST;
         case 6: return SUBMITORDER;
         case 7: return RESTAURANTLISTREQUEST;
+        case 8: return FOODLISTREQUEST;
         case 0: return REQUESTS_NOT_SET;
         default: return null;
       }
@@ -407,6 +409,56 @@ public  final class ClientMessage extends
    */
   private void clearRestaurantListRequest() {
     if (requestsCase_ == 7) {
+      requestsCase_ = 0;
+      requests_ = null;
+    }
+  }
+
+  public static final int FOODLISTREQUEST_FIELD_NUMBER = 8;
+  /**
+   * <code>.foodzone_protocols.FoodListRequest foodListRequest = 8;</code>
+   */
+  @java.lang.Override
+  public boolean hasFoodListRequest() {
+    return requestsCase_ == 8;
+  }
+  /**
+   * <code>.foodzone_protocols.FoodListRequest foodListRequest = 8;</code>
+   */
+  @java.lang.Override
+  public com.example.foodzoneclient.protocols.FoodListRequest getFoodListRequest() {
+    if (requestsCase_ == 8) {
+       return (com.example.foodzoneclient.protocols.FoodListRequest) requests_;
+    }
+    return com.example.foodzoneclient.protocols.FoodListRequest.getDefaultInstance();
+  }
+  /**
+   * <code>.foodzone_protocols.FoodListRequest foodListRequest = 8;</code>
+   */
+  private void setFoodListRequest(com.example.foodzoneclient.protocols.FoodListRequest value) {
+    value.getClass();
+  requests_ = value;
+    requestsCase_ = 8;
+  }
+  /**
+   * <code>.foodzone_protocols.FoodListRequest foodListRequest = 8;</code>
+   */
+  private void mergeFoodListRequest(com.example.foodzoneclient.protocols.FoodListRequest value) {
+    value.getClass();
+  if (requestsCase_ == 8 &&
+        requests_ != com.example.foodzoneclient.protocols.FoodListRequest.getDefaultInstance()) {
+      requests_ = com.example.foodzoneclient.protocols.FoodListRequest.newBuilder((com.example.foodzoneclient.protocols.FoodListRequest) requests_)
+          .mergeFrom(value).buildPartial();
+    } else {
+      requests_ = value;
+    }
+    requestsCase_ = 8;
+  }
+  /**
+   * <code>.foodzone_protocols.FoodListRequest foodListRequest = 8;</code>
+   */
+  private void clearFoodListRequest() {
+    if (requestsCase_ == 8) {
       requestsCase_ = 0;
       requests_ = null;
     }
@@ -856,6 +908,54 @@ public  final class ClientMessage extends
       return this;
     }
 
+    /**
+     * <code>.foodzone_protocols.FoodListRequest foodListRequest = 8;</code>
+     */
+    @java.lang.Override
+    public boolean hasFoodListRequest() {
+      return instance.hasFoodListRequest();
+    }
+    /**
+     * <code>.foodzone_protocols.FoodListRequest foodListRequest = 8;</code>
+     */
+    @java.lang.Override
+    public com.example.foodzoneclient.protocols.FoodListRequest getFoodListRequest() {
+      return instance.getFoodListRequest();
+    }
+    /**
+     * <code>.foodzone_protocols.FoodListRequest foodListRequest = 8;</code>
+     */
+    public Builder setFoodListRequest(com.example.foodzoneclient.protocols.FoodListRequest value) {
+      copyOnWrite();
+      instance.setFoodListRequest(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.FoodListRequest foodListRequest = 8;</code>
+     */
+    public Builder setFoodListRequest(
+        com.example.foodzoneclient.protocols.FoodListRequest.Builder builderForValue) {
+      copyOnWrite();
+      instance.setFoodListRequest(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.FoodListRequest foodListRequest = 8;</code>
+     */
+    public Builder mergeFoodListRequest(com.example.foodzoneclient.protocols.FoodListRequest value) {
+      copyOnWrite();
+      instance.mergeFoodListRequest(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.FoodListRequest foodListRequest = 8;</code>
+     */
+    public Builder clearFoodListRequest() {
+      copyOnWrite();
+      instance.clearFoodListRequest();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:foodzone_protocols.ClientMessage)
   }
   @java.lang.Override
@@ -881,10 +981,11 @@ public  final class ClientMessage extends
             com.example.foodzoneclient.protocols.UpdatePasswordRequest.class,
             com.example.foodzoneclient.protocols.SubmitOrderRequest.class,
             com.example.foodzoneclient.protocols.RestaurantListRequest.class,
+            com.example.foodzoneclient.protocols.FoodListRequest.class,
           };
           java.lang.String info =
-              "\u0000\u0007\u0001\u0000\u0001\u0007\u0007\u0000\u0000\u0000\u0001\u0208\u0002<\u0000" +
-              "\u0003<\u0000\u0004<\u0000\u0005<\u0000\u0006<\u0000\u0007<\u0000";
+              "\u0000\b\u0001\u0000\u0001\b\b\u0000\u0000\u0000\u0001\u0208\u0002<\u0000\u0003<" +
+              "\u0000\u0004<\u0000\u0005<\u0000\u0006<\u0000\u0007<\u0000\b<\u0000";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

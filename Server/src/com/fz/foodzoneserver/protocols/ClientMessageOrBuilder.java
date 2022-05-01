@@ -109,5 +109,20 @@ public interface ClientMessageOrBuilder extends
    */
   com.fz.foodzoneserver.protocols.RestaurantListRequestOrBuilder getRestaurantListRequestOrBuilder();
 
+  /**
+   * <code>.foodzone_protocols.FoodListRequest foodListRequest = 8;</code>
+   * @return Whether the foodListRequest field is set.
+   */
+  boolean hasFoodListRequest();
+  /**
+   * <code>.foodzone_protocols.FoodListRequest foodListRequest = 8;</code>
+   * @return The foodListRequest.
+   */
+  com.fz.foodzoneserver.protocols.FoodListRequest getFoodListRequest();
+  /**
+   * <code>.foodzone_protocols.FoodListRequest foodListRequest = 8;</code>
+   */
+  com.fz.foodzoneserver.protocols.FoodListRequestOrBuilder getFoodListRequestOrBuilder();
+
   public com.fz.foodzoneserver.protocols.ClientMessage.RequestsCase getRequestsCase();
 }

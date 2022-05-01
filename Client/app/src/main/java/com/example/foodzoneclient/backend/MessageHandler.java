@@ -7,7 +7,10 @@ import android.util.Log;
 
 import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.R;
+import com.example.foodzoneclient.model.Product;
 import com.example.foodzoneclient.model.Restaurant;
+import com.example.foodzoneclient.protocols.FoodInfo;
+import com.example.foodzoneclient.protocols.FoodListResponse;
 import com.example.foodzoneclient.protocols.LoginResponse;
 import com.example.foodzoneclient.protocols.RegisterResponse;
 import com.example.foodzoneclient.protocols.RestaurantInfo;
@@ -17,6 +20,7 @@ import com.example.foodzoneclient.protocols.UpdateInfoResponse;
 import com.example.foodzoneclient.protocols.UpdatePasswordResponse;
 import com.example.foodzoneclient.protocols.UserInfo;
 import com.example.foodzoneclient.ui.ChangePasswordActivity;
+import com.example.foodzoneclient.ui.FoodMenuActivity;
 import com.example.foodzoneclient.ui.LoginFragment;
 import com.example.foodzoneclient.ui.MainScreenActivity;
 import com.example.foodzoneclient.ui.ProfileActivity;
@@ -72,6 +76,11 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
 
             case "restaurantList_response":
                 handleRestaurantListResponse((serverMessage.getRestaurantListResponse()));
+                break;
+
+            case "foodList_response":
+                handleFoodListResponse((serverMessage.getFoodListResponse()));
+                break;
         }
     }
 
@@ -147,6 +156,25 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
 
             for (int i = 0; i < tmp.size(); i++) {
                 MainScreenActivity.list.add(new Restaurant(tmp.get(i).getID(), R.drawable.tcf1, tmp.get(i).getName(), tmp.get(i).getAddress()));
+            }
+        }
+
+        uiMsg.sendToTarget();
+    }
+
+    private void handleFoodListResponse(FoodListResponse response) {
+        Message uiMsg;
+        uiMsg      = Message.obtain(FoodMenuActivity.foodListHandler);
+        uiMsg.what = 1;
+        uiMsg.obj = response.getResult();
+
+        List<FoodInfo> tmp;
+        if (response.getResult().equals("Success")) {
+            tmp = response.getFoodList();
+            Log.i("resID", String.valueOf(tmp.size()));
+
+            for (int i = 0; i < tmp.size(); i++) {
+                FoodMenuActivity.list.add(new Product(tmp.get(i).getID(), tmp.get(i).getName(), tmp.get(i).getDescription(), 1, tmp.get(i).getPrice()));
             }
         }
 
