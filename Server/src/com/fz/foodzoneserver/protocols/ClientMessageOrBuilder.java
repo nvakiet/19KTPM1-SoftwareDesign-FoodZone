@@ -80,19 +80,19 @@ public interface ClientMessageOrBuilder extends
   com.fz.foodzoneserver.protocols.UpdatePasswordRequestOrBuilder getUpdatePasswordRequestOrBuilder();
 
   /**
-   * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+   * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
    * @return Whether the submitOrder field is set.
    */
   boolean hasSubmitOrder();
   /**
-   * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+   * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
    * @return The submitOrder.
    */
-  com.fz.foodzoneserver.protocols.SubmitOrder getSubmitOrder();
+  com.fz.foodzoneserver.protocols.SubmitOrderRequest getSubmitOrder();
   /**
-   * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+   * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
    */
-  com.fz.foodzoneserver.protocols.SubmitOrderOrBuilder getSubmitOrderOrBuilder();
+  com.fz.foodzoneserver.protocols.SubmitOrderRequestOrBuilder getSubmitOrderOrBuilder();
 
   /**
    * <code>.foodzone_protocols.RestaurantListRequest restaurantListRequest = 7;</code>

@@ -314,38 +314,38 @@ public  final class ClientMessage extends
 
   public static final int SUBMITORDER_FIELD_NUMBER = 6;
   /**
-   * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+   * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
    */
   @java.lang.Override
   public boolean hasSubmitOrder() {
     return requestsCase_ == 6;
   }
   /**
-   * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+   * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
    */
   @java.lang.Override
-  public com.example.foodzoneclient.protocols.SubmitOrder getSubmitOrder() {
+  public com.example.foodzoneclient.protocols.SubmitOrderRequest getSubmitOrder() {
     if (requestsCase_ == 6) {
-       return (com.example.foodzoneclient.protocols.SubmitOrder) requests_;
+       return (com.example.foodzoneclient.protocols.SubmitOrderRequest) requests_;
     }
-    return com.example.foodzoneclient.protocols.SubmitOrder.getDefaultInstance();
+    return com.example.foodzoneclient.protocols.SubmitOrderRequest.getDefaultInstance();
   }
   /**
-   * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+   * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
    */
-  private void setSubmitOrder(com.example.foodzoneclient.protocols.SubmitOrder value) {
+  private void setSubmitOrder(com.example.foodzoneclient.protocols.SubmitOrderRequest value) {
     value.getClass();
   requests_ = value;
     requestsCase_ = 6;
   }
   /**
-   * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+   * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
    */
-  private void mergeSubmitOrder(com.example.foodzoneclient.protocols.SubmitOrder value) {
+  private void mergeSubmitOrder(com.example.foodzoneclient.protocols.SubmitOrderRequest value) {
     value.getClass();
   if (requestsCase_ == 6 &&
-        requests_ != com.example.foodzoneclient.protocols.SubmitOrder.getDefaultInstance()) {
-      requests_ = com.example.foodzoneclient.protocols.SubmitOrder.newBuilder((com.example.foodzoneclient.protocols.SubmitOrder) requests_)
+        requests_ != com.example.foodzoneclient.protocols.SubmitOrderRequest.getDefaultInstance()) {
+      requests_ = com.example.foodzoneclient.protocols.SubmitOrderRequest.newBuilder((com.example.foodzoneclient.protocols.SubmitOrderRequest) requests_)
           .mergeFrom(value).buildPartial();
     } else {
       requests_ = value;
@@ -353,7 +353,7 @@ public  final class ClientMessage extends
     requestsCase_ = 6;
   }
   /**
-   * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+   * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
    */
   private void clearSubmitOrder() {
     if (requestsCase_ == 6) {
@@ -761,46 +761,46 @@ public  final class ClientMessage extends
     }
 
     /**
-     * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+     * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
      */
     @java.lang.Override
     public boolean hasSubmitOrder() {
       return instance.hasSubmitOrder();
     }
     /**
-     * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+     * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
      */
     @java.lang.Override
-    public com.example.foodzoneclient.protocols.SubmitOrder getSubmitOrder() {
+    public com.example.foodzoneclient.protocols.SubmitOrderRequest getSubmitOrder() {
       return instance.getSubmitOrder();
     }
     /**
-     * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+     * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
      */
-    public Builder setSubmitOrder(com.example.foodzoneclient.protocols.SubmitOrder value) {
+    public Builder setSubmitOrder(com.example.foodzoneclient.protocols.SubmitOrderRequest value) {
       copyOnWrite();
       instance.setSubmitOrder(value);
       return this;
     }
     /**
-     * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+     * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
      */
     public Builder setSubmitOrder(
-        com.example.foodzoneclient.protocols.SubmitOrder.Builder builderForValue) {
+        com.example.foodzoneclient.protocols.SubmitOrderRequest.Builder builderForValue) {
       copyOnWrite();
       instance.setSubmitOrder(builderForValue.build());
       return this;
     }
     /**
-     * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+     * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
      */
-    public Builder mergeSubmitOrder(com.example.foodzoneclient.protocols.SubmitOrder value) {
+    public Builder mergeSubmitOrder(com.example.foodzoneclient.protocols.SubmitOrderRequest value) {
       copyOnWrite();
       instance.mergeSubmitOrder(value);
       return this;
     }
     /**
-     * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+     * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
      */
     public Builder clearSubmitOrder() {
       copyOnWrite();
@@ -879,7 +879,7 @@ public  final class ClientMessage extends
             com.example.foodzoneclient.protocols.RegisterRequest.class,
             com.example.foodzoneclient.protocols.UserInfo.class,
             com.example.foodzoneclient.protocols.UpdatePasswordRequest.class,
-            com.example.foodzoneclient.protocols.SubmitOrder.class,
+            com.example.foodzoneclient.protocols.SubmitOrderRequest.class,
             com.example.foodzoneclient.protocols.RestaurantListRequest.class,
           };
           java.lang.String info =

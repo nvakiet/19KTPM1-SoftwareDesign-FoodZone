@@ -3,8 +3,8 @@
 
 package com.fz.foodzoneserver.protocols;
 
-public interface SubmitOrderOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:foodzone_protocols.SubmitOrder)
+public interface SubmitOrderRequestOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:foodzone_protocols.SubmitOrderRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -72,4 +72,64 @@ public interface SubmitOrderOrBuilder extends
    * @return The mealQuantity at the given index.
    */
   int getMealQuantity(int index);
+
+  /**
+   * <code>string recipientFullName = 5;</code>
+   * @return The recipientFullName.
+   */
+  java.lang.String getRecipientFullName();
+  /**
+   * <code>string recipientFullName = 5;</code>
+   * @return The bytes for recipientFullName.
+   */
+  com.google.protobuf.ByteString
+      getRecipientFullNameBytes();
+
+  /**
+   * <code>string recipientID = 6;</code>
+   * @return The recipientID.
+   */
+  java.lang.String getRecipientID();
+  /**
+   * <code>string recipientID = 6;</code>
+   * @return The bytes for recipientID.
+   */
+  com.google.protobuf.ByteString
+      getRecipientIDBytes();
+
+  /**
+   * <code>string recipientAddress = 7;</code>
+   * @return The recipientAddress.
+   */
+  java.lang.String getRecipientAddress();
+  /**
+   * <code>string recipientAddress = 7;</code>
+   * @return The bytes for recipientAddress.
+   */
+  com.google.protobuf.ByteString
+      getRecipientAddressBytes();
+
+  /**
+   * <code>string repicientPhone = 8;</code>
+   * @return The repicientPhone.
+   */
+  java.lang.String getRepicientPhone();
+  /**
+   * <code>string repicientPhone = 8;</code>
+   * @return The bytes for repicientPhone.
+   */
+  com.google.protobuf.ByteString
+      getRepicientPhoneBytes();
+
+  /**
+   * <code>string repicientEmail = 9;</code>
+   * @return The repicientEmail.
+   */
+  java.lang.String getRepicientEmail();
+  /**
+   * <code>string repicientEmail = 9;</code>
+   * @return The bytes for repicientEmail.
+   */
+  com.google.protobuf.ByteString
+      getRepicientEmailBytes();
 }

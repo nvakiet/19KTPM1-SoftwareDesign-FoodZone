@@ -4,29 +4,34 @@
 package com.fz.foodzoneserver.protocols;
 
 /**
- * Protobuf type {@code foodzone_protocols.SubmitOrder}
+ * Protobuf type {@code foodzone_protocols.SubmitOrderRequest}
  */
-public final class SubmitOrder extends
+public final class SubmitOrderRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:foodzone_protocols.SubmitOrder)
-    SubmitOrderOrBuilder {
+    // @@protoc_insertion_point(message_implements:foodzone_protocols.SubmitOrderRequest)
+    SubmitOrderRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use SubmitOrder.newBuilder() to construct.
-  private SubmitOrder(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use SubmitOrderRequest.newBuilder() to construct.
+  private SubmitOrderRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private SubmitOrder() {
+  private SubmitOrderRequest() {
     username_ = "";
     datetime_ = "";
     mealID_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     mealQuantity_ = emptyIntList();
+    recipientFullName_ = "";
+    recipientID_ = "";
+    recipientAddress_ = "";
+    repicientPhone_ = "";
+    repicientEmail_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new SubmitOrder();
+    return new SubmitOrderRequest();
   }
 
   @java.lang.Override
@@ -34,7 +39,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private SubmitOrder(
+  private SubmitOrderRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -95,6 +100,36 @@ private static final long serialVersionUID = 0L;
             input.popLimit(limit);
             break;
           }
+          case 42: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            recipientFullName_ = s;
+            break;
+          }
+          case 50: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            recipientID_ = s;
+            break;
+          }
+          case 58: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            recipientAddress_ = s;
+            break;
+          }
+          case 66: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            repicientPhone_ = s;
+            break;
+          }
+          case 74: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            repicientEmail_ = s;
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -122,15 +157,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_SubmitOrder_descriptor;
+    return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_SubmitOrderRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_SubmitOrder_fieldAccessorTable
+    return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_SubmitOrderRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.fz.foodzoneserver.protocols.SubmitOrder.class, com.fz.foodzoneserver.protocols.SubmitOrder.Builder.class);
+            com.fz.foodzoneserver.protocols.SubmitOrderRequest.class, com.fz.foodzoneserver.protocols.SubmitOrderRequest.Builder.class);
   }
 
   public static final int USERNAME_FIELD_NUMBER = 1;
@@ -272,6 +307,196 @@ private static final long serialVersionUID = 0L;
   }
   private int mealQuantityMemoizedSerializedSize = -1;
 
+  public static final int RECIPIENTFULLNAME_FIELD_NUMBER = 5;
+  private volatile java.lang.Object recipientFullName_;
+  /**
+   * <code>string recipientFullName = 5;</code>
+   * @return The recipientFullName.
+   */
+  @java.lang.Override
+  public java.lang.String getRecipientFullName() {
+    java.lang.Object ref = recipientFullName_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      recipientFullName_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string recipientFullName = 5;</code>
+   * @return The bytes for recipientFullName.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getRecipientFullNameBytes() {
+    java.lang.Object ref = recipientFullName_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      recipientFullName_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int RECIPIENTID_FIELD_NUMBER = 6;
+  private volatile java.lang.Object recipientID_;
+  /**
+   * <code>string recipientID = 6;</code>
+   * @return The recipientID.
+   */
+  @java.lang.Override
+  public java.lang.String getRecipientID() {
+    java.lang.Object ref = recipientID_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      recipientID_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string recipientID = 6;</code>
+   * @return The bytes for recipientID.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getRecipientIDBytes() {
+    java.lang.Object ref = recipientID_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      recipientID_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int RECIPIENTADDRESS_FIELD_NUMBER = 7;
+  private volatile java.lang.Object recipientAddress_;
+  /**
+   * <code>string recipientAddress = 7;</code>
+   * @return The recipientAddress.
+   */
+  @java.lang.Override
+  public java.lang.String getRecipientAddress() {
+    java.lang.Object ref = recipientAddress_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      recipientAddress_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string recipientAddress = 7;</code>
+   * @return The bytes for recipientAddress.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getRecipientAddressBytes() {
+    java.lang.Object ref = recipientAddress_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      recipientAddress_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int REPICIENTPHONE_FIELD_NUMBER = 8;
+  private volatile java.lang.Object repicientPhone_;
+  /**
+   * <code>string repicientPhone = 8;</code>
+   * @return The repicientPhone.
+   */
+  @java.lang.Override
+  public java.lang.String getRepicientPhone() {
+    java.lang.Object ref = repicientPhone_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      repicientPhone_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string repicientPhone = 8;</code>
+   * @return The bytes for repicientPhone.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getRepicientPhoneBytes() {
+    java.lang.Object ref = repicientPhone_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      repicientPhone_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int REPICIENTEMAIL_FIELD_NUMBER = 9;
+  private volatile java.lang.Object repicientEmail_;
+  /**
+   * <code>string repicientEmail = 9;</code>
+   * @return The repicientEmail.
+   */
+  @java.lang.Override
+  public java.lang.String getRepicientEmail() {
+    java.lang.Object ref = repicientEmail_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      repicientEmail_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string repicientEmail = 9;</code>
+   * @return The bytes for repicientEmail.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getRepicientEmailBytes() {
+    java.lang.Object ref = repicientEmail_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      repicientEmail_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -302,6 +527,21 @@ private static final long serialVersionUID = 0L;
     }
     for (int i = 0; i < mealQuantity_.size(); i++) {
       output.writeInt32NoTag(mealQuantity_.getInt(i));
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(recipientFullName_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, recipientFullName_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(recipientID_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, recipientID_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(recipientAddress_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, recipientAddress_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(repicientPhone_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, repicientPhone_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(repicientEmail_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, repicientEmail_);
     }
     unknownFields.writeTo(output);
   }
@@ -340,6 +580,21 @@ private static final long serialVersionUID = 0L;
       }
       mealQuantityMemoizedSerializedSize = dataSize;
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(recipientFullName_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, recipientFullName_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(recipientID_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, recipientID_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(recipientAddress_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, recipientAddress_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(repicientPhone_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, repicientPhone_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(repicientEmail_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, repicientEmail_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -350,10 +605,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.fz.foodzoneserver.protocols.SubmitOrder)) {
+    if (!(obj instanceof com.fz.foodzoneserver.protocols.SubmitOrderRequest)) {
       return super.equals(obj);
     }
-    com.fz.foodzoneserver.protocols.SubmitOrder other = (com.fz.foodzoneserver.protocols.SubmitOrder) obj;
+    com.fz.foodzoneserver.protocols.SubmitOrderRequest other = (com.fz.foodzoneserver.protocols.SubmitOrderRequest) obj;
 
     if (!getUsername()
         .equals(other.getUsername())) return false;
@@ -363,6 +618,16 @@ private static final long serialVersionUID = 0L;
         .equals(other.getMealIDList())) return false;
     if (!getMealQuantityList()
         .equals(other.getMealQuantityList())) return false;
+    if (!getRecipientFullName()
+        .equals(other.getRecipientFullName())) return false;
+    if (!getRecipientID()
+        .equals(other.getRecipientID())) return false;
+    if (!getRecipientAddress()
+        .equals(other.getRecipientAddress())) return false;
+    if (!getRepicientPhone()
+        .equals(other.getRepicientPhone())) return false;
+    if (!getRepicientEmail()
+        .equals(other.getRepicientEmail())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -386,74 +651,84 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + MEALQUANTITY_FIELD_NUMBER;
       hash = (53 * hash) + getMealQuantityList().hashCode();
     }
+    hash = (37 * hash) + RECIPIENTFULLNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getRecipientFullName().hashCode();
+    hash = (37 * hash) + RECIPIENTID_FIELD_NUMBER;
+    hash = (53 * hash) + getRecipientID().hashCode();
+    hash = (37 * hash) + RECIPIENTADDRESS_FIELD_NUMBER;
+    hash = (53 * hash) + getRecipientAddress().hashCode();
+    hash = (37 * hash) + REPICIENTPHONE_FIELD_NUMBER;
+    hash = (53 * hash) + getRepicientPhone().hashCode();
+    hash = (37 * hash) + REPICIENTEMAIL_FIELD_NUMBER;
+    hash = (53 * hash) + getRepicientEmail().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.fz.foodzoneserver.protocols.SubmitOrder parseFrom(
+  public static com.fz.foodzoneserver.protocols.SubmitOrderRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.fz.foodzoneserver.protocols.SubmitOrder parseFrom(
+  public static com.fz.foodzoneserver.protocols.SubmitOrderRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.fz.foodzoneserver.protocols.SubmitOrder parseFrom(
+  public static com.fz.foodzoneserver.protocols.SubmitOrderRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.fz.foodzoneserver.protocols.SubmitOrder parseFrom(
+  public static com.fz.foodzoneserver.protocols.SubmitOrderRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.fz.foodzoneserver.protocols.SubmitOrder parseFrom(byte[] data)
+  public static com.fz.foodzoneserver.protocols.SubmitOrderRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.fz.foodzoneserver.protocols.SubmitOrder parseFrom(
+  public static com.fz.foodzoneserver.protocols.SubmitOrderRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.fz.foodzoneserver.protocols.SubmitOrder parseFrom(java.io.InputStream input)
+  public static com.fz.foodzoneserver.protocols.SubmitOrderRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.fz.foodzoneserver.protocols.SubmitOrder parseFrom(
+  public static com.fz.foodzoneserver.protocols.SubmitOrderRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.fz.foodzoneserver.protocols.SubmitOrder parseDelimitedFrom(java.io.InputStream input)
+  public static com.fz.foodzoneserver.protocols.SubmitOrderRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.fz.foodzoneserver.protocols.SubmitOrder parseDelimitedFrom(
+  public static com.fz.foodzoneserver.protocols.SubmitOrderRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.fz.foodzoneserver.protocols.SubmitOrder parseFrom(
+  public static com.fz.foodzoneserver.protocols.SubmitOrderRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.fz.foodzoneserver.protocols.SubmitOrder parseFrom(
+  public static com.fz.foodzoneserver.protocols.SubmitOrderRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -466,7 +741,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.fz.foodzoneserver.protocols.SubmitOrder prototype) {
+  public static Builder newBuilder(com.fz.foodzoneserver.protocols.SubmitOrderRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -482,26 +757,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code foodzone_protocols.SubmitOrder}
+   * Protobuf type {@code foodzone_protocols.SubmitOrderRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:foodzone_protocols.SubmitOrder)
-      com.fz.foodzoneserver.protocols.SubmitOrderOrBuilder {
+      // @@protoc_insertion_point(builder_implements:foodzone_protocols.SubmitOrderRequest)
+      com.fz.foodzoneserver.protocols.SubmitOrderRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_SubmitOrder_descriptor;
+      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_SubmitOrderRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_SubmitOrder_fieldAccessorTable
+      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_SubmitOrderRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.fz.foodzoneserver.protocols.SubmitOrder.class, com.fz.foodzoneserver.protocols.SubmitOrder.Builder.class);
+              com.fz.foodzoneserver.protocols.SubmitOrderRequest.class, com.fz.foodzoneserver.protocols.SubmitOrderRequest.Builder.class);
     }
 
-    // Construct using com.fz.foodzoneserver.protocols.SubmitOrder.newBuilder()
+    // Construct using com.fz.foodzoneserver.protocols.SubmitOrderRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -527,23 +802,33 @@ private static final long serialVersionUID = 0L;
       bitField0_ = (bitField0_ & ~0x00000001);
       mealQuantity_ = emptyIntList();
       bitField0_ = (bitField0_ & ~0x00000002);
+      recipientFullName_ = "";
+
+      recipientID_ = "";
+
+      recipientAddress_ = "";
+
+      repicientPhone_ = "";
+
+      repicientEmail_ = "";
+
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_SubmitOrder_descriptor;
+      return com.fz.foodzoneserver.protocols.MessageWrapper.internal_static_foodzone_protocols_SubmitOrderRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.fz.foodzoneserver.protocols.SubmitOrder getDefaultInstanceForType() {
-      return com.fz.foodzoneserver.protocols.SubmitOrder.getDefaultInstance();
+    public com.fz.foodzoneserver.protocols.SubmitOrderRequest getDefaultInstanceForType() {
+      return com.fz.foodzoneserver.protocols.SubmitOrderRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.fz.foodzoneserver.protocols.SubmitOrder build() {
-      com.fz.foodzoneserver.protocols.SubmitOrder result = buildPartial();
+    public com.fz.foodzoneserver.protocols.SubmitOrderRequest build() {
+      com.fz.foodzoneserver.protocols.SubmitOrderRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -551,8 +836,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.fz.foodzoneserver.protocols.SubmitOrder buildPartial() {
-      com.fz.foodzoneserver.protocols.SubmitOrder result = new com.fz.foodzoneserver.protocols.SubmitOrder(this);
+    public com.fz.foodzoneserver.protocols.SubmitOrderRequest buildPartial() {
+      com.fz.foodzoneserver.protocols.SubmitOrderRequest result = new com.fz.foodzoneserver.protocols.SubmitOrderRequest(this);
       int from_bitField0_ = bitField0_;
       result.username_ = username_;
       result.datetime_ = datetime_;
@@ -566,6 +851,11 @@ private static final long serialVersionUID = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
       }
       result.mealQuantity_ = mealQuantity_;
+      result.recipientFullName_ = recipientFullName_;
+      result.recipientID_ = recipientID_;
+      result.recipientAddress_ = recipientAddress_;
+      result.repicientPhone_ = repicientPhone_;
+      result.repicientEmail_ = repicientEmail_;
       onBuilt();
       return result;
     }
@@ -604,16 +894,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.fz.foodzoneserver.protocols.SubmitOrder) {
-        return mergeFrom((com.fz.foodzoneserver.protocols.SubmitOrder)other);
+      if (other instanceof com.fz.foodzoneserver.protocols.SubmitOrderRequest) {
+        return mergeFrom((com.fz.foodzoneserver.protocols.SubmitOrderRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.fz.foodzoneserver.protocols.SubmitOrder other) {
-      if (other == com.fz.foodzoneserver.protocols.SubmitOrder.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.fz.foodzoneserver.protocols.SubmitOrderRequest other) {
+      if (other == com.fz.foodzoneserver.protocols.SubmitOrderRequest.getDefaultInstance()) return this;
       if (!other.getUsername().isEmpty()) {
         username_ = other.username_;
         onChanged();
@@ -642,6 +932,26 @@ private static final long serialVersionUID = 0L;
         }
         onChanged();
       }
+      if (!other.getRecipientFullName().isEmpty()) {
+        recipientFullName_ = other.recipientFullName_;
+        onChanged();
+      }
+      if (!other.getRecipientID().isEmpty()) {
+        recipientID_ = other.recipientID_;
+        onChanged();
+      }
+      if (!other.getRecipientAddress().isEmpty()) {
+        recipientAddress_ = other.recipientAddress_;
+        onChanged();
+      }
+      if (!other.getRepicientPhone().isEmpty()) {
+        repicientPhone_ = other.repicientPhone_;
+        onChanged();
+      }
+      if (!other.getRepicientEmail().isEmpty()) {
+        repicientEmail_ = other.repicientEmail_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -657,11 +967,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.fz.foodzoneserver.protocols.SubmitOrder parsedMessage = null;
+      com.fz.foodzoneserver.protocols.SubmitOrderRequest parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.fz.foodzoneserver.protocols.SubmitOrder) e.getUnfinishedMessage();
+        parsedMessage = (com.fz.foodzoneserver.protocols.SubmitOrderRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -1012,6 +1322,386 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
+    private java.lang.Object recipientFullName_ = "";
+    /**
+     * <code>string recipientFullName = 5;</code>
+     * @return The recipientFullName.
+     */
+    public java.lang.String getRecipientFullName() {
+      java.lang.Object ref = recipientFullName_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        recipientFullName_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string recipientFullName = 5;</code>
+     * @return The bytes for recipientFullName.
+     */
+    public com.google.protobuf.ByteString
+        getRecipientFullNameBytes() {
+      java.lang.Object ref = recipientFullName_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        recipientFullName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string recipientFullName = 5;</code>
+     * @param value The recipientFullName to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRecipientFullName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      recipientFullName_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string recipientFullName = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearRecipientFullName() {
+      
+      recipientFullName_ = getDefaultInstance().getRecipientFullName();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string recipientFullName = 5;</code>
+     * @param value The bytes for recipientFullName to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRecipientFullNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      recipientFullName_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object recipientID_ = "";
+    /**
+     * <code>string recipientID = 6;</code>
+     * @return The recipientID.
+     */
+    public java.lang.String getRecipientID() {
+      java.lang.Object ref = recipientID_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        recipientID_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string recipientID = 6;</code>
+     * @return The bytes for recipientID.
+     */
+    public com.google.protobuf.ByteString
+        getRecipientIDBytes() {
+      java.lang.Object ref = recipientID_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        recipientID_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string recipientID = 6;</code>
+     * @param value The recipientID to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRecipientID(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      recipientID_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string recipientID = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearRecipientID() {
+      
+      recipientID_ = getDefaultInstance().getRecipientID();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string recipientID = 6;</code>
+     * @param value The bytes for recipientID to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRecipientIDBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      recipientID_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object recipientAddress_ = "";
+    /**
+     * <code>string recipientAddress = 7;</code>
+     * @return The recipientAddress.
+     */
+    public java.lang.String getRecipientAddress() {
+      java.lang.Object ref = recipientAddress_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        recipientAddress_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string recipientAddress = 7;</code>
+     * @return The bytes for recipientAddress.
+     */
+    public com.google.protobuf.ByteString
+        getRecipientAddressBytes() {
+      java.lang.Object ref = recipientAddress_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        recipientAddress_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string recipientAddress = 7;</code>
+     * @param value The recipientAddress to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRecipientAddress(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      recipientAddress_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string recipientAddress = 7;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearRecipientAddress() {
+      
+      recipientAddress_ = getDefaultInstance().getRecipientAddress();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string recipientAddress = 7;</code>
+     * @param value The bytes for recipientAddress to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRecipientAddressBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      recipientAddress_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object repicientPhone_ = "";
+    /**
+     * <code>string repicientPhone = 8;</code>
+     * @return The repicientPhone.
+     */
+    public java.lang.String getRepicientPhone() {
+      java.lang.Object ref = repicientPhone_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        repicientPhone_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string repicientPhone = 8;</code>
+     * @return The bytes for repicientPhone.
+     */
+    public com.google.protobuf.ByteString
+        getRepicientPhoneBytes() {
+      java.lang.Object ref = repicientPhone_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        repicientPhone_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string repicientPhone = 8;</code>
+     * @param value The repicientPhone to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRepicientPhone(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      repicientPhone_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string repicientPhone = 8;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearRepicientPhone() {
+      
+      repicientPhone_ = getDefaultInstance().getRepicientPhone();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string repicientPhone = 8;</code>
+     * @param value The bytes for repicientPhone to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRepicientPhoneBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      repicientPhone_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object repicientEmail_ = "";
+    /**
+     * <code>string repicientEmail = 9;</code>
+     * @return The repicientEmail.
+     */
+    public java.lang.String getRepicientEmail() {
+      java.lang.Object ref = repicientEmail_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        repicientEmail_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string repicientEmail = 9;</code>
+     * @return The bytes for repicientEmail.
+     */
+    public com.google.protobuf.ByteString
+        getRepicientEmailBytes() {
+      java.lang.Object ref = repicientEmail_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        repicientEmail_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string repicientEmail = 9;</code>
+     * @param value The repicientEmail to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRepicientEmail(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      repicientEmail_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string repicientEmail = 9;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearRepicientEmail() {
+      
+      repicientEmail_ = getDefaultInstance().getRepicientEmail();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string repicientEmail = 9;</code>
+     * @param value The bytes for repicientEmail to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRepicientEmailBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      repicientEmail_ = value;
+      onChanged();
+      return this;
+    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1025,41 +1715,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:foodzone_protocols.SubmitOrder)
+    // @@protoc_insertion_point(builder_scope:foodzone_protocols.SubmitOrderRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:foodzone_protocols.SubmitOrder)
-  private static final com.fz.foodzoneserver.protocols.SubmitOrder DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:foodzone_protocols.SubmitOrderRequest)
+  private static final com.fz.foodzoneserver.protocols.SubmitOrderRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.fz.foodzoneserver.protocols.SubmitOrder();
+    DEFAULT_INSTANCE = new com.fz.foodzoneserver.protocols.SubmitOrderRequest();
   }
 
-  public static com.fz.foodzoneserver.protocols.SubmitOrder getDefaultInstance() {
+  public static com.fz.foodzoneserver.protocols.SubmitOrderRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<SubmitOrder>
-      PARSER = new com.google.protobuf.AbstractParser<SubmitOrder>() {
+  private static final com.google.protobuf.Parser<SubmitOrderRequest>
+      PARSER = new com.google.protobuf.AbstractParser<SubmitOrderRequest>() {
     @java.lang.Override
-    public SubmitOrder parsePartialFrom(
+    public SubmitOrderRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new SubmitOrder(input, extensionRegistry);
+      return new SubmitOrderRequest(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<SubmitOrder> parser() {
+  public static com.google.protobuf.Parser<SubmitOrderRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<SubmitOrder> getParserForType() {
+  public com.google.protobuf.Parser<SubmitOrderRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.fz.foodzoneserver.protocols.SubmitOrder getDefaultInstanceForType() {
+  public com.fz.foodzoneserver.protocols.SubmitOrderRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

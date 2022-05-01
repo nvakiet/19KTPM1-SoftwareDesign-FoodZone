@@ -64,15 +64,15 @@ public interface ClientMessageOrBuilder extends
   com.example.foodzoneclient.protocols.UpdatePasswordRequest getUpdatePasswordRequest();
 
   /**
-   * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+   * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
    * @return Whether the submitOrder field is set.
    */
   boolean hasSubmitOrder();
   /**
-   * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+   * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
    * @return The submitOrder.
    */
-  com.example.foodzoneclient.protocols.SubmitOrder getSubmitOrder();
+  com.example.foodzoneclient.protocols.SubmitOrderRequest getSubmitOrder();
 
   /**
    * <code>.foodzone_protocols.RestaurantListRequest restaurantListRequest = 7;</code>

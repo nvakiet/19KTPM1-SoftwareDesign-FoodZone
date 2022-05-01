@@ -46,11 +46,16 @@ message UpdatePasswordRequest {
   string newPassword = 3;
 }
 
-message SubmitOrder {
+message SubmitOrderRequest {
   string username = 1;
   string datetime = 2;
   repeated string mealID = 3;
   repeated int32 mealQuantity = 4;
+  string recipientFullName = 5;
+  string recipientID = 6;
+  string recipientAddress = 7;
+  string repicientPhone = 8;
+  string repicientEmail = 9;
 }
 
 message RestaurantListRequest {
@@ -85,7 +90,7 @@ message ClientMessage {
     RegisterRequest registerRequest = 3;
     UserInfo updateInfoRequest = 4;
     UpdatePasswordRequest updatePasswordRequest = 5;
-    SubmitOrder submitOrder = 6;
+    SubmitOrderRequest submitOrder = 6;
     RestaurantListRequest restaurantListRequest = 7;
   }
 }

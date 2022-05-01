@@ -112,14 +112,14 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 50: {
-            com.fz.foodzoneserver.protocols.SubmitOrder.Builder subBuilder = null;
+            com.fz.foodzoneserver.protocols.SubmitOrderRequest.Builder subBuilder = null;
             if (requestsCase_ == 6) {
-              subBuilder = ((com.fz.foodzoneserver.protocols.SubmitOrder) requests_).toBuilder();
+              subBuilder = ((com.fz.foodzoneserver.protocols.SubmitOrderRequest) requests_).toBuilder();
             }
             requests_ =
-                input.readMessage(com.fz.foodzoneserver.protocols.SubmitOrder.parser(), extensionRegistry);
+                input.readMessage(com.fz.foodzoneserver.protocols.SubmitOrderRequest.parser(), extensionRegistry);
             if (subBuilder != null) {
-              subBuilder.mergeFrom((com.fz.foodzoneserver.protocols.SubmitOrder) requests_);
+              subBuilder.mergeFrom((com.fz.foodzoneserver.protocols.SubmitOrderRequest) requests_);
               requests_ = subBuilder.buildPartial();
             }
             requestsCase_ = 6;
@@ -384,7 +384,7 @@ private static final long serialVersionUID = 0L;
 
   public static final int SUBMITORDER_FIELD_NUMBER = 6;
   /**
-   * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+   * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
    * @return Whether the submitOrder field is set.
    */
   @java.lang.Override
@@ -392,25 +392,25 @@ private static final long serialVersionUID = 0L;
     return requestsCase_ == 6;
   }
   /**
-   * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+   * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
    * @return The submitOrder.
    */
   @java.lang.Override
-  public com.fz.foodzoneserver.protocols.SubmitOrder getSubmitOrder() {
+  public com.fz.foodzoneserver.protocols.SubmitOrderRequest getSubmitOrder() {
     if (requestsCase_ == 6) {
-       return (com.fz.foodzoneserver.protocols.SubmitOrder) requests_;
+       return (com.fz.foodzoneserver.protocols.SubmitOrderRequest) requests_;
     }
-    return com.fz.foodzoneserver.protocols.SubmitOrder.getDefaultInstance();
+    return com.fz.foodzoneserver.protocols.SubmitOrderRequest.getDefaultInstance();
   }
   /**
-   * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+   * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
    */
   @java.lang.Override
-  public com.fz.foodzoneserver.protocols.SubmitOrderOrBuilder getSubmitOrderOrBuilder() {
+  public com.fz.foodzoneserver.protocols.SubmitOrderRequestOrBuilder getSubmitOrderOrBuilder() {
     if (requestsCase_ == 6) {
-       return (com.fz.foodzoneserver.protocols.SubmitOrder) requests_;
+       return (com.fz.foodzoneserver.protocols.SubmitOrderRequest) requests_;
     }
-    return com.fz.foodzoneserver.protocols.SubmitOrder.getDefaultInstance();
+    return com.fz.foodzoneserver.protocols.SubmitOrderRequest.getDefaultInstance();
   }
 
   public static final int RESTAURANTLISTREQUEST_FIELD_NUMBER = 7;
@@ -474,7 +474,7 @@ private static final long serialVersionUID = 0L;
       output.writeMessage(5, (com.fz.foodzoneserver.protocols.UpdatePasswordRequest) requests_);
     }
     if (requestsCase_ == 6) {
-      output.writeMessage(6, (com.fz.foodzoneserver.protocols.SubmitOrder) requests_);
+      output.writeMessage(6, (com.fz.foodzoneserver.protocols.SubmitOrderRequest) requests_);
     }
     if (requestsCase_ == 7) {
       output.writeMessage(7, (com.fz.foodzoneserver.protocols.RestaurantListRequest) requests_);
@@ -509,7 +509,7 @@ private static final long serialVersionUID = 0L;
     }
     if (requestsCase_ == 6) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(6, (com.fz.foodzoneserver.protocols.SubmitOrder) requests_);
+        .computeMessageSize(6, (com.fz.foodzoneserver.protocols.SubmitOrderRequest) requests_);
     }
     if (requestsCase_ == 7) {
       size += com.google.protobuf.CodedOutputStream
@@ -1575,9 +1575,9 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.fz.foodzoneserver.protocols.SubmitOrder, com.fz.foodzoneserver.protocols.SubmitOrder.Builder, com.fz.foodzoneserver.protocols.SubmitOrderOrBuilder> submitOrderBuilder_;
+        com.fz.foodzoneserver.protocols.SubmitOrderRequest, com.fz.foodzoneserver.protocols.SubmitOrderRequest.Builder, com.fz.foodzoneserver.protocols.SubmitOrderRequestOrBuilder> submitOrderBuilder_;
     /**
-     * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+     * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
      * @return Whether the submitOrder field is set.
      */
     @java.lang.Override
@@ -1585,27 +1585,27 @@ private static final long serialVersionUID = 0L;
       return requestsCase_ == 6;
     }
     /**
-     * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+     * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
      * @return The submitOrder.
      */
     @java.lang.Override
-    public com.fz.foodzoneserver.protocols.SubmitOrder getSubmitOrder() {
+    public com.fz.foodzoneserver.protocols.SubmitOrderRequest getSubmitOrder() {
       if (submitOrderBuilder_ == null) {
         if (requestsCase_ == 6) {
-          return (com.fz.foodzoneserver.protocols.SubmitOrder) requests_;
+          return (com.fz.foodzoneserver.protocols.SubmitOrderRequest) requests_;
         }
-        return com.fz.foodzoneserver.protocols.SubmitOrder.getDefaultInstance();
+        return com.fz.foodzoneserver.protocols.SubmitOrderRequest.getDefaultInstance();
       } else {
         if (requestsCase_ == 6) {
           return submitOrderBuilder_.getMessage();
         }
-        return com.fz.foodzoneserver.protocols.SubmitOrder.getDefaultInstance();
+        return com.fz.foodzoneserver.protocols.SubmitOrderRequest.getDefaultInstance();
       }
     }
     /**
-     * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+     * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
      */
-    public Builder setSubmitOrder(com.fz.foodzoneserver.protocols.SubmitOrder value) {
+    public Builder setSubmitOrder(com.fz.foodzoneserver.protocols.SubmitOrderRequest value) {
       if (submitOrderBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1619,10 +1619,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+     * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
      */
     public Builder setSubmitOrder(
-        com.fz.foodzoneserver.protocols.SubmitOrder.Builder builderForValue) {
+        com.fz.foodzoneserver.protocols.SubmitOrderRequest.Builder builderForValue) {
       if (submitOrderBuilder_ == null) {
         requests_ = builderForValue.build();
         onChanged();
@@ -1633,13 +1633,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+     * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
      */
-    public Builder mergeSubmitOrder(com.fz.foodzoneserver.protocols.SubmitOrder value) {
+    public Builder mergeSubmitOrder(com.fz.foodzoneserver.protocols.SubmitOrderRequest value) {
       if (submitOrderBuilder_ == null) {
         if (requestsCase_ == 6 &&
-            requests_ != com.fz.foodzoneserver.protocols.SubmitOrder.getDefaultInstance()) {
-          requests_ = com.fz.foodzoneserver.protocols.SubmitOrder.newBuilder((com.fz.foodzoneserver.protocols.SubmitOrder) requests_)
+            requests_ != com.fz.foodzoneserver.protocols.SubmitOrderRequest.getDefaultInstance()) {
+          requests_ = com.fz.foodzoneserver.protocols.SubmitOrderRequest.newBuilder((com.fz.foodzoneserver.protocols.SubmitOrderRequest) requests_)
               .mergeFrom(value).buildPartial();
         } else {
           requests_ = value;
@@ -1655,7 +1655,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+     * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
      */
     public Builder clearSubmitOrder() {
       if (submitOrderBuilder_ == null) {
@@ -1674,38 +1674,38 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+     * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
      */
-    public com.fz.foodzoneserver.protocols.SubmitOrder.Builder getSubmitOrderBuilder() {
+    public com.fz.foodzoneserver.protocols.SubmitOrderRequest.Builder getSubmitOrderBuilder() {
       return getSubmitOrderFieldBuilder().getBuilder();
     }
     /**
-     * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+     * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
      */
     @java.lang.Override
-    public com.fz.foodzoneserver.protocols.SubmitOrderOrBuilder getSubmitOrderOrBuilder() {
+    public com.fz.foodzoneserver.protocols.SubmitOrderRequestOrBuilder getSubmitOrderOrBuilder() {
       if ((requestsCase_ == 6) && (submitOrderBuilder_ != null)) {
         return submitOrderBuilder_.getMessageOrBuilder();
       } else {
         if (requestsCase_ == 6) {
-          return (com.fz.foodzoneserver.protocols.SubmitOrder) requests_;
+          return (com.fz.foodzoneserver.protocols.SubmitOrderRequest) requests_;
         }
-        return com.fz.foodzoneserver.protocols.SubmitOrder.getDefaultInstance();
+        return com.fz.foodzoneserver.protocols.SubmitOrderRequest.getDefaultInstance();
       }
     }
     /**
-     * <code>.foodzone_protocols.SubmitOrder submitOrder = 6;</code>
+     * <code>.foodzone_protocols.SubmitOrderRequest submitOrder = 6;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.fz.foodzoneserver.protocols.SubmitOrder, com.fz.foodzoneserver.protocols.SubmitOrder.Builder, com.fz.foodzoneserver.protocols.SubmitOrderOrBuilder> 
+        com.fz.foodzoneserver.protocols.SubmitOrderRequest, com.fz.foodzoneserver.protocols.SubmitOrderRequest.Builder, com.fz.foodzoneserver.protocols.SubmitOrderRequestOrBuilder> 
         getSubmitOrderFieldBuilder() {
       if (submitOrderBuilder_ == null) {
         if (!(requestsCase_ == 6)) {
-          requests_ = com.fz.foodzoneserver.protocols.SubmitOrder.getDefaultInstance();
+          requests_ = com.fz.foodzoneserver.protocols.SubmitOrderRequest.getDefaultInstance();
         }
         submitOrderBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.fz.foodzoneserver.protocols.SubmitOrder, com.fz.foodzoneserver.protocols.SubmitOrder.Builder, com.fz.foodzoneserver.protocols.SubmitOrderOrBuilder>(
-                (com.fz.foodzoneserver.protocols.SubmitOrder) requests_,
+            com.fz.foodzoneserver.protocols.SubmitOrderRequest, com.fz.foodzoneserver.protocols.SubmitOrderRequest.Builder, com.fz.foodzoneserver.protocols.SubmitOrderRequestOrBuilder>(
+                (com.fz.foodzoneserver.protocols.SubmitOrderRequest) requests_,
                 getParentForChildren(),
                 isClean());
         requests_ = null;

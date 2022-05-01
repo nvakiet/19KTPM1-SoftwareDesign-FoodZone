@@ -4,18 +4,23 @@
 package com.example.foodzoneclient.protocols;
 
 /**
- * Protobuf type {@code foodzone_protocols.SubmitOrder}
+ * Protobuf type {@code foodzone_protocols.SubmitOrderRequest}
  */
-public  final class SubmitOrder extends
+public  final class SubmitOrderRequest extends
     com.google.protobuf.GeneratedMessageLite<
-        SubmitOrder, SubmitOrder.Builder> implements
-    // @@protoc_insertion_point(message_implements:foodzone_protocols.SubmitOrder)
-    SubmitOrderOrBuilder {
-  private SubmitOrder() {
+        SubmitOrderRequest, SubmitOrderRequest.Builder> implements
+    // @@protoc_insertion_point(message_implements:foodzone_protocols.SubmitOrderRequest)
+    SubmitOrderRequestOrBuilder {
+  private SubmitOrderRequest() {
     username_ = "";
     datetime_ = "";
     mealID_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
     mealQuantity_ = emptyIntList();
+    recipientFullName_ = "";
+    recipientID_ = "";
+    recipientAddress_ = "";
+    repicientPhone_ = "";
+    repicientEmail_ = "";
   }
   public static final int USERNAME_FIELD_NUMBER = 1;
   private java.lang.String username_;
@@ -275,73 +280,308 @@ public  final class SubmitOrder extends
     mealQuantity_ = emptyIntList();
   }
 
-  public static com.example.foodzoneclient.protocols.SubmitOrder parseFrom(
+  public static final int RECIPIENTFULLNAME_FIELD_NUMBER = 5;
+  private java.lang.String recipientFullName_;
+  /**
+   * <code>string recipientFullName = 5;</code>
+   * @return The recipientFullName.
+   */
+  @java.lang.Override
+  public java.lang.String getRecipientFullName() {
+    return recipientFullName_;
+  }
+  /**
+   * <code>string recipientFullName = 5;</code>
+   * @return The bytes for recipientFullName.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getRecipientFullNameBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(recipientFullName_);
+  }
+  /**
+   * <code>string recipientFullName = 5;</code>
+   * @param value The recipientFullName to set.
+   */
+  private void setRecipientFullName(
+      java.lang.String value) {
+    java.lang.Class<?> valueClass = value.getClass();
+  
+    recipientFullName_ = value;
+  }
+  /**
+   * <code>string recipientFullName = 5;</code>
+   */
+  private void clearRecipientFullName() {
+    
+    recipientFullName_ = getDefaultInstance().getRecipientFullName();
+  }
+  /**
+   * <code>string recipientFullName = 5;</code>
+   * @param value The bytes for recipientFullName to set.
+   */
+  private void setRecipientFullNameBytes(
+      com.google.protobuf.ByteString value) {
+    checkByteStringIsUtf8(value);
+    recipientFullName_ = value.toStringUtf8();
+    
+  }
+
+  public static final int RECIPIENTID_FIELD_NUMBER = 6;
+  private java.lang.String recipientID_;
+  /**
+   * <code>string recipientID = 6;</code>
+   * @return The recipientID.
+   */
+  @java.lang.Override
+  public java.lang.String getRecipientID() {
+    return recipientID_;
+  }
+  /**
+   * <code>string recipientID = 6;</code>
+   * @return The bytes for recipientID.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getRecipientIDBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(recipientID_);
+  }
+  /**
+   * <code>string recipientID = 6;</code>
+   * @param value The recipientID to set.
+   */
+  private void setRecipientID(
+      java.lang.String value) {
+    java.lang.Class<?> valueClass = value.getClass();
+  
+    recipientID_ = value;
+  }
+  /**
+   * <code>string recipientID = 6;</code>
+   */
+  private void clearRecipientID() {
+    
+    recipientID_ = getDefaultInstance().getRecipientID();
+  }
+  /**
+   * <code>string recipientID = 6;</code>
+   * @param value The bytes for recipientID to set.
+   */
+  private void setRecipientIDBytes(
+      com.google.protobuf.ByteString value) {
+    checkByteStringIsUtf8(value);
+    recipientID_ = value.toStringUtf8();
+    
+  }
+
+  public static final int RECIPIENTADDRESS_FIELD_NUMBER = 7;
+  private java.lang.String recipientAddress_;
+  /**
+   * <code>string recipientAddress = 7;</code>
+   * @return The recipientAddress.
+   */
+  @java.lang.Override
+  public java.lang.String getRecipientAddress() {
+    return recipientAddress_;
+  }
+  /**
+   * <code>string recipientAddress = 7;</code>
+   * @return The bytes for recipientAddress.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getRecipientAddressBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(recipientAddress_);
+  }
+  /**
+   * <code>string recipientAddress = 7;</code>
+   * @param value The recipientAddress to set.
+   */
+  private void setRecipientAddress(
+      java.lang.String value) {
+    java.lang.Class<?> valueClass = value.getClass();
+  
+    recipientAddress_ = value;
+  }
+  /**
+   * <code>string recipientAddress = 7;</code>
+   */
+  private void clearRecipientAddress() {
+    
+    recipientAddress_ = getDefaultInstance().getRecipientAddress();
+  }
+  /**
+   * <code>string recipientAddress = 7;</code>
+   * @param value The bytes for recipientAddress to set.
+   */
+  private void setRecipientAddressBytes(
+      com.google.protobuf.ByteString value) {
+    checkByteStringIsUtf8(value);
+    recipientAddress_ = value.toStringUtf8();
+    
+  }
+
+  public static final int REPICIENTPHONE_FIELD_NUMBER = 8;
+  private java.lang.String repicientPhone_;
+  /**
+   * <code>string repicientPhone = 8;</code>
+   * @return The repicientPhone.
+   */
+  @java.lang.Override
+  public java.lang.String getRepicientPhone() {
+    return repicientPhone_;
+  }
+  /**
+   * <code>string repicientPhone = 8;</code>
+   * @return The bytes for repicientPhone.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getRepicientPhoneBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(repicientPhone_);
+  }
+  /**
+   * <code>string repicientPhone = 8;</code>
+   * @param value The repicientPhone to set.
+   */
+  private void setRepicientPhone(
+      java.lang.String value) {
+    java.lang.Class<?> valueClass = value.getClass();
+  
+    repicientPhone_ = value;
+  }
+  /**
+   * <code>string repicientPhone = 8;</code>
+   */
+  private void clearRepicientPhone() {
+    
+    repicientPhone_ = getDefaultInstance().getRepicientPhone();
+  }
+  /**
+   * <code>string repicientPhone = 8;</code>
+   * @param value The bytes for repicientPhone to set.
+   */
+  private void setRepicientPhoneBytes(
+      com.google.protobuf.ByteString value) {
+    checkByteStringIsUtf8(value);
+    repicientPhone_ = value.toStringUtf8();
+    
+  }
+
+  public static final int REPICIENTEMAIL_FIELD_NUMBER = 9;
+  private java.lang.String repicientEmail_;
+  /**
+   * <code>string repicientEmail = 9;</code>
+   * @return The repicientEmail.
+   */
+  @java.lang.Override
+  public java.lang.String getRepicientEmail() {
+    return repicientEmail_;
+  }
+  /**
+   * <code>string repicientEmail = 9;</code>
+   * @return The bytes for repicientEmail.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getRepicientEmailBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(repicientEmail_);
+  }
+  /**
+   * <code>string repicientEmail = 9;</code>
+   * @param value The repicientEmail to set.
+   */
+  private void setRepicientEmail(
+      java.lang.String value) {
+    java.lang.Class<?> valueClass = value.getClass();
+  
+    repicientEmail_ = value;
+  }
+  /**
+   * <code>string repicientEmail = 9;</code>
+   */
+  private void clearRepicientEmail() {
+    
+    repicientEmail_ = getDefaultInstance().getRepicientEmail();
+  }
+  /**
+   * <code>string repicientEmail = 9;</code>
+   * @param value The bytes for repicientEmail to set.
+   */
+  private void setRepicientEmailBytes(
+      com.google.protobuf.ByteString value) {
+    checkByteStringIsUtf8(value);
+    repicientEmail_ = value.toStringUtf8();
+    
+  }
+
+  public static com.example.foodzoneclient.protocols.SubmitOrderRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, data);
   }
-  public static com.example.foodzoneclient.protocols.SubmitOrder parseFrom(
+  public static com.example.foodzoneclient.protocols.SubmitOrderRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, data, extensionRegistry);
   }
-  public static com.example.foodzoneclient.protocols.SubmitOrder parseFrom(
+  public static com.example.foodzoneclient.protocols.SubmitOrderRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, data);
   }
-  public static com.example.foodzoneclient.protocols.SubmitOrder parseFrom(
+  public static com.example.foodzoneclient.protocols.SubmitOrderRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, data, extensionRegistry);
   }
-  public static com.example.foodzoneclient.protocols.SubmitOrder parseFrom(byte[] data)
+  public static com.example.foodzoneclient.protocols.SubmitOrderRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, data);
   }
-  public static com.example.foodzoneclient.protocols.SubmitOrder parseFrom(
+  public static com.example.foodzoneclient.protocols.SubmitOrderRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, data, extensionRegistry);
   }
-  public static com.example.foodzoneclient.protocols.SubmitOrder parseFrom(java.io.InputStream input)
+  public static com.example.foodzoneclient.protocols.SubmitOrderRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, input);
   }
-  public static com.example.foodzoneclient.protocols.SubmitOrder parseFrom(
+  public static com.example.foodzoneclient.protocols.SubmitOrderRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, input, extensionRegistry);
   }
-  public static com.example.foodzoneclient.protocols.SubmitOrder parseDelimitedFrom(java.io.InputStream input)
+  public static com.example.foodzoneclient.protocols.SubmitOrderRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return parseDelimitedFrom(DEFAULT_INSTANCE, input);
   }
-  public static com.example.foodzoneclient.protocols.SubmitOrder parseDelimitedFrom(
+  public static com.example.foodzoneclient.protocols.SubmitOrderRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
   }
-  public static com.example.foodzoneclient.protocols.SubmitOrder parseFrom(
+  public static com.example.foodzoneclient.protocols.SubmitOrderRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, input);
   }
-  public static com.example.foodzoneclient.protocols.SubmitOrder parseFrom(
+  public static com.example.foodzoneclient.protocols.SubmitOrderRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -352,19 +592,19 @@ public  final class SubmitOrder extends
   public static Builder newBuilder() {
     return (Builder) DEFAULT_INSTANCE.createBuilder();
   }
-  public static Builder newBuilder(com.example.foodzoneclient.protocols.SubmitOrder prototype) {
+  public static Builder newBuilder(com.example.foodzoneclient.protocols.SubmitOrderRequest prototype) {
     return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
   }
 
   /**
-   * Protobuf type {@code foodzone_protocols.SubmitOrder}
+   * Protobuf type {@code foodzone_protocols.SubmitOrderRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageLite.Builder<
-        com.example.foodzoneclient.protocols.SubmitOrder, Builder> implements
-      // @@protoc_insertion_point(builder_implements:foodzone_protocols.SubmitOrder)
-      com.example.foodzoneclient.protocols.SubmitOrderOrBuilder {
-    // Construct using com.example.foodzoneclient.protocols.SubmitOrder.newBuilder()
+        com.example.foodzoneclient.protocols.SubmitOrderRequest, Builder> implements
+      // @@protoc_insertion_point(builder_implements:foodzone_protocols.SubmitOrderRequest)
+      com.example.foodzoneclient.protocols.SubmitOrderRequestOrBuilder {
+    // Construct using com.example.foodzoneclient.protocols.SubmitOrderRequest.newBuilder()
     private Builder() {
       super(DEFAULT_INSTANCE);
     }
@@ -629,7 +869,252 @@ public  final class SubmitOrder extends
       return this;
     }
 
-    // @@protoc_insertion_point(builder_scope:foodzone_protocols.SubmitOrder)
+    /**
+     * <code>string recipientFullName = 5;</code>
+     * @return The recipientFullName.
+     */
+    @java.lang.Override
+    public java.lang.String getRecipientFullName() {
+      return instance.getRecipientFullName();
+    }
+    /**
+     * <code>string recipientFullName = 5;</code>
+     * @return The bytes for recipientFullName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRecipientFullNameBytes() {
+      return instance.getRecipientFullNameBytes();
+    }
+    /**
+     * <code>string recipientFullName = 5;</code>
+     * @param value The recipientFullName to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRecipientFullName(
+        java.lang.String value) {
+      copyOnWrite();
+      instance.setRecipientFullName(value);
+      return this;
+    }
+    /**
+     * <code>string recipientFullName = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearRecipientFullName() {
+      copyOnWrite();
+      instance.clearRecipientFullName();
+      return this;
+    }
+    /**
+     * <code>string recipientFullName = 5;</code>
+     * @param value The bytes for recipientFullName to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRecipientFullNameBytes(
+        com.google.protobuf.ByteString value) {
+      copyOnWrite();
+      instance.setRecipientFullNameBytes(value);
+      return this;
+    }
+
+    /**
+     * <code>string recipientID = 6;</code>
+     * @return The recipientID.
+     */
+    @java.lang.Override
+    public java.lang.String getRecipientID() {
+      return instance.getRecipientID();
+    }
+    /**
+     * <code>string recipientID = 6;</code>
+     * @return The bytes for recipientID.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRecipientIDBytes() {
+      return instance.getRecipientIDBytes();
+    }
+    /**
+     * <code>string recipientID = 6;</code>
+     * @param value The recipientID to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRecipientID(
+        java.lang.String value) {
+      copyOnWrite();
+      instance.setRecipientID(value);
+      return this;
+    }
+    /**
+     * <code>string recipientID = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearRecipientID() {
+      copyOnWrite();
+      instance.clearRecipientID();
+      return this;
+    }
+    /**
+     * <code>string recipientID = 6;</code>
+     * @param value The bytes for recipientID to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRecipientIDBytes(
+        com.google.protobuf.ByteString value) {
+      copyOnWrite();
+      instance.setRecipientIDBytes(value);
+      return this;
+    }
+
+    /**
+     * <code>string recipientAddress = 7;</code>
+     * @return The recipientAddress.
+     */
+    @java.lang.Override
+    public java.lang.String getRecipientAddress() {
+      return instance.getRecipientAddress();
+    }
+    /**
+     * <code>string recipientAddress = 7;</code>
+     * @return The bytes for recipientAddress.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRecipientAddressBytes() {
+      return instance.getRecipientAddressBytes();
+    }
+    /**
+     * <code>string recipientAddress = 7;</code>
+     * @param value The recipientAddress to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRecipientAddress(
+        java.lang.String value) {
+      copyOnWrite();
+      instance.setRecipientAddress(value);
+      return this;
+    }
+    /**
+     * <code>string recipientAddress = 7;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearRecipientAddress() {
+      copyOnWrite();
+      instance.clearRecipientAddress();
+      return this;
+    }
+    /**
+     * <code>string recipientAddress = 7;</code>
+     * @param value The bytes for recipientAddress to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRecipientAddressBytes(
+        com.google.protobuf.ByteString value) {
+      copyOnWrite();
+      instance.setRecipientAddressBytes(value);
+      return this;
+    }
+
+    /**
+     * <code>string repicientPhone = 8;</code>
+     * @return The repicientPhone.
+     */
+    @java.lang.Override
+    public java.lang.String getRepicientPhone() {
+      return instance.getRepicientPhone();
+    }
+    /**
+     * <code>string repicientPhone = 8;</code>
+     * @return The bytes for repicientPhone.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRepicientPhoneBytes() {
+      return instance.getRepicientPhoneBytes();
+    }
+    /**
+     * <code>string repicientPhone = 8;</code>
+     * @param value The repicientPhone to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRepicientPhone(
+        java.lang.String value) {
+      copyOnWrite();
+      instance.setRepicientPhone(value);
+      return this;
+    }
+    /**
+     * <code>string repicientPhone = 8;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearRepicientPhone() {
+      copyOnWrite();
+      instance.clearRepicientPhone();
+      return this;
+    }
+    /**
+     * <code>string repicientPhone = 8;</code>
+     * @param value The bytes for repicientPhone to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRepicientPhoneBytes(
+        com.google.protobuf.ByteString value) {
+      copyOnWrite();
+      instance.setRepicientPhoneBytes(value);
+      return this;
+    }
+
+    /**
+     * <code>string repicientEmail = 9;</code>
+     * @return The repicientEmail.
+     */
+    @java.lang.Override
+    public java.lang.String getRepicientEmail() {
+      return instance.getRepicientEmail();
+    }
+    /**
+     * <code>string repicientEmail = 9;</code>
+     * @return The bytes for repicientEmail.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRepicientEmailBytes() {
+      return instance.getRepicientEmailBytes();
+    }
+    /**
+     * <code>string repicientEmail = 9;</code>
+     * @param value The repicientEmail to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRepicientEmail(
+        java.lang.String value) {
+      copyOnWrite();
+      instance.setRepicientEmail(value);
+      return this;
+    }
+    /**
+     * <code>string repicientEmail = 9;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearRepicientEmail() {
+      copyOnWrite();
+      instance.clearRepicientEmail();
+      return this;
+    }
+    /**
+     * <code>string repicientEmail = 9;</code>
+     * @param value The bytes for repicientEmail to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRepicientEmailBytes(
+        com.google.protobuf.ByteString value) {
+      copyOnWrite();
+      instance.setRepicientEmailBytes(value);
+      return this;
+    }
+
+    // @@protoc_insertion_point(builder_scope:foodzone_protocols.SubmitOrderRequest)
   }
   @java.lang.Override
   @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
@@ -638,7 +1123,7 @@ public  final class SubmitOrder extends
       java.lang.Object arg0, java.lang.Object arg1) {
     switch (method) {
       case NEW_MUTABLE_INSTANCE: {
-        return new com.example.foodzoneclient.protocols.SubmitOrder();
+        return new com.example.foodzoneclient.protocols.SubmitOrderRequest();
       }
       case NEW_BUILDER: {
         return new Builder();
@@ -649,10 +1134,15 @@ public  final class SubmitOrder extends
             "datetime_",
             "mealID_",
             "mealQuantity_",
+            "recipientFullName_",
+            "recipientID_",
+            "recipientAddress_",
+            "repicientPhone_",
+            "repicientEmail_",
           };
           java.lang.String info =
-              "\u0000\u0004\u0000\u0000\u0001\u0004\u0004\u0000\u0002\u0000\u0001\u0208\u0002\u0208" +
-              "\u0003\u021a\u0004\'";
+              "\u0000\t\u0000\u0000\u0001\t\t\u0000\u0002\u0000\u0001\u0208\u0002\u0208\u0003\u021a" +
+              "\u0004\'\u0005\u0208\u0006\u0208\u0007\u0208\b\u0208\t\u0208";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through
@@ -660,13 +1150,13 @@ public  final class SubmitOrder extends
         return DEFAULT_INSTANCE;
       }
       case GET_PARSER: {
-        com.google.protobuf.Parser<com.example.foodzoneclient.protocols.SubmitOrder> parser = PARSER;
+        com.google.protobuf.Parser<com.example.foodzoneclient.protocols.SubmitOrderRequest> parser = PARSER;
         if (parser == null) {
-          synchronized (com.example.foodzoneclient.protocols.SubmitOrder.class) {
+          synchronized (com.example.foodzoneclient.protocols.SubmitOrderRequest.class) {
             parser = PARSER;
             if (parser == null) {
               parser =
-                  new DefaultInstanceBasedParser<com.example.foodzoneclient.protocols.SubmitOrder>(
+                  new DefaultInstanceBasedParser<com.example.foodzoneclient.protocols.SubmitOrderRequest>(
                       DEFAULT_INSTANCE);
               PARSER = parser;
             }
@@ -685,24 +1175,24 @@ public  final class SubmitOrder extends
   }
 
 
-  // @@protoc_insertion_point(class_scope:foodzone_protocols.SubmitOrder)
-  private static final com.example.foodzoneclient.protocols.SubmitOrder DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:foodzone_protocols.SubmitOrderRequest)
+  private static final com.example.foodzoneclient.protocols.SubmitOrderRequest DEFAULT_INSTANCE;
   static {
-    SubmitOrder defaultInstance = new SubmitOrder();
+    SubmitOrderRequest defaultInstance = new SubmitOrderRequest();
     // New instances are implicitly immutable so no need to make
     // immutable.
     DEFAULT_INSTANCE = defaultInstance;
     com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
-      SubmitOrder.class, defaultInstance);
+      SubmitOrderRequest.class, defaultInstance);
   }
 
-  public static com.example.foodzoneclient.protocols.SubmitOrder getDefaultInstance() {
+  public static com.example.foodzoneclient.protocols.SubmitOrderRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static volatile com.google.protobuf.Parser<SubmitOrder> PARSER;
+  private static volatile com.google.protobuf.Parser<SubmitOrderRequest> PARSER;
 
-  public static com.google.protobuf.Parser<SubmitOrder> parser() {
+  public static com.google.protobuf.Parser<SubmitOrderRequest> parser() {
     return DEFAULT_INSTANCE.getParserForType();
   }
 }
