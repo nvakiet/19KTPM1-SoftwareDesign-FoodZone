@@ -42,13 +42,12 @@
     <ListView
         android:id="@+id/orderListView"
         android:layout_width="412dp"
-        android:layout_height="530dp"
+        android:layout_height="522dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/orderbar">
-
     </ListView>
 
     <RelativeLayout
@@ -64,6 +63,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="0dp"
             android:paddingLeft="5dp"
+            android:layout_marginBottom="10dp"
             android:text="Details here"
             android:textColor="@color/black"
             android:textSize="15sp"
@@ -72,7 +72,7 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/btn_editRecipient"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginRight="9dp"

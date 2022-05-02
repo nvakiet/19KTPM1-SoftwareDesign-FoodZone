@@ -48,6 +48,9 @@
             android:name="com.example.foodzoneclient.ui.CartActivity"
             android:exported="false" />
         <activity
+            android:name="com.example.foodzoneclient.ui.ChangeRecipientActivity"
+            android:exported="false" />
+        <activity
             android:name="com.example.foodzoneclient.ui.LoginActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">

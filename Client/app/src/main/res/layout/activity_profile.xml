@@ -11,7 +11,7 @@
         android:id="@+id/relativeLayout2"
         android:layout_width="409dp"
         android:layout_height="60dp"
-        android:background="@color/light_white"
+        android:background="@drawable/mintbg"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +23,7 @@
             android:layout_height="33dp"
             android:layout_alignParentLeft="true"
             android:layout_marginTop="8dp"
-            app:srcCompat="@drawable/ic_action_backarrow"
+            app:srcCompat="@drawable/back"
             tools:ignore="VectorDrawableCompat"/>
 
         <TextView
@@ -31,9 +31,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:fontFamily="@font/poppins"
+            android:fontFamily="@font/poppins_bold"
             android:text="Account Information"
-            android:textColor="#999999"
+            android:textColor="#434343"
+            android:includeFontPadding="false"
             android:textSize="24dp"
             android:textStyle="bold"/>
     </RelativeLayout>

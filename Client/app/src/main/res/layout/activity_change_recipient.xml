@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/backtoprofile"
+            android:id="@+id/backToOrder"
             android:layout_width="35dp"
             android:layout_height="33dp"
             android:layout_alignParentLeft="true"
@@ -33,75 +33,116 @@
             android:layout_centerInParent="true"
             android:fontFamily="@font/poppins_bold"
             android:includeFontPadding="false"
-            android:text="Account Information"
+            android:text="Recipient Information"
             android:textColor="#434343"
             android:textSize="24dp"
             android:textStyle="bold"/>
     </RelativeLayout>
 
+    <CheckBox
+        android:id="@+id/useUserInfoCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="Use default profile information"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.242"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
+        />
+
     <EditText
-        android:id="@+id/et_oldPass"
+        android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="44dp"
         android:background="@drawable/edit_text_bg"
-        android:hint="Current password"
+        android:hint="Fullname"
         android:paddingLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/ic_person_outline"
+
+        android:drawablePadding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.395"
+        app:layout_constraintVertical_bias="0.235"
+        app:layout_constraintWidth_percent=".8"/>
+
+
+    <EditText
+        android:id="@+id/ID"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edit_text_bg"
+        android:drawableLeft="@drawable/profile_id"
+        android:drawablePadding="8dp"
+        android:hint="ID/Passport"
+        android:paddingLeft="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address"
         app:layout_constraintWidth_percent=".8"/>
 
     <EditText
-        android:id="@+id/et_newPass"
+        android:id="@+id/address"
         android:layout_width="0dp"
         android:layout_height="44dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/edit_text_bg"
-        android:hint="New password"
+        android:hint="Address"
         android:paddingLeft="15dp"
-        app:layout_constraintWidth_percent=".8"
         app:layout_constraintEnd_toEndOf="parent"
+        android:drawableLeft="@drawable/profile_address"
+        android:drawablePadding="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_oldPass"/>
-
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintWidth_percent=".8"/>
     <EditText
-        android:id="@+id/et_newPassConfirm"
+        android:id="@+id/phone"
         android:layout_width="0dp"
         android:layout_height="44dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/edit_text_bg"
-        android:hint="Retype new password"
+        android:hint="Phone"
         android:paddingLeft="15dp"
-        app:layout_constraintWidth_percent=".8"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:drawableLeft="@drawable/profile_phone"
+        android:drawablePadding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ID"
+        app:layout_constraintWidth_percent=".8"/>
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edit_text_bg"
+        android:drawableLeft="@drawable/profile_email"
+        android:drawablePadding="8dp"
+        android:hint="E-mail"
+        android:paddingLeft="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_newPass"/>
-
+        app:layout_constraintTop_toBottomOf="@+id/phone"
+        app:layout_constraintWidth_percent=".8"/>
     <Button
-        android:id="@+id/btn_confirmChangePass"
+        android:id="@+id/btn_confirmInfo"
         android:layout_width="120dp"
         android:layout_height="40dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/custom_button_bg"
         android:text="Save"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_newPassConfirm"/>
+        app:layout_constraintTop_toBottomOf="@+id/email"/>
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Change Password"
-        android:textSize="30sp"
-        android:fontFamily="@font/poppins"
-        app:layout_constraintBottom_toTopOf="@+id/et_oldPass"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
