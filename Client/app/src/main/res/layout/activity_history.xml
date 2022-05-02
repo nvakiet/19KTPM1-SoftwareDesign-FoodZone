@@ -9,7 +9,7 @@
         android:layout_height="match_parent">
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:background="@drawable/mintbg"
             android:id="@+id/order_toolbar"
             app:layout_constraintTop_toTopOf="parent"

@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/order_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:background="@drawable/mintbg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -45,7 +45,7 @@
         android:id="@+id/CartButton"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#F8C4B3"
+        android:background="#ffdde1"
         android:fontFamily="@font/poppins_bold"
         android:gravity="center"
         android:text="Cart"
