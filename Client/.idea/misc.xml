@@ -38,6 +38,7 @@
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/drawable-anydpi/ic_manage_profile.xml" value="0.1735" />
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/drawable-anydpi/ic_profile_phone.xml" value="0.246" />
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1735" />
+        <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/drawable/buttonshape.xml" value="0.1735" />
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/drawable/custom_textview.xml" value="0.246" />
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/drawable/edit_text_bg.xml" value="0.1735" />
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/drawable/ic_call_outline.xml" value="0.1735" />
@@ -47,16 +48,21 @@
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/drawable/image_border.xml" value="0.1735" />
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/drawable/profile_address.xml" value="0.1735" />
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/drawable/profile_email.xml" value="0.1735" />
+        <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/drawable/textviewshape.xml" value="0.1735" />
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/font/aclonica.xml" value="0.284375" />
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/font/cherry_cream_soda.xml" value="0.284375" />
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/font/lemon.xml" value="0.284375" />
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/font/poppins.xml" value="0.284375" />
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_cart.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_food_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_history.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_order.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/activity_profile.xml" value="0.264" />
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/fragment_login.xml" value="0.264" />
         <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/fragment_register.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/item_food.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Desktop/Software Designing/19KTPM1-SoftwareDesign-OnlineShoppingApp/Client/app/src/main/res/layout/item_list_cart.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

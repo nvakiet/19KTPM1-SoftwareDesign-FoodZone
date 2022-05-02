@@ -8,8 +8,8 @@
     <RelativeLayout
         android:id="@+id/order_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@drawable/cbg"
+        android:layout_height="80dp"
+        android:background="@drawable/mintbg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,35 +22,36 @@
             android:layout_alignParentLeft="true"
             android:layout_marginTop="8dp"
             app:srcCompat="@drawable/back"
-            tools:ignore="VectorDrawableCompat" />
+            tools:ignore="VectorDrawableCompat"/>
     </RelativeLayout>
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:fontFamily="@font/aladin"
+        android:fontFamily="@font/poppins_bold"
         android:gravity="center"
         android:text="Food Menu"
         android:textColor="#434343"
-        android:textSize="40dp"
-        android:textStyle="italic"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/order_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
         android:id="@+id/CartButton"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="#ffdde1"
-        android:fontFamily="@font/alice"
+        android:layout_height="50dp"
+        android:background="#F8C4B3"
+        android:fontFamily="@font/poppins_bold"
         android:gravity="center"
         android:text="Cart"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:includeFontPadding="false"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

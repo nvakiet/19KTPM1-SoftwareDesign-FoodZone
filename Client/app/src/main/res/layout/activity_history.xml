@@ -10,24 +10,27 @@
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:background="@drawable/cbg"
+            android:background="@drawable/mintbg"
             android:id="@+id/order_toolbar"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
         <TextView
-            android:text="Purchase history"
-            android:textSize="50dp"
-            android:textStyle="italic"
-            android:textColor="#434343"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
             android:id="@+id/textView9"
-            android:fontFamily="@font/aladin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:text="Purchase history"
+            android:textColor="#434343"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/order_toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="8dp" app:layout_constraintHorizontal_bias="0.497"/>
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageView android:layout_width="150dp"
             android:layout_height="150dp"
@@ -39,15 +42,15 @@
             android:text="Purchase time: xx/xx/2021"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:textColor="@color/black"
-            android:textStyle="bold|italic"
+            android:textStyle="bold"
             android:id="@+id/item_name1"
             app:layout_constraintTop_toBottomOf="@+id/order_toolbar"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.727"
-            android:fontFamily="@font/aladin"/>
+            android:fontFamily="@font/poppins_bold"/>
         <TextView
             android:text="Bill details:\nDalgona coffee x1\nMocha x1"
             android:layout_width="wrap_content"
