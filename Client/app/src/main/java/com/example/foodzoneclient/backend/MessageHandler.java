@@ -26,7 +26,6 @@ import com.example.foodzoneclient.ui.MainScreenActivity;
 import com.example.foodzoneclient.ui.ProfileActivity;
 import com.example.foodzoneclient.ui.RegisterFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.netty.channel.ChannelHandlerContext;
@@ -107,13 +106,13 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
             // If login success, save user info to a shared preference file
             SharedPreferences        prefs      = FoodZone.getContext().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor prefEditor = prefs.edit();
-            prefEditor.putString("Username", info.getUsername());
-            prefEditor.putString("Fullname", info.getFullname());
-            prefEditor.putString("ID", info.getId());
-            prefEditor.putString("Address", info.getAddress());
-            prefEditor.putString("Phone", info.getPhone());
-            prefEditor.putString("Image", info.getImgName());
-            prefEditor.apply();
+            prefEditor.putString("Username", info.getUsername())
+                    .putString("Fullname", info.getFullname())
+                    .putString("ID", info.getId())
+                    .putString("Address", info.getAddress())
+                    .putString("Phone", info.getPhone())
+                    .putString("Image", info.getImgName())
+                    .apply();
         }
         uiMsg.sendToTarget();
     }
@@ -131,7 +130,7 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
         Message uiMsg;
         uiMsg      = Message.obtain(ProfileActivity.profileHandler);
         uiMsg.what = 1;
-        uiMsg.obj = response.getResult();
+        uiMsg.obj  = response.getResult();
         uiMsg.sendToTarget();
     }
 
@@ -139,7 +138,7 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
         Message uiMsg;
         uiMsg      = Message.obtain(ChangePasswordActivity.changePasswordhandler);
         uiMsg.what = 1;
-        uiMsg.obj = response.getResult();
+        uiMsg.obj  = response.getResult();
         uiMsg.sendToTarget();
     }
 
@@ -147,7 +146,7 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
         Message uiMsg;
         uiMsg      = Message.obtain(MainScreenActivity.restaurantListHandler);
         uiMsg.what = 1;
-        uiMsg.obj = response.getResult();
+        uiMsg.obj  = response.getResult();
 
         List<RestaurantInfo> tmp;
         if (response.getResult().equals("Success")) {
@@ -166,7 +165,7 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
         Message uiMsg;
         uiMsg      = Message.obtain(FoodMenuActivity.foodListHandler);
         uiMsg.what = 1;
-        uiMsg.obj = response.getResult();
+        uiMsg.obj  = response.getResult();
 
         List<FoodInfo> tmp;
         if (response.getResult().equals("Success")) {

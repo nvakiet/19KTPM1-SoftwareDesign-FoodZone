@@ -43,7 +43,6 @@
         android:id="@+id/useUserInfoCheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checked="true"
         android:text="Use default profile information"
         android:textSize="16sp"
         android:textStyle="italic"
@@ -131,7 +130,7 @@
         app:layout_constraintTop_toBottomOf="@+id/phone"
         app:layout_constraintWidth_percent=".8"/>
     <Button
-        android:id="@+id/btn_confirmInfo"
+        android:id="@+id/btn_saveInfo"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_marginTop="40dp"

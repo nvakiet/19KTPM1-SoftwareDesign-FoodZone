@@ -34,10 +34,11 @@ public class OrderActivity extends AppCompatActivity {
     ArrayList<Product> foodList;
     ImageView          backbtt, editRecipient;
     String                   rID;
-    SharedPreferences        pref;
-    SharedPreferences.Editor prefEdit;
+    SharedPreferences        prefRecipient;
     Button                   confirmPurchase;
     String                   recipientName, recipientAddress, recipientPhone;
+    TextView detailBox;
+    long total;
     public static Handler orderActivityHandler;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +46,20 @@ public class OrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order);
         findID();
 
-        pref        = FoodZone.getContext().getSharedPreferences("UserInfo", MODE_PRIVATE);
-        prefEdit    = pref.edit();
-        recipientName    = pref.getString("Fullname", null);
-        recipientAddress = pref.getString("Address", null);
-        recipientPhone   = pref.getString("Phone", null);
+        // GET RECIPIENT INFO
+        prefRecipient     = FoodZone.getContext().getSharedPreferences("RecipientInfo", MODE_PRIVATE);
+
+        recipientName    = prefRecipient.getString("Fullname", "");
+        recipientAddress = prefRecipient.getString("Address", "");
+        recipientPhone   = prefRecipient.getString("Phone", "");
+
+        // IF RECIPIENT HAS NOT BEEN SET, SET AS USER INFO INSTEAD
+        if (recipientName.isEmpty() || recipientAddress.isEmpty() || recipientPhone.isEmpty()) {
+            SharedPreferences prefUser = FoodZone.getContext().getSharedPreferences("UserInfo", MODE_PRIVATE);
+            recipientName    = prefUser.getString("Fullname", "");
+            recipientAddress = prefUser.getString("Address", "");
+            recipientPhone   = prefUser.getString("Phone", "");
+        }
 
         backbtt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +78,6 @@ public class OrderActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                pref = getApplicationContext().getSharedPreferences("UserInfo", MODE_PRIVATE);
             }
         });
 
@@ -92,9 +101,7 @@ public class OrderActivity extends AppCompatActivity {
                 }
             }
         };
-        // Get SharedPrereferences
-        pref     = getApplicationContext().getSharedPreferences("user_info", MODE_PRIVATE);
-        prefEdit = pref.edit();
+
         retrieveCartList();
     }
 
@@ -117,7 +124,7 @@ public class OrderActivity extends AppCompatActivity {
             final ListView listView = (ListView) findViewById(R.id.orderListView);
             listView.setAdapter(new OrderListAdapter(this, foodList));
             // Iterate list view to calculate total price
-            long total = 0;
+            total = 0;
             for (int i = 0; i < listView.getCount(); ++i) {
                 View v = listView.getAdapter().getView(i, null, null);
                 if (v != null) {
@@ -125,9 +132,21 @@ public class OrderActivity extends AppCompatActivity {
                     total += Integer.parseInt(totalbox.getText().toString().substring(7, totalbox.getText().length() - 4));
                 }
             }
-            TextView detailBox = (TextView) findViewById(R.id.Orderdetails);
+            detailBox = (TextView) findViewById(R.id.Orderdetails);
             detailBox.setText("Please confirm your information:\nTotal: " + String.valueOf(total) + " VND\nName: " + recipientName + "\nAddress: " + recipientAddress + "\nPhone: " + recipientPhone);
         }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        prefRecipient     = FoodZone.getContext().getSharedPreferences("RecipientInfo", MODE_PRIVATE);
+
+        recipientName    = prefRecipient.getString("Fullname", "");
+        recipientAddress = prefRecipient.getString("Address", "");
+        recipientPhone   = prefRecipient.getString("Phone", "");
+
+        detailBox.setText("Please confirm your information:\nTotal: " + String.valueOf(total) + " VND\nName: " + recipientName + "\nAddress: " + recipientAddress + "\nPhone: " + recipientPhone);
     }
 }
 
