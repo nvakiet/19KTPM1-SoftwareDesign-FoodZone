@@ -58,7 +58,7 @@ GO
 
 CREATE TABLE [Order] (
 	OrderID varchar(20) PRIMARY KEY,
-	OrderDateTime datetime,
+	OrderDateTime varchar(30),
 	[State] varchar(9) NOT NULL,
 	TimeRemaining time,
 	ArriveDateTime datetime,
