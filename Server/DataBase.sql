@@ -43,7 +43,7 @@ GO
 CREATE TABLE Restaurant (
 	RestaurantID varchar(10) PRIMARY KEY,
 	[Name] varchar(30) NOT NULL,
-	[Address] varchar(70)
+	[Address] varchar(70),
 	[Image] varchar(200)
 )
 GO
