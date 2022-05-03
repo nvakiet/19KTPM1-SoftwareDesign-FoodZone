@@ -12,6 +12,7 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.cloudinary.android.MediaManager;
 import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.backend.ContainerClient;
 import com.example.foodzoneclient.FoodZone;
@@ -40,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
             // Initialize the server IPs
             ContainerClient.getInstance().initServerIPs(is);
         }
+
         // find id of these things
         tabLayout=findViewById(R.id.tab_layout);
         viewPager=findViewById(R.id.view_pager);

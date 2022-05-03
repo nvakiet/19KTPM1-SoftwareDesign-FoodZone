@@ -64,6 +64,10 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts"/>
+
+        <meta-data
+            android:name="CLOUDINARY_URL"
+            android:value="cloudinary://@djakelvti"/>
     </application>
 
 </manifest>

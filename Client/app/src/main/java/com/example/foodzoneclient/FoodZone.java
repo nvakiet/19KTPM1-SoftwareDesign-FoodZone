@@ -7,6 +7,8 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Toast;
 
+import com.cloudinary.android.MediaManager;
+
 public class FoodZone extends Application {
     private static Context mContext;
 
@@ -19,6 +21,9 @@ public class FoodZone extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = getApplicationContext();
+
+        // Initialize Cloudinary Media Manager
+        MediaManager.init(mContext);
     }
 
     public static void showToast(Handler target, String announcement) {

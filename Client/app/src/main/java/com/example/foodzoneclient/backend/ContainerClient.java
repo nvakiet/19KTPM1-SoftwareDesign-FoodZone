@@ -180,6 +180,7 @@ public enum ContainerClient {
             public void run() {
                 if (channel == null) {
                     connect(9999);
+                    FoodZone.showToast(currentUIHandler, "Connecting to server. Please wait...");
                     while (isConnecting) {
                         try {
                             Thread.sleep(200);

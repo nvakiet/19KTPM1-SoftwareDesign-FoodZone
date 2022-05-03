@@ -63,6 +63,11 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    // Glide image loader library
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+
+    // Cloudinary media manager
+    implementation 'com.cloudinary:cloudinary-android:2.2.0'
 
     def multidex_version = "2.0.1"
     implementation "androidx.multidex:multidex:$multidex_version"

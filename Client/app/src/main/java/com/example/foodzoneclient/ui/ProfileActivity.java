@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+import com.cloudinary.android.MediaManager;
 import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.backend.ContainerClient;
@@ -52,6 +55,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         profile_address.setText(pref.getString("Address", null));
         profile_id.setText(pref.getString("ID", null));
         profile_phone.setText(pref.getString("Phone", null));
+        String userImgName = pref.getString("Image", null);
+        downloadUserImg(userImgName);
 
         //use Handler to receive Message
         ProfileActivity.profileHandler = new Handler(Looper.getMainLooper()) {
@@ -179,5 +184,22 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             newlySelectedImage = data.getData();
             ((ImageView) findViewById(R.id.profile_image)).setImageURI(newlySelectedImage);
         }
+    }
+
+    private void downloadUserImg(String imgName) {
+        if (imgName != null) {
+            // Get the image URL from Cloudinary
+            String folder = "/FoodZone/users/";
+            imgName = MediaManager.get().url().generate(folder + imgName);
+            Log.i(ContainerClient.LOG_TAG, "User avatar url: " + imgName);
+        }
+
+        // Download the image and set it to the image view using Glide
+        Glide.with(this)
+                .load(imgName)
+                .placeholder(R.drawable.placeholder_user)
+                .fallback(R.drawable.placeholder_user)
+                .error(R.drawable.placeholder_user)
+                .into(profile_image);
     }
 }
