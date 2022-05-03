@@ -55,7 +55,6 @@
         android:text="Check history"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="homeBtn"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textDes"/>
@@ -72,6 +71,5 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="historyBtn"
         app:layout_constraintTop_toBottomOf="@+id/textDes"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,21 +24,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.backend.ContainerClient;
+import com.example.foodzoneclient.model.Cart;
 import com.example.foodzoneclient.model.Product;
 import com.example.foodzoneclient.protocols.SubmitOrderRequest;
-import com.example.foodzoneclient.protocols.UpdatePasswordRequest;
 
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class OrderActivity extends AppCompatActivity {
-    ArrayList<Product> foodList;
-    ImageView          backbtt, editRecipient;
+
+    ImageView backbtt, editRecipient;
     String            rID;
     SharedPreferences prefRecipient, prefUser;
-    Button            confirmPurchase;
-    String            recipientName, recipientAddress, recipientPhone;
+    Button confirmPurchase;
+    String recipientName, recipientAddress, recipientPhone;
     TextView detailBox;
     long     total;
     public static Handler orderActivityHandler;
@@ -50,7 +50,7 @@ public class OrderActivity extends AppCompatActivity {
 
         // GET RECIPIENT INFO
         prefRecipient = FoodZone.getContext().getSharedPreferences("RecipientInfo", MODE_PRIVATE);
-        prefUser = FoodZone.getContext().getSharedPreferences("UserInfo", MODE_PRIVATE);
+        prefUser      = FoodZone.getContext().getSharedPreferences("UserInfo", MODE_PRIVATE);
 
         recipientName    = prefRecipient.getString("Fullname", "");
         recipientAddress = prefRecipient.getString("Address", "");
@@ -64,31 +64,23 @@ public class OrderActivity extends AppCompatActivity {
             recipientPhone   = prefUser.getString("Phone", "");
         }
 
-        backbtt.setOnClickListener(v -> {
-//                Intent backIntent= new Intent(OrderActivity.this, CartActivity.class);
-//                backIntent.putExtra("resID",rID);
-//                backIntent.putParcelableArrayListExtra("food_list", foodList);
-//                startActivity(backIntent);
-            Intent backIntent = getIntent();
-            backIntent.putExtra("resID", rID);
-            backIntent.putParcelableArrayListExtra("food_list", foodList);
-            finish();
-        });
+        backbtt.setOnClickListener(v -> onBackPressed());
 
         confirmPurchase.setOnClickListener(v -> {
-            SubmitOrderRequest request = SubmitOrderRequest.newBuilder()
+
+            SubmitOrderRequest.Builder request = SubmitOrderRequest.newBuilder()
                     .setUsername(prefUser.getString("Username", null))
                     .setDatetime(ZonedDateTime.now().toString())
-                    .setMealID()
-                    .setMealQuantity()
                     .setRecipientFullName(recipientName)
                     .setRecipientAddress(recipientAddress)
                     .setRepicientPhone(recipientPhone)
                     .setRepicientEmail(prefRecipient.getString("Email",""))
-                    .setRecipientID(prefRecipient.getString("ID",""))
-                    .build();
+                    .setRecipientID(prefRecipient.getString("ID",""));
 
-            ContainerClient.getInstance().sendSubmitOrderRequest(request);
+            for(Product p: Cart.getProductList())
+                request.addMealID(p.getID()).addMealQuantity(p.getAmount());
+
+            ContainerClient.getInstance().sendSubmitOrderRequest(request.build());
         });
 
         editRecipient.setOnClickListener(view -> startActivity(new Intent(OrderActivity.this, ChangeRecipientActivity.class)));
@@ -117,31 +109,25 @@ public class OrderActivity extends AppCompatActivity {
         backbtt         = findViewById(R.id.back2cart);
         confirmPurchase = findViewById(R.id.confirm);
         editRecipient   = findViewById(R.id.btn_editRecipient);
-
     }
 
     private void retrieveCartList() {
-        Intent             intent  = getIntent();
-        ArrayList<Product> newList = intent.getParcelableArrayListExtra("cart_list");
-        rID = intent.getStringExtra("resID");
-        if (foodList == null) {
-            foodList = newList;
-            newList  = null;
-        }
+        ArrayList<Product> foodList = Cart.getProductList();
+
         if (foodList != null) {
             TextView       totalbox;
-            final ListView listView = (ListView) findViewById(R.id.orderListView);
+            final ListView listView = findViewById(R.id.orderListView);
             listView.setAdapter(new OrderListAdapter(this, foodList));
             // Iterate list view to calculate total price
             total = 0;
             for (int i = 0; i < listView.getCount(); ++i) {
                 View v = listView.getAdapter().getView(i, null, null);
                 if (v != null) {
-                    totalbox = (TextView) v.findViewById(R.id.Orderedtotal);
+                    totalbox = v.findViewById(R.id.Orderedtotal);
                     total += Integer.parseInt(totalbox.getText().toString().substring(7, totalbox.getText().length() - 4));
                 }
             }
-            detailBox = (TextView) findViewById(R.id.Orderdetails);
+            detailBox = findViewById(R.id.Orderdetails);
             detailBox.setText("Please confirm your information:\nTotal: " + String.valueOf(total) + " VND\nName: " + recipientName + "\nAddress: " + recipientAddress + "\nPhone: " + recipientPhone);
         }
     }
