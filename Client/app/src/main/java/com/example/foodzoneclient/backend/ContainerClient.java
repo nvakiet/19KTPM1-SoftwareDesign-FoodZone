@@ -10,6 +10,7 @@ import com.example.foodzoneclient.protocols.FoodListRequest;
 import com.example.foodzoneclient.protocols.LoginRequest;
 import com.example.foodzoneclient.protocols.RegisterRequest;
 import com.example.foodzoneclient.protocols.RestaurantListRequest;
+import com.example.foodzoneclient.protocols.SubmitOrderRequest;
 import com.example.foodzoneclient.protocols.UpdatePasswordRequest;
 import com.example.foodzoneclient.protocols.UserInfo;
 import com.example.foodzoneclient.ui.LoginFragment;
@@ -325,6 +326,19 @@ public enum ContainerClient {
                 ClientMessage msg = ClientMessage.newBuilder()
                         .setMsg("foodList")
                         .setFoodListRequest(request)
+                        .build();
+                sendToServer(msg);
+            }
+        });
+    }
+
+    public void sendSubmitOrderRequest(SubmitOrderRequest request) {
+        sendGroup.execute(new Runnable() {
+            @Override
+            public void run() {
+                ClientMessage msg = ClientMessage.newBuilder()
+                        .setMsg("submitOrder")
+                        .setSubmitOrder(request)
                         .build();
                 sendToServer(msg);
             }

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -20,25 +19,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.R;
+import com.example.foodzoneclient.backend.ContainerClient;
 import com.example.foodzoneclient.model.Product;
+import com.example.foodzoneclient.protocols.SubmitOrderRequest;
+import com.example.foodzoneclient.protocols.UpdatePasswordRequest;
 
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class OrderActivity extends AppCompatActivity {
     ArrayList<Product> foodList;
     ImageView          backbtt, editRecipient;
-    String                   rID;
-    SharedPreferences        prefRecipient;
-    Button                   confirmPurchase;
-    String                   recipientName, recipientAddress, recipientPhone;
+    String            rID;
+    SharedPreferences prefRecipient, prefUser;
+    Button            confirmPurchase;
+    String            recipientName, recipientAddress, recipientPhone;
     TextView detailBox;
-    long total;
+    long     total;
     public static Handler orderActivityHandler;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +49,8 @@ public class OrderActivity extends AppCompatActivity {
         findID();
 
         // GET RECIPIENT INFO
-        prefRecipient     = FoodZone.getContext().getSharedPreferences("RecipientInfo", MODE_PRIVATE);
+        prefRecipient = FoodZone.getContext().getSharedPreferences("RecipientInfo", MODE_PRIVATE);
+        prefUser = FoodZone.getContext().getSharedPreferences("UserInfo", MODE_PRIVATE);
 
         recipientName    = prefRecipient.getString("Fullname", "");
         recipientAddress = prefRecipient.getString("Address", "");
@@ -55,30 +58,37 @@ public class OrderActivity extends AppCompatActivity {
 
         // IF RECIPIENT HAS NOT BEEN SET, SET AS USER INFO INSTEAD
         if (recipientName.isEmpty() || recipientAddress.isEmpty() || recipientPhone.isEmpty()) {
-            SharedPreferences prefUser = FoodZone.getContext().getSharedPreferences("UserInfo", MODE_PRIVATE);
+
             recipientName    = prefUser.getString("Fullname", "");
             recipientAddress = prefUser.getString("Address", "");
             recipientPhone   = prefUser.getString("Phone", "");
         }
 
-        backbtt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        backbtt.setOnClickListener(v -> {
 //                Intent backIntent= new Intent(OrderActivity.this, CartActivity.class);
 //                backIntent.putExtra("resID",rID);
 //                backIntent.putParcelableArrayListExtra("food_list", foodList);
 //                startActivity(backIntent);
-                Intent backIntent = getIntent();
-                backIntent.putExtra("resID", rID);
-                backIntent.putParcelableArrayListExtra("food_list", foodList);
-                finish();
-            }
+            Intent backIntent = getIntent();
+            backIntent.putExtra("resID", rID);
+            backIntent.putParcelableArrayListExtra("food_list", foodList);
+            finish();
         });
-        confirmPurchase.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onClick(View v) {
-            }
+
+        confirmPurchase.setOnClickListener(v -> {
+            SubmitOrderRequest request = SubmitOrderRequest.newBuilder()
+                    .setUsername(prefUser.getString("Username", null))
+                    .setDatetime(ZonedDateTime.now().toString())
+                    .setMealID()
+                    .setMealQuantity()
+                    .setRecipientFullName(recipientName)
+                    .setRecipientAddress(recipientAddress)
+                    .setRepicientPhone(recipientPhone)
+                    .setRepicientEmail(prefRecipient.getString("Email",""))
+                    .setRecipientID(prefRecipient.getString("ID",""))
+                    .build();
+
+            ContainerClient.getInstance().sendSubmitOrderRequest(request);
         });
 
         editRecipient.setOnClickListener(view -> startActivity(new Intent(OrderActivity.this, ChangeRecipientActivity.class)));
@@ -90,9 +100,7 @@ public class OrderActivity extends AppCompatActivity {
                 super.handleMessage(msg);
                 if (msg.what == 4) {
                     if (msg.arg1 == 1) {
-                        Intent confirmIntent = new Intent(OrderActivity.this, SuccessScreenActivity.class);
-                        confirmIntent.putExtra("successString", (String) msg.obj);
-                        startActivity(confirmIntent);
+                        startActivity(new Intent(OrderActivity.this, SuccessScreenActivity.class));
                         finish();
                     } else {
                         Toast toast = Toast.makeText(FoodZone.getContext(), (String) msg.obj, Toast.LENGTH_SHORT);
@@ -106,9 +114,10 @@ public class OrderActivity extends AppCompatActivity {
     }
 
     private void findID() {
-        backbtt         = (ImageView) findViewById(R.id.back2cart);
-        confirmPurchase = (Button) findViewById(R.id.Confirm);
-        editRecipient   = (ImageView) findViewById(R.id.btn_editRecipient);
+        backbtt         = findViewById(R.id.back2cart);
+        confirmPurchase = findViewById(R.id.confirm);
+        editRecipient   = findViewById(R.id.btn_editRecipient);
+
     }
 
     private void retrieveCartList() {
@@ -140,7 +149,7 @@ public class OrderActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        prefRecipient     = FoodZone.getContext().getSharedPreferences("RecipientInfo", MODE_PRIVATE);
+        prefRecipient = FoodZone.getContext().getSharedPreferences("RecipientInfo", MODE_PRIVATE);
 
         recipientName    = prefRecipient.getString("Fullname", "");
         recipientAddress = prefRecipient.getString("Address", "");

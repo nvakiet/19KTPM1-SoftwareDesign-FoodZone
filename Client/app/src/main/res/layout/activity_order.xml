@@ -87,14 +87,14 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <Button
-            android:id="@+id/Confirm"
+            android:id="@+id/confirm"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/mintbg"
             android:fontFamily="@font/poppins_bold"
+            android:paddingTop="2dp"
             android:text="Confirm purchase"
             android:textSize="30dp"
-            android:paddingTop="2dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"/>
     </RelativeLayout>
