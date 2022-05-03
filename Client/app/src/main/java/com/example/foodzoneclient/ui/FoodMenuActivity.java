@@ -91,6 +91,7 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
                     //FoodZone.showToast(foodListHandler, result);
                     if (result.equals("Success")) {
                         tempArr = new ArrayList<Boolean>(Collections.nCopies(list.size(), false));
+                        // TODO set data to the adapter UI
                         food.setAdapter(new FoodMenuAdapter(getContext(), list, tempArr));
                     }
                 }
@@ -242,6 +243,7 @@ class FoodMenuAdapter extends BaseAdapter {
         holder.foodName.setText(product.getName());
         holder.foodDes.setText(product.getDes());
         holder.foodPrice.setText("Price: " + String.valueOf(product.getPrice()) + " VND");
+        // TODO set image for item
         holder.foodImg.setImageResource(getImageID(product.getID()));
 
         holder.addToCart.setOnClickListener(new View.OnClickListener() {
@@ -269,7 +271,7 @@ class FoodMenuAdapter extends BaseAdapter {
         return convertView;
     }
 
-
+    // TODO legacy code
     private int getImageID(String imgName) {
         Resources res = context.getResources();
         int resID = res.getIdentifier(imgName, "drawable", context.getPackageName());

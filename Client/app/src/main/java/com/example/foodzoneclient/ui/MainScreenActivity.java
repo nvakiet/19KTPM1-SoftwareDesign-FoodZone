@@ -49,7 +49,6 @@ public class MainScreenActivity extends AppCompatActivity {
     Toolbar toolbar;
 
     public static Handler restaurantListHandler;
-    public static Handler restaurantHandler;
     public static ArrayList<Restaurant> list = new ArrayList<>();
 
     @Override
@@ -59,7 +58,6 @@ public class MainScreenActivity extends AppCompatActivity {
         toolbar=(Toolbar) findViewById(R.id.toolbar);
         toolbarAction();
         mainpage_layout=findViewById(R.id.mainpage_layout);
-
 
         // set clickable for navigation
         navigationView=findViewById(R.id.navigationView);
@@ -113,19 +111,19 @@ public class MainScreenActivity extends AppCompatActivity {
             }
         });
 
-        ArrayList<Restaurant> restaurants = new ArrayList();
-        Restaurant test1 = new Restaurant("0001", R.drawable.tcf1, "Highlands Cao Lỗ", "34 Cao Lỗ");
-        Restaurant test2 = new Restaurant("0002", R.drawable.tcf2, "Phúc Long Topaz", "195 Hoàng Diệu");
-        Restaurant test3 = new Restaurant("0003", R.drawable.tcf3, "KFC Nguyễn Chí Thanh", "339 Nguyễn Chí Thanh");
-        Restaurant test4 = new Restaurant("0004", R.drawable.tcf4, "Lotteria NowZone", "272 Nguyễn Văn Cừ");
-        Restaurant test5 = new Restaurant("0005", R.drawable.tcf1, "PizzaHut Nguyễn Trãi", "144 Nguyễn Trãi");
-        Restaurant test6 = new Restaurant("0006", R.drawable.tcf2, "The Coffee House Cao Thắng", "275 Cao Thắng");
-        restaurants.add(test1);
-        restaurants.add(test2);
-        restaurants.add(test3);
-        restaurants.add(test4);
-        restaurants.add(test5);
-        restaurants.add(test6);
+//        ArrayList<Restaurant> restaurants = new ArrayList();
+//        Restaurant test1 = new Restaurant("0001", R.drawable.tcf1, "Highlands Cao Lỗ", "34 Cao Lỗ");
+//        Restaurant test2 = new Restaurant("0002", R.drawable.tcf2, "Phúc Long Topaz", "195 Hoàng Diệu");
+//        Restaurant test3 = new Restaurant("0003", R.drawable.tcf3, "KFC Nguyễn Chí Thanh", "339 Nguyễn Chí Thanh");
+//        Restaurant test4 = new Restaurant("0004", R.drawable.tcf4, "Lotteria NowZone", "272 Nguyễn Văn Cừ");
+//        Restaurant test5 = new Restaurant("0005", R.drawable.tcf1, "PizzaHut Nguyễn Trãi", "144 Nguyễn Trãi");
+//        Restaurant test6 = new Restaurant("0006", R.drawable.tcf2, "The Coffee House Cao Thắng", "275 Cao Thắng");
+//        restaurants.add(test1);
+//        restaurants.add(test2);
+//        restaurants.add(test3);
+//        restaurants.add(test4);
+//        restaurants.add(test5);
+//        restaurants.add(test6);
 
         // recycler view
         restaurantList = findViewById(R.id.rv_restaurant);
@@ -251,6 +249,7 @@ class RestaurantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             return;
         }
 
+        // TODO set image for item
         holder.img.setImageResource(res.getImage());
         holder.name.setText(res.getName());
     }

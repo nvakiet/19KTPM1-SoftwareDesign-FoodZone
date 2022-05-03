@@ -6,6 +6,7 @@ import android.os.Parcelable;
 public class Product implements Parcelable {
     private String ID;
     private String Name;
+    private String image;
     private String Des;
     private int amount=1;
     private int Price;
@@ -18,9 +19,10 @@ public class Product implements Parcelable {
         Price = in.readInt();
     }
 
-    public Product(String id, String name, String description, int amount, int price) {
+    public Product(String id, String name, String image, String description, int amount, int price) {
         ID = id;
         Name = name;
+        this.image = image;
         Des = description;
         this.amount = amount;
         Price = price;

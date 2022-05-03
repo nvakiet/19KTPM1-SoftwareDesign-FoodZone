@@ -182,6 +182,7 @@ public class DBHandler {
     }
 
     public String queryRestaurantList() {
+        // TODO handle request params
         String result = "Success";
 
         return result;
@@ -214,6 +215,7 @@ public class DBHandler {
     }
 
     public String queryFoodList() {
+        // TODO handle request params
         String result = "Success";
 
         return result;
