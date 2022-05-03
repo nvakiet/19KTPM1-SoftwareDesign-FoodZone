@@ -11,7 +11,7 @@ import com.cloudinary.android.MediaManager;
 
 public class FoodZone extends Application {
     private static Context mContext;
-
+    private static Toast announce = null;
 
     public static Context getContext() {
         return mContext;
@@ -30,7 +30,20 @@ public class FoodZone extends Application {
         target.post(new Runnable() {
             @Override
             public void run() {
-                Toast announce = Toast.makeText(getContext(), announcement, Toast.LENGTH_SHORT);
+                announce = Toast.makeText(getContext(), announcement, Toast.LENGTH_SHORT);
+                announce.show();
+            }
+        });
+    }
+
+    public static void showToastOverride(Handler target, String announcement) {
+        target.post(new Runnable() {
+            @Override
+            public void run() {
+                if (announce != null) {
+                    announce.cancel();
+                }
+                announce = Toast.makeText(getContext(), announcement, Toast.LENGTH_SHORT);
                 announce.show();
             }
         });

@@ -23,10 +23,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.cloudinary.android.MediaManager;
+import com.cloudinary.android.callback.ErrorInfo;
+import com.cloudinary.android.callback.UploadCallback;
 import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.backend.ContainerClient;
 import com.example.foodzoneclient.protocols.UserInfo;
+
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -40,6 +44,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     SharedPreferences.Editor prefEdit;
     CircleImageView          profile_image;
     Uri                      newlySelectedImage = null;
+    String imgName;
+    String cloudinaryFolder = "FoodZone/users/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +61,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         profile_address.setText(pref.getString("Address", null));
         profile_id.setText(pref.getString("ID", null));
         profile_phone.setText(pref.getString("Phone", null));
-        String userImgName = pref.getString("Image", null);
-        downloadUserImg(userImgName);
+        imgName = pref.getString("Image", null);
+        cloudinaryFolder += pref.getString("Username", "") + "/";
+        downloadUserImg();
 
         //use Handler to receive Message
         ProfileActivity.profileHandler = new Handler(Looper.getMainLooper()) {
@@ -80,14 +87,28 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     String result = (String) msg.obj;
                     if (result.equals("Success")) {
 
-                        FoodZone.showToast(profileHandler, "Updated Successful");
+                        FoodZone.showToast(profileHandler, "Updated successfully");
                         prefEdit.putString("Fullname", profile_name.getText().toString())
                                 .putString("Address", profile_address.getText().toString())
                                 .putString("ID", profile_id.getText().toString())
                                 .putString("Phone", profile_phone.getText().toString())
+                                .putString("Image", imgName)
                                 .apply();
+                    } else {
+                        FoodZone.showToast(profileHandler, result);
+                        imgName = pref.getString("Image", null);
                     }
-                } else if (msg.what == -100 || msg.what == -200) {
+//                } else if (msg.what == 2) {
+//                    UpdateProfileImgResponse response = (UpdateProfileImgResponse) msg.obj;
+//                    if (response.getResult().equals("Success")) {
+//                        FoodZone.showToast(profileHandler, "Updated profile image successfully");
+//                        prefEdit.putString("Image", response.getNewImgName()).apply();
+//                    } else {
+//                        FoodZone.showToast(profileHandler, response.getResult());
+//                    }
+//                }
+                }
+                else if (msg.what == -100 || msg.what == -200) {
                     FoodZone.showToast(profileHandler, (String) msg.obj);
                 }
             }
@@ -123,20 +144,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         .setTitle("Update")
                         .setMessage("Do you want to update your profile with the current information?")
                         .setPositiveButton("Yes", (dialogInterface, i) -> {
-
+                            FoodZone.showToast(profileHandler, "Updating user info...");
                             if (newlySelectedImage != null) {
                                 //upload newlySelectedImage
+                                updateUserInfoWithImg();
+                            } else {
+                                updateUserInfo(pref.getString("Image", null));
                             }
-
-                            UserInfo userInfo = UserInfo.newBuilder()
-                                    .setUsername(pref.getString("Username", null))
-                                    .setFullname(profile_name.getText().toString())
-                                    .setAddress(profile_address.getText().toString())
-                                    .setId(profile_id.getText().toString())
-                                    .setPhone(profile_phone.getText().toString())
-                                    //setImgLink(newlySelectedImage == null ? "", url)
-                                    .build();
-                            ContainerClient.getInstance().sendUpdateInfoRequest(userInfo);
                         })
                         .setNegativeButton("No", null)
                         .setIcon(R.drawable.dialog_info)
@@ -186,11 +200,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    private void downloadUserImg(String imgName) {
+    private void downloadUserImg() {
         if (imgName != null) {
             // Get the image URL from Cloudinary
-            String folder = "/FoodZone/users/";
-            imgName = MediaManager.get().url().generate(folder + imgName);
+            imgName = MediaManager.get().url().generate(cloudinaryFolder + imgName);
             Log.i(ContainerClient.LOG_TAG, "User avatar url: " + imgName);
         }
 
@@ -201,5 +214,57 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 .fallback(R.drawable.placeholder_user)
                 .error(R.drawable.placeholder_user)
                 .into(profile_image);
+    }
+
+    private void updateUserInfo(String imgName) {
+        UserInfo userInfo = UserInfo.newBuilder()
+                .setUsername(pref.getString("Username", null))
+                .setFullname(profile_name.getText().toString())
+                .setAddress(profile_address.getText().toString())
+                .setId(profile_id.getText().toString())
+                .setPhone(profile_phone.getText().toString())
+                .setImgName(imgName)
+                .build();
+        ContainerClient.getInstance().sendUpdateInfoRequest(userInfo);
+    }
+
+    private void updateUserInfoWithImg() {
+        // Upload image to Cloudinary
+        String requestID = MediaManager.get().upload(newlySelectedImage)
+                .unsigned("FZ_unsigned")
+                .option("folder", cloudinaryFolder)
+                .callback(new UploadCallback() {
+                    @Override
+                    public void onStart(String requestId) {
+                        FoodZone.showToast(profileHandler,"Uploading user profile image...");
+                    }
+
+                    @Override
+                    public void onProgress(String requestId, long bytes, long totalBytes) {
+                        double percent = ((double)bytes / totalBytes) * 100;
+                        FoodZone.showToastOverride(profileHandler, String.format("Uploading progress: %.2f%%", percent));
+                    }
+
+                    @Override
+                    public void onSuccess(String requestId, Map resultData) {
+                        // Send the new image name to the server
+                        String[] folders = resultData.get("public_id").toString().split("/");
+                        imgName = folders[folders.length - 1] + "." + resultData.get("format").toString();
+                        Log.i(ContainerClient.LOG_TAG, "New profile img: " + imgName);
+                        updateUserInfo(imgName);
+                        Log.i(ContainerClient.LOG_TAG, "Sent new user image name to server.");
+                    }
+
+                    @Override
+                    public void onError(String requestId, ErrorInfo error) {
+                        FoodZone.showToast(profileHandler, error.getDescription());
+                    }
+
+                    @Override
+                    public void onReschedule(String requestId, ErrorInfo error) {
+                        FoodZone.showToast(profileHandler, "Rescheduling: " + error.getDescription());
+                    }
+                })
+                .dispatch();
     }
 }

@@ -62,23 +62,20 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
             case "register_response":
                 handleRegisterResponse(serverMessage.getRegisterResponse());
                 break;
-
-            // Receives register response from server
             case "updateInfo_response":
                 handleUpdateInfoResponse(serverMessage.getUpdateInfoResponse());
                 break;
 
-            // Receives register response from server
             case "updatePassword_response":
                 handleUpdatePasswordResponse(serverMessage.getUpdatePasswordResponse());
                 break;
 
             case "restaurantList_response":
-                handleRestaurantListResponse((serverMessage.getRestaurantListResponse()));
+                handleRestaurantListResponse(serverMessage.getRestaurantListResponse());
                 break;
 
             case "foodList_response":
-                handleFoodListResponse((serverMessage.getFoodListResponse()));
+                handleFoodListResponse(serverMessage.getFoodListResponse());
                 break;
         }
     }
