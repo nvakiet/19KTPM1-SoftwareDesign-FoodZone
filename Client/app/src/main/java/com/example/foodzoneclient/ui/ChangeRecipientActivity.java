@@ -1,6 +1,5 @@
 package com.example.foodzoneclient.ui;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
@@ -77,8 +76,8 @@ public class ChangeRecipientActivity extends AppCompatActivity {
             else
                 // IF CHECKBOX IS UNCHECKED, LEAVE SPACE FOR CLIENT TO ENTER
                 for (int i = 0; i < 5; ++i)
-                    if(!ets[i].isFocused())
-                     ets[i].setText(recipientInfo[i]);
+                    if (!ets[i].isFocused())
+                        ets[i].setText(recipientInfo[i]);
         });
 
         isUsingDefaultInfo.setChecked(true);
@@ -113,15 +112,14 @@ public class ChangeRecipientActivity extends AppCompatActivity {
 
 
         saveBtn.setOnClickListener(view -> {
-            if (!isUsingDefaultInfo.isChecked()) {
-                prefRecipientEdit
-                        .putString("Fullname", ets[0].getText().toString())
-                        .putString("Address", ets[1].getText().toString())
-                        .putString("ID", ets[2].getText().toString())
-                        .putString("Phone", ets[3].getText().toString())
-                        .putString("Email", ets[4].getText().toString())
-                        .apply();
-            }
+            prefRecipientEdit
+                    .putString("Fullname", ets[0].getText().toString())
+                    .putString("Address", ets[1].getText().toString())
+                    .putString("ID", ets[2].getText().toString())
+                    .putString("Phone", ets[3].getText().toString())
+                    .putString("Email", ets[4].getText().toString())
+                    .apply();
+
 
             onBackPressed();
         });

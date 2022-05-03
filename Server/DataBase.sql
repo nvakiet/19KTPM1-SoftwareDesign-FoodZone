@@ -6,59 +6,60 @@ USE FoodZone
 GO
 
 CREATE TABLE [Users] (
-	Username nvarchar(20) PRIMARY KEY,
-	[Password] nvarchar(16) NOT NULL CHECK(LEN([Password]) >= 8 AND LEN([Password]) <= 64),
-	Fullname nvarchar(40),
-	ID nvarchar(12),
-	[Address] nvarchar(70),
-	Phone nvarchar(10) CHECK(LEN(Phone) = 10),
-	[Image] nvarchar(200)
+	Username varchar(20) PRIMARY KEY,
+	[Password] varchar(16) NOT NULL CHECK(LEN([Password]) >= 8 AND LEN([Password]) <= 64),
+	Fullname varchar(40),
+	ID varchar(12),
+	[Address] varchar(70),
+	Phone varchar(10) CHECK(LEN(Phone) = 10),
+	[Image] varchar(200)
 )
 GO
 
 CREATE TABLE Cart (
-	Username nvarchar(20) PRIMARY KEY,
+	Username varchar(20) PRIMARY KEY,
 	TotalPrice money
 )
 GO
 
 CREATE TABLE CartDetails (
-	Username nvarchar(20),
-	MealID nvarchar(10),
+	Username varchar(20),
+	MealID varchar(10),
 	MealQuantity integer CHECK (MealQuantity > 0),
 	PRIMARY KEY(Username, MealID)
 )
 GO
 
 CREATE TABLE Meal (
-	MealID nvarchar(10) PRIMARY KEY,
-	[Name] nvarchar(30) NOT NULL,
-	[Description] nvarchar(150),
+	MealID varchar(10) PRIMARY KEY,
+	[Name] varchar(30) NOT NULL,
+	[Description] varchar(150),
 	Price money CHECK (Price > 0),
-	[Image] nvarchar(10),
-	RestaurantID nvarchar(10)
+	[Image] varchar(10),
+	RestaurantID varchar(10)
 )
 GO
 
 CREATE TABLE Restaurant (
-	RestaurantID nvarchar(10) PRIMARY KEY,
-	[Name] nvarchar(30) NOT NULL,
-	[Address] nvarchar(70)
+	RestaurantID varchar(10) PRIMARY KEY,
+	[Name] varchar(30) NOT NULL,
+	[Address] varchar(70)
+	[Image] varchar(200)
 )
 GO
 
 CREATE TABLE OrderDetails (
-	OrderID nvarchar(20),
-	MealID nvarchar(10),
+	OrderID varchar(20),
+	MealID varchar(10),
 	MealQuantity integer CHECK (MealQuantity > 0)
 	PRIMARY KEY(OrderID, MealID)
 )
 GO
 
 CREATE TABLE [Order] (
-	OrderID nvarchar(20) PRIMARY KEY,
+	OrderID varchar(20) PRIMARY KEY,
 	OrderDateTime datetime,
-	[State] nvarchar(9) NOT NULL,
+	[State] varchar(9) NOT NULL,
 	TimeRemaining time,
 	ArriveDateTime datetime,
 	CancelDateTime datetime
@@ -66,12 +67,12 @@ CREATE TABLE [Order] (
 GO
 
 CREATE TABLE Recipient (
-	OrderID nvarchar(20) PRIMARY KEY,
-	Fullname nvarchar(40),
-	ID nvarchar(12),
-	[Address] nvarchar(70) NOT NULL,
-	Phone nvarchar(10),
-	[Email] nvarchar(30)
+	OrderID varchar(20) PRIMARY KEY,
+	Fullname varchar(40),
+	ID varchar(12),
+	[Address] varchar(70) NOT NULL,
+	Phone varchar(10),
+	[Email] varchar(30)
 )
 GO
 
@@ -106,7 +107,7 @@ GO
 INSERT INTO [Users]
 (Username,[Password]  ,Fullname			     ,ID		  ,[Address]		 ,Phone		  ,[Image]) VALUES
 ('admin' ,'adminadmin','Admin'				 ,'0000000000',null				 ,null		  ,null),
-('kiet'	 ,'12345678'  ,'Ngo Van Anh Kiet'    ,'0011223344','027C Chung cu An Quang', '0901210304', 'kiet.jpg'),
+('kiet'	 ,'12345678'  ,'Ngo Van Anh Kiet'    ,'0011223344','027C Chung cu An Quang', '0901210304', 'kiet_tgww6q.jpg'),
 ('phat'	 ,'12345678'  ,'Trieu Nguyen Phat'   ,'0011223345','12 Tran Hung Dao','0589199209',null),
 ('khue'	 ,'12345678'  ,'Pham Trong Vinh Khue','0011223346','13 Tran Hung Dao',null		  ,null)
 GO
