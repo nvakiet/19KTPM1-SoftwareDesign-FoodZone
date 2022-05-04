@@ -2,10 +2,12 @@ package com.example.foodzoneclient.ui;
 
 import static com.example.foodzoneclient.FoodZone.getContext;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -59,14 +61,17 @@ public class CartActivity extends AppCompatActivity {
         orderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent orderIntent=new Intent(CartActivity.this, OrderActivity.class);
-                orderIntent.putExtra("resID", rID);
-                orderIntent.putParcelableArrayListExtra("cart_list", Cart.getProductList());
-                startActivity(orderIntent);
+                if (Cart.size() == 0) {
+                    createEmptyCartDialog();
+                }
+                else {
+                    Intent orderIntent = new Intent(CartActivity.this, OrderActivity.class);
+                    orderIntent.putExtra("resID", rID);
+                    orderIntent.putParcelableArrayListExtra("cart_list", Cart.getProductList());
+                    startActivity(orderIntent);
+                }
             }
         });
-
-
 
         Intent intent = getIntent();
         rID = intent.getStringExtra("resID");
@@ -89,6 +94,31 @@ public class CartActivity extends AppCompatActivity {
             TextView totalpriceBox=(TextView) findViewById(R.id.totalPrice);
             totalpriceBox.setText("Total: "+String.valueOf(total)+" VND");
         }
+    }
+
+    public void createEmptyCartDialog() {
+        AlertDialog.Builder builder
+                = new AlertDialog
+                .Builder(CartActivity.this);
+
+        builder.setMessage("Please select some products before processing to order");
+        builder.setTitle("Empty cart!");
+        builder.setCancelable(false);
+
+        builder.setNegativeButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        // Create the Alert dialog
+        AlertDialog alertDialog = builder.create();
+
+        // Show the Alert Dialog box
+        alertDialog.show();
     }
 
     @Override

@@ -108,8 +108,15 @@ public class MainScreenActivity extends AppCompatActivity {
                     startActivity(cartIntent);
                 }
                 if (id == R.id.action_orders) {
-                    Intent orderIntent = new Intent(MainScreenActivity.this, OrderActivity.class);
-                    startActivity(orderIntent);
+                    Cart.getCartInstance();
+
+                    if (Cart.size() == 0) {
+                        createEmptyCartDialog();
+                    }
+                    else {
+                        Intent orderIntent = new Intent(MainScreenActivity.this, OrderActivity.class);
+                        startActivity(orderIntent);
+                    }
                 }
                 return true;
             }
@@ -138,7 +145,7 @@ public class MainScreenActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else {
-                    createResetCarDialog(v, res);
+                    createResetCartDialog(v, res);
                 }
             }
         });
@@ -177,7 +184,7 @@ public class MainScreenActivity extends AppCompatActivity {
         ContainerClient.getInstance().currentUIHandler = restaurantListHandler;
     }
 
-    public void createResetCarDialog(View v, Restaurant res) {
+    public void createResetCartDialog(View v, Restaurant res) {
         AlertDialog.Builder builder
                 = new AlertDialog
                 .Builder(MainScreenActivity.this);
@@ -200,6 +207,31 @@ public class MainScreenActivity extends AppCompatActivity {
                 });
         builder.setNegativeButton(
                 "No",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        // Create the Alert dialog
+        AlertDialog alertDialog = builder.create();
+
+        // Show the Alert Dialog box
+        alertDialog.show();
+    }
+
+    public void createEmptyCartDialog() {
+        AlertDialog.Builder builder
+                = new AlertDialog
+                .Builder(MainScreenActivity.this);
+
+        builder.setMessage("Please select some products before processing to order");
+        builder.setTitle("Empty cart!");
+        builder.setCancelable(false);
+
+        builder.setNegativeButton(
+                "OK",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
