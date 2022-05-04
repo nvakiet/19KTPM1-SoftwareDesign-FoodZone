@@ -43,7 +43,6 @@ class HistoryListViewAdapter extends BaseAdapter {
     private Context              context;
 
     private class ViewHolder {
-        ImageView img;
         TextView  name, quantity, date, recipient, state, price;
     }
 
@@ -78,7 +77,6 @@ class HistoryListViewAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(R.layout.item_history, null);
             holder      = new ViewHolder();
 
-            holder.img       = convertView.findViewById(R.id.image);
             holder.name      = convertView.findViewById(R.id.product);
             holder.quantity  = convertView.findViewById(R.id.quantity);
             holder.date      = convertView.findViewById(R.id.date);
@@ -99,9 +97,6 @@ class HistoryListViewAdapter extends BaseAdapter {
         holder.recipient.setText(op.getRecipientName());
         holder.state.setText(op.getState());
         holder.price.setText(op.getPrice());
-
-        // TODO SET IMAGE
-        //holder.img.
 
         return convertView;
     }

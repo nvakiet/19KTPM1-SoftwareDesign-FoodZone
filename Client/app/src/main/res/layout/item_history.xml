@@ -6,26 +6,18 @@
     android:paddingTop="10dp"
     android:paddingBottom="10dp">
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="124dp"
-        android:layout_height="130dp"
-        android:src="@drawable/bill_image"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
     <TextView
         android:id="@+id/product"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:fontFamily="@font/poppins_bold"
         android:text="product"
         android:textColor="@color/black"
+        android:paddingStart="8dp"
         android:textSize="18dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/image"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/quantity"
@@ -33,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="quantity"
-        app:layout_constraintStart_toEndOf="@+id/image"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/product" />
 
     <TextView
@@ -52,7 +44,7 @@
         android:layout_marginStart="8dp"
         android:text="STATE"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/image"/>
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/recipient"
@@ -61,14 +53,16 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
         android:text="recipient"
-        app:layout_constraintStart_toEndOf="@+id/image"
+        app:layout_constraintStart_toEndOf="@id/state"
         app:layout_constraintTop_toBottomOf="@+id/quantity"/>
+
     <TextView
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Total: 158 pCoins"
-        app:layout_constraintBottom_toBottomOf="@+id/image"
-        app:layout_constraintEnd_toEndOf="@+id/product" />
+        android:paddingRight="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>
