@@ -7,6 +7,7 @@ import android.util.Log;
 import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.protocols.ClientMessage;
 import com.example.foodzoneclient.protocols.FoodListRequest;
+import com.example.foodzoneclient.protocols.HistoryListRequest;
 import com.example.foodzoneclient.protocols.LoginRequest;
 import com.example.foodzoneclient.protocols.RegisterRequest;
 import com.example.foodzoneclient.protocols.RestaurantListRequest;
@@ -339,6 +340,19 @@ public enum ContainerClient {
                 ClientMessage msg = ClientMessage.newBuilder()
                         .setMsg("submitOrder")
                         .setSubmitOrder(request)
+                        .build();
+                sendToServer(msg);
+            }
+        });
+    }
+
+    public void sendHistoryListRequest(HistoryListRequest request) {
+        sendGroup.execute(new Runnable() {
+            @Override
+            public void run() {
+                ClientMessage msg = ClientMessage.newBuilder()
+                        .setMsg("historyList")
+                        .setHistoryListRequest(request)
                         .build();
                 sendToServer(msg);
             }

@@ -24,6 +24,7 @@ public  final class ClientMessage extends
     SUBMITORDER(6),
     RESTAURANTLISTREQUEST(7),
     FOODLISTREQUEST(8),
+    HISTORYLISTREQUEST(9),
     REQUESTS_NOT_SET(0);
     private final int value;
     private RequestsCase(int value) {
@@ -46,6 +47,7 @@ public  final class ClientMessage extends
         case 6: return SUBMITORDER;
         case 7: return RESTAURANTLISTREQUEST;
         case 8: return FOODLISTREQUEST;
+        case 9: return HISTORYLISTREQUEST;
         case 0: return REQUESTS_NOT_SET;
         default: return null;
       }
@@ -459,6 +461,56 @@ public  final class ClientMessage extends
    */
   private void clearFoodListRequest() {
     if (requestsCase_ == 8) {
+      requestsCase_ = 0;
+      requests_ = null;
+    }
+  }
+
+  public static final int HISTORYLISTREQUEST_FIELD_NUMBER = 9;
+  /**
+   * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+   */
+  @java.lang.Override
+  public boolean hasHistoryListRequest() {
+    return requestsCase_ == 9;
+  }
+  /**
+   * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+   */
+  @java.lang.Override
+  public com.example.foodzoneclient.protocols.HistoryListRequest getHistoryListRequest() {
+    if (requestsCase_ == 9) {
+       return (com.example.foodzoneclient.protocols.HistoryListRequest) requests_;
+    }
+    return com.example.foodzoneclient.protocols.HistoryListRequest.getDefaultInstance();
+  }
+  /**
+   * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+   */
+  private void setHistoryListRequest(com.example.foodzoneclient.protocols.HistoryListRequest value) {
+    value.getClass();
+  requests_ = value;
+    requestsCase_ = 9;
+  }
+  /**
+   * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+   */
+  private void mergeHistoryListRequest(com.example.foodzoneclient.protocols.HistoryListRequest value) {
+    value.getClass();
+  if (requestsCase_ == 9 &&
+        requests_ != com.example.foodzoneclient.protocols.HistoryListRequest.getDefaultInstance()) {
+      requests_ = com.example.foodzoneclient.protocols.HistoryListRequest.newBuilder((com.example.foodzoneclient.protocols.HistoryListRequest) requests_)
+          .mergeFrom(value).buildPartial();
+    } else {
+      requests_ = value;
+    }
+    requestsCase_ = 9;
+  }
+  /**
+   * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+   */
+  private void clearHistoryListRequest() {
+    if (requestsCase_ == 9) {
       requestsCase_ = 0;
       requests_ = null;
     }
@@ -956,6 +1008,54 @@ public  final class ClientMessage extends
       return this;
     }
 
+    /**
+     * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+     */
+    @java.lang.Override
+    public boolean hasHistoryListRequest() {
+      return instance.hasHistoryListRequest();
+    }
+    /**
+     * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+     */
+    @java.lang.Override
+    public com.example.foodzoneclient.protocols.HistoryListRequest getHistoryListRequest() {
+      return instance.getHistoryListRequest();
+    }
+    /**
+     * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+     */
+    public Builder setHistoryListRequest(com.example.foodzoneclient.protocols.HistoryListRequest value) {
+      copyOnWrite();
+      instance.setHistoryListRequest(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+     */
+    public Builder setHistoryListRequest(
+        com.example.foodzoneclient.protocols.HistoryListRequest.Builder builderForValue) {
+      copyOnWrite();
+      instance.setHistoryListRequest(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+     */
+    public Builder mergeHistoryListRequest(com.example.foodzoneclient.protocols.HistoryListRequest value) {
+      copyOnWrite();
+      instance.mergeHistoryListRequest(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+     */
+    public Builder clearHistoryListRequest() {
+      copyOnWrite();
+      instance.clearHistoryListRequest();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:foodzone_protocols.ClientMessage)
   }
   @java.lang.Override
@@ -982,10 +1082,11 @@ public  final class ClientMessage extends
             com.example.foodzoneclient.protocols.SubmitOrderRequest.class,
             com.example.foodzoneclient.protocols.RestaurantListRequest.class,
             com.example.foodzoneclient.protocols.FoodListRequest.class,
+            com.example.foodzoneclient.protocols.HistoryListRequest.class,
           };
           java.lang.String info =
-              "\u0000\b\u0001\u0000\u0001\b\b\u0000\u0000\u0000\u0001\u0208\u0002<\u0000\u0003<" +
-              "\u0000\u0004<\u0000\u0005<\u0000\u0006<\u0000\u0007<\u0000\b<\u0000";
+              "\u0000\t\u0001\u0000\u0001\t\t\u0000\u0000\u0000\u0001\u0208\u0002<\u0000\u0003<" +
+              "\u0000\u0004<\u0000\u0005<\u0000\u0006<\u0000\u0007<\u0000\b<\u0000\t<\u0000";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

@@ -153,6 +153,20 @@ private static final long serialVersionUID = 0L;
             requestsCase_ = 8;
             break;
           }
+          case 74: {
+            com.fz.foodzoneserver.protocols.HistoryListRequest.Builder subBuilder = null;
+            if (requestsCase_ == 9) {
+              subBuilder = ((com.fz.foodzoneserver.protocols.HistoryListRequest) requests_).toBuilder();
+            }
+            requests_ =
+                input.readMessage(com.fz.foodzoneserver.protocols.HistoryListRequest.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((com.fz.foodzoneserver.protocols.HistoryListRequest) requests_);
+              requests_ = subBuilder.buildPartial();
+            }
+            requestsCase_ = 9;
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -197,6 +211,7 @@ private static final long serialVersionUID = 0L;
     SUBMITORDER(6),
     RESTAURANTLISTREQUEST(7),
     FOODLISTREQUEST(8),
+    HISTORYLISTREQUEST(9),
     REQUESTS_NOT_SET(0);
     private final int value;
     private RequestsCase(int value) {
@@ -221,6 +236,7 @@ private static final long serialVersionUID = 0L;
         case 6: return SUBMITORDER;
         case 7: return RESTAURANTLISTREQUEST;
         case 8: return FOODLISTREQUEST;
+        case 9: return HISTORYLISTREQUEST;
         case 0: return REQUESTS_NOT_SET;
         default: return null;
       }
@@ -491,6 +507,37 @@ private static final long serialVersionUID = 0L;
     return com.fz.foodzoneserver.protocols.FoodListRequest.getDefaultInstance();
   }
 
+  public static final int HISTORYLISTREQUEST_FIELD_NUMBER = 9;
+  /**
+   * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+   * @return Whether the historyListRequest field is set.
+   */
+  @java.lang.Override
+  public boolean hasHistoryListRequest() {
+    return requestsCase_ == 9;
+  }
+  /**
+   * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+   * @return The historyListRequest.
+   */
+  @java.lang.Override
+  public com.fz.foodzoneserver.protocols.HistoryListRequest getHistoryListRequest() {
+    if (requestsCase_ == 9) {
+       return (com.fz.foodzoneserver.protocols.HistoryListRequest) requests_;
+    }
+    return com.fz.foodzoneserver.protocols.HistoryListRequest.getDefaultInstance();
+  }
+  /**
+   * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+   */
+  @java.lang.Override
+  public com.fz.foodzoneserver.protocols.HistoryListRequestOrBuilder getHistoryListRequestOrBuilder() {
+    if (requestsCase_ == 9) {
+       return (com.fz.foodzoneserver.protocols.HistoryListRequest) requests_;
+    }
+    return com.fz.foodzoneserver.protocols.HistoryListRequest.getDefaultInstance();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -528,6 +575,9 @@ private static final long serialVersionUID = 0L;
     }
     if (requestsCase_ == 8) {
       output.writeMessage(8, (com.fz.foodzoneserver.protocols.FoodListRequest) requests_);
+    }
+    if (requestsCase_ == 9) {
+      output.writeMessage(9, (com.fz.foodzoneserver.protocols.HistoryListRequest) requests_);
     }
     unknownFields.writeTo(output);
   }
@@ -568,6 +618,10 @@ private static final long serialVersionUID = 0L;
     if (requestsCase_ == 8) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(8, (com.fz.foodzoneserver.protocols.FoodListRequest) requests_);
+    }
+    if (requestsCase_ == 9) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(9, (com.fz.foodzoneserver.protocols.HistoryListRequest) requests_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -616,6 +670,10 @@ private static final long serialVersionUID = 0L;
         if (!getFoodListRequest()
             .equals(other.getFoodListRequest())) return false;
         break;
+      case 9:
+        if (!getHistoryListRequest()
+            .equals(other.getHistoryListRequest())) return false;
+        break;
       case 0:
       default:
     }
@@ -660,6 +718,10 @@ private static final long serialVersionUID = 0L;
       case 8:
         hash = (37 * hash) + FOODLISTREQUEST_FIELD_NUMBER;
         hash = (53 * hash) + getFoodListRequest().hashCode();
+        break;
+      case 9:
+        hash = (37 * hash) + HISTORYLISTREQUEST_FIELD_NUMBER;
+        hash = (53 * hash) + getHistoryListRequest().hashCode();
         break;
       case 0:
       default:
@@ -877,6 +939,13 @@ private static final long serialVersionUID = 0L;
           result.requests_ = foodListRequestBuilder_.build();
         }
       }
+      if (requestsCase_ == 9) {
+        if (historyListRequestBuilder_ == null) {
+          result.requests_ = requests_;
+        } else {
+          result.requests_ = historyListRequestBuilder_.build();
+        }
+      }
       result.requestsCase_ = requestsCase_;
       onBuilt();
       return result;
@@ -957,6 +1026,10 @@ private static final long serialVersionUID = 0L;
         }
         case FOODLISTREQUEST: {
           mergeFoodListRequest(other.getFoodListRequest());
+          break;
+        }
+        case HISTORYLISTREQUEST: {
+          mergeHistoryListRequest(other.getHistoryListRequest());
           break;
         }
         case REQUESTS_NOT_SET: {
@@ -2068,6 +2141,147 @@ private static final long serialVersionUID = 0L;
       requestsCase_ = 8;
       onChanged();;
       return foodListRequestBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.fz.foodzoneserver.protocols.HistoryListRequest, com.fz.foodzoneserver.protocols.HistoryListRequest.Builder, com.fz.foodzoneserver.protocols.HistoryListRequestOrBuilder> historyListRequestBuilder_;
+    /**
+     * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+     * @return Whether the historyListRequest field is set.
+     */
+    @java.lang.Override
+    public boolean hasHistoryListRequest() {
+      return requestsCase_ == 9;
+    }
+    /**
+     * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+     * @return The historyListRequest.
+     */
+    @java.lang.Override
+    public com.fz.foodzoneserver.protocols.HistoryListRequest getHistoryListRequest() {
+      if (historyListRequestBuilder_ == null) {
+        if (requestsCase_ == 9) {
+          return (com.fz.foodzoneserver.protocols.HistoryListRequest) requests_;
+        }
+        return com.fz.foodzoneserver.protocols.HistoryListRequest.getDefaultInstance();
+      } else {
+        if (requestsCase_ == 9) {
+          return historyListRequestBuilder_.getMessage();
+        }
+        return com.fz.foodzoneserver.protocols.HistoryListRequest.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+     */
+    public Builder setHistoryListRequest(com.fz.foodzoneserver.protocols.HistoryListRequest value) {
+      if (historyListRequestBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        requests_ = value;
+        onChanged();
+      } else {
+        historyListRequestBuilder_.setMessage(value);
+      }
+      requestsCase_ = 9;
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+     */
+    public Builder setHistoryListRequest(
+        com.fz.foodzoneserver.protocols.HistoryListRequest.Builder builderForValue) {
+      if (historyListRequestBuilder_ == null) {
+        requests_ = builderForValue.build();
+        onChanged();
+      } else {
+        historyListRequestBuilder_.setMessage(builderForValue.build());
+      }
+      requestsCase_ = 9;
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+     */
+    public Builder mergeHistoryListRequest(com.fz.foodzoneserver.protocols.HistoryListRequest value) {
+      if (historyListRequestBuilder_ == null) {
+        if (requestsCase_ == 9 &&
+            requests_ != com.fz.foodzoneserver.protocols.HistoryListRequest.getDefaultInstance()) {
+          requests_ = com.fz.foodzoneserver.protocols.HistoryListRequest.newBuilder((com.fz.foodzoneserver.protocols.HistoryListRequest) requests_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          requests_ = value;
+        }
+        onChanged();
+      } else {
+        if (requestsCase_ == 9) {
+          historyListRequestBuilder_.mergeFrom(value);
+        }
+        historyListRequestBuilder_.setMessage(value);
+      }
+      requestsCase_ = 9;
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+     */
+    public Builder clearHistoryListRequest() {
+      if (historyListRequestBuilder_ == null) {
+        if (requestsCase_ == 9) {
+          requestsCase_ = 0;
+          requests_ = null;
+          onChanged();
+        }
+      } else {
+        if (requestsCase_ == 9) {
+          requestsCase_ = 0;
+          requests_ = null;
+        }
+        historyListRequestBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+     */
+    public com.fz.foodzoneserver.protocols.HistoryListRequest.Builder getHistoryListRequestBuilder() {
+      return getHistoryListRequestFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+     */
+    @java.lang.Override
+    public com.fz.foodzoneserver.protocols.HistoryListRequestOrBuilder getHistoryListRequestOrBuilder() {
+      if ((requestsCase_ == 9) && (historyListRequestBuilder_ != null)) {
+        return historyListRequestBuilder_.getMessageOrBuilder();
+      } else {
+        if (requestsCase_ == 9) {
+          return (com.fz.foodzoneserver.protocols.HistoryListRequest) requests_;
+        }
+        return com.fz.foodzoneserver.protocols.HistoryListRequest.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.fz.foodzoneserver.protocols.HistoryListRequest, com.fz.foodzoneserver.protocols.HistoryListRequest.Builder, com.fz.foodzoneserver.protocols.HistoryListRequestOrBuilder> 
+        getHistoryListRequestFieldBuilder() {
+      if (historyListRequestBuilder_ == null) {
+        if (!(requestsCase_ == 9)) {
+          requests_ = com.fz.foodzoneserver.protocols.HistoryListRequest.getDefaultInstance();
+        }
+        historyListRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.fz.foodzoneserver.protocols.HistoryListRequest, com.fz.foodzoneserver.protocols.HistoryListRequest.Builder, com.fz.foodzoneserver.protocols.HistoryListRequestOrBuilder>(
+                (com.fz.foodzoneserver.protocols.HistoryListRequest) requests_,
+                getParentForChildren(),
+                isClean());
+        requests_ = null;
+      }
+      requestsCase_ = 9;
+      onChanged();;
+      return historyListRequestBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

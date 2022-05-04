@@ -96,5 +96,16 @@ public interface ServerMessageOrBuilder extends
    */
   com.example.foodzoneclient.protocols.FoodListResponse getFoodListResponse();
 
+  /**
+   * <code>.foodzone_protocols.HistoryListResponse historyListResponse = 9;</code>
+   * @return Whether the historyListResponse field is set.
+   */
+  boolean hasHistoryListResponse();
+  /**
+   * <code>.foodzone_protocols.HistoryListResponse historyListResponse = 9;</code>
+   * @return The historyListResponse.
+   */
+  com.example.foodzoneclient.protocols.HistoryListResponse getHistoryListResponse();
+
   public com.example.foodzoneclient.protocols.ServerMessage.ResponsesCase getResponsesCase();
 }

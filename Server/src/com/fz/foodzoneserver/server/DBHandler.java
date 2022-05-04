@@ -313,4 +313,49 @@ public class DBHandler {
             return "Query Error";
         }
     }
+
+    public List<Order> queryUserHistory(String username) {
+        List<Order> result = new ArrayList<>();
+
+        try {
+            String sqlOrder = "" +
+                    "select OrderDateTime, [Desc], [State], RecipientName, Price from " +
+                    "(select OrderID, o.OrderDateTime, o.[State] from [Order] as o " +
+                    "WHERE o.OrderID LIKE '" + username + "%') t1 " +
+                    "inner join" +
+                    "(select OrderID, STRING_AGG(CONCAT([Name], ' x', MealQuantity), '---') as [Desc] " +
+                    "from OrderDetails, Meal " +
+                    "where OrderDetails.MealID = Meal.MealID " +
+                    "and OrderID like '" + username + "%' " +
+                    "group by OrderID) t2 on t1.OrderID = t2.OrderId " +
+                    "inner join " +
+                    "(select OrderID, Fullname as recipientName " +
+                    "from Recipient " +
+                    "where OrderID like '" + username + "%') t3 on t2.OrderID =  t3.OrderID " +
+                    "inner join " +
+                    "(select OrderID, sum(OrderDetails.MealQuantity*Meal.Price) as price from OrderDetails, meal " +
+                    "where OrderDetails.MealID = meal.MealID " +
+                    "group by OrderID) t4 " +
+                    "on t3.OrderID = t4.OrderID";
+
+            PreparedStatement st = conn.prepareStatement(sqlOrder);
+            ResultSet         rs = st.executeQuery();
+
+            while (rs.next()) {
+                Order.Builder order = Order.newBuilder();
+                order.setDate(rs.getString(1))
+                        .setDesc(rs.getString(2))
+                        .setState(rs.getString(3))
+                        .setRecipientName(rs.getString(4))
+                        .setPrice(rs.getInt(5));
+                result.add(order.build());
+            }
+
+            st.close();
+            rs.close();
+        } catch (SQLException e) {
+            logger.error(e);
+        }
+        return result;
+    }
 }

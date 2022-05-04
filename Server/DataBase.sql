@@ -139,3 +139,17 @@ INSERT INTO Meal
 ('f08' ,'Lemonade Soft Cake','Sweet and sour. A great appetizer.',69000,'f08_xwdrby.webp','005'),
 ('f09' ,'Pate Stick Bread','4 sticks of bread filled to the brim with pate.',420000,'f09_v5nyhd.webp','005')
 GO
+
+
+select STRING_AGG(MealID, ', ') from OrderDetails as od where od.OrderID like 'phat%'
+
+select OrderId, [Name], MealQuantity from OrderDetails, Meal where OrderDetails.MealID = Meal.MealID
+
+select OrderID, o.OrderDateTime, o.[State] from [Order] as o 
+WHERE o.OrderID LIKE 'phat%'
+
+select OrderID, STRING_AGG(CONCAT([Name], ' x', MealQuantity), '\n')
+from OrderDetails, Meal 
+where OrderDetails.MealID = Meal.MealID
+and OrderID like 'phat%'
+group by OrderID

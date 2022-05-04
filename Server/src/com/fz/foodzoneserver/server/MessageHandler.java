@@ -74,6 +74,11 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
                 serverMessage.setMsg("submitOrder_response")
                         .setSubmitOrderResponse(handleSubmitOrderResponse(clientMessage.getSubmitOrder()));
                 break;
+
+            case "historyList":
+                serverMessage.setMsg("historyList_response")
+                        .setHistoryListResponse(handleHistoryListResponse(clientMessage.getHistoryListRequest()));
+                break;
         }
         ctx.writeAndFlush(serverMessage.build());
     }
@@ -244,6 +249,24 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
                 finalResult = "Success";
 
             response.setResult(finalResult);
+            dbHandler.releaseConn();
+        } catch (SQLException e) {
+            logger.error("Can't get database connection from connection pool", e);
+        }
+
+        return response.build();
+    }
+
+    private HistoryListResponse handleHistoryListResponse(HistoryListRequest request) {
+        HistoryListResponse.Builder response = HistoryListResponse.newBuilder();
+        try {
+            DBHandler   dbHandler = new DBHandler();
+
+            response.setResult("Success");
+            for (Order order : dbHandler.queryUserHistory(request.getUsername())) {
+                response.addOrderHistory(order);
+            }
+
             dbHandler.releaseConn();
         } catch (SQLException e) {
             logger.error("Can't get database connection from connection pool", e);

@@ -1,20 +1,25 @@
 package com.example.foodzoneclient.ui;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.R;
-import com.example.foodzoneclient.model.OrderedProduct;
+import com.example.foodzoneclient.backend.ContainerClient;
+import com.example.foodzoneclient.model.Order;
+import com.example.foodzoneclient.protocols.HistoryListRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +27,8 @@ import java.util.List;
 public class HistoryActivity extends AppCompatActivity {
 
     ListView history;
+    public static Handler          historyListHandler;
+    public static ArrayList<Order> historyList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,23 +37,40 @@ public class HistoryActivity extends AppCompatActivity {
 
         history = findViewById(R.id.history);
 
-        // TODO GET HISTORY LIST FROM DATABASE
-        List<OrderedProduct> historyList = new ArrayList<>();
+        HistoryListRequest request = HistoryListRequest.newBuilder().setUsername(FoodZone.getContext().getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Username", "")).build();
+        ContainerClient.getInstance().sendHistoryListRequest(request);
 
-        history.setAdapter(new HistoryListViewAdapter(this, historyList));
+        HistoryListViewAdapter historyListViewAdapter = new HistoryListViewAdapter(HistoryActivity.this, historyList);
+        history.setAdapter(historyListViewAdapter);
+
+        historyListHandler = new Handler(Looper.myLooper()) {
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                super.handleMessage(msg);
+                if (msg.what == 1) {
+                    String result = (String) msg.obj;
+                    //FoodZone.showToast(restaurantListHandler, result);
+                    if (result.equals("Success")) {
+                        historyListViewAdapter.notifyDataSetChanged();
+                    }
+                } else if (msg.what == -100 || msg.what == -200) {
+                    FoodZone.showToast(historyListHandler, (String) msg.obj);
+                }
+            }
+        };
     }
 }
 
 class HistoryListViewAdapter extends BaseAdapter {
-    private List<OrderedProduct> history;
-    private LayoutInflater       layoutInflater;
-    private Context              context;
+    private List<Order>    history;
+    private LayoutInflater layoutInflater;
+    private Context        context;
 
     private class ViewHolder {
-        TextView  name, quantity, date, recipient, state, price;
+        TextView date, recipient, state, price, desc;
     }
 
-    public HistoryListViewAdapter(Context aContext, List<OrderedProduct> history) {
+    public HistoryListViewAdapter(Context aContext, List<Order> history) {
         this.context   = aContext;
         this.history   = history;
         layoutInflater = LayoutInflater.from(aContext);
@@ -77,9 +101,8 @@ class HistoryListViewAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(R.layout.item_history, null);
             holder      = new ViewHolder();
 
-            holder.name      = convertView.findViewById(R.id.product);
-            holder.quantity  = convertView.findViewById(R.id.quantity);
             holder.date      = convertView.findViewById(R.id.date);
+            holder.desc      = convertView.findViewById(R.id.desc);
             holder.recipient = convertView.findViewById(R.id.recipient);
             holder.state     = convertView.findViewById(R.id.state);
             holder.price     = convertView.findViewById(R.id.price);
@@ -89,21 +112,14 @@ class HistoryListViewAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        OrderedProduct op = this.history.get(position);
+        Order op = this.history.get(position);
 
-        holder.name.setText(op.getName());
-        holder.quantity.setText(op.getAmount());
         holder.date.setText(op.getDate());
-        holder.recipient.setText(op.getRecipientName());
-        holder.state.setText(op.getState());
-        holder.price.setText(op.getPrice());
+        holder.desc.setText(op.getDesc().replace("---", "\n"));
+        holder.recipient.setText("Recipient: " + op.getRecipientName());
+        holder.state.setText("Status: " + op.getState());
+        holder.price.setText("Total: " + op.getPrice());
 
         return convertView;
-    }
-
-    private int getImageID(String imgName) {
-        Resources res   = context.getResources();
-        int       resID = res.getIdentifier(imgName, "drawable", context.getPackageName());
-        return resID;
     }
 }
