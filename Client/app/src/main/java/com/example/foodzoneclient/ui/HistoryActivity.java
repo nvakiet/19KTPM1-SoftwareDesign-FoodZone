@@ -91,7 +91,7 @@ class HistoryListViewAdapter extends BaseAdapter {
 
         return convertView;
     }
-    
+
     private int getImageID(String imgName){
         Resources res = context.getResources();
         int resID = res.getIdentifier(imgName , "drawable", context.getPackageName());

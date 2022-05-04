@@ -92,6 +92,12 @@ public class CartActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        back.performClick();
+    }
+
     private void findID(){
         back=(ImageView) findViewById(R.id.back2main);
         orderButton=(Button) findViewById(R.id.orderButton);
