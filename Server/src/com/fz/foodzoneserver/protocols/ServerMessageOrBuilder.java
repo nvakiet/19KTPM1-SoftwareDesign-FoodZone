@@ -124,5 +124,20 @@ public interface ServerMessageOrBuilder extends
    */
   com.fz.foodzoneserver.protocols.FoodListResponseOrBuilder getFoodListResponseOrBuilder();
 
+  /**
+   * <code>.foodzone_protocols.HistoryListResponse historyListResponse = 9;</code>
+   * @return Whether the historyListResponse field is set.
+   */
+  boolean hasHistoryListResponse();
+  /**
+   * <code>.foodzone_protocols.HistoryListResponse historyListResponse = 9;</code>
+   * @return The historyListResponse.
+   */
+  com.fz.foodzoneserver.protocols.HistoryListResponse getHistoryListResponse();
+  /**
+   * <code>.foodzone_protocols.HistoryListResponse historyListResponse = 9;</code>
+   */
+  com.fz.foodzoneserver.protocols.HistoryListResponseOrBuilder getHistoryListResponseOrBuilder();
+
   public com.fz.foodzoneserver.protocols.ServerMessage.ResponsesCase getResponsesCase();
 }

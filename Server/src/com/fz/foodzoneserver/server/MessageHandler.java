@@ -7,7 +7,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MessageHandler extends ChannelInboundHandlerAdapter {
@@ -74,6 +73,11 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
             case "submitOrder":
                 serverMessage.setMsg("submitOrder_response")
                         .setSubmitOrderResponse(handleSubmitOrderResponse(clientMessage.getSubmitOrder()));
+                break;
+
+            case "historyList":
+                serverMessage.setMsg("historyList_response")
+                        .setHistoryListResponse(handleHistoryListResponse(clientMessage.getHistoryListRequest()));
                 break;
         }
         ctx.writeAndFlush(serverMessage.build());
@@ -208,6 +212,12 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
         try {
             DBHandler dbHandler = new DBHandler();
             String    OrderID   = r.getUsername() + "-" + OrderIncrement++;
+            System.out.println(OrderID.length());
+            System.out.println(OrderID);
+
+            String resultInsertOrder = dbHandler.insertOrder(OrderID,
+                    r.getDatetime(),
+                    "PENDING");
 
             String resultInsertRecipient = dbHandler.insertRecipient(OrderID,
                     r.getRecipientFullName(),
@@ -216,9 +226,6 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
                     r.getRecipientPhone(),
                     r.getRecipientEmail());
 
-            String resultInsertOrder = dbHandler.insertOrder(OrderID,
-                    r.getDatetime(),
-                    "PENDING");
 
             String resultInsertOrderDetails = dbHandler.insertOrderDetails(OrderID,
                     r.getMealIDList(),
@@ -242,6 +249,24 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
                 finalResult = "Success";
 
             response.setResult(finalResult);
+            dbHandler.releaseConn();
+        } catch (SQLException e) {
+            logger.error("Can't get database connection from connection pool", e);
+        }
+
+        return response.build();
+    }
+
+    private HistoryListResponse handleHistoryListResponse(HistoryListRequest request) {
+        HistoryListResponse.Builder response = HistoryListResponse.newBuilder();
+        try {
+            DBHandler   dbHandler = new DBHandler();
+
+            response.setResult("Success");
+            for (Order order : dbHandler.queryUserHistory(request.getUsername())) {
+                response.addOrderHistory(order);
+            }
+
             dbHandler.releaseConn();
         } catch (SQLException e) {
             logger.error("Can't get database connection from connection pool", e);

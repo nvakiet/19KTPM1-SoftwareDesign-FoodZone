@@ -287,6 +287,7 @@ public class DBHandler {
 
             return "Success";
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             return "Query Error";
         }
     }
@@ -301,14 +302,66 @@ public class DBHandler {
             for (int i = 0; i < mealIDList.size(); ++i) {
                 st.setString(2, mealIDList.get(i));
                 st.setInt(3, mealQuantityList.get(i));
-                st.executeUpdate();
+                st.addBatch();
             }
 
+            st.executeBatch();
             st.close();
 
             return "Success";
         } catch (SQLException e) {
             return "Query Error";
         }
+    }
+
+    public List<Order> queryUserHistory(String username) {
+        List<Order> result = new ArrayList<>();
+
+        try {
+            String sqlOrder = "" +
+                    "select OrderDateTime, [Desc], [State], RecipientName, Price, Restaurant from " +
+                    "(select OrderID, o.OrderDateTime, o.[State] from [Order] as o " +
+                    "WHERE o.OrderID LIKE 'phat%') t1 " +
+                    "inner join" +
+                    "(select OrderID, STRING_AGG(CONCAT(Meal.[Name], ' x', MealQuantity), '---') as [Desc] " +
+                    "from OrderDetails, Meal " +
+                    "where OrderDetails.MealID = Meal.MealID " +
+                    "and OrderID like 'phat%'" +
+                    "group by OrderID) t2 on t1.OrderID = t2.OrderId " +
+                    "inner join " +
+                    "(select OrderID, Fullname as recipientName " +
+                    "from Recipient " +
+                    "where OrderID like 'phat%') t3 on t2.OrderID =  t3.OrderID " +
+                    "inner join " +
+                    "(select OrderID, sum(OrderDetails.MealQuantity*Meal.Price) as price from OrderDetails, meal " +
+                    "where OrderDetails.MealID = meal.MealID " +
+                    "group by OrderID) t4 " +
+                    "on t3.OrderID = t4.OrderID " +
+                    "inner join " +
+                    "(select distinct OrderID, Restaurant.[Name] as Restaurant from OrderDetails, Meal, Restaurant " +
+                    "where OrderDetails.MealID = Meal.MealID " +
+                    "and Meal.RestaurantID = Restaurant.RestaurantID) t5 " +
+                    "on t4.OrderID = t5.OrderID";
+
+            PreparedStatement st = conn.prepareStatement(sqlOrder);
+            ResultSet         rs = st.executeQuery();
+
+            while (rs.next()) {
+                Order.Builder order = Order.newBuilder();
+                order.setDate(rs.getString(1))
+                        .setDesc(rs.getString(2))
+                        .setState(rs.getString(3))
+                        .setRecipientName(rs.getString(4))
+                        .setPrice(rs.getInt(5))
+                        .setRestaurant(rs.getString(6));
+                result.add(order.build());
+            }
+
+            st.close();
+            rs.close();
+        } catch (SQLException e) {
+            logger.error(e);
+        }
+        return result;
     }
 }

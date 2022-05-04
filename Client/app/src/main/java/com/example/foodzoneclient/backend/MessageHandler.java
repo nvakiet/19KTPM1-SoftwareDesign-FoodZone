@@ -11,7 +11,9 @@ import com.example.foodzoneclient.model.Product;
 import com.example.foodzoneclient.model.Restaurant;
 import com.example.foodzoneclient.protocols.FoodInfo;
 import com.example.foodzoneclient.protocols.FoodListResponse;
+import com.example.foodzoneclient.protocols.HistoryListResponse;
 import com.example.foodzoneclient.protocols.LoginResponse;
+import com.example.foodzoneclient.protocols.Order;
 import com.example.foodzoneclient.protocols.RegisterResponse;
 import com.example.foodzoneclient.protocols.RestaurantInfo;
 import com.example.foodzoneclient.protocols.RestaurantListResponse;
@@ -22,6 +24,7 @@ import com.example.foodzoneclient.protocols.UpdatePasswordResponse;
 import com.example.foodzoneclient.protocols.UserInfo;
 import com.example.foodzoneclient.ui.ChangePasswordActivity;
 import com.example.foodzoneclient.ui.FoodMenuActivity;
+import com.example.foodzoneclient.ui.HistoryActivity;
 import com.example.foodzoneclient.ui.LoginFragment;
 import com.example.foodzoneclient.ui.MainScreenActivity;
 import com.example.foodzoneclient.ui.OrderActivity;
@@ -82,7 +85,11 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
                 break;
 
             case "submitOrder_response":
-                hangleSubmitOrderResponse(serverMessage.getSubmitOrderResponse());
+                handleSubmitOrderResponse(serverMessage.getSubmitOrderResponse());
+                break;
+
+            case "historyList_response":
+                handleHistoryListResponse(serverMessage.getHistoryListResponse());
                 break;
         }
     }
@@ -184,11 +191,35 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
         uiMsg.sendToTarget();
     }
 
-    private void hangleSubmitOrderResponse(SubmitOrderResponse response) {
+    private void handleSubmitOrderResponse(SubmitOrderResponse response) {
         Message uiMsg;
         uiMsg      = Message.obtain(OrderActivity.orderActivityHandler);
         uiMsg.what = 1;
         uiMsg.obj  = response.getResult();
+        uiMsg.sendToTarget();
+    }
+
+    private void handleHistoryListResponse(HistoryListResponse response) {
+        Message uiMsg;
+        uiMsg      = Message.obtain(MainScreenActivity.restaurantListHandler);
+        uiMsg.what = 1;
+        uiMsg.obj  = response.getResult();
+
+        List<Order> tmp;
+        if (response.getResult().equals("Success")) {
+            tmp = response.getOrderHistoryList();
+            Log.i("resID", String.valueOf(tmp.size()));
+
+            for (Order order: tmp)
+                HistoryActivity.historyList.add(new com.example.foodzoneclient.model.Order(
+                        order.getRestaurant(),
+                        order.getDate(),
+                        order.getDesc(),
+                        order.getState(),
+                        order.getRecipientName(),
+                        order.getPrice()));
+        }
+
         uiMsg.sendToTarget();
     }
 }

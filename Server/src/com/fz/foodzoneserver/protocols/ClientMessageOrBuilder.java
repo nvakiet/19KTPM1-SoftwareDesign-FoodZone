@@ -124,5 +124,20 @@ public interface ClientMessageOrBuilder extends
    */
   com.fz.foodzoneserver.protocols.FoodListRequestOrBuilder getFoodListRequestOrBuilder();
 
+  /**
+   * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+   * @return Whether the historyListRequest field is set.
+   */
+  boolean hasHistoryListRequest();
+  /**
+   * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+   * @return The historyListRequest.
+   */
+  com.fz.foodzoneserver.protocols.HistoryListRequest getHistoryListRequest();
+  /**
+   * <code>.foodzone_protocols.HistoryListRequest historyListRequest = 9;</code>
+   */
+  com.fz.foodzoneserver.protocols.HistoryListRequestOrBuilder getHistoryListRequestOrBuilder();
+
   public com.fz.foodzoneserver.protocols.ClientMessage.RequestsCase getRequestsCase();
 }

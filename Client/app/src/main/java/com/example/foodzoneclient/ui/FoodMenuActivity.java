@@ -109,7 +109,8 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
         switch (v.getId()) {
             case R.id.back2main:
                 list = new ArrayList<>();
-                Cart.clear();
+                Cart.setCurrentRestaurant(rID);
+                //Cart.clear();
                 finish();
                 break;
 
@@ -120,6 +121,12 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
                 startActivityForResult(cartIntent, REQUEST_CODE);
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        backBtt.performClick();
     }
 
     @Override

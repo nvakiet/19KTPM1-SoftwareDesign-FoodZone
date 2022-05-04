@@ -3,6 +3,7 @@ package com.example.foodzoneclient.ui;
 import static com.example.foodzoneclient.FoodZone.getContext;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -32,10 +34,9 @@ import com.cloudinary.android.MediaManager;
 import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.backend.ContainerClient;
+import com.example.foodzoneclient.model.Cart;
 import com.example.foodzoneclient.model.Restaurant;
-import com.example.foodzoneclient.protocols.LoginRequest;
 import com.example.foodzoneclient.protocols.RestaurantListRequest;
-import com.example.foodzoneclient.protocols.RestaurantListResponse;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -58,12 +59,12 @@ public class MainScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
-        toolbar=(Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbarAction();
-        mainpage_layout=findViewById(R.id.mainpage_layout);
+        mainpage_layout = findViewById(R.id.mainpage_layout);
 
         // set clickable for navigation
-        navigationView=findViewById(R.id.navigationView);
+        navigationView = findViewById(R.id.navigationView);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             /**
              *
@@ -75,17 +76,17 @@ public class MainScreenActivity extends AppCompatActivity {
              */
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id= item.getItemId();       // vd bam home --> get id nut home
-                if(id == R.id.n_profile){
-                    Intent profileIntent=new Intent(MainScreenActivity.this,ProfileActivity.class);
+                int id = item.getItemId();       // vd bam home --> get id nut home
+                if (id == R.id.n_profile) {
+                    Intent profileIntent = new Intent(MainScreenActivity.this, ProfileActivity.class);
                     startActivity(profileIntent);
                 }
-                if(id==R.id.n_home){
-                    Intent homeIntent= new Intent(MainScreenActivity.this, MainScreenActivity.class);
+                if (id == R.id.n_home) {
+                    Intent homeIntent = new Intent(MainScreenActivity.this, MainScreenActivity.class);
                     startActivity(homeIntent);
                 }
-                if(id==R.id.n_search){
-                    Intent searchIntent= new Intent(MainScreenActivity.this, SearchActivity.class);
+                if (id == R.id.n_search) {
+                    Intent searchIntent = new Intent(MainScreenActivity.this, SearchActivity.class);
                     startActivity(searchIntent);
                 }
                 return true;
@@ -93,21 +94,21 @@ public class MainScreenActivity extends AppCompatActivity {
         });
 
         // find and set click for bottom navigation view
-        bottomNavigation=findViewById(R.id.bottomNavigation);
+        bottomNavigation = findViewById(R.id.bottomNavigation);
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id=item.getItemId();
-                if(id==R.id.action_history){
-                    Intent historyIntent=new Intent(MainScreenActivity.this, HistoryActivity.class);
+                int id = item.getItemId();
+                if (id == R.id.action_history) {
+                    Intent historyIntent = new Intent(MainScreenActivity.this, HistoryActivity.class);
                     startActivity(historyIntent);
                 }
-                if(id==R.id.action_cart){
-                    Intent cartIntent=new Intent(MainScreenActivity.this, CartActivity.class);
+                if (id == R.id.action_cart) {
+                    Intent cartIntent = new Intent(MainScreenActivity.this, CartActivity.class);
                     startActivity(cartIntent);
                 }
-                if(id==R.id.action_orders){
-                    Intent orderIntent=new Intent(MainScreenActivity.this, OrderActivity.class);
+                if (id == R.id.action_orders) {
+                    Intent orderIntent = new Intent(MainScreenActivity.this, OrderActivity.class);
                     startActivity(orderIntent);
                 }
                 return true;
@@ -126,9 +127,16 @@ public class MainScreenActivity extends AppCompatActivity {
         recyclerViewAdapter.setItemCallback(new RestaurantsAdapter.OnItemClickCallback() {
             @Override
             public void invoke(View v, Restaurant res) {
-                Intent intent = new Intent(MainScreenActivity.this, FoodMenuActivity.class);
-                intent.putExtra("resID", res.getID());
-                startActivity(intent);
+                Cart.getCartInstance();
+
+                if (Cart.getCurrentRestaurant() == null || Cart.getCurrentRestaurant().equals(res.getID())) {
+                    Intent intent = new Intent(MainScreenActivity.this, FoodMenuActivity.class);
+                    intent.putExtra("resID", res.getID());
+                    startActivity(intent);
+                }
+                else {
+                    createResetCarDialog(v, res);
+                }
             }
         });
 
@@ -153,12 +161,48 @@ public class MainScreenActivity extends AppCompatActivity {
                     if (result.equals("Success")) {
                         recyclerViewAdapter.notifyDataSetChanged();
                     }
-                }
-                else if (msg.what == -100 || msg.what == -200) {
+                } else if (msg.what == -100 || msg.what == -200) {
                     FoodZone.showToast(restaurantListHandler, (String) msg.obj);
                 }
             }
         };
+    }
+
+    public void createResetCarDialog(View v, Restaurant res) {
+        AlertDialog.Builder builder
+                = new AlertDialog
+                .Builder(MainScreenActivity.this);
+
+        builder.setMessage("Your current cart will be reset?");
+        builder.setTitle("Warning!");
+        builder.setCancelable(false);
+
+        builder.setPositiveButton(
+                "Yes",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Cart.clear();
+
+                        Intent intent = new Intent(MainScreenActivity.this, FoodMenuActivity.class);
+                        intent.putExtra("resID", res.getID());
+                        startActivity(intent);
+                    }
+                });
+        builder.setNegativeButton(
+                "No",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        // Create the Alert dialog
+        AlertDialog alertDialog = builder.create();
+
+        // Show the Alert Dialog box
+        alertDialog.show();
     }
 
     private void toolbarAction() {
@@ -176,15 +220,15 @@ public class MainScreenActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.search_menu,menu);
+        getMenuInflater().inflate(R.menu.search_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_search:
-                Intent searchIntent=new Intent(MainScreenActivity.this,SearchActivity.class);
+                Intent searchIntent = new Intent(MainScreenActivity.this, SearchActivity.class);
                 startActivity(searchIntent);
         }
         return super.onOptionsItemSelected(item);
@@ -218,7 +262,7 @@ class RestaurantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @NonNull
     @Override
     public ResViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_restaurant,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_restaurant, parent, false);
         return new ResViewHolder(view);
     }
 
@@ -234,7 +278,7 @@ class RestaurantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         });
 
         Restaurant res = restaurants.get(position);
-        if(res == null){
+        if (res == null) {
             return;
         }
 
@@ -245,7 +289,7 @@ class RestaurantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        if(restaurants != null){
+        if (restaurants != null) {
             return restaurants.size();
         }
         return 0;
@@ -257,7 +301,8 @@ class RestaurantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     /**
      * Download a restaurant image from Cloudinary based on imgName then load it into an ImageView using Glide.
-     * @param imgName Filename of the restaurant image, queried from the server
+     *
+     * @param imgName   Filename of the restaurant image, queried from the server
      * @param imageView The ImageView to load the image into
      */
     private void downloadRestaurantImage(String imgName, ImageView imageView) {

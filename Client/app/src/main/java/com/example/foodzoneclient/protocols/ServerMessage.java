@@ -24,6 +24,7 @@ public  final class ServerMessage extends
     SUBMITORDERRESPONSE(6),
     RESTAURANTLISTRESPONSE(7),
     FOODLISTRESPONSE(8),
+    HISTORYLISTRESPONSE(9),
     RESPONSES_NOT_SET(0);
     private final int value;
     private ResponsesCase(int value) {
@@ -46,6 +47,7 @@ public  final class ServerMessage extends
         case 6: return SUBMITORDERRESPONSE;
         case 7: return RESTAURANTLISTRESPONSE;
         case 8: return FOODLISTRESPONSE;
+        case 9: return HISTORYLISTRESPONSE;
         case 0: return RESPONSES_NOT_SET;
         default: return null;
       }
@@ -459,6 +461,56 @@ public  final class ServerMessage extends
    */
   private void clearFoodListResponse() {
     if (responsesCase_ == 8) {
+      responsesCase_ = 0;
+      responses_ = null;
+    }
+  }
+
+  public static final int HISTORYLISTRESPONSE_FIELD_NUMBER = 9;
+  /**
+   * <code>.foodzone_protocols.HistoryListResponse historyListResponse = 9;</code>
+   */
+  @java.lang.Override
+  public boolean hasHistoryListResponse() {
+    return responsesCase_ == 9;
+  }
+  /**
+   * <code>.foodzone_protocols.HistoryListResponse historyListResponse = 9;</code>
+   */
+  @java.lang.Override
+  public com.example.foodzoneclient.protocols.HistoryListResponse getHistoryListResponse() {
+    if (responsesCase_ == 9) {
+       return (com.example.foodzoneclient.protocols.HistoryListResponse) responses_;
+    }
+    return com.example.foodzoneclient.protocols.HistoryListResponse.getDefaultInstance();
+  }
+  /**
+   * <code>.foodzone_protocols.HistoryListResponse historyListResponse = 9;</code>
+   */
+  private void setHistoryListResponse(com.example.foodzoneclient.protocols.HistoryListResponse value) {
+    value.getClass();
+  responses_ = value;
+    responsesCase_ = 9;
+  }
+  /**
+   * <code>.foodzone_protocols.HistoryListResponse historyListResponse = 9;</code>
+   */
+  private void mergeHistoryListResponse(com.example.foodzoneclient.protocols.HistoryListResponse value) {
+    value.getClass();
+  if (responsesCase_ == 9 &&
+        responses_ != com.example.foodzoneclient.protocols.HistoryListResponse.getDefaultInstance()) {
+      responses_ = com.example.foodzoneclient.protocols.HistoryListResponse.newBuilder((com.example.foodzoneclient.protocols.HistoryListResponse) responses_)
+          .mergeFrom(value).buildPartial();
+    } else {
+      responses_ = value;
+    }
+    responsesCase_ = 9;
+  }
+  /**
+   * <code>.foodzone_protocols.HistoryListResponse historyListResponse = 9;</code>
+   */
+  private void clearHistoryListResponse() {
+    if (responsesCase_ == 9) {
       responsesCase_ = 0;
       responses_ = null;
     }
@@ -956,6 +1008,54 @@ public  final class ServerMessage extends
       return this;
     }
 
+    /**
+     * <code>.foodzone_protocols.HistoryListResponse historyListResponse = 9;</code>
+     */
+    @java.lang.Override
+    public boolean hasHistoryListResponse() {
+      return instance.hasHistoryListResponse();
+    }
+    /**
+     * <code>.foodzone_protocols.HistoryListResponse historyListResponse = 9;</code>
+     */
+    @java.lang.Override
+    public com.example.foodzoneclient.protocols.HistoryListResponse getHistoryListResponse() {
+      return instance.getHistoryListResponse();
+    }
+    /**
+     * <code>.foodzone_protocols.HistoryListResponse historyListResponse = 9;</code>
+     */
+    public Builder setHistoryListResponse(com.example.foodzoneclient.protocols.HistoryListResponse value) {
+      copyOnWrite();
+      instance.setHistoryListResponse(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.HistoryListResponse historyListResponse = 9;</code>
+     */
+    public Builder setHistoryListResponse(
+        com.example.foodzoneclient.protocols.HistoryListResponse.Builder builderForValue) {
+      copyOnWrite();
+      instance.setHistoryListResponse(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.HistoryListResponse historyListResponse = 9;</code>
+     */
+    public Builder mergeHistoryListResponse(com.example.foodzoneclient.protocols.HistoryListResponse value) {
+      copyOnWrite();
+      instance.mergeHistoryListResponse(value);
+      return this;
+    }
+    /**
+     * <code>.foodzone_protocols.HistoryListResponse historyListResponse = 9;</code>
+     */
+    public Builder clearHistoryListResponse() {
+      copyOnWrite();
+      instance.clearHistoryListResponse();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:foodzone_protocols.ServerMessage)
   }
   @java.lang.Override
@@ -982,10 +1082,11 @@ public  final class ServerMessage extends
             com.example.foodzoneclient.protocols.SubmitOrderResponse.class,
             com.example.foodzoneclient.protocols.RestaurantListResponse.class,
             com.example.foodzoneclient.protocols.FoodListResponse.class,
+            com.example.foodzoneclient.protocols.HistoryListResponse.class,
           };
           java.lang.String info =
-              "\u0000\b\u0001\u0000\u0001\b\b\u0000\u0000\u0000\u0001\u0208\u0002<\u0000\u0003<" +
-              "\u0000\u0004<\u0000\u0005<\u0000\u0006<\u0000\u0007<\u0000\b<\u0000";
+              "\u0000\t\u0001\u0000\u0001\t\t\u0000\u0000\u0000\u0001\u0208\u0002<\u0000\u0003<" +
+              "\u0000\u0004<\u0000\u0005<\u0000\u0006<\u0000\u0007<\u0000\b<\u0000\t<\u0000";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through
