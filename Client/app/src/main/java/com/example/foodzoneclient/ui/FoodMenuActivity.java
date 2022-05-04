@@ -26,6 +26,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.cloudinary.android.MediaManager;
 import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.backend.ContainerClient;
@@ -100,32 +102,6 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
                 }
             }
         };
-
-//        BufferedReader reader = null;
-//        AssetManager assetManager = FoodZone.getContext().getResources().getAssets();
-//        InputStream is = null;
-//        try {
-//            is = assetManager.open("Food.txt");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        if (is != null) {
-//            reader = new BufferedReader(new InputStreamReader(is));
-//            try {
-//                String line = reader.readLine();
-//                while (line != null) {
-//                    String id = line;
-//                    String name = reader.readLine();
-//                    String Des = reader.readLine();
-//                    int price = Integer.parseInt(reader.readLine());
-//                    foodMenu.add(new Product(id, name, Des, price));
-//                    line = reader.readLine();
-//                }
-//                is.close();
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
     }
 
     public void findID() {
@@ -245,6 +221,7 @@ class FoodMenuAdapter extends BaseAdapter {
         holder.foodPrice.setText("Price: " + String.valueOf(product.getPrice()) + " VND");
         // TODO set image for item
         //holder.foodImg.setImageResource(getImageID(product.getID()));
+        downloadMealImage(product.getImage(), holder.foodImg);
 
         holder.addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -271,7 +248,28 @@ class FoodMenuAdapter extends BaseAdapter {
         return convertView;
     }
 
-    // TODO legacy code
+    /**
+     * Download a meal image from Cloudinary based on imgName then load it into an ImageView using Glide.
+     * @param imgName Filename of the meal image, queried from the server
+     * @param imageView The ImageView to load the image into
+     */
+    private void downloadMealImage(String imgName, ImageView imageView) {
+        String cloudinaryFolder = "/FoodZone/meals/";
+        if (imgName != null && !imgName.equals("NULL")) {
+            // Get the image URL from Cloudinary
+            imgName = MediaManager.get().url().generate(cloudinaryFolder + imgName);
+        }
+
+        // Download the image and set it to the image view using Glide
+        Glide.with(getContext())
+                .load(imgName)
+                .placeholder(R.drawable.placeholder_meal)
+                .fallback(R.drawable.placeholder_meal)
+                .error(R.drawable.placeholder_noimg)
+                .into(imageView);
+    }
+
+    // LEGACY CODE
     private int getImageID(String imgName) {
         Resources res = context.getResources();
         int resID = res.getIdentifier(imgName, "drawable", context.getPackageName());

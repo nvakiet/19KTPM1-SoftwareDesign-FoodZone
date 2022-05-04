@@ -1,5 +1,7 @@
 package com.example.foodzoneclient.ui;
 
+import static com.example.foodzoneclient.FoodZone.getContext;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -18,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.cloudinary.android.MediaManager;
 import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.model.Cart;
 import com.example.foodzoneclient.model.Product;
@@ -154,8 +158,8 @@ class CartListAdapter extends BaseAdapter {
         holder.foodDes.setText(product.getDes());
         holder.foodPrice.setText("Price: "+String.valueOf(product.getPrice() * product.getAmount())+" VND");
         holder.foodAmount.setText("Amount: "+String.valueOf(product.getAmount()));
-        // TODO set image for item
-        //holder.foodImg.setImageResource(getImageID(product.getID()));
+        // Set image for item
+        downloadMealImage(product.getImage(), holder.foodImg);
 
         holder.remove.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,6 +175,26 @@ class CartListAdapter extends BaseAdapter {
         return convertView;
     }
 
+    /**
+     * Download a meal image from Cloudinary based on imgName then load it into an ImageView using Glide.
+     * @param imgName Filename of the meal image, queried from the server
+     * @param imageView The ImageView to load the image into
+     */
+    private void downloadMealImage(String imgName, ImageView imageView) {
+        String cloudinaryFolder = "/FoodZone/meals/";
+        if (imgName != null && !imgName.equals("NULL")) {
+            // Get the image URL from Cloudinary
+            imgName = MediaManager.get().url().generate(cloudinaryFolder + imgName);
+        }
+
+        // Download the image and set it to the image view using Glide
+        Glide.with(getContext())
+                .load(imgName)
+                .placeholder(R.drawable.placeholder_meal)
+                .fallback(R.drawable.placeholder_meal)
+                .error(R.drawable.placeholder_noimg)
+                .into(imageView);
+    }
 
     private int getImageID(String imgName){
         Resources res = context.getResources();
