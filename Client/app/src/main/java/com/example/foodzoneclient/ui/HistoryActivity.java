@@ -64,8 +64,9 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         ContainerClient.getInstance().currentUIHandler = historyListHandler;
-        HistoryListRequest request = HistoryListRequest.newBuilder().setUsername(FoodZone.getContext().getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Username", "")).build();
-        ContainerClient.getInstance().sendHistoryListRequest(request);
+//        historyList.clear();
+//        HistoryListRequest request = HistoryListRequest.newBuilder().setUsername(FoodZone.getContext().getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Username", "")).build();
+//        ContainerClient.getInstance().sendHistoryListRequest(request);
     }
 
     @Override
