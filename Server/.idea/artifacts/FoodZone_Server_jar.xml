@@ -16,6 +16,10 @@
         <element id="file-copy" path="$PROJECT_DIR$/lib/protobuf-java-util-3.19.4.jar" />
         <element id="file-copy" path="$PROJECT_DIR$/lib/commons-logging-1.2.jar" />
         <element id="file-copy" path="$PROJECT_DIR$/lib/commons-pool2-2.10.0.jar" />
+        <element id="file-copy" path="$PROJECT_DIR$/lib/sqljdbc_10.2/sqljdbc_xa_x86.dll" />
+        <element id="file-copy" path="$PROJECT_DIR$/lib/sqljdbc_10.2/sqljdbc_xa.dll" />
+        <element id="file-copy" path="$PROJECT_DIR$/lib/sqljdbc_10.2/mssql-jdbc_auth-10.2.0.x64.dll" />
+        <element id="file-copy" path="$PROJECT_DIR$/lib/sqljdbc_10.2/mssql-jdbc_auth-10.2.0.x86.dll" />
       </element>
     </root>
   </artifact>
