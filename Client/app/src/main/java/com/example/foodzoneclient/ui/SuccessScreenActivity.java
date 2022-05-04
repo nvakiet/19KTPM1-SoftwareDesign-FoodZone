@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.foodzoneclient.R;
 
+import java.util.ArrayList;
+
 public class SuccessScreenActivity extends AppCompatActivity {
     Button   homeBtn, historyBtn;
 
@@ -18,6 +20,8 @@ public class SuccessScreenActivity extends AppCompatActivity {
         historyBtn      =  findViewById(R.id.historyBtn);
 
         homeBtn.setOnClickListener(v -> {
+            MainScreenActivity.list = new ArrayList<>();
+
             startActivity(new Intent(SuccessScreenActivity.this, MainScreenActivity.class));
             finish();
         });

@@ -98,6 +98,8 @@ public class OrderActivity extends AppCompatActivity {
                 super.handleMessage(msg);
                 if (msg.what == 1) {
                     if (msg.obj.equals("Success")) {
+                        Cart.clear();
+
                         startActivity(new Intent(OrderActivity.this, SuccessScreenActivity.class));
                         finish();
                     } else {
