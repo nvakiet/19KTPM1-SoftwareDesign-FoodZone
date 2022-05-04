@@ -171,7 +171,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                             ContainerClient.getInstance().disconnect();
                             prefEdit.clear().apply();
 
-                            MainScreenActivity.list = new ArrayList<>();
                             if (Cart.getCartInstance() != null) {
                                 Cart.clear();
                             }

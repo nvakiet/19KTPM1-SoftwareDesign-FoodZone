@@ -53,7 +53,7 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
     public static Handler foodListHandler;
 
     ArrayList<Boolean> tempArr;
-    public static ArrayList<Product> list = new ArrayList<>();
+    public static ArrayList<Product> list;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +63,7 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
         backBtt.setOnClickListener(this);
         cartButton.setOnClickListener(this);
 
+        list = new ArrayList<>();
         Intent intent = getIntent();
         rID = intent.getStringExtra("resID");
         Cart.getCartInstance();

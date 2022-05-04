@@ -53,7 +53,7 @@ public class MainScreenActivity extends AppCompatActivity {
     Toolbar toolbar;
 
     public static Handler restaurantListHandler;
-    public static ArrayList<Restaurant> list = new ArrayList<>();
+    public static ArrayList<Restaurant> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +114,9 @@ public class MainScreenActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        // inititalize list
+        list = new ArrayList<>();
 
         // recycler view
         restaurantList = findViewById(R.id.rv_restaurant);

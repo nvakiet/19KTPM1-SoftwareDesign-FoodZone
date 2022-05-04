@@ -20,8 +20,6 @@ public class SuccessScreenActivity extends AppCompatActivity {
         historyBtn      =  findViewById(R.id.historyBtn);
 
         homeBtn.setOnClickListener(v -> {
-            MainScreenActivity.list = new ArrayList<>();
-
             startActivity(new Intent(SuccessScreenActivity.this, MainScreenActivity.class));
             finish();
         });
