@@ -35,7 +35,7 @@ CREATE TABLE Meal (
 	[Name] varchar(30) NOT NULL,
 	[Description] varchar(150),
 	Price money CHECK (Price > 0),
-	[Image] varchar(10),
+	[Image] varchar(200),
 	RestaurantID varchar(10)
 )
 GO
@@ -119,23 +119,23 @@ INSERT INTO Cart(Username) VALUES
 ('khue')
 GO
 
-INSERT INTO Restaurant(RestaurantID, [Name], [Address]) VALUES
-('001','Pickles'	,'1 Nguyen Dinh Chieu'),
-('002','Qua Mon'	,'3 Nguyen Ngoc Thach'),
-('003','Rem'		,'8 Nguyen Thi Minh Khai'),
-('004','Qua Mon 2'	,'3 30/4'),
-('005','MonkaS'		,'7 Tran Nhan Tong')
+INSERT INTO Restaurant(RestaurantID, [Name], [Address], [Image]) VALUES
+('001','Pickles'	,'1 Nguyen Dinh Chieu', 'tcf1_bky9av.jpg'),
+('002','Qua Mon'	,'3 Nguyen Ngoc Thach', 'tcf2_ufnsvs.jpg'),
+('003','Rem'		,'8 Nguyen Thi Minh Khai', 'tcf3_mu7rty.jpg'),
+('004','Qua Mon 2'	,'3 30/4', 'tcf4_dvbttz.jpg'),
+('005','MonkaS'		,'7 Tran Nhan Tong', 'tcf5_qyjqsc.jpg')
 GO
 
 INSERT INTO Meal
 (MealID, [Name], [Description], Price, [Image], RestaurantID) VALUES
-('f01' ,'Mon 1','co 3 cuc pho mai',300000,null,'001'),
-('f02' ,'Mon 2','khien ban nho nha',12345,null,'001'),
-('f03' ,'Mon 3','hmm',500000,null,'002'),
-('f04' ,'Mon 4','an di roi biet',60000,null,'002'),
-('f05' ,'Mon 5','Lau an cang nhieu nguoi, gia cang mac!',200000,null,'003'),
-('f06' ,'Mon 6','Cang an cang buon',40000,null,'003'),
-('f07' ,'Mon 7','Tra sua vi ca chua, thu ngay hom qua!',152500,null,'004'),
-('f08' ,'Mon 8','69 nghin co ngay nuoc lau buffet cho 1 nguoi an! (Chua bao gom thit va rau)',69000,null,'005'),
-('f09' ,'Mon 9','Thit va rau',420000,null,'005')
+('f01' ,'Capuchino','With beautiful creamy milk drawings',300000,'f01_yqu0po.jpg','001'),
+('f02' ,'Smoothed Coffee & Milk','50% Milk and 50% Coffee',12345,'f02_yfgwkp.jpg','001'),
+('f03' ,'Expresso','Traditional black coffee with nice aroma',500000,'f03_quesov.jpg','002'),
+('f04' ,'Sour Cream Coffee','Milked coffee with a heap of ice cream',60000,'f04_bdeajz.jpg','002'),
+('f05' ,'Ca phe sua da','The famous Vietnamese coffee. Makes you feel nostalgic!',200000,'f05_lrjbzt.jpg','003'),
+('f06' ,'Cheese Sandwich','A nice sandwich for breakfast',40000,'f06_vj6iyk.jpg','003'),
+('f07' ,'Pork Floss Sponge Cake','Soft and savoury.',152500,'f07_ibqdy9.webp','004'),
+('f08' ,'Lemonade Soft Cake','Sweet and sour. A great appetizer.',69000,'f08_xwdrby.webp','005'),
+('f09' ,'Pate Stick Bread','4 sticks of bread filled to the brim with pate.',420000,'f09_v5nyhd.webp','005')
 GO
