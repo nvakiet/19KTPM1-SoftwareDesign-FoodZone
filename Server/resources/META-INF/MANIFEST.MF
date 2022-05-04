@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Main-Class: com.fz.foodzoneserver.server.Main
+Class-Path: lib/log4j-api-2.17.2.jar lib/log4j-core-2.17.2.jar lib/netty-all-5.0.0.A
+ lpha2.jar lib/protobuf-java-3.19.4.jar lib/mssql-jdbc-10.2.0.jre17.jar lib/protobuf
+ -java-util-3.19.4.jar lib/protobuf-java-3.19.4.jar lib/gson-2.8.6.jar lib/commons-d
+ bcp2-2.9.0.jar lib/commons-pool2-2.10.0.jar lib/commons-logging-1.2.jar
+

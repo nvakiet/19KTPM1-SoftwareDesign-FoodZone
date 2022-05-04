@@ -7,16 +7,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
 
 public class MessageHandler extends ChannelInboundHandlerAdapter {
     private        String username       = null;
     private static Logger logger         = LogManager.getLogger(MessageHandler.class.getName());
-    private static SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
+    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
