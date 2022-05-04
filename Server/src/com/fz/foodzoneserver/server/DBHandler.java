@@ -302,9 +302,10 @@ public class DBHandler {
             for (int i = 0; i < mealIDList.size(); ++i) {
                 st.setString(2, mealIDList.get(i));
                 st.setInt(3, mealQuantityList.get(i));
-                st.executeUpdate();
+                st.addBatch();
             }
 
+            st.executeBatch();
             st.close();
 
             return "Success";
