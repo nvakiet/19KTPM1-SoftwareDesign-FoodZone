@@ -23,9 +23,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.cloudinary.android.MediaManager;
 import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.backend.ContainerClient;
@@ -110,20 +113,6 @@ public class MainScreenActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-//        ArrayList<Restaurant> restaurants = new ArrayList();
-//        Restaurant test1 = new Restaurant("0001", R.drawable.tcf1, "Highlands Cao Lỗ", "34 Cao Lỗ");
-//        Restaurant test2 = new Restaurant("0002", R.drawable.tcf2, "Phúc Long Topaz", "195 Hoàng Diệu");
-//        Restaurant test3 = new Restaurant("0003", R.drawable.tcf3, "KFC Nguyễn Chí Thanh", "339 Nguyễn Chí Thanh");
-//        Restaurant test4 = new Restaurant("0004", R.drawable.tcf4, "Lotteria NowZone", "272 Nguyễn Văn Cừ");
-//        Restaurant test5 = new Restaurant("0005", R.drawable.tcf1, "PizzaHut Nguyễn Trãi", "144 Nguyễn Trãi");
-//        Restaurant test6 = new Restaurant("0006", R.drawable.tcf2, "The Coffee House Cao Thắng", "275 Cao Thắng");
-//        restaurants.add(test1);
-//        restaurants.add(test2);
-//        restaurants.add(test3);
-//        restaurants.add(test4);
-//        restaurants.add(test5);
-//        restaurants.add(test6);
 
         // recycler view
         restaurantList = findViewById(R.id.rv_restaurant);
@@ -249,8 +238,8 @@ class RestaurantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             return;
         }
 
-        // TODO set image for item
-        //holder.img.setImageResource(res.getImage());
+        // Set image for item
+        downloadRestaurantImage(res.getImage(), holder.img);
         holder.name.setText(res.getName());
     }
 
@@ -264,5 +253,26 @@ class RestaurantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public void setItemCallback(OnItemClickCallback callback) {
         this.callback = callback;
+    }
+
+    /**
+     * Download a restaurant image from Cloudinary based on imgName then load it into an ImageView using Glide.
+     * @param imgName Filename of the restaurant image, queried from the server
+     * @param imageView The ImageView to load the image into
+     */
+    private void downloadRestaurantImage(String imgName, ImageView imageView) {
+        String cloudinaryFolder = "/FoodZone/restaurants/";
+        if (imgName != null && !imgName.equals("NULL")) {
+            // Get the image URL from Cloudinary
+            imgName = MediaManager.get().url().generate(cloudinaryFolder + imgName);
+        }
+
+        // Download the image and set it to the image view using Glide
+        Glide.with(getContext())
+                .load(imgName)
+                .placeholder(R.drawable.placeholder_restaurant)
+                .fallback(R.drawable.placeholder_restaurant)
+                .error(R.drawable.placeholder_noimg)
+                .into(imageView);
     }
 }
