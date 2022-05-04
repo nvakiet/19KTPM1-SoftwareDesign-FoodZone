@@ -110,26 +110,26 @@ public interface SubmitOrderRequestOrBuilder extends
       getRecipientAddressBytes();
 
   /**
-   * <code>string repicientPhone = 8;</code>
-   * @return The repicientPhone.
+   * <code>string recipientPhone = 8;</code>
+   * @return The recipientPhone.
    */
-  java.lang.String getRepicientPhone();
+  java.lang.String getRecipientPhone();
   /**
-   * <code>string repicientPhone = 8;</code>
-   * @return The bytes for repicientPhone.
+   * <code>string recipientPhone = 8;</code>
+   * @return The bytes for recipientPhone.
    */
   com.google.protobuf.ByteString
-      getRepicientPhoneBytes();
+      getRecipientPhoneBytes();
 
   /**
-   * <code>string repicientEmail = 9;</code>
-   * @return The repicientEmail.
+   * <code>string recipientEmail = 9;</code>
+   * @return The recipientEmail.
    */
-  java.lang.String getRepicientEmail();
+  java.lang.String getRecipientEmail();
   /**
-   * <code>string repicientEmail = 9;</code>
-   * @return The bytes for repicientEmail.
+   * <code>string recipientEmail = 9;</code>
+   * @return The bytes for recipientEmail.
    */
   com.google.protobuf.ByteString
-      getRepicientEmailBytes();
+      getRecipientEmailBytes();
 }

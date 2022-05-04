@@ -11,8 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MessageHandler extends ChannelInboundHandlerAdapter {
-    private        String username = null;
-    private static Logger logger   = LogManager.getLogger(MessageHandler.class.getName());
+    private        String username       = null;
+    private static Logger logger         = LogManager.getLogger(MessageHandler.class.getName());
+    private static long   OrderIncrement = 0;
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -53,7 +54,7 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
                 serverMessage.setMsg("updateInfo_response")
                         .setUpdateInfoResponse(handleUpdateInfoResponse(clientMessage.getUpdateInfoRequest()));
                 break;
-                
+
             // Client requests update password
             case "updatePassword":
                 serverMessage.setMsg("updatePassword_response")
@@ -68,6 +69,11 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
             case "foodList":
                 serverMessage.setMsg("foodList_response")
                         .setFoodListResponse(handleFoodListResponse(clientMessage.getFoodListRequest()));
+                break;
+
+            case "submitOrder":
+                serverMessage.setMsg("submitOrder_response")
+                        .setSubmitOrderResponse(handleSubmitOrderResponse(clientMessage.getSubmitOrder()));
                 break;
         }
         ctx.writeAndFlush(serverMessage.build());
@@ -95,6 +101,7 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
         } catch (SQLException e) {
             logger.error("Can't get database connection from connection pool", e);
         }
+
         return response.build();
     }
 
@@ -111,6 +118,7 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
         } catch (SQLException e) {
             logger.error("Can't get database connection from connection pool", e);
         }
+
         return response.build();
     }
 
@@ -127,6 +135,7 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
         } catch (SQLException e) {
             logger.error("Can't get database connection from connection pool", e);
         }
+
         return response.build();
     }
 
@@ -143,6 +152,7 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
         } catch (SQLException e) {
             logger.error("Can't get database connection from connection pool", e);
         }
+
         return response.build();
     }
 
@@ -166,6 +176,7 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
         } catch (SQLException e) {
             logger.error("Can't get database connection from connection pool", e);
         }
+
         return response.build();
     }
 
@@ -189,6 +200,53 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
         } catch (SQLException e) {
             logger.error("Can't get database connection from connection pool", e);
         }
+        return response.build();
+    }
+
+    private SubmitOrderResponse handleSubmitOrderResponse(SubmitOrderRequest r) {
+        SubmitOrderResponse.Builder response = SubmitOrderResponse.newBuilder();
+        try {
+            DBHandler dbHandler = new DBHandler();
+            String    OrderID   = r.getUsername() + "-" + OrderIncrement++;
+
+            String resultInsertRecipient = dbHandler.insertRecipient(OrderID,
+                    r.getRecipientFullName(),
+                    r.getRecipientID(),
+                    r.getRecipientAddress(),
+                    r.getRecipientPhone(),
+                    r.getRecipientEmail());
+
+            String resultInsertOrder = dbHandler.insertOrder(OrderID,
+                    r.getDatetime(),
+                    "PENDING");
+
+            String resultInsertOrderDetails = dbHandler.insertOrderDetails(OrderID,
+                    r.getMealIDList(),
+                    r.getMealQuantityList());
+
+            String finalResult = "";
+
+            if (!resultInsertRecipient.equals("Success"))
+                finalResult += "INSERT RECIPIENT - " + resultInsertRecipient + ". ";
+
+            if (!resultInsertOrder.equals("Success"))
+                finalResult += "INSERT ORDER - " + resultInsertOrder + ". ";
+
+            if (!resultInsertOrderDetails.equals("Success"))
+                finalResult += "INSERT ORDER DETAILS - " + resultInsertOrderDetails + ".";
+
+            // SENTINEL
+            if (!finalResult.equals(""))
+                logger.info("Order \"" + OrderID + "\" has been recorded, but \"" + finalResult + "\" caught.");
+            else
+                finalResult = "Success";
+
+            response.setResult(finalResult);
+            dbHandler.releaseConn();
+        } catch (SQLException e) {
+            logger.error("Can't get database connection from connection pool", e);
+        }
+
         return response.build();
     }
 }

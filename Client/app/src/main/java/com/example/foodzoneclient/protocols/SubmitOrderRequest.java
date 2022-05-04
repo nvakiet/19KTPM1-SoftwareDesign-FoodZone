@@ -19,8 +19,8 @@ public  final class SubmitOrderRequest extends
     recipientFullName_ = "";
     recipientID_ = "";
     recipientAddress_ = "";
-    repicientPhone_ = "";
-    repicientEmail_ = "";
+    recipientPhone_ = "";
+    recipientEmail_ = "";
   }
   public static final int USERNAME_FIELD_NUMBER = 1;
   private java.lang.String username_;
@@ -421,97 +421,97 @@ public  final class SubmitOrderRequest extends
     
   }
 
-  public static final int REPICIENTPHONE_FIELD_NUMBER = 8;
-  private java.lang.String repicientPhone_;
+  public static final int RECIPIENTPHONE_FIELD_NUMBER = 8;
+  private java.lang.String recipientPhone_;
   /**
-   * <code>string repicientPhone = 8;</code>
-   * @return The repicientPhone.
+   * <code>string recipientPhone = 8;</code>
+   * @return The recipientPhone.
    */
   @java.lang.Override
-  public java.lang.String getRepicientPhone() {
-    return repicientPhone_;
+  public java.lang.String getRecipientPhone() {
+    return recipientPhone_;
   }
   /**
-   * <code>string repicientPhone = 8;</code>
-   * @return The bytes for repicientPhone.
+   * <code>string recipientPhone = 8;</code>
+   * @return The bytes for recipientPhone.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getRepicientPhoneBytes() {
-    return com.google.protobuf.ByteString.copyFromUtf8(repicientPhone_);
+      getRecipientPhoneBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(recipientPhone_);
   }
   /**
-   * <code>string repicientPhone = 8;</code>
-   * @param value The repicientPhone to set.
+   * <code>string recipientPhone = 8;</code>
+   * @param value The recipientPhone to set.
    */
-  private void setRepicientPhone(
+  private void setRecipientPhone(
       java.lang.String value) {
     java.lang.Class<?> valueClass = value.getClass();
   
-    repicientPhone_ = value;
+    recipientPhone_ = value;
   }
   /**
-   * <code>string repicientPhone = 8;</code>
+   * <code>string recipientPhone = 8;</code>
    */
-  private void clearRepicientPhone() {
+  private void clearRecipientPhone() {
     
-    repicientPhone_ = getDefaultInstance().getRepicientPhone();
+    recipientPhone_ = getDefaultInstance().getRecipientPhone();
   }
   /**
-   * <code>string repicientPhone = 8;</code>
-   * @param value The bytes for repicientPhone to set.
+   * <code>string recipientPhone = 8;</code>
+   * @param value The bytes for recipientPhone to set.
    */
-  private void setRepicientPhoneBytes(
+  private void setRecipientPhoneBytes(
       com.google.protobuf.ByteString value) {
     checkByteStringIsUtf8(value);
-    repicientPhone_ = value.toStringUtf8();
+    recipientPhone_ = value.toStringUtf8();
     
   }
 
-  public static final int REPICIENTEMAIL_FIELD_NUMBER = 9;
-  private java.lang.String repicientEmail_;
+  public static final int RECIPIENTEMAIL_FIELD_NUMBER = 9;
+  private java.lang.String recipientEmail_;
   /**
-   * <code>string repicientEmail = 9;</code>
-   * @return The repicientEmail.
+   * <code>string recipientEmail = 9;</code>
+   * @return The recipientEmail.
    */
   @java.lang.Override
-  public java.lang.String getRepicientEmail() {
-    return repicientEmail_;
+  public java.lang.String getRecipientEmail() {
+    return recipientEmail_;
   }
   /**
-   * <code>string repicientEmail = 9;</code>
-   * @return The bytes for repicientEmail.
+   * <code>string recipientEmail = 9;</code>
+   * @return The bytes for recipientEmail.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getRepicientEmailBytes() {
-    return com.google.protobuf.ByteString.copyFromUtf8(repicientEmail_);
+      getRecipientEmailBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(recipientEmail_);
   }
   /**
-   * <code>string repicientEmail = 9;</code>
-   * @param value The repicientEmail to set.
+   * <code>string recipientEmail = 9;</code>
+   * @param value The recipientEmail to set.
    */
-  private void setRepicientEmail(
+  private void setRecipientEmail(
       java.lang.String value) {
     java.lang.Class<?> valueClass = value.getClass();
   
-    repicientEmail_ = value;
+    recipientEmail_ = value;
   }
   /**
-   * <code>string repicientEmail = 9;</code>
+   * <code>string recipientEmail = 9;</code>
    */
-  private void clearRepicientEmail() {
+  private void clearRecipientEmail() {
     
-    repicientEmail_ = getDefaultInstance().getRepicientEmail();
+    recipientEmail_ = getDefaultInstance().getRecipientEmail();
   }
   /**
-   * <code>string repicientEmail = 9;</code>
-   * @param value The bytes for repicientEmail to set.
+   * <code>string recipientEmail = 9;</code>
+   * @param value The bytes for recipientEmail to set.
    */
-  private void setRepicientEmailBytes(
+  private void setRecipientEmailBytes(
       com.google.protobuf.ByteString value) {
     checkByteStringIsUtf8(value);
-    repicientEmail_ = value.toStringUtf8();
+    recipientEmail_ = value.toStringUtf8();
     
   }
 
@@ -1017,100 +1017,100 @@ public  final class SubmitOrderRequest extends
     }
 
     /**
-     * <code>string repicientPhone = 8;</code>
-     * @return The repicientPhone.
+     * <code>string recipientPhone = 8;</code>
+     * @return The recipientPhone.
      */
     @java.lang.Override
-    public java.lang.String getRepicientPhone() {
-      return instance.getRepicientPhone();
+    public java.lang.String getRecipientPhone() {
+      return instance.getRecipientPhone();
     }
     /**
-     * <code>string repicientPhone = 8;</code>
-     * @return The bytes for repicientPhone.
+     * <code>string recipientPhone = 8;</code>
+     * @return The bytes for recipientPhone.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getRepicientPhoneBytes() {
-      return instance.getRepicientPhoneBytes();
+        getRecipientPhoneBytes() {
+      return instance.getRecipientPhoneBytes();
     }
     /**
-     * <code>string repicientPhone = 8;</code>
-     * @param value The repicientPhone to set.
+     * <code>string recipientPhone = 8;</code>
+     * @param value The recipientPhone to set.
      * @return This builder for chaining.
      */
-    public Builder setRepicientPhone(
+    public Builder setRecipientPhone(
         java.lang.String value) {
       copyOnWrite();
-      instance.setRepicientPhone(value);
+      instance.setRecipientPhone(value);
       return this;
     }
     /**
-     * <code>string repicientPhone = 8;</code>
+     * <code>string recipientPhone = 8;</code>
      * @return This builder for chaining.
      */
-    public Builder clearRepicientPhone() {
+    public Builder clearRecipientPhone() {
       copyOnWrite();
-      instance.clearRepicientPhone();
+      instance.clearRecipientPhone();
       return this;
     }
     /**
-     * <code>string repicientPhone = 8;</code>
-     * @param value The bytes for repicientPhone to set.
+     * <code>string recipientPhone = 8;</code>
+     * @param value The bytes for recipientPhone to set.
      * @return This builder for chaining.
      */
-    public Builder setRepicientPhoneBytes(
+    public Builder setRecipientPhoneBytes(
         com.google.protobuf.ByteString value) {
       copyOnWrite();
-      instance.setRepicientPhoneBytes(value);
+      instance.setRecipientPhoneBytes(value);
       return this;
     }
 
     /**
-     * <code>string repicientEmail = 9;</code>
-     * @return The repicientEmail.
+     * <code>string recipientEmail = 9;</code>
+     * @return The recipientEmail.
      */
     @java.lang.Override
-    public java.lang.String getRepicientEmail() {
-      return instance.getRepicientEmail();
+    public java.lang.String getRecipientEmail() {
+      return instance.getRecipientEmail();
     }
     /**
-     * <code>string repicientEmail = 9;</code>
-     * @return The bytes for repicientEmail.
+     * <code>string recipientEmail = 9;</code>
+     * @return The bytes for recipientEmail.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getRepicientEmailBytes() {
-      return instance.getRepicientEmailBytes();
+        getRecipientEmailBytes() {
+      return instance.getRecipientEmailBytes();
     }
     /**
-     * <code>string repicientEmail = 9;</code>
-     * @param value The repicientEmail to set.
+     * <code>string recipientEmail = 9;</code>
+     * @param value The recipientEmail to set.
      * @return This builder for chaining.
      */
-    public Builder setRepicientEmail(
+    public Builder setRecipientEmail(
         java.lang.String value) {
       copyOnWrite();
-      instance.setRepicientEmail(value);
+      instance.setRecipientEmail(value);
       return this;
     }
     /**
-     * <code>string repicientEmail = 9;</code>
+     * <code>string recipientEmail = 9;</code>
      * @return This builder for chaining.
      */
-    public Builder clearRepicientEmail() {
+    public Builder clearRecipientEmail() {
       copyOnWrite();
-      instance.clearRepicientEmail();
+      instance.clearRecipientEmail();
       return this;
     }
     /**
-     * <code>string repicientEmail = 9;</code>
-     * @param value The bytes for repicientEmail to set.
+     * <code>string recipientEmail = 9;</code>
+     * @param value The bytes for recipientEmail to set.
      * @return This builder for chaining.
      */
-    public Builder setRepicientEmailBytes(
+    public Builder setRecipientEmailBytes(
         com.google.protobuf.ByteString value) {
       copyOnWrite();
-      instance.setRepicientEmailBytes(value);
+      instance.setRecipientEmailBytes(value);
       return this;
     }
 
@@ -1137,8 +1137,8 @@ public  final class SubmitOrderRequest extends
             "recipientFullName_",
             "recipientID_",
             "recipientAddress_",
-            "repicientPhone_",
-            "repicientEmail_",
+            "recipientPhone_",
+            "recipientEmail_",
           };
           java.lang.String info =
               "\u0000\t\u0000\u0000\u0001\t\t\u0000\u0002\u0000\u0001\u0208\u0002\u0208\u0003\u021a" +

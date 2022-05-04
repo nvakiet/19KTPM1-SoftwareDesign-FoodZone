@@ -23,8 +23,8 @@ private static final long serialVersionUID = 0L;
     recipientFullName_ = "";
     recipientID_ = "";
     recipientAddress_ = "";
-    repicientPhone_ = "";
-    repicientEmail_ = "";
+    recipientPhone_ = "";
+    recipientEmail_ = "";
   }
 
   @java.lang.Override
@@ -121,13 +121,13 @@ private static final long serialVersionUID = 0L;
           case 66: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            repicientPhone_ = s;
+            recipientPhone_ = s;
             break;
           }
           case 74: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            repicientEmail_ = s;
+            recipientEmail_ = s;
             break;
           }
           default: {
@@ -421,76 +421,76 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int REPICIENTPHONE_FIELD_NUMBER = 8;
-  private volatile java.lang.Object repicientPhone_;
+  public static final int RECIPIENTPHONE_FIELD_NUMBER = 8;
+  private volatile java.lang.Object recipientPhone_;
   /**
-   * <code>string repicientPhone = 8;</code>
-   * @return The repicientPhone.
+   * <code>string recipientPhone = 8;</code>
+   * @return The recipientPhone.
    */
   @java.lang.Override
-  public java.lang.String getRepicientPhone() {
-    java.lang.Object ref = repicientPhone_;
+  public java.lang.String getRecipientPhone() {
+    java.lang.Object ref = recipientPhone_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      repicientPhone_ = s;
+      recipientPhone_ = s;
       return s;
     }
   }
   /**
-   * <code>string repicientPhone = 8;</code>
-   * @return The bytes for repicientPhone.
+   * <code>string recipientPhone = 8;</code>
+   * @return The bytes for recipientPhone.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getRepicientPhoneBytes() {
-    java.lang.Object ref = repicientPhone_;
+      getRecipientPhoneBytes() {
+    java.lang.Object ref = recipientPhone_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      repicientPhone_ = b;
+      recipientPhone_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int REPICIENTEMAIL_FIELD_NUMBER = 9;
-  private volatile java.lang.Object repicientEmail_;
+  public static final int RECIPIENTEMAIL_FIELD_NUMBER = 9;
+  private volatile java.lang.Object recipientEmail_;
   /**
-   * <code>string repicientEmail = 9;</code>
-   * @return The repicientEmail.
+   * <code>string recipientEmail = 9;</code>
+   * @return The recipientEmail.
    */
   @java.lang.Override
-  public java.lang.String getRepicientEmail() {
-    java.lang.Object ref = repicientEmail_;
+  public java.lang.String getRecipientEmail() {
+    java.lang.Object ref = recipientEmail_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      repicientEmail_ = s;
+      recipientEmail_ = s;
       return s;
     }
   }
   /**
-   * <code>string repicientEmail = 9;</code>
-   * @return The bytes for repicientEmail.
+   * <code>string recipientEmail = 9;</code>
+   * @return The bytes for recipientEmail.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getRepicientEmailBytes() {
-    java.lang.Object ref = repicientEmail_;
+      getRecipientEmailBytes() {
+    java.lang.Object ref = recipientEmail_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      repicientEmail_ = b;
+      recipientEmail_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -537,11 +537,11 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(recipientAddress_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 7, recipientAddress_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(repicientPhone_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, repicientPhone_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(recipientPhone_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, recipientPhone_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(repicientEmail_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, repicientEmail_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(recipientEmail_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, recipientEmail_);
     }
     unknownFields.writeTo(output);
   }
@@ -589,11 +589,11 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(recipientAddress_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, recipientAddress_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(repicientPhone_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, repicientPhone_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(recipientPhone_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, recipientPhone_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(repicientEmail_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, repicientEmail_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(recipientEmail_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, recipientEmail_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -624,10 +624,10 @@ private static final long serialVersionUID = 0L;
         .equals(other.getRecipientID())) return false;
     if (!getRecipientAddress()
         .equals(other.getRecipientAddress())) return false;
-    if (!getRepicientPhone()
-        .equals(other.getRepicientPhone())) return false;
-    if (!getRepicientEmail()
-        .equals(other.getRepicientEmail())) return false;
+    if (!getRecipientPhone()
+        .equals(other.getRecipientPhone())) return false;
+    if (!getRecipientEmail()
+        .equals(other.getRecipientEmail())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -657,10 +657,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getRecipientID().hashCode();
     hash = (37 * hash) + RECIPIENTADDRESS_FIELD_NUMBER;
     hash = (53 * hash) + getRecipientAddress().hashCode();
-    hash = (37 * hash) + REPICIENTPHONE_FIELD_NUMBER;
-    hash = (53 * hash) + getRepicientPhone().hashCode();
-    hash = (37 * hash) + REPICIENTEMAIL_FIELD_NUMBER;
-    hash = (53 * hash) + getRepicientEmail().hashCode();
+    hash = (37 * hash) + RECIPIENTPHONE_FIELD_NUMBER;
+    hash = (53 * hash) + getRecipientPhone().hashCode();
+    hash = (37 * hash) + RECIPIENTEMAIL_FIELD_NUMBER;
+    hash = (53 * hash) + getRecipientEmail().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -808,9 +808,9 @@ private static final long serialVersionUID = 0L;
 
       recipientAddress_ = "";
 
-      repicientPhone_ = "";
+      recipientPhone_ = "";
 
-      repicientEmail_ = "";
+      recipientEmail_ = "";
 
       return this;
     }
@@ -854,8 +854,8 @@ private static final long serialVersionUID = 0L;
       result.recipientFullName_ = recipientFullName_;
       result.recipientID_ = recipientID_;
       result.recipientAddress_ = recipientAddress_;
-      result.repicientPhone_ = repicientPhone_;
-      result.repicientEmail_ = repicientEmail_;
+      result.recipientPhone_ = recipientPhone_;
+      result.recipientEmail_ = recipientEmail_;
       onBuilt();
       return result;
     }
@@ -944,12 +944,12 @@ private static final long serialVersionUID = 0L;
         recipientAddress_ = other.recipientAddress_;
         onChanged();
       }
-      if (!other.getRepicientPhone().isEmpty()) {
-        repicientPhone_ = other.repicientPhone_;
+      if (!other.getRecipientPhone().isEmpty()) {
+        recipientPhone_ = other.recipientPhone_;
         onChanged();
       }
-      if (!other.getRepicientEmail().isEmpty()) {
-        repicientEmail_ = other.repicientEmail_;
+      if (!other.getRecipientEmail().isEmpty()) {
+        recipientEmail_ = other.recipientEmail_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -1551,154 +1551,154 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object repicientPhone_ = "";
+    private java.lang.Object recipientPhone_ = "";
     /**
-     * <code>string repicientPhone = 8;</code>
-     * @return The repicientPhone.
+     * <code>string recipientPhone = 8;</code>
+     * @return The recipientPhone.
      */
-    public java.lang.String getRepicientPhone() {
-      java.lang.Object ref = repicientPhone_;
+    public java.lang.String getRecipientPhone() {
+      java.lang.Object ref = recipientPhone_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        repicientPhone_ = s;
+        recipientPhone_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string repicientPhone = 8;</code>
-     * @return The bytes for repicientPhone.
+     * <code>string recipientPhone = 8;</code>
+     * @return The bytes for recipientPhone.
      */
     public com.google.protobuf.ByteString
-        getRepicientPhoneBytes() {
-      java.lang.Object ref = repicientPhone_;
+        getRecipientPhoneBytes() {
+      java.lang.Object ref = recipientPhone_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        repicientPhone_ = b;
+        recipientPhone_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string repicientPhone = 8;</code>
-     * @param value The repicientPhone to set.
+     * <code>string recipientPhone = 8;</code>
+     * @param value The recipientPhone to set.
      * @return This builder for chaining.
      */
-    public Builder setRepicientPhone(
+    public Builder setRecipientPhone(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      repicientPhone_ = value;
+      recipientPhone_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string repicientPhone = 8;</code>
+     * <code>string recipientPhone = 8;</code>
      * @return This builder for chaining.
      */
-    public Builder clearRepicientPhone() {
+    public Builder clearRecipientPhone() {
       
-      repicientPhone_ = getDefaultInstance().getRepicientPhone();
+      recipientPhone_ = getDefaultInstance().getRecipientPhone();
       onChanged();
       return this;
     }
     /**
-     * <code>string repicientPhone = 8;</code>
-     * @param value The bytes for repicientPhone to set.
+     * <code>string recipientPhone = 8;</code>
+     * @param value The bytes for recipientPhone to set.
      * @return This builder for chaining.
      */
-    public Builder setRepicientPhoneBytes(
+    public Builder setRecipientPhoneBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      repicientPhone_ = value;
+      recipientPhone_ = value;
       onChanged();
       return this;
     }
 
-    private java.lang.Object repicientEmail_ = "";
+    private java.lang.Object recipientEmail_ = "";
     /**
-     * <code>string repicientEmail = 9;</code>
-     * @return The repicientEmail.
+     * <code>string recipientEmail = 9;</code>
+     * @return The recipientEmail.
      */
-    public java.lang.String getRepicientEmail() {
-      java.lang.Object ref = repicientEmail_;
+    public java.lang.String getRecipientEmail() {
+      java.lang.Object ref = recipientEmail_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        repicientEmail_ = s;
+        recipientEmail_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string repicientEmail = 9;</code>
-     * @return The bytes for repicientEmail.
+     * <code>string recipientEmail = 9;</code>
+     * @return The bytes for recipientEmail.
      */
     public com.google.protobuf.ByteString
-        getRepicientEmailBytes() {
-      java.lang.Object ref = repicientEmail_;
+        getRecipientEmailBytes() {
+      java.lang.Object ref = recipientEmail_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        repicientEmail_ = b;
+        recipientEmail_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string repicientEmail = 9;</code>
-     * @param value The repicientEmail to set.
+     * <code>string recipientEmail = 9;</code>
+     * @param value The recipientEmail to set.
      * @return This builder for chaining.
      */
-    public Builder setRepicientEmail(
+    public Builder setRecipientEmail(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      repicientEmail_ = value;
+      recipientEmail_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string repicientEmail = 9;</code>
+     * <code>string recipientEmail = 9;</code>
      * @return This builder for chaining.
      */
-    public Builder clearRepicientEmail() {
+    public Builder clearRecipientEmail() {
       
-      repicientEmail_ = getDefaultInstance().getRepicientEmail();
+      recipientEmail_ = getDefaultInstance().getRecipientEmail();
       onChanged();
       return this;
     }
     /**
-     * <code>string repicientEmail = 9;</code>
-     * @param value The bytes for repicientEmail to set.
+     * <code>string recipientEmail = 9;</code>
+     * @param value The bytes for recipientEmail to set.
      * @return This builder for chaining.
      */
-    public Builder setRepicientEmailBytes(
+    public Builder setRecipientEmailBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      repicientEmail_ = value;
+      recipientEmail_ = value;
       onChanged();
       return this;
     }

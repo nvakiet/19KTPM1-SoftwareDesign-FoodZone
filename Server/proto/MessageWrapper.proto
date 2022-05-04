@@ -62,8 +62,8 @@ message SubmitOrderRequest {
   string recipientFullName = 5;
   string recipientID = 6;
   string recipientAddress = 7;
-  string repicientPhone = 8;
-  string repicientEmail = 9;
+  string recipientPhone = 8;
+  string recipientEmail = 9;
 }
 
 message RestaurantListRequest {

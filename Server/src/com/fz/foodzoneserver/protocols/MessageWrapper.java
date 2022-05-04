@@ -134,7 +134,7 @@ public final class MessageWrapper {
       "atetime\030\002 \001(\t\022\016\n\006mealID\030\003 \003(\t\022\024\n\014mealQua" +
       "ntity\030\004 \003(\005\022\031\n\021recipientFullName\030\005 \001(\t\022\023" +
       "\n\013recipientID\030\006 \001(\t\022\030\n\020recipientAddress\030" +
-      "\007 \001(\t\022\026\n\016repicientPhone\030\010 \001(\t\022\026\n\016repicie" +
+      "\007 \001(\t\022\026\n\016recipientPhone\030\010 \001(\t\022\026\n\016recipie" +
       "ntEmail\030\t \001(\t\"\027\n\025RestaurantListRequest\"`" +
       "\n\026RestaurantListResponse\022\016\n\006result\030\001 \001(\t" +
       "\0226\n\nrestaurant\030\002 \003(\0132\".foodzone_protocol" +
@@ -225,7 +225,7 @@ public final class MessageWrapper {
     internal_static_foodzone_protocols_SubmitOrderRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_foodzone_protocols_SubmitOrderRequest_descriptor,
-        new java.lang.String[] { "Username", "Datetime", "MealID", "MealQuantity", "RecipientFullName", "RecipientID", "RecipientAddress", "RepicientPhone", "RepicientEmail", });
+        new java.lang.String[] { "Username", "Datetime", "MealID", "MealQuantity", "RecipientFullName", "RecipientID", "RecipientAddress", "RecipientPhone", "RecipientEmail", });
     internal_static_foodzone_protocols_RestaurantListRequest_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_foodzone_protocols_RestaurantListRequest_fieldAccessorTable = new

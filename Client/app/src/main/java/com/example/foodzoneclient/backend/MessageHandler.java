@@ -16,6 +16,7 @@ import com.example.foodzoneclient.protocols.RegisterResponse;
 import com.example.foodzoneclient.protocols.RestaurantInfo;
 import com.example.foodzoneclient.protocols.RestaurantListResponse;
 import com.example.foodzoneclient.protocols.ServerMessage;
+import com.example.foodzoneclient.protocols.SubmitOrderResponse;
 import com.example.foodzoneclient.protocols.UpdateInfoResponse;
 import com.example.foodzoneclient.protocols.UpdatePasswordResponse;
 import com.example.foodzoneclient.protocols.UserInfo;
@@ -23,6 +24,7 @@ import com.example.foodzoneclient.ui.ChangePasswordActivity;
 import com.example.foodzoneclient.ui.FoodMenuActivity;
 import com.example.foodzoneclient.ui.LoginFragment;
 import com.example.foodzoneclient.ui.MainScreenActivity;
+import com.example.foodzoneclient.ui.OrderActivity;
 import com.example.foodzoneclient.ui.ProfileActivity;
 import com.example.foodzoneclient.ui.RegisterFragment;
 
@@ -62,6 +64,7 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
             case "register_response":
                 handleRegisterResponse(serverMessage.getRegisterResponse());
                 break;
+
             case "updateInfo_response":
                 handleUpdateInfoResponse(serverMessage.getUpdateInfoResponse());
                 break;
@@ -76,6 +79,10 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
 
             case "foodList_response":
                 handleFoodListResponse(serverMessage.getFoodListResponse());
+                break;
+
+            case "submitOrder_response":
+                hangleSubmitOrderResponse(serverMessage.getSubmitOrderResponse());
                 break;
         }
     }
@@ -174,6 +181,14 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
             }
         }
 
+        uiMsg.sendToTarget();
+    }
+
+    private void hangleSubmitOrderResponse(SubmitOrderResponse response) {
+        Message uiMsg;
+        uiMsg      = Message.obtain(OrderActivity.orderActivityHandler);
+        uiMsg.what = 1;
+        uiMsg.obj  = response.getResult();
         uiMsg.sendToTarget();
     }
 }

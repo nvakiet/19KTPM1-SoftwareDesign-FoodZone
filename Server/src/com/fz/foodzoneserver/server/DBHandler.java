@@ -1,6 +1,7 @@
 package com.fz.foodzoneserver.server;
 
 import com.fz.foodzoneserver.protocols.*;
+import com.google.protobuf.ProtocolStringList;
 import org.apache.commons.logging.Log;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -149,9 +150,9 @@ public class DBHandler {
 
     public String updateUserPassword(UpdatePasswordRequest request) {
         try {
-            String checkPassword = "select u.Password from Users as u where u.Username = '" + request.getUsername() + "'";
-            PreparedStatement st         = conn.prepareStatement(checkPassword);
-            ResultSet         rs         = st.executeQuery();
+            String            checkPassword = "select u.Password from Users as u where u.Username = '" + request.getUsername() + "'";
+            PreparedStatement st            = conn.prepareStatement(checkPassword);
+            ResultSet         rs            = st.executeQuery();
 
             // Check old password
             if (!rs.getString(1).equals(request.getOldPassword())) {
@@ -250,5 +251,64 @@ public class DBHandler {
             logger.error(e);
         }
         return result;
+    }
+
+    public String insertRecipient(String orderID, String name, String ID, String address, String phone, String email) {
+
+        try {
+            String            sqlInsert = "insert into Recipient (OrderID, Fullname, ID, Address, Phone, Email) values (?,?,?,?,?,?)";
+            PreparedStatement st        = conn.prepareStatement(sqlInsert);
+
+            st.setString(1, orderID);
+            st.setString(2, name);
+            st.setString(3, ID);
+            st.setString(4, address);
+            st.setString(5, phone);
+            st.setString(6, email);
+            st.executeUpdate();
+            st.close();
+
+            return "Success";
+        } catch (SQLException e) {
+            return "Query Error";
+        }
+    }
+
+    public String insertOrder(String orderID, String datetime, String state) {
+        try {
+            String            sqlInsert = "insert into [Order] (OrderID, OrderDateTime, [State]) values (?,?,?)";
+            PreparedStatement st        = conn.prepareStatement(sqlInsert);
+
+            st.setString(1, orderID);
+            st.setString(2, datetime);
+            st.setString(3, state);
+            st.executeUpdate();
+            st.close();
+
+            return "Success";
+        } catch (SQLException e) {
+            return "Query Error";
+        }
+    }
+
+    public String insertOrderDetails(String orderID, ProtocolStringList mealIDList, List<Integer> mealQuantityList) {
+        try {
+            String            sqlInsert = "insert into OrderDetails (OrderID, MealID, MealQuantity) values (?,?,?)";
+            PreparedStatement st        = conn.prepareStatement(sqlInsert);
+
+            st.setString(1, orderID);
+
+            for (int i = 0; i < mealIDList.size(); ++i) {
+                st.setString(2, mealIDList.get(i));
+                st.setInt(3, mealQuantityList.get(i));
+                st.executeUpdate();
+            }
+
+            st.close();
+
+            return "Success";
+        } catch (SQLException e) {
+            return "Query Error";
+        }
     }
 }

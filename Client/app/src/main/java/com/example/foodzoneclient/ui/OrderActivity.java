@@ -73,11 +73,11 @@ public class OrderActivity extends AppCompatActivity {
                     .setDatetime(ZonedDateTime.now().toString())
                     .setRecipientFullName(recipientName)
                     .setRecipientAddress(recipientAddress)
-                    .setRepicientPhone(recipientPhone)
-                    .setRepicientEmail(prefRecipient.getString("Email",""))
-                    .setRecipientID(prefRecipient.getString("ID",""));
+                    .setRecipientPhone(recipientPhone)
+                    .setRecipientEmail(prefRecipient.getString("Email", ""))
+                    .setRecipientID(prefRecipient.getString("ID", ""));
 
-            for(Product p: Cart.getProductList())
+            for (Product p : Cart.getProductList())
                 request.addMealID(p.getID()).addMealQuantity(p.getAmount());
 
             ContainerClient.getInstance().sendSubmitOrderRequest(request.build());
@@ -90,8 +90,8 @@ public class OrderActivity extends AppCompatActivity {
             @Override
             public void handleMessage(@NonNull Message msg) {
                 super.handleMessage(msg);
-                if (msg.what == 4) {
-                    if (msg.arg1 == 1) {
+                if (msg.what == 1) {
+                    if (msg.obj.equals("Success")) {
                         startActivity(new Intent(OrderActivity.this, SuccessScreenActivity.class));
                         finish();
                     } else {
