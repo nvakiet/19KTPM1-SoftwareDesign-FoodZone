@@ -321,17 +321,17 @@ public class DBHandler {
             String sqlOrder = "" +
                     "select OrderDateTime, [Desc], [State], RecipientName, Price, Restaurant from " +
                     "(select OrderID, o.OrderDateTime, o.[State] from [Order] as o " +
-                    "WHERE o.OrderID LIKE 'phat%') t1 " +
+                    "WHERE o.OrderID LIKE '" + username + "%') t1 " +
                     "inner join" +
                     "(select OrderID, STRING_AGG(CONCAT(Meal.[Name], ' x', MealQuantity), '---') as [Desc] " +
                     "from OrderDetails, Meal " +
                     "where OrderDetails.MealID = Meal.MealID " +
-                    "and OrderID like 'phat%'" +
+                    "and OrderID like '" + username + "%'" +
                     "group by OrderID) t2 on t1.OrderID = t2.OrderId " +
                     "inner join " +
                     "(select OrderID, Fullname as recipientName " +
                     "from Recipient " +
-                    "where OrderID like 'phat%') t3 on t2.OrderID =  t3.OrderID " +
+                    "where OrderID like '" + username + "%') t3 on t2.OrderID =  t3.OrderID " +
                     "inner join " +
                     "(select OrderID, sum(OrderDetails.MealQuantity*Meal.Price) as price from OrderDetails, meal " +
                     "where OrderDetails.MealID = meal.MealID " +
