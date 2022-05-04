@@ -94,4 +94,10 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
                 break;
         }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ContainerClient.getInstance().currentUIHandler = changePasswordhandler;
+    }
 }

@@ -130,6 +130,12 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        ContainerClient.getInstance().currentUIHandler = foodListHandler;
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 

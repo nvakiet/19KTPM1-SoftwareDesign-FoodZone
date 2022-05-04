@@ -23,6 +23,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.cloudinary.android.MediaManager;
 import com.example.foodzoneclient.R;
+import com.example.foodzoneclient.backend.ContainerClient;
 import com.example.foodzoneclient.model.Cart;
 import com.example.foodzoneclient.model.Product;
 
@@ -94,6 +95,12 @@ public class CartActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         back.performClick();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ContainerClient.getInstance().currentUIHandler = cartScreenHandler;
     }
 
     private void findID(){

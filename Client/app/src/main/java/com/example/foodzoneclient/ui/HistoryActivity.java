@@ -61,6 +61,12 @@ public class HistoryActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        ContainerClient.getInstance().currentUIHandler = historyListHandler;
+    }
+
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
         historyList.clear();

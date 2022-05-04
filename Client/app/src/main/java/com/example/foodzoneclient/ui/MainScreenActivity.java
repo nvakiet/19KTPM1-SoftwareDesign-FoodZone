@@ -168,6 +168,12 @@ public class MainScreenActivity extends AppCompatActivity {
         };
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ContainerClient.getInstance().currentUIHandler = restaurantListHandler;
+    }
+
     public void createResetCarDialog(View v, Restaurant res) {
         AlertDialog.Builder builder
                 = new AlertDialog

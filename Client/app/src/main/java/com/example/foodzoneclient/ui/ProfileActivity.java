@@ -137,7 +137,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.profile_backtomain:
-                new Intent(ProfileActivity.this, MainScreenActivity.class);
+                startActivity(new Intent(ProfileActivity.this, MainScreenActivity.class));
                 break;
             case R.id.btn_updateInfo: {
                 AlertDialog dialog = new AlertDialog.Builder(ProfileActivity.this)

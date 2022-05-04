@@ -48,6 +48,7 @@ public class OrderActivity extends AppCompatActivity {
     long     total;
     public static Handler orderActivityHandler;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
@@ -108,6 +109,12 @@ public class OrderActivity extends AppCompatActivity {
         };
 
         retrieveCartList();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ContainerClient.getInstance().currentUIHandler = orderActivityHandler;
     }
 
     private void findID() {
