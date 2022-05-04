@@ -4,4 +4,4 @@ Class-Path: lib/log4j-api-2.17.2.jar lib/log4j-core-2.17.2.jar lib/netty-all-5.0
  lpha2.jar lib/protobuf-java-3.19.4.jar lib/mssql-jdbc-10.2.0.jre17.jar lib/protobuf
  -java-util-3.19.4.jar lib/protobuf-java-3.19.4.jar lib/gson-2.8.6.jar lib/commons-d
  bcp2-2.9.0.jar lib/commons-pool2-2.10.0.jar lib/commons-logging-1.2.jar
-Bundle-NativeCode: lib/mssql-jdbc_auth-10.2.0.x64.dll lib/mssql-jdbc_auth-10.2.0.x86.dll lib/sqljdbc_xa.dll lib/sqljdbc_xa_x86.dll
+Bundle-NativeCode: lib/mssql-jdbc_auth-10.2.0.x64.dll, lib/sqljdbc_xa.dll
