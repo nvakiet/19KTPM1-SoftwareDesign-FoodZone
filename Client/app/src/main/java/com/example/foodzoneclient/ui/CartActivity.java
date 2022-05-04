@@ -65,13 +65,11 @@ public class CartActivity extends AppCompatActivity {
             }
         });
 
+
+
         Intent intent = getIntent();
-        //ArrayList<Product> newList = intent.getParcelableArrayListExtra("food_list");
         rID = intent.getStringExtra("resID");
         Cart.getCartInstance();
-//        if (foodList == null) {
-//            foodList = newList;
-//        }
 
         if (Cart.getCartInstance() != null) {
             TextView totalbox;
@@ -202,75 +200,3 @@ class CartListAdapter extends BaseAdapter {
         return resID;
     }
 }
-
-//class CartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-//    private ArrayList<Product> products;
-//    OnItemClickCallback callback;
-//
-//    public class CartViewHolder extends RecyclerView.ViewHolder {
-//        ImageView foodImg;
-//        TextView foodName;
-//        TextView foodDes;
-//        TextView foodPrice;
-//        TextView foodAmount;
-//        Button remove;
-//
-//        public CartViewHolder(@NonNull View itemView) {
-//            super(itemView);
-//
-//            foodImg = itemView.findViewById(R.id.itemImg);
-//            foodName = itemView.findViewById(R.id.item_name);
-//            foodDes = itemView.findViewById(R.id.itemDes);
-//            foodPrice = itemView.findViewById(R.id.total);
-//            foodAmount = itemView.findViewById(R.id.amount);
-//            remove = itemView.findViewById(R.id.bt_remove);
-//        }
-//    }
-//
-//    interface OnItemClickCallback {
-//        void invoke(View v, Restaurant res);
-//    }
-//
-//    public CartAdapter(ArrayList<Product> products) {
-//        this.p = restaurants;
-//    }
-//
-//    @NonNull
-//    @Override
-//    public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_restaurant,parent,false);
-//        return new CartViewHolder(view);
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, @SuppressLint("RecyclerView") int position) {
-//        CartViewHolder holder = (CartViewHolder) viewHolder;
-//
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                callback.invoke(v, restaurants.get(position));
-//            }
-//        });
-//
-//        Restaurant res = restaurants.get(position);
-//        if(res == null){
-//            return;
-//        }
-//
-//        holder.img.setImageResource(res.getImage());
-//        holder.name.setText(res.getName());
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        if(restaurants != null){
-//            return restaurants.size();
-//        }
-//        return 0;
-//    }
-//
-//    public void setItemCallback(OnItemClickCallback callback) {
-//        this.callback = callback;
-//    }
-//}

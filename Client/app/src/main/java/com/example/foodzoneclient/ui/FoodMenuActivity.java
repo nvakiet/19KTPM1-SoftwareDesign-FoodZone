@@ -53,8 +53,6 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
     public static Handler foodListHandler;
 
     ArrayList<Boolean> tempArr;
-    //ArrayList<Product> foodList;
-    //ArrayList<Product> foodMenu = new ArrayList<Product>();
     public static ArrayList<Product> list = new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,9 +66,6 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
         Intent intent = getIntent();
         rID = intent.getStringExtra("resID");
         Cart.getCartInstance();
-//        if (foodList == null) {
-//            foodList = new ArrayList<Product>();
-//        }
 
         // get Food List of a Restaurant
         try {
@@ -90,7 +85,6 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
                 super.handleMessage(msg);
                 if (msg.what == 1) {
                     String result = (String) msg.obj;
-                    //FoodZone.showToast(foodListHandler, result);
                     if (result.equals("Success")) {
                         tempArr = new ArrayList<Boolean>(Collections.nCopies(list.size(), false));
                         // TODO set data to the adapter UI
@@ -133,16 +127,12 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            //foodList = data.getParcelableArrayListExtra("cart_list");
-            //rID = data.getStringExtra("resID");
 
             for (int i = 0; i < tempArr.size(); i++) {
                 tempArr.set(i, false);
             }
 
             for (int i = 0; i < Cart.size(); i++) {
-//                int tmp = Integer.parseInt(Cart.get(i).getID().substring(1));
-//                tempArr.set(tmp - 1, true);
                 for (int j = 0; j < list.size(); j++) {
                     if (list.get(j).getID() == Cart.get(i).getID()) {
                         tempArr.set(j, true);
@@ -159,7 +149,6 @@ public class FoodMenuActivity extends AppCompatActivity implements View.OnClickL
 
 class FoodMenuAdapter extends BaseAdapter {
     private List<Product> listData;
-    //private List<Product> listCart;
     private List<Boolean> listCheck;
     private LayoutInflater layoutInflater;
     private Context context;
@@ -219,8 +208,7 @@ class FoodMenuAdapter extends BaseAdapter {
         holder.foodName.setText(product.getName());
         holder.foodDes.setText(product.getDes());
         holder.foodPrice.setText("Price: " + String.valueOf(product.getPrice()) + " VND");
-        // TODO set image for item
-        //holder.foodImg.setImageResource(getImageID(product.getID()));
+        // Set image for item
         downloadMealImage(product.getImage(), holder.foodImg);
 
         holder.addToCart.setOnClickListener(new View.OnClickListener() {
