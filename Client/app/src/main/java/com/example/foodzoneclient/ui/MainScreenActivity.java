@@ -129,7 +129,7 @@ public class MainScreenActivity extends AppCompatActivity {
             public void invoke(View v, Restaurant res) {
                 Cart.getCartInstance();
 
-                if (Cart.getCurrentRestaurant() == null || Cart.getCurrentRestaurant().equals(res.getID())) {
+                if (Cart.getCurrentRestaurant() == null || Cart.size() == 0 || Cart.getCurrentRestaurant().equals(res.getID())) {
                     Intent intent = new Intent(MainScreenActivity.this, FoodMenuActivity.class);
                     intent.putExtra("resID", res.getID());
                     startActivity(intent);
