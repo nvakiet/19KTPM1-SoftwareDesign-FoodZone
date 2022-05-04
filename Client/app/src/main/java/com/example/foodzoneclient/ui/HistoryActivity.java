@@ -36,6 +36,10 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
         history = findViewById(R.id.history);
+
+        HistoryListRequest request = HistoryListRequest.newBuilder().setUsername(FoodZone.getContext().getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Username", "")).build();
+        ContainerClient.getInstance().sendHistoryListRequest(request);
+
         HistoryListViewAdapter historyListViewAdapter = new HistoryListViewAdapter(HistoryActivity.this, historyList);
         history.setAdapter(historyListViewAdapter);
 
