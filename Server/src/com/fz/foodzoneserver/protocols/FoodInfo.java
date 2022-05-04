@@ -19,6 +19,7 @@ private static final long serialVersionUID = 0L;
     iD_ = "";
     name_ = "";
     description_ = "";
+    image_ = "";
   }
 
   @java.lang.Override
@@ -74,9 +75,10 @@ private static final long serialVersionUID = 0L;
             price_ = input.readInt32();
             break;
           }
-          case 40: {
+          case 42: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            image_ = input.readInt32();
+            image_ = s;
             break;
           }
           default: {
@@ -237,14 +239,41 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int IMAGE_FIELD_NUMBER = 5;
-  private int image_;
+  private volatile java.lang.Object image_;
   /**
-   * <code>int32 image = 5;</code>
+   * <code>string image = 5;</code>
    * @return The image.
    */
   @java.lang.Override
-  public int getImage() {
-    return image_;
+  public java.lang.String getImage() {
+    java.lang.Object ref = image_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      image_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string image = 5;</code>
+   * @return The bytes for image.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getImageBytes() {
+    java.lang.Object ref = image_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      image_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -273,8 +302,8 @@ private static final long serialVersionUID = 0L;
     if (price_ != 0) {
       output.writeInt32(4, price_);
     }
-    if (image_ != 0) {
-      output.writeInt32(5, image_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(image_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, image_);
     }
     unknownFields.writeTo(output);
   }
@@ -298,9 +327,8 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(4, price_);
     }
-    if (image_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(5, image_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(image_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, image_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -325,8 +353,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getDescription())) return false;
     if (getPrice()
         != other.getPrice()) return false;
-    if (getImage()
-        != other.getImage()) return false;
+    if (!getImage()
+        .equals(other.getImage())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -347,7 +375,7 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + PRICE_FIELD_NUMBER;
     hash = (53 * hash) + getPrice();
     hash = (37 * hash) + IMAGE_FIELD_NUMBER;
-    hash = (53 * hash) + getImage();
+    hash = (53 * hash) + getImage().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -489,7 +517,7 @@ private static final long serialVersionUID = 0L;
 
       price_ = 0;
 
-      image_ = 0;
+      image_ = "";
 
       return this;
     }
@@ -585,8 +613,9 @@ private static final long serialVersionUID = 0L;
       if (other.getPrice() != 0) {
         setPrice(other.getPrice());
       }
-      if (other.getImage() != 0) {
-        setImage(other.getImage());
+      if (!other.getImage().isEmpty()) {
+        image_ = other.image_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -876,33 +905,78 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int image_ ;
+    private java.lang.Object image_ = "";
     /**
-     * <code>int32 image = 5;</code>
+     * <code>string image = 5;</code>
      * @return The image.
      */
-    @java.lang.Override
-    public int getImage() {
-      return image_;
+    public java.lang.String getImage() {
+      java.lang.Object ref = image_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        image_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>int32 image = 5;</code>
+     * <code>string image = 5;</code>
+     * @return The bytes for image.
+     */
+    public com.google.protobuf.ByteString
+        getImageBytes() {
+      java.lang.Object ref = image_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        image_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string image = 5;</code>
      * @param value The image to set.
      * @return This builder for chaining.
      */
-    public Builder setImage(int value) {
-      
+    public Builder setImage(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
       image_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 image = 5;</code>
+     * <code>string image = 5;</code>
      * @return This builder for chaining.
      */
     public Builder clearImage() {
       
-      image_ = 0;
+      image_ = getDefaultInstance().getImage();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string image = 5;</code>
+     * @param value The bytes for image to set.
+     * @return This builder for chaining.
+     */
+    public Builder setImageBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      image_ = value;
       onChanged();
       return this;
     }

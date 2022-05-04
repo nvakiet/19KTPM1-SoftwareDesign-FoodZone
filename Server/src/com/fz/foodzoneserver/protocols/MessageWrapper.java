@@ -118,10 +118,10 @@ public final class MessageWrapper {
       "\010fullname\030\002 \001(\t\022\n\n\002id\030\003 \001(\t\022\017\n\007address\030\004" +
       " \001(\t\022\r\n\005phone\030\005 \001(\t\022\017\n\007imgName\030\006 \001(\t\"J\n\016" +
       "RestaurantInfo\022\n\n\002ID\030\001 \001(\t\022\r\n\005image\030\002 \001(" +
-      "\005\022\014\n\004name\030\003 \001(\t\022\017\n\007address\030\004 \001(\t\"W\n\010Food" +
+      "\t\022\014\n\004name\030\003 \001(\t\022\017\n\007address\030\004 \001(\t\"W\n\010Food" +
       "Info\022\n\n\002ID\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013descri" +
       "ption\030\003 \001(\t\022\r\n\005price\030\004 \001(\005\022\r\n\005image\030\005 \001(" +
-      "\005\"2\n\014LoginRequest\022\020\n\010username\030\001 \001(\t\022\020\n\010p" +
+      "\t\"2\n\014LoginRequest\022\020\n\010username\030\001 \001(\t\022\020\n\010p" +
       "assword\030\002 \001(\t\"a\n\rLoginResponse\022\016\n\006result" +
       "\030\001 \001(\t\0223\n\010userInfo\030\002 \001(\0132\034.foodzone_prot" +
       "ocols.UserInfoH\000\210\001\001B\013\n\t_userInfo\"s\n\017Regi" +

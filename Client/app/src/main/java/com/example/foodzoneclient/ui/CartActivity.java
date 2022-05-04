@@ -154,7 +154,9 @@ class CartListAdapter extends BaseAdapter {
         holder.foodDes.setText(product.getDes());
         holder.foodPrice.setText("Price: "+String.valueOf(product.getPrice() * product.getAmount())+" VND");
         holder.foodAmount.setText("Amount: "+String.valueOf(product.getAmount()));
-        holder.foodImg.setImageResource(getImageID(product.getID()));
+        // TODO set image for item
+        //holder.foodImg.setImageResource(getImageID(product.getID()));
+
         holder.remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

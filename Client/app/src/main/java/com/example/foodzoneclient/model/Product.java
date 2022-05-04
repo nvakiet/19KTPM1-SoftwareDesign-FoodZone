@@ -84,6 +84,14 @@ public class Product implements Parcelable {
         Price = price;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public Product(String ID, String name, String des, int price) {
         this.ID = ID;
         Name = name;

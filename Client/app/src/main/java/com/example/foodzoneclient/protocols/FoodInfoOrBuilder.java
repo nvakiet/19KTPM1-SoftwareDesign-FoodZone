@@ -50,8 +50,14 @@ public interface FoodInfoOrBuilder extends
   int getPrice();
 
   /**
-   * <code>int32 image = 5;</code>
+   * <code>string image = 5;</code>
    * @return The image.
    */
-  int getImage();
+  java.lang.String getImage();
+  /**
+   * <code>string image = 5;</code>
+   * @return The bytes for image.
+   */
+  com.google.protobuf.ByteString
+      getImageBytes();
 }

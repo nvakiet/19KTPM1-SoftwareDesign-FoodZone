@@ -250,7 +250,7 @@ class RestaurantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         // TODO set image for item
-        holder.img.setImageResource(res.getImage());
+        //holder.img.setImageResource(res.getImage());
         holder.name.setText(res.getName());
     }
 

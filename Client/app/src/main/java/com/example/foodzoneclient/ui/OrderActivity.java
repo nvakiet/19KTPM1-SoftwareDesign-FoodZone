@@ -192,11 +192,13 @@ class OrderListAdapter extends BaseAdapter {
         holder.foodName.setText(product.getName());
         holder.foodPrice.setText("Price: " + String.valueOf(product.getPrice() * product.getAmount()) + " VND");
         holder.foodAmount.setText("Amount: " + String.valueOf(product.getAmount()));
-        holder.foodImg.setImageResource(getImageID(product.getID()));
+
+        // TODO set image for item
+        //holder.foodImg.setImageResource(getImageID(product.getID()));
         return convertView;
     }
 
-
+    // legacy code
     private int getImageID(String imgName) {
         Resources res   = context.getResources();
         int       resID = res.getIdentifier(imgName, "drawable", context.getPackageName());

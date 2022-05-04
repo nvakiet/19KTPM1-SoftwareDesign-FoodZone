@@ -151,8 +151,7 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
             Log.i("resID", String.valueOf(tmp.size()));
 
             for (int i = 0; i < tmp.size(); i++) {
-                //TODO get data to UI
-                MainScreenActivity.list.add(new Restaurant(tmp.get(i).getID(), R.drawable.tcf1, tmp.get(i).getName(), tmp.get(i).getAddress()));
+                MainScreenActivity.list.add(new Restaurant(tmp.get(i).getID(), tmp.get(i).getImage(), tmp.get(i).getName(), tmp.get(i).getAddress()));
             }
         }
 
@@ -171,8 +170,7 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
             Log.i("resID", String.valueOf(tmp.size()));
 
             for (int i = 0; i < tmp.size(); i++) {
-                //TODO get data to UI
-                FoodMenuActivity.list.add(new Product(tmp.get(i).getID(), tmp.get(i).getName(), "", tmp.get(i).getDescription(), 1, tmp.get(i).getPrice()));
+                FoodMenuActivity.list.add(new Product(tmp.get(i).getID(), tmp.get(i).getName(), tmp.get(i).getImage(), tmp.get(i).getDescription(), 1, tmp.get(i).getPrice()));
             }
         }
 

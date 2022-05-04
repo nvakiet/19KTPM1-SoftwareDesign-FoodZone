@@ -50,10 +50,10 @@ public class SearchActivity extends AppCompatActivity {
 
     private List<Restaurant> getListRes() {
         List<Restaurant> list= new ArrayList<>();
-        list.add(new Restaurant(R.drawable.tcf1,"nhà hàng 1","192 Hai Bà Trưng, Quận 1, TP.HCM"));
-        list.add(new Restaurant(R.drawable.tcf2,"nhà hàng 2","65 Nam Kì Khởi Nghĩa, Quận 3, TP.HCM"));
-        list.add(new Restaurant(R.drawable.tcf3,"nhà hàng 3","274 Phố Hàng Buồm, Hà Nội"));
-        list.add(new Restaurant(R.drawable.tcf4,"nhà hàng 4","284 Hai Bà Trưng, Hà Nội"));
+        list.add(new Restaurant("","nhà hàng 1","192 Hai Bà Trưng, Quận 1, TP.HCM"));
+        list.add(new Restaurant("","nhà hàng 2","65 Nam Kì Khởi Nghĩa, Quận 3, TP.HCM"));
+        list.add(new Restaurant("","nhà hàng 3","274 Phố Hàng Buồm, Hà Nội"));
+        list.add(new Restaurant("","nhà hàng 4","284 Hai Bà Trưng, Hà Nội"));
         return list;
     }
 }
@@ -78,7 +78,7 @@ class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.ResViewHo
         if(res==null){
             return;
         }
-        holder.imgRes.setImageResource(res.getImage());
+        //holder.imgRes.setImageResource(res.getImage());
         holder.tv_resName.setText(res.getName());
         holder.tv_resAdd.setText(res.getAddress());
     }

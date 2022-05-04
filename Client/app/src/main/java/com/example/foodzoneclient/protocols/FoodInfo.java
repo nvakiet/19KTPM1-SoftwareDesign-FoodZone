@@ -15,6 +15,7 @@ public  final class FoodInfo extends
     iD_ = "";
     name_ = "";
     description_ = "";
+    image_ = "";
   }
   public static final int ID_FIELD_NUMBER = 1;
   private java.lang.String iD_;
@@ -184,29 +185,50 @@ public  final class FoodInfo extends
   }
 
   public static final int IMAGE_FIELD_NUMBER = 5;
-  private int image_;
+  private java.lang.String image_;
   /**
-   * <code>int32 image = 5;</code>
+   * <code>string image = 5;</code>
    * @return The image.
    */
   @java.lang.Override
-  public int getImage() {
+  public java.lang.String getImage() {
     return image_;
   }
   /**
-   * <code>int32 image = 5;</code>
+   * <code>string image = 5;</code>
+   * @return The bytes for image.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getImageBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(image_);
+  }
+  /**
+   * <code>string image = 5;</code>
    * @param value The image to set.
    */
-  private void setImage(int value) {
-    
+  private void setImage(
+      java.lang.String value) {
+    java.lang.Class<?> valueClass = value.getClass();
+  
     image_ = value;
   }
   /**
-   * <code>int32 image = 5;</code>
+   * <code>string image = 5;</code>
    */
   private void clearImage() {
     
-    image_ = 0;
+    image_ = getDefaultInstance().getImage();
+  }
+  /**
+   * <code>string image = 5;</code>
+   * @param value The bytes for image to set.
+   */
+  private void setImageBytes(
+      com.google.protobuf.ByteString value) {
+    checkByteStringIsUtf8(value);
+    image_ = value.toStringUtf8();
+    
   }
 
   public static com.example.foodzoneclient.protocols.FoodInfo parseFrom(
@@ -480,30 +502,51 @@ public  final class FoodInfo extends
     }
 
     /**
-     * <code>int32 image = 5;</code>
+     * <code>string image = 5;</code>
      * @return The image.
      */
     @java.lang.Override
-    public int getImage() {
+    public java.lang.String getImage() {
       return instance.getImage();
     }
     /**
-     * <code>int32 image = 5;</code>
+     * <code>string image = 5;</code>
+     * @return The bytes for image.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getImageBytes() {
+      return instance.getImageBytes();
+    }
+    /**
+     * <code>string image = 5;</code>
      * @param value The image to set.
      * @return This builder for chaining.
      */
-    public Builder setImage(int value) {
+    public Builder setImage(
+        java.lang.String value) {
       copyOnWrite();
       instance.setImage(value);
       return this;
     }
     /**
-     * <code>int32 image = 5;</code>
+     * <code>string image = 5;</code>
      * @return This builder for chaining.
      */
     public Builder clearImage() {
       copyOnWrite();
       instance.clearImage();
+      return this;
+    }
+    /**
+     * <code>string image = 5;</code>
+     * @param value The bytes for image to set.
+     * @return This builder for chaining.
+     */
+    public Builder setImageBytes(
+        com.google.protobuf.ByteString value) {
+      copyOnWrite();
+      instance.setImageBytes(value);
       return this;
     }
 
@@ -531,7 +574,7 @@ public  final class FoodInfo extends
           };
           java.lang.String info =
               "\u0000\u0005\u0000\u0000\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
-              "\u0003\u0208\u0004\u0004\u0005\u0004";
+              "\u0003\u0208\u0004\u0004\u0005\u0208";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

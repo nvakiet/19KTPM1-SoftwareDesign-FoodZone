@@ -13,6 +13,7 @@ public  final class RestaurantInfo extends
     RestaurantInfoOrBuilder {
   private RestaurantInfo() {
     iD_ = "";
+    image_ = "";
     name_ = "";
     address_ = "";
   }
@@ -64,29 +65,50 @@ public  final class RestaurantInfo extends
   }
 
   public static final int IMAGE_FIELD_NUMBER = 2;
-  private int image_;
+  private java.lang.String image_;
   /**
-   * <code>int32 image = 2;</code>
+   * <code>string image = 2;</code>
    * @return The image.
    */
   @java.lang.Override
-  public int getImage() {
+  public java.lang.String getImage() {
     return image_;
   }
   /**
-   * <code>int32 image = 2;</code>
+   * <code>string image = 2;</code>
+   * @return The bytes for image.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getImageBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(image_);
+  }
+  /**
+   * <code>string image = 2;</code>
    * @param value The image to set.
    */
-  private void setImage(int value) {
-    
+  private void setImage(
+      java.lang.String value) {
+    java.lang.Class<?> valueClass = value.getClass();
+  
     image_ = value;
   }
   /**
-   * <code>int32 image = 2;</code>
+   * <code>string image = 2;</code>
    */
   private void clearImage() {
     
-    image_ = 0;
+    image_ = getDefaultInstance().getImage();
+  }
+  /**
+   * <code>string image = 2;</code>
+   * @param value The bytes for image to set.
+   */
+  private void setImageBytes(
+      com.google.protobuf.ByteString value) {
+    checkByteStringIsUtf8(value);
+    image_ = value.toStringUtf8();
+    
   }
 
   public static final int NAME_FIELD_NUMBER = 3;
@@ -328,30 +350,51 @@ public  final class RestaurantInfo extends
     }
 
     /**
-     * <code>int32 image = 2;</code>
+     * <code>string image = 2;</code>
      * @return The image.
      */
     @java.lang.Override
-    public int getImage() {
+    public java.lang.String getImage() {
       return instance.getImage();
     }
     /**
-     * <code>int32 image = 2;</code>
+     * <code>string image = 2;</code>
+     * @return The bytes for image.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getImageBytes() {
+      return instance.getImageBytes();
+    }
+    /**
+     * <code>string image = 2;</code>
      * @param value The image to set.
      * @return This builder for chaining.
      */
-    public Builder setImage(int value) {
+    public Builder setImage(
+        java.lang.String value) {
       copyOnWrite();
       instance.setImage(value);
       return this;
     }
     /**
-     * <code>int32 image = 2;</code>
+     * <code>string image = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearImage() {
       copyOnWrite();
       instance.clearImage();
+      return this;
+    }
+    /**
+     * <code>string image = 2;</code>
+     * @param value The bytes for image to set.
+     * @return This builder for chaining.
+     */
+    public Builder setImageBytes(
+        com.google.protobuf.ByteString value) {
+      copyOnWrite();
+      instance.setImageBytes(value);
       return this;
     }
 
@@ -475,7 +518,7 @@ public  final class RestaurantInfo extends
             "address_",
           };
           java.lang.String info =
-              "\u0000\u0004\u0000\u0000\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u0208\u0002\u0004" +
+              "\u0000\u0004\u0000\u0000\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
               "\u0003\u0208\u0004\u0208";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }

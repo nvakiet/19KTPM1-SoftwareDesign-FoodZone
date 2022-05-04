@@ -244,7 +244,7 @@ class FoodMenuAdapter extends BaseAdapter {
         holder.foodDes.setText(product.getDes());
         holder.foodPrice.setText("Price: " + String.valueOf(product.getPrice()) + " VND");
         // TODO set image for item
-        holder.foodImg.setImageResource(getImageID(product.getID()));
+        //holder.foodImg.setImageResource(getImageID(product.getID()));
 
         holder.addToCart.setOnClickListener(new View.OnClickListener() {
             @Override

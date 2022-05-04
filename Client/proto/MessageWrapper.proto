@@ -16,7 +16,7 @@ message UserInfo {
 
 message RestaurantInfo {
   string ID = 1;
-  int32 image = 2;
+  string image = 2;
   string name = 3;
   string address = 4;
 }
@@ -26,7 +26,7 @@ message FoodInfo {
   string name = 2;
   string description = 3;
   int32 price = 4;
-  int32 image = 5;
+  string image = 5;
 }
 
 message LoginRequest {

@@ -192,7 +192,7 @@ public class DBHandler {
         List<RestaurantInfo> result = new ArrayList<>();
 
         try {
-            String            sqlState = "select u.RestaurantID, u.Name, u.Address from Restaurant as u";
+            String            sqlState = "select u.RestaurantID, u.Name, u.Address, u.Image from Restaurant as u";
             PreparedStatement st       = conn.prepareStatement(sqlState);
             ResultSet         rs       = st.executeQuery();
 
@@ -201,7 +201,9 @@ public class DBHandler {
                 restaurant.setID(rs.getString(1));
                 restaurant.setName(rs.getString(2));
                 restaurant.setAddress(rs.getString(3));
-                restaurant.setImage(0);
+
+                String tmp = rs.getString(4);
+                restaurant.setImage(tmp == null ? "NULL" : tmp);
 
                 result.add(restaurant.build());
             }
@@ -235,7 +237,9 @@ public class DBHandler {
                 food.setName(rs.getString(2));
                 food.setDescription(rs.getString(3));
                 food.setPrice(rs.getInt(4));
-                food.setImage(0);
+
+                String tmp = rs.getString(5);
+                food.setImage(tmp == null ? "NULL" : tmp);
 
                 result.add(food.build());
             }

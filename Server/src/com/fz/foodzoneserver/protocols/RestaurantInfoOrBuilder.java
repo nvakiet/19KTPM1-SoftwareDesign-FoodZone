@@ -20,10 +20,16 @@ public interface RestaurantInfoOrBuilder extends
       getIDBytes();
 
   /**
-   * <code>int32 image = 2;</code>
+   * <code>string image = 2;</code>
    * @return The image.
    */
-  int getImage();
+  java.lang.String getImage();
+  /**
+   * <code>string image = 2;</code>
+   * @return The bytes for image.
+   */
+  com.google.protobuf.ByteString
+      getImageBytes();
 
   /**
    * <code>string name = 3;</code>
