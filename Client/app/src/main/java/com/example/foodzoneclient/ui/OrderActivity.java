@@ -110,12 +110,6 @@ public class OrderActivity extends AppCompatActivity {
         retrieveCartList();
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        backbtt.performClick();
-    }
-
     private void findID() {
         backbtt         = findViewById(R.id.back2cart);
         confirmPurchase = findViewById(R.id.confirm);

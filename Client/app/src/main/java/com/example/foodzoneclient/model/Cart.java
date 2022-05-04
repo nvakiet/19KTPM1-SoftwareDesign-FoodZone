@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Cart {
     private static Cart cartInstance = null;
     private static ArrayList<Product> productList;
+    private static String currentRestaurant = null;
 
     private Cart() {
         productList = new ArrayList<>();
@@ -28,6 +29,14 @@ public class Cart {
 
     public static Product get(int position) {
         return productList.get(position);
+    }
+
+    public static String getCurrentRestaurant() {
+        return currentRestaurant;
+    }
+
+    public static void setCurrentRestaurant(String id) {
+        currentRestaurant = id;
     }
 
     public static void add(Product product) {

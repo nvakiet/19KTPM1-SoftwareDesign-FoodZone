@@ -24,8 +24,8 @@ public class Main {
 //            String ip = "192.168.1.6";
 
             // PHAT
-            String dbConnString = "jdbc:sqlserver://localhost\\SQLSERVER:1433;databaseName=FoodZone;integratedSecurity=true;encrypt=true;trustServerCertificate=true;";
-            String ip = "192.168.1.5";
+//            String dbConnString = "jdbc:sqlserver://localhost\\SQLSERVER:1433;databaseName=FoodZone;integratedSecurity=true;encrypt=true;trustServerCertificate=true;";
+//            String ip = "192.168.1.5";
 
             // ----------------------------------------------------------
 
