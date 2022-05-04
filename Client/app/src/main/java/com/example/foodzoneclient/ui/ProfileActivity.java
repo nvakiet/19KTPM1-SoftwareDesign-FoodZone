@@ -28,8 +28,10 @@ import com.cloudinary.android.callback.UploadCallback;
 import com.example.foodzoneclient.FoodZone;
 import com.example.foodzoneclient.R;
 import com.example.foodzoneclient.backend.ContainerClient;
+import com.example.foodzoneclient.model.Cart;
 import com.example.foodzoneclient.protocols.UserInfo;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -168,6 +170,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         .setPositiveButton("Yes", (dialogInterface, i) -> {
                             ContainerClient.getInstance().disconnect();
                             prefEdit.clear().apply();
+
+                            MainScreenActivity.list = new ArrayList<>();
+                            if (Cart.getCartInstance() != null) {
+                                Cart.clear();
+                            }
+
                             Intent outIntent = new Intent(ProfileActivity.this, LoginActivity.class);
                             startActivity(outIntent);
                         })
