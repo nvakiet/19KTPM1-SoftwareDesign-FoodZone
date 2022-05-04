@@ -7,12 +7,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
 public class MessageHandler extends ChannelInboundHandlerAdapter {
     private        String username       = null;
     private static Logger logger         = LogManager.getLogger(MessageHandler.class.getName());
+    private static SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -211,7 +215,7 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
         SubmitOrderResponse.Builder response = SubmitOrderResponse.newBuilder();
         try {
             DBHandler dbHandler = new DBHandler();
-            String    OrderID   = r.getUsername() + "-" + UUID.randomUUID().toString();
+            String    OrderID   = r.getUsername() + "-" + formatter.format(LocalDateTime.now()) + "-" + UUID.randomUUID().toString().replace("-", "");
 
             String resultInsertOrder = dbHandler.insertOrder(OrderID,
                     r.getDatetime(),

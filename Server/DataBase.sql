@@ -49,7 +49,7 @@ CREATE TABLE Restaurant (
 GO
 
 CREATE TABLE OrderDetails (
-	OrderID varchar(57),
+	OrderID varchar(68),
 	MealID varchar(10),
 	MealQuantity integer CHECK (MealQuantity > 0)
 	PRIMARY KEY(OrderID, MealID)
@@ -57,7 +57,7 @@ CREATE TABLE OrderDetails (
 GO
 
 CREATE TABLE [Order] (
-	OrderID varchar(57) PRIMARY KEY,
+	OrderID varchar(68) PRIMARY KEY,
 	OrderDateTime varchar(30),
 	[State] varchar(9) NOT NULL,
 	TimeRemaining time,
@@ -67,7 +67,7 @@ CREATE TABLE [Order] (
 GO
 
 CREATE TABLE Recipient (
-	OrderID varchar(57) PRIMARY KEY,
+	OrderID varchar(68) PRIMARY KEY,
 	Fullname varchar(40),
 	ID varchar(12),
 	[Address] varchar(70) NOT NULL,
