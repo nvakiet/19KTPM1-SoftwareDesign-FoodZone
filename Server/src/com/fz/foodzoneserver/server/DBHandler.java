@@ -319,24 +319,29 @@ public class DBHandler {
 
         try {
             String sqlOrder = "" +
-                    "select OrderDateTime, [Desc], [State], RecipientName, Price from " +
+                    "select OrderDateTime, [Desc], [State], RecipientName, Price, Restaurant from " +
                     "(select OrderID, o.OrderDateTime, o.[State] from [Order] as o " +
-                    "WHERE o.OrderID LIKE '" + username + "%') t1 " +
+                    "WHERE o.OrderID LIKE 'phat%') t1 " +
                     "inner join" +
-                    "(select OrderID, STRING_AGG(CONCAT([Name], ' x', MealQuantity), '---') as [Desc] " +
+                    "(select OrderID, STRING_AGG(CONCAT(Meal.[Name], ' x', MealQuantity), '---') as [Desc] " +
                     "from OrderDetails, Meal " +
                     "where OrderDetails.MealID = Meal.MealID " +
-                    "and OrderID like '" + username + "%' " +
+                    "and OrderID like 'phat%'" +
                     "group by OrderID) t2 on t1.OrderID = t2.OrderId " +
                     "inner join " +
                     "(select OrderID, Fullname as recipientName " +
                     "from Recipient " +
-                    "where OrderID like '" + username + "%') t3 on t2.OrderID =  t3.OrderID " +
+                    "where OrderID like 'phat%') t3 on t2.OrderID =  t3.OrderID " +
                     "inner join " +
                     "(select OrderID, sum(OrderDetails.MealQuantity*Meal.Price) as price from OrderDetails, meal " +
                     "where OrderDetails.MealID = meal.MealID " +
                     "group by OrderID) t4 " +
-                    "on t3.OrderID = t4.OrderID";
+                    "on t3.OrderID = t4.OrderID " +
+                    "inner join " +
+                    "(select distinct OrderID, Restaurant.[Name] as Restaurant from OrderDetails, Meal, Restaurant " +
+                    "where OrderDetails.MealID = Meal.MealID " +
+                    "and Meal.RestaurantID = Restaurant.RestaurantID) t5 " +
+                    "on t4.OrderID = t5.OrderID";
 
             PreparedStatement st = conn.prepareStatement(sqlOrder);
             ResultSet         rs = st.executeQuery();
@@ -347,7 +352,8 @@ public class DBHandler {
                         .setDesc(rs.getString(2))
                         .setState(rs.getString(3))
                         .setRecipientName(rs.getString(4))
-                        .setPrice(rs.getInt(5));
+                        .setPrice(rs.getInt(5))
+                        .setRestaurant(rs.getString(6));
                 result.add(order.build());
             }
 

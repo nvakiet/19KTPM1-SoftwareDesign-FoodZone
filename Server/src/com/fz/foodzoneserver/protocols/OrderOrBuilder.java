@@ -60,4 +60,16 @@ public interface OrderOrBuilder extends
    * @return The price.
    */
   int getPrice();
+
+  /**
+   * <code>string restaurant = 6;</code>
+   * @return The restaurant.
+   */
+  java.lang.String getRestaurant();
+  /**
+   * <code>string restaurant = 6;</code>
+   * @return The bytes for restaurant.
+   */
+  com.google.protobuf.ByteString
+      getRestaurantBytes();
 }

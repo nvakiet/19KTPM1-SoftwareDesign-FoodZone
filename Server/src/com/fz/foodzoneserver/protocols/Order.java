@@ -20,6 +20,7 @@ private static final long serialVersionUID = 0L;
     desc_ = "";
     state_ = "";
     recipientName_ = "";
+    restaurant_ = "";
   }
 
   @java.lang.Override
@@ -79,6 +80,12 @@ private static final long serialVersionUID = 0L;
           case 40: {
 
             price_ = input.readInt32();
+            break;
+          }
+          case 50: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            restaurant_ = s;
             break;
           }
           default: {
@@ -276,6 +283,44 @@ private static final long serialVersionUID = 0L;
     return price_;
   }
 
+  public static final int RESTAURANT_FIELD_NUMBER = 6;
+  private volatile java.lang.Object restaurant_;
+  /**
+   * <code>string restaurant = 6;</code>
+   * @return The restaurant.
+   */
+  @java.lang.Override
+  public java.lang.String getRestaurant() {
+    java.lang.Object ref = restaurant_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      restaurant_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string restaurant = 6;</code>
+   * @return The bytes for restaurant.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getRestaurantBytes() {
+    java.lang.Object ref = restaurant_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      restaurant_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -305,6 +350,9 @@ private static final long serialVersionUID = 0L;
     if (price_ != 0) {
       output.writeInt32(5, price_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(restaurant_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, restaurant_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -329,6 +377,9 @@ private static final long serialVersionUID = 0L;
     if (price_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(5, price_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(restaurant_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, restaurant_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -355,6 +406,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getRecipientName())) return false;
     if (getPrice()
         != other.getPrice()) return false;
+    if (!getRestaurant()
+        .equals(other.getRestaurant())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -376,6 +429,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getRecipientName().hashCode();
     hash = (37 * hash) + PRICE_FIELD_NUMBER;
     hash = (53 * hash) + getPrice();
+    hash = (37 * hash) + RESTAURANT_FIELD_NUMBER;
+    hash = (53 * hash) + getRestaurant().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -519,6 +574,8 @@ private static final long serialVersionUID = 0L;
 
       price_ = 0;
 
+      restaurant_ = "";
+
       return this;
     }
 
@@ -550,6 +607,7 @@ private static final long serialVersionUID = 0L;
       result.state_ = state_;
       result.recipientName_ = recipientName_;
       result.price_ = price_;
+      result.restaurant_ = restaurant_;
       onBuilt();
       return result;
     }
@@ -616,6 +674,10 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getPrice() != 0) {
         setPrice(other.getPrice());
+      }
+      if (!other.getRestaurant().isEmpty()) {
+        restaurant_ = other.restaurant_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -977,6 +1039,82 @@ private static final long serialVersionUID = 0L;
     public Builder clearPrice() {
       
       price_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object restaurant_ = "";
+    /**
+     * <code>string restaurant = 6;</code>
+     * @return The restaurant.
+     */
+    public java.lang.String getRestaurant() {
+      java.lang.Object ref = restaurant_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        restaurant_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string restaurant = 6;</code>
+     * @return The bytes for restaurant.
+     */
+    public com.google.protobuf.ByteString
+        getRestaurantBytes() {
+      java.lang.Object ref = restaurant_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        restaurant_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string restaurant = 6;</code>
+     * @param value The restaurant to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRestaurant(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      restaurant_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string restaurant = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearRestaurant() {
+      
+      restaurant_ = getDefaultInstance().getRestaurant();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string restaurant = 6;</code>
+     * @param value The bytes for restaurant to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRestaurantBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      restaurant_ = value;
       onChanged();
       return this;
     }

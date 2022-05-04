@@ -212,6 +212,7 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
 
             for (Order order: tmp)
                 HistoryActivity.historyList.add(new com.example.foodzoneclient.model.Order(
+                        order.getRestaurant(),
                         order.getDate(),
                         order.getDesc(),
                         order.getState(),

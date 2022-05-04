@@ -59,6 +59,12 @@ public class HistoryActivity extends AppCompatActivity {
             }
         };
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        historyList.clear();
+    }
 }
 
 class HistoryListViewAdapter extends BaseAdapter {
@@ -67,7 +73,7 @@ class HistoryListViewAdapter extends BaseAdapter {
     private Context        context;
 
     private class ViewHolder {
-        TextView date, recipient, state, price, desc;
+        TextView restaurant, date, recipient, state, price, desc;
     }
 
     public HistoryListViewAdapter(Context aContext, List<Order> history) {
@@ -101,11 +107,12 @@ class HistoryListViewAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(R.layout.item_history, null);
             holder      = new ViewHolder();
 
-            holder.date      = convertView.findViewById(R.id.date);
-            holder.desc      = convertView.findViewById(R.id.desc);
-            holder.recipient = convertView.findViewById(R.id.recipient);
-            holder.state     = convertView.findViewById(R.id.state);
-            holder.price     = convertView.findViewById(R.id.price);
+            holder.restaurant = convertView.findViewById(R.id.restaurant);
+            holder.date       = convertView.findViewById(R.id.date);
+            holder.desc       = convertView.findViewById(R.id.desc);
+            holder.recipient  = convertView.findViewById(R.id.recipient);
+            holder.state      = convertView.findViewById(R.id.state);
+            holder.price      = convertView.findViewById(R.id.price);
 
             convertView.setTag(holder);
         } else {
@@ -114,6 +121,7 @@ class HistoryListViewAdapter extends BaseAdapter {
 
         Order op = this.history.get(position);
 
+        holder.restaurant.setText(op.getRestaurant());
         holder.date.setText(op.getDate());
         holder.desc.setText(op.getDesc().replace("---", "\n"));
         holder.recipient.setText("Recipient: " + op.getRecipientName());

@@ -35,6 +35,7 @@ message Order{
   string state = 3;
   string recipientName = 4;
   int32 price = 5;
+  string restaurant = 6;
 }
 
 message LoginRequest {

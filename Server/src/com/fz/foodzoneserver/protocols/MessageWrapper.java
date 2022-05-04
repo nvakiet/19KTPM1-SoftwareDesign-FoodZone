@@ -136,67 +136,67 @@ public final class MessageWrapper {
       "\t\022\014\n\004name\030\003 \001(\t\022\017\n\007address\030\004 \001(\t\"W\n\010Food" +
       "Info\022\n\n\002ID\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013descri" +
       "ption\030\003 \001(\t\022\r\n\005price\030\004 \001(\005\022\r\n\005image\030\005 \001(" +
-      "\t\"X\n\005Order\022\014\n\004date\030\001 \001(\t\022\014\n\004desc\030\002 \001(\t\022\r" +
+      "\t\"l\n\005Order\022\014\n\004date\030\001 \001(\t\022\014\n\004desc\030\002 \001(\t\022\r" +
       "\n\005state\030\003 \001(\t\022\025\n\rrecipientName\030\004 \001(\t\022\r\n\005" +
-      "price\030\005 \001(\005\"2\n\014LoginRequest\022\020\n\010username\030" +
-      "\001 \001(\t\022\020\n\010password\030\002 \001(\t\"a\n\rLoginResponse" +
-      "\022\016\n\006result\030\001 \001(\t\0223\n\010userInfo\030\002 \001(\0132\034.foo" +
-      "dzone_protocols.UserInfoH\000\210\001\001B\013\n\t_userIn" +
-      "fo\"s\n\017RegisterRequest\022\020\n\010username\030\001 \001(\t\022" +
-      "\020\n\010password\030\002 \001(\t\022\020\n\010fullname\030\003 \001(\t\022\n\n\002i" +
-      "d\030\004 \001(\t\022\017\n\007address\030\005 \001(\t\022\r\n\005phone\030\006 \001(\t\"" +
-      "S\n\025UpdatePasswordRequest\022\020\n\010username\030\001 \001" +
-      "(\t\022\023\n\013oldPassword\030\002 \001(\t\022\023\n\013newPassword\030\003" +
-      " \001(\t\"\330\001\n\022SubmitOrderRequest\022\020\n\010username\030" +
-      "\001 \001(\t\022\020\n\010datetime\030\002 \001(\t\022\016\n\006mealID\030\003 \003(\t\022" +
-      "\024\n\014mealQuantity\030\004 \003(\005\022\031\n\021recipientFullNa" +
-      "me\030\005 \001(\t\022\023\n\013recipientID\030\006 \001(\t\022\030\n\020recipie" +
-      "ntAddress\030\007 \001(\t\022\026\n\016recipientPhone\030\010 \001(\t\022" +
-      "\026\n\016recipientEmail\030\t \001(\t\"\027\n\025RestaurantLis" +
-      "tRequest\"`\n\026RestaurantListResponse\022\016\n\006re" +
-      "sult\030\001 \001(\t\0226\n\nrestaurant\030\002 \003(\0132\".foodzon" +
-      "e_protocols.RestaurantInfo\"&\n\022HistoryLis" +
-      "tRequest\022\020\n\010username\030\001 \001(\t\"V\n\023HistoryLis" +
-      "tResponse\022\016\n\006result\030\001 \001(\t\022/\n\014orderHistor" +
-      "y\030\002 \003(\0132\031.foodzone_protocols.Order\"\'\n\017Fo" +
-      "odListRequest\022\024\n\014restaurantID\030\001 \001(\t\"N\n\020F" +
-      "oodListResponse\022\016\n\006result\030\001 \001(\t\022*\n\004food\030" +
-      "\002 \003(\0132\034.foodzone_protocols.FoodInfo\"\"\n\020R" +
-      "egisterResponse\022\016\n\006result\030\001 \001(\t\"$\n\022Updat" +
-      "eInfoResponse\022\016\n\006result\030\001 \001(\t\"(\n\026UpdateP" +
-      "asswordResponse\022\016\n\006result\030\001 \001(\t\"%\n\023Submi" +
-      "tOrderResponse\022\016\n\006result\030\001 \001(\t\"\272\004\n\rClien" +
-      "tMessage\022\013\n\003msg\030\001 \001(\t\0228\n\014loginRequest\030\002 " +
-      "\001(\0132 .foodzone_protocols.LoginRequestH\000\022" +
-      ">\n\017registerRequest\030\003 \001(\0132#.foodzone_prot" +
-      "ocols.RegisterRequestH\000\0229\n\021updateInfoReq" +
-      "uest\030\004 \001(\0132\034.foodzone_protocols.UserInfo" +
-      "H\000\022J\n\025updatePasswordRequest\030\005 \001(\0132).food" +
-      "zone_protocols.UpdatePasswordRequestH\000\022=" +
-      "\n\013submitOrder\030\006 \001(\0132&.foodzone_protocols" +
-      ".SubmitOrderRequestH\000\022J\n\025restaurantListR" +
-      "equest\030\007 \001(\0132).foodzone_protocols.Restau" +
-      "rantListRequestH\000\022>\n\017foodListRequest\030\010 \001" +
-      "(\0132#.foodzone_protocols.FoodListRequestH" +
-      "\000\022D\n\022historyListRequest\030\t \001(\0132&.foodzone" +
-      "_protocols.HistoryListRequestH\000B\n\n\010reque" +
-      "sts\"\333\004\n\rServerMessage\022\013\n\003msg\030\001 \001(\t\022:\n\rlo" +
-      "ginResponse\030\002 \001(\0132!.foodzone_protocols.L" +
-      "oginResponseH\000\022@\n\020registerResponse\030\003 \001(\013" +
-      "2$.foodzone_protocols.RegisterResponseH\000" +
-      "\022D\n\022updateInfoResponse\030\004 \001(\0132&.foodzone_" +
-      "protocols.UpdateInfoResponseH\000\022L\n\026update" +
-      "PasswordResponse\030\005 \001(\0132*.foodzone_protoc" +
-      "ols.UpdatePasswordResponseH\000\022F\n\023submitOr" +
-      "derResponse\030\006 \001(\0132\'.foodzone_protocols.S" +
-      "ubmitOrderResponseH\000\022L\n\026restaurantListRe" +
-      "sponse\030\007 \001(\0132*.foodzone_protocols.Restau" +
-      "rantListResponseH\000\022@\n\020foodListResponse\030\010" +
-      " \001(\0132$.foodzone_protocols.FoodListRespon" +
-      "seH\000\022F\n\023historyListResponse\030\t \001(\0132\'.food" +
-      "zone_protocols.HistoryListResponseH\000B\013\n\t" +
-      "responsesB#\n\037com.fz.foodzoneserver.proto" +
-      "colsP\001b\006proto3"
+      "price\030\005 \001(\005\022\022\n\nrestaurant\030\006 \001(\t\"2\n\014Login" +
+      "Request\022\020\n\010username\030\001 \001(\t\022\020\n\010password\030\002 " +
+      "\001(\t\"a\n\rLoginResponse\022\016\n\006result\030\001 \001(\t\0223\n\010" +
+      "userInfo\030\002 \001(\0132\034.foodzone_protocols.User" +
+      "InfoH\000\210\001\001B\013\n\t_userInfo\"s\n\017RegisterReques" +
+      "t\022\020\n\010username\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\020\n" +
+      "\010fullname\030\003 \001(\t\022\n\n\002id\030\004 \001(\t\022\017\n\007address\030\005" +
+      " \001(\t\022\r\n\005phone\030\006 \001(\t\"S\n\025UpdatePasswordReq" +
+      "uest\022\020\n\010username\030\001 \001(\t\022\023\n\013oldPassword\030\002 " +
+      "\001(\t\022\023\n\013newPassword\030\003 \001(\t\"\330\001\n\022SubmitOrder" +
+      "Request\022\020\n\010username\030\001 \001(\t\022\020\n\010datetime\030\002 " +
+      "\001(\t\022\016\n\006mealID\030\003 \003(\t\022\024\n\014mealQuantity\030\004 \003(" +
+      "\005\022\031\n\021recipientFullName\030\005 \001(\t\022\023\n\013recipien" +
+      "tID\030\006 \001(\t\022\030\n\020recipientAddress\030\007 \001(\t\022\026\n\016r" +
+      "ecipientPhone\030\010 \001(\t\022\026\n\016recipientEmail\030\t " +
+      "\001(\t\"\027\n\025RestaurantListRequest\"`\n\026Restaura" +
+      "ntListResponse\022\016\n\006result\030\001 \001(\t\0226\n\nrestau" +
+      "rant\030\002 \003(\0132\".foodzone_protocols.Restaura" +
+      "ntInfo\"&\n\022HistoryListRequest\022\020\n\010username" +
+      "\030\001 \001(\t\"V\n\023HistoryListResponse\022\016\n\006result\030" +
+      "\001 \001(\t\022/\n\014orderHistory\030\002 \003(\0132\031.foodzone_p" +
+      "rotocols.Order\"\'\n\017FoodListRequest\022\024\n\014res" +
+      "taurantID\030\001 \001(\t\"N\n\020FoodListResponse\022\016\n\006r" +
+      "esult\030\001 \001(\t\022*\n\004food\030\002 \003(\0132\034.foodzone_pro" +
+      "tocols.FoodInfo\"\"\n\020RegisterResponse\022\016\n\006r" +
+      "esult\030\001 \001(\t\"$\n\022UpdateInfoResponse\022\016\n\006res" +
+      "ult\030\001 \001(\t\"(\n\026UpdatePasswordResponse\022\016\n\006r" +
+      "esult\030\001 \001(\t\"%\n\023SubmitOrderResponse\022\016\n\006re" +
+      "sult\030\001 \001(\t\"\272\004\n\rClientMessage\022\013\n\003msg\030\001 \001(" +
+      "\t\0228\n\014loginRequest\030\002 \001(\0132 .foodzone_proto" +
+      "cols.LoginRequestH\000\022>\n\017registerRequest\030\003" +
+      " \001(\0132#.foodzone_protocols.RegisterReques" +
+      "tH\000\0229\n\021updateInfoRequest\030\004 \001(\0132\034.foodzon" +
+      "e_protocols.UserInfoH\000\022J\n\025updatePassword" +
+      "Request\030\005 \001(\0132).foodzone_protocols.Updat" +
+      "ePasswordRequestH\000\022=\n\013submitOrder\030\006 \001(\0132" +
+      "&.foodzone_protocols.SubmitOrderRequestH" +
+      "\000\022J\n\025restaurantListRequest\030\007 \001(\0132).foodz" +
+      "one_protocols.RestaurantListRequestH\000\022>\n" +
+      "\017foodListRequest\030\010 \001(\0132#.foodzone_protoc" +
+      "ols.FoodListRequestH\000\022D\n\022historyListRequ" +
+      "est\030\t \001(\0132&.foodzone_protocols.HistoryLi" +
+      "stRequestH\000B\n\n\010requests\"\333\004\n\rServerMessag" +
+      "e\022\013\n\003msg\030\001 \001(\t\022:\n\rloginResponse\030\002 \001(\0132!." +
+      "foodzone_protocols.LoginResponseH\000\022@\n\020re" +
+      "gisterResponse\030\003 \001(\0132$.foodzone_protocol" +
+      "s.RegisterResponseH\000\022D\n\022updateInfoRespon" +
+      "se\030\004 \001(\0132&.foodzone_protocols.UpdateInfo" +
+      "ResponseH\000\022L\n\026updatePasswordResponse\030\005 \001" +
+      "(\0132*.foodzone_protocols.UpdatePasswordRe" +
+      "sponseH\000\022F\n\023submitOrderResponse\030\006 \001(\0132\'." +
+      "foodzone_protocols.SubmitOrderResponseH\000" +
+      "\022L\n\026restaurantListResponse\030\007 \001(\0132*.foodz" +
+      "one_protocols.RestaurantListResponseH\000\022@" +
+      "\n\020foodListResponse\030\010 \001(\0132$.foodzone_prot" +
+      "ocols.FoodListResponseH\000\022F\n\023historyListR" +
+      "esponse\030\t \001(\0132\'.foodzone_protocols.Histo" +
+      "ryListResponseH\000B\013\n\tresponsesB#\n\037com.fz." +
+      "foodzoneserver.protocolsP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -225,7 +225,7 @@ public final class MessageWrapper {
     internal_static_foodzone_protocols_Order_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_foodzone_protocols_Order_descriptor,
-        new java.lang.String[] { "Date", "Desc", "State", "RecipientName", "Price", });
+        new java.lang.String[] { "Date", "Desc", "State", "RecipientName", "Price", "Restaurant", });
     internal_static_foodzone_protocols_LoginRequest_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_foodzone_protocols_LoginRequest_fieldAccessorTable = new

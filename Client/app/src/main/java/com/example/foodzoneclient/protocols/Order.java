@@ -16,6 +16,7 @@ public  final class Order extends
     desc_ = "";
     state_ = "";
     recipientName_ = "";
+    restaurant_ = "";
   }
   public static final int DATE_FIELD_NUMBER = 1;
   private java.lang.String date_;
@@ -229,6 +230,53 @@ public  final class Order extends
   private void clearPrice() {
     
     price_ = 0;
+  }
+
+  public static final int RESTAURANT_FIELD_NUMBER = 6;
+  private java.lang.String restaurant_;
+  /**
+   * <code>string restaurant = 6;</code>
+   * @return The restaurant.
+   */
+  @java.lang.Override
+  public java.lang.String getRestaurant() {
+    return restaurant_;
+  }
+  /**
+   * <code>string restaurant = 6;</code>
+   * @return The bytes for restaurant.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getRestaurantBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(restaurant_);
+  }
+  /**
+   * <code>string restaurant = 6;</code>
+   * @param value The restaurant to set.
+   */
+  private void setRestaurant(
+      java.lang.String value) {
+    java.lang.Class<?> valueClass = value.getClass();
+  
+    restaurant_ = value;
+  }
+  /**
+   * <code>string restaurant = 6;</code>
+   */
+  private void clearRestaurant() {
+    
+    restaurant_ = getDefaultInstance().getRestaurant();
+  }
+  /**
+   * <code>string restaurant = 6;</code>
+   * @param value The bytes for restaurant to set.
+   */
+  private void setRestaurantBytes(
+      com.google.protobuf.ByteString value) {
+    checkByteStringIsUtf8(value);
+    restaurant_ = value.toStringUtf8();
+    
   }
 
   public static com.example.foodzoneclient.protocols.Order parseFrom(
@@ -550,6 +598,55 @@ public  final class Order extends
       return this;
     }
 
+    /**
+     * <code>string restaurant = 6;</code>
+     * @return The restaurant.
+     */
+    @java.lang.Override
+    public java.lang.String getRestaurant() {
+      return instance.getRestaurant();
+    }
+    /**
+     * <code>string restaurant = 6;</code>
+     * @return The bytes for restaurant.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRestaurantBytes() {
+      return instance.getRestaurantBytes();
+    }
+    /**
+     * <code>string restaurant = 6;</code>
+     * @param value The restaurant to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRestaurant(
+        java.lang.String value) {
+      copyOnWrite();
+      instance.setRestaurant(value);
+      return this;
+    }
+    /**
+     * <code>string restaurant = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearRestaurant() {
+      copyOnWrite();
+      instance.clearRestaurant();
+      return this;
+    }
+    /**
+     * <code>string restaurant = 6;</code>
+     * @param value The bytes for restaurant to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRestaurantBytes(
+        com.google.protobuf.ByteString value) {
+      copyOnWrite();
+      instance.setRestaurantBytes(value);
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:foodzone_protocols.Order)
   }
   @java.lang.Override
@@ -571,10 +668,11 @@ public  final class Order extends
             "state_",
             "recipientName_",
             "price_",
+            "restaurant_",
           };
           java.lang.String info =
-              "\u0000\u0005\u0000\u0000\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
-              "\u0003\u0208\u0004\u0208\u0005\u0004";
+              "\u0000\u0006\u0000\u0000\u0001\u0006\u0006\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
+              "\u0003\u0208\u0004\u0208\u0005\u0004\u0006\u0208";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

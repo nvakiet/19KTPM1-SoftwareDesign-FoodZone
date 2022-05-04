@@ -140,16 +140,26 @@ INSERT INTO Meal
 ('f09' ,'Pate Stick Bread','4 sticks of bread filled to the brim with pate.',420000,'f09_v5nyhd.webp','005')
 GO
 
-
-select STRING_AGG(MealID, ', ') from OrderDetails as od where od.OrderID like 'phat%'
-
-select OrderId, [Name], MealQuantity from OrderDetails, Meal where OrderDetails.MealID = Meal.MealID
-
-select OrderID, o.OrderDateTime, o.[State] from [Order] as o 
-WHERE o.OrderID LIKE 'phat%'
-
-select OrderID, STRING_AGG(CONCAT([Name], ' x', MealQuantity), '\n')
-from OrderDetails, Meal 
+select t1.OrderID, OrderDateTime, [Desc], [State], RecipientName, Price, Restaurant from 
+(select OrderID, o.OrderDateTime, o.[State] from [Order] as o 
+WHERE o.OrderID LIKE 'phat%') t1 
+inner join
+(select OrderID, STRING_AGG(CONCAT(Meal.[Name], ' x', MealQuantity), '---') as [Desc]
+from OrderDetails, Meal
 where OrderDetails.MealID = Meal.MealID
 and OrderID like 'phat%'
-group by OrderID
+group by OrderID) t2 on t1.OrderID = t2.OrderId 
+inner join 
+(select OrderID, Fullname as recipientName
+from Recipient
+where OrderID like 'phat%') t3 on t2.OrderID =  t3.OrderID
+inner join 
+(select OrderID, sum(OrderDetails.MealQuantity*Meal.Price) as price from OrderDetails, meal
+where OrderDetails.MealID = meal.MealID 
+group by OrderID) t4 
+on t3.OrderID = t4.OrderID
+inner join 
+(select distinct OrderID, Restaurant.[Name] as Restaurant from OrderDetails, Meal, Restaurant 
+where OrderDetails.MealID = Meal.MealID
+and Meal.RestaurantID = Restaurant.RestaurantID) t5 
+on t4.OrderID = t5.OrderID
