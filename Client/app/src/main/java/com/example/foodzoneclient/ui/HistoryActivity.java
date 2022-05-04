@@ -37,8 +37,8 @@ public class HistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
         history = findViewById(R.id.history);
 
-        HistoryListRequest request = HistoryListRequest.newBuilder().setUsername(FoodZone.getContext().getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Username", "")).build();
-        ContainerClient.getInstance().sendHistoryListRequest(request);
+        //HistoryListRequest request = HistoryListRequest.newBuilder().setUsername(FoodZone.getContext().getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Username", "")).build();
+        //ContainerClient.getInstance().sendHistoryListRequest(request);
 
         HistoryListViewAdapter historyListViewAdapter = new HistoryListViewAdapter(HistoryActivity.this, historyList);
         history.setAdapter(historyListViewAdapter);
@@ -51,7 +51,8 @@ public class HistoryActivity extends AppCompatActivity {
                     String result = (String) msg.obj;
                     //FoodZone.showToast(restaurantListHandler, result);
                     if (result.equals("Success")) {
-                        historyListViewAdapter.notifyDataSetChanged();
+                        //historyListViewAdapter.notifyDataSetChanged();
+                        ((HistoryListViewAdapter)history.getAdapter()).notifyDataSetChanged();
                     }
                 } else if (msg.what == -100 || msg.what == -200) {
                     FoodZone.showToast(historyListHandler, (String) msg.obj);
@@ -64,9 +65,9 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         ContainerClient.getInstance().currentUIHandler = historyListHandler;
-//        historyList.clear();
-//        HistoryListRequest request = HistoryListRequest.newBuilder().setUsername(FoodZone.getContext().getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Username", "")).build();
-//        ContainerClient.getInstance().sendHistoryListRequest(request);
+        //historyList.clear();
+        HistoryListRequest request = HistoryListRequest.newBuilder().setUsername(FoodZone.getContext().getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Username", "")).build();
+        ContainerClient.getInstance().sendHistoryListRequest(request);
     }
 
     @Override

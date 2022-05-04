@@ -201,7 +201,7 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
 
     private void handleHistoryListResponse(HistoryListResponse response) {
         Message uiMsg;
-        uiMsg      = Message.obtain(MainScreenActivity.restaurantListHandler);
+        uiMsg      = Message.obtain(HistoryActivity.historyListHandler);
         uiMsg.what = 1;
         uiMsg.obj  = response.getResult();
 
