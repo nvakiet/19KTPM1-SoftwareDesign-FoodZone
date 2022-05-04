@@ -8,10 +8,10 @@ public class Main {
     public static void main(String[] args) {
         try {
             Scanner sc = new Scanner(System.in);
-            //System.out.print("Input database connection: ");
-            //String dbConnString = sc.nextLine();
-            //System.out.print("Input bind IP: ");
-            //String ip = sc.nextLine();
+            System.out.print("Input database connection: ");
+            String dbConnString = sc.nextLine();
+            System.out.print("Input bind IP: ");
+            String ip = sc.nextLine();
 
             // TEST -----------------------------------------------------
 
@@ -24,8 +24,8 @@ public class Main {
 //            String ip = "192.168.1.6";
 
             // PHAT
-            String dbConnString = "jdbc:sqlserver://localhost\\SQLSERVER:1433;databaseName=FoodZone;integratedSecurity=true;encrypt=true;trustServerCertificate=true;";
-            String ip = "192.168.1.5";
+//            String dbConnString = "jdbc:sqlserver://localhost\\SQLSERVER:1433;databaseName=FoodZone;integratedSecurity=true;encrypt=true;trustServerCertificate=true;";
+//            String ip = "192.168.1.5";
 
             // ----------------------------------------------------------
 
