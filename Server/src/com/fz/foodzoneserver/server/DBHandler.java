@@ -341,7 +341,7 @@ public class DBHandler {
                     "(select distinct OrderID, Restaurant.[Name] as Restaurant from OrderDetails, Meal, Restaurant " +
                     "where OrderDetails.MealID = Meal.MealID " +
                     "and Meal.RestaurantID = Restaurant.RestaurantID) t5 " +
-                    "on t4.OrderID = t5.OrderID" +
+                    "on t4.OrderID = t5.OrderID " +
                     "order by t1.OrderID desc";
 
             PreparedStatement st = conn.prepareStatement(sqlOrder);
