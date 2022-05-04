@@ -33,6 +33,7 @@ import com.example.foodzoneclient.model.Product;
 import com.example.foodzoneclient.protocols.SubmitOrderRequest;
 
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,7 +75,7 @@ public class OrderActivity extends AppCompatActivity {
 
             SubmitOrderRequest.Builder request = SubmitOrderRequest.newBuilder()
                     .setUsername(prefUser.getString("Username", null))
-                    .setDatetime(ZonedDateTime.now().toString())
+                    .setDatetime(ZonedDateTime.now().format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss z")))
                     .setRecipientFullName(recipientName)
                     .setRecipientAddress(recipientAddress)
                     .setRecipientPhone(recipientPhone)

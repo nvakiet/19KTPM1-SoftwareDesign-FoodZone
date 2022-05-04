@@ -287,6 +287,7 @@ public class DBHandler {
 
             return "Success";
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             return "Query Error";
         }
     }
