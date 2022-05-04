@@ -8,11 +8,11 @@ import org.apache.logging.log4j.Logger;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.UUID;
 
 public class MessageHandler extends ChannelInboundHandlerAdapter {
     private        String username       = null;
     private static Logger logger         = LogManager.getLogger(MessageHandler.class.getName());
-    private static long   OrderIncrement = 0;
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -211,9 +211,7 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
         SubmitOrderResponse.Builder response = SubmitOrderResponse.newBuilder();
         try {
             DBHandler dbHandler = new DBHandler();
-            String    OrderID   = r.getUsername() + "-" + OrderIncrement++;
-            System.out.println(OrderID.length());
-            System.out.println(OrderID);
+            String    OrderID   = r.getUsername() + "-" + UUID.randomUUID().toString();
 
             String resultInsertOrder = dbHandler.insertOrder(OrderID,
                     r.getDatetime(),

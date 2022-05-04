@@ -49,7 +49,7 @@ CREATE TABLE Restaurant (
 GO
 
 CREATE TABLE OrderDetails (
-	OrderID varchar(20),
+	OrderID varchar(57),
 	MealID varchar(10),
 	MealQuantity integer CHECK (MealQuantity > 0)
 	PRIMARY KEY(OrderID, MealID)
@@ -57,7 +57,7 @@ CREATE TABLE OrderDetails (
 GO
 
 CREATE TABLE [Order] (
-	OrderID varchar(20) PRIMARY KEY,
+	OrderID varchar(57) PRIMARY KEY,
 	OrderDateTime varchar(30),
 	[State] varchar(9) NOT NULL,
 	TimeRemaining time,
@@ -67,7 +67,7 @@ CREATE TABLE [Order] (
 GO
 
 CREATE TABLE Recipient (
-	OrderID varchar(20) PRIMARY KEY,
+	OrderID varchar(57) PRIMARY KEY,
 	Fullname varchar(40),
 	ID varchar(12),
 	[Address] varchar(70) NOT NULL,
@@ -139,27 +139,3 @@ INSERT INTO Meal
 ('f08' ,'Lemonade Soft Cake','Sweet and sour. A great appetizer.',69000,'f08_xwdrby.webp','005'),
 ('f09' ,'Pate Stick Bread','4 sticks of bread filled to the brim with pate.',420000,'f09_v5nyhd.webp','005')
 GO
-
-select t1.OrderID, OrderDateTime, [Desc], [State], RecipientName, Price, Restaurant from 
-(select OrderID, o.OrderDateTime, o.[State] from [Order] as o 
-WHERE o.OrderID LIKE 'phat%') t1 
-inner join
-(select OrderID, STRING_AGG(CONCAT(Meal.[Name], ' x', MealQuantity), '---') as [Desc]
-from OrderDetails, Meal
-where OrderDetails.MealID = Meal.MealID
-and OrderID like 'phat%'
-group by OrderID) t2 on t1.OrderID = t2.OrderId 
-inner join 
-(select OrderID, Fullname as recipientName
-from Recipient
-where OrderID like 'phat%') t3 on t2.OrderID =  t3.OrderID
-inner join 
-(select OrderID, sum(OrderDetails.MealQuantity*Meal.Price) as price from OrderDetails, meal
-where OrderDetails.MealID = meal.MealID 
-group by OrderID) t4 
-on t3.OrderID = t4.OrderID
-inner join 
-(select distinct OrderID, Restaurant.[Name] as Restaurant from OrderDetails, Meal, Restaurant 
-where OrderDetails.MealID = Meal.MealID
-and Meal.RestaurantID = Restaurant.RestaurantID) t5 
-on t4.OrderID = t5.OrderID
