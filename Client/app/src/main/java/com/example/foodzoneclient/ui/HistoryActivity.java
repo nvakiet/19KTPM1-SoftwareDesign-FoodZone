@@ -1,6 +1,7 @@
 package com.example.foodzoneclient.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -34,12 +35,7 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
-
         history = findViewById(R.id.history);
-
-        HistoryListRequest request = HistoryListRequest.newBuilder().setUsername(FoodZone.getContext().getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Username", "")).build();
-        ContainerClient.getInstance().sendHistoryListRequest(request);
-
         HistoryListViewAdapter historyListViewAdapter = new HistoryListViewAdapter(HistoryActivity.this, historyList);
         history.setAdapter(historyListViewAdapter);
 
@@ -64,12 +60,15 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         ContainerClient.getInstance().currentUIHandler = historyListHandler;
+        HistoryListRequest request = HistoryListRequest.newBuilder().setUsername(FoodZone.getContext().getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Username", "")).build();
+        ContainerClient.getInstance().sendHistoryListRequest(request);
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         historyList.clear();
+        startActivity(new Intent(HistoryActivity.this, MainScreenActivity.class));
     }
 }
 
