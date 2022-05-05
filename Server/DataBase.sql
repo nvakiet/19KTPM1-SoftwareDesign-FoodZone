@@ -16,20 +16,6 @@ CREATE TABLE [Users] (
 )
 GO
 
-CREATE TABLE Cart (
-	Username varchar(20) PRIMARY KEY,
-	TotalPrice money
-)
-GO
-
-CREATE TABLE CartDetails (
-	Username varchar(20),
-	MealID varchar(10),
-	MealQuantity integer CHECK (MealQuantity > 0),
-	PRIMARY KEY(Username, MealID)
-)
-GO
-
 CREATE TABLE Meal (
 	MealID varchar(10) PRIMARY KEY,
 	[Name] varchar(30) NOT NULL,
@@ -76,18 +62,6 @@ CREATE TABLE Recipient (
 )
 GO
 
-ALTER TABLE Cart
-ADD CONSTRAINT fk_Cart_User FOREIGN KEY (Username) REFERENCES [Users](Username)
-GO
-
-ALTER TABLE CartDetails
-ADD CONSTRAINT fk_CartDetails_Cart FOREIGN KEY (Username) REFERENCES Cart(Username)
-GO
-
-ALTER TABLE CartDetails
-ADD CONSTRAINT fk_CartDetails_Meal FOREIGN KEY (MealID) REFERENCES Meal(MealID)
-GO
-
 ALTER TABLE OrderDetails
 ADD CONSTRAINT fk_OrderDetails_Meal FOREIGN KEY (MealID) REFERENCES Meal(MealID)
 GO
@@ -110,13 +84,6 @@ INSERT INTO [Users]
 ('kiet'	 ,'12345678'  ,'Ngo Van Anh Kiet'    ,'0011223344','027C Chung cu An Quang', '0901210304', 'kiet_tgww6q.jpg'),
 ('phat'	 ,'12345678'  ,'Trieu Nguyen Phat'   ,'0011223345','12 Tran Hung Dao','0589199209',null),
 ('khue'	 ,'12345678'  ,'Pham Trong Vinh Khue','0011223346','13 Tran Hung Dao',null		  ,null)
-GO
-
-INSERT INTO Cart(Username) VALUES
-('admin'),
-('kiet'),
-('phat'),
-('khue')
 GO
 
 INSERT INTO Restaurant(RestaurantID, [Name], [Address], [Image]) VALUES
