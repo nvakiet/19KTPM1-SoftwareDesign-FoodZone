@@ -1,4 +1,4 @@
-# 19KTPM1-SoftwareDesign-OnlineShoppingApp
+# 19KTPM1-SoftwareDesign-FoodZone
 Food Zone - An online food ordering mobile app. A project of Software Design course - Ho Chi Minh University Of Science - Class 19KTPM1.  
 Group members:  
 - Ngo Van Anh Kiet
